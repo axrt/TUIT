@@ -38,7 +38,7 @@ public class EncodedFasta extends NculeotideFasta {
      * @throws NucleotideFasta_AC_BadFormatException in case the AC is formatted badly
      * @throws NucleotideFasta_Sequence_BadFromatException in case it encounters an error within the nucleotide compound
      */
-    public static EncodedFasta newInstanceFromFromattedText(String fastaRecord, String recordAC) throws NucleotideFasta_BadFromat_Exception,
+    public static EncodedFasta newInstanceFromFromattedText(String recordAC, String fastaRecord) throws NucleotideFasta_BadFromat_Exception,
             NucleotideFasta_AC_BadFormatException,
             NucleotideFasta_Sequence_BadFromatException {
 
