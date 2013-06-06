@@ -229,9 +229,9 @@ public class GI_TaxIDDeployer {
             statement.execute(
                     "LOAD DATA INFILE '"
                     + gi_taxidFilteredFile.toString()
-                    + "' replace into table "
+                    + "' REPLACE INTO TABLE "
                     + LookupNames.dbs.NCBI.gi_taxid.name
-                    + " FIELDS terminated by '\t' lines terminated by '\n'");
+                    + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");
 
         } catch (SQLException sqle) {
             throw sqle;

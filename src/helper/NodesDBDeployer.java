@@ -154,8 +154,8 @@ public class NodesDBDeployer {
      *
      * @param connection   {@link Connection} to the database
      * @param nodesDmpFile {@link File} nodes.dmp
-     * @throws SQLException SQLException in case something goes wrong upon database communication
-     * @throws IOException  IOException in case something goes wrong during file read
+     * @throws SQLException  in case something goes wrong upon database communication
+     * @throws IOException   in case something goes wrong during file read
      */
     @Deprecated
     public static void deployNodesDatabase(Connection connection, File nodesDmpFile) throws SQLException, IOException {

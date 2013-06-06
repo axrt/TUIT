@@ -14,6 +14,9 @@ public class NamesDeployer {
      * A size for batch inserts
      */
     private static int batchSize = 10000;
+    /**
+     * The "scientific name" that indicates that the taxid points to a valid name for a taxonomic group
+     */
     private static String scientific_name = "scientific name";
 
     /**
