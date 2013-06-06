@@ -271,7 +271,6 @@ public class NodesDBDeployer {
     public static void injectProcessedNodesDmpFile(Connection connection, File nodesFilteredFile) throws SQLException {
 
         Statement statement = null;
-        ResultSet resultSet = null;
 
         try {
             statement = connection.createStatement();

@@ -2,14 +2,8 @@ package helper;
 
 import db.mysqlwb.tables.LookupNames;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.*;
+import java.sql.*;
 import java.util.Map;
 
 /**
@@ -19,7 +13,8 @@ public class NamesDeployer {
     /**
      * A size for batch inserts
      */
-    private static int batchSize=10000;
+    private static int batchSize = 10000;
+    private static String scientific_name = "scientific name";
 
     /**
      * Constructor grants non-instantiability
@@ -27,14 +22,16 @@ public class NamesDeployer {
     private NamesDeployer() {
         throw new AssertionError();
     }
-    //TODO: document as soon as working
-    //TODO: implement a faster method throuhg direct file injects
+
     /**
-     * <b>Deprecated due to low efficiency, See... </b>
+     * Deploys the Names database table. Depends of the existence of the NCBI schema and an empty Names table existence.
+     * <b>Deprecated due to low efficiency, See injectProcessedNamesDmpFile(Connection connection, File nodesFilteredFile)
+     * and filterNodesDmpFile(File namesDmpFile) as a faster way of implementation. </b>
+     *
      * @param connection
      * @param namesFile
-     * @throws SQLException
-     * @throws IOException
+     * @throws SQLException in case something goes wrong upon database communication
+     * @throws IOException  in case something goes wrong during file read
      */
     @Deprecated
     public static void deployNamesTable(Connection connection, File namesFile) throws SQLException, IOException {
@@ -66,10 +63,10 @@ public class NamesDeployer {
             int counter = 0;
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] split = line.split("\t\\|\t");
+                String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
                 if (split[6].equals("scientific name")) {
                     preparedStatement.setInt(1, Integer.valueOf(split[0]));
-                    preparedStatement.setString(2, split[1]);
+                    preparedStatement.setString(2, split[2]);
                     preparedStatement.addBatch();
                     counter++;
                 }
@@ -92,6 +89,78 @@ public class NamesDeployer {
             //Close and cleanup
             bufferedReader.close();
             preparedStatement.close();
+        }
+    }
+
+    /**
+     * Re-parses the nodes.dmp file. Extracts the taxid and the "scientific name" marked fields
+     *
+     * @param namesDmpFile {@link File} names.dmp
+     * @return a new {@link File} that points to the newly filtered file
+     * @throws IOException
+     * @throws SQLException
+     */
+    public static File filterNodesDmpFile(File namesDmpFile) throws IOException {
+        //Read the input file line by line
+        BufferedReader bufferedReader = null;
+        FileWriter fileWriter = null;
+        File filteredNamesDmpFile = null;
+
+        try {
+            bufferedReader = new BufferedReader(new FileReader(namesDmpFile));
+            filteredNamesDmpFile = new File(namesDmpFile.getAbsoluteFile().toString() + ".mod");
+            fileWriter = new FileWriter(filteredNamesDmpFile);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] splitter = line.split("\t");
+                String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
+                if (split[6].equals(NamesDeployer.scientific_name)) {
+                    fileWriter.write(split[0] + '\t' + split[2] + '\n');
+                }
+            }
+            fileWriter.flush();
+
+        } catch (FileNotFoundException fnfe) {
+            throw fnfe;
+        } catch (IOException ioe) {
+            throw ioe;
+        } finally {
+            bufferedReader.close();
+            fileWriter.close();
+        }
+        return filteredNamesDmpFile;
+    }
+
+    /**
+     * Injects the names.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
+     *
+     * @param connection        {@link Connection} to the database
+     * @param nodesFilteredFile {@link File} names.dmp
+     * @throws SQLException in case something goes wrong upon database communication
+     */
+    public static void injectProcessedNamesDmpFile(Connection connection, File nodesFilteredFile) throws SQLException {
+
+        Statement statement = null;
+
+        try {
+            statement = connection.createStatement();
+            //Switch to a correct schema
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
+            statement.execute(
+                    "LOAD DATA INFILE '"
+                            + nodesFilteredFile.toString()
+                            + "' REPLACE INTO TABLE "
+                            + LookupNames.dbs.NCBI.nodes.name
+                            + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +
+                            " ("
+                            + LookupNames.dbs.NCBI.names.columns.taxid + ", "
+                            + LookupNames.dbs.NCBI.names.columns.name
+                            + ")");
+
+        } catch (SQLException sqle) {
+            throw sqle;
+        } finally {
+            statement.close();
         }
     }
 }

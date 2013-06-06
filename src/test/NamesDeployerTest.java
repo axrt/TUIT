@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class NamesDeployerTest {
 
-    @Test
+    //@Test
     public void testDeployNamesTable () throws SQLException, ClassNotFoundException, IOException {
 
 
@@ -31,8 +31,9 @@ public class NamesDeployerTest {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
-
+    //@Test
+    public void filterNodesDmpFileTest() throws IOException {
+        System.out.println(NamesDeployer.filterNodesDmpFile(new File("/home/alext/Downloads/NCBI/taxdump/names.dmp")));
+    }
 }
