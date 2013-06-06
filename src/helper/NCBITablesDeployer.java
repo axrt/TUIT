@@ -47,4 +47,6 @@ public class NCBITablesDeployer {
         System.out.println("Nodes Database deployed");
         System.out.println("NCBI database tables are ready.");
     }
+
+    //TODO: implemetn the faster method
 }

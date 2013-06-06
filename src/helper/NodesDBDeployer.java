@@ -16,7 +16,8 @@ public class NodesDBDeployer {
     /**
      * A size for batch inserts
      */
-    private static int batchSize=10000;
+    private static int batchSize = 10000;
+
     /**
      * Constructor grants non-instantiability
      */
@@ -58,6 +59,7 @@ public class NodesDBDeployer {
     /**
      * Generates a {@link Map<String, Integer>} that helps create a validation table for the nodes NCBI taxonomic database.
      * <b>Deprecated due to redundancy</b>
+     *
      * @param ranks {@link Set<String>} of ranks
      * @return a new {@link  Map<String, Integer>} where each ranks has been assigned a unique ID
      */
@@ -75,7 +77,8 @@ public class NodesDBDeployer {
     }
 
     /**
-     * Deploys a validation table for the rank values
+     * Deploys a validation table for the rank values. Depends on the preexistence of the NCBI schema and an
+     * empty Ranks validation table.
      *
      * @param connection {@link Connection} to the database
      * @param ranks      a {@link Set<String>} of rank names
@@ -119,7 +122,7 @@ public class NodesDBDeployer {
      *
      * @param connection {@link Connection} to the database
      * @return a {@link Map<String, Integer>} lookup from the database id_ranks, rank validation table columns
-     * @throws SQLException
+     * @throws SQLException in case an error occurs during database communication
      */
     public static Map<String, Integer> collectRanksValidationLookup(Connection connection) throws SQLException {
         //Switch to a correct table
@@ -145,14 +148,14 @@ public class NodesDBDeployer {
         }
     }
 
-    //TODO: document as soon as works
-    //TODO: implement a new way through direct mysql inject from a file
     /**
+     * Deploys the Nodes database table. Depends of the existence of the NCBI schema and an empty Nodes table existence.
      * <b>Deprecated due to low efficiency. See..</b>
-     * @param connection
-     * @param nodesDmpFile
-     * @throws SQLException
-     * @throws IOException
+     *
+     * @param connection   {@link Connection} to the database
+     * @param nodesDmpFile {@link File} nodes.dmp
+     * @throws SQLException SQLException in case something goes wrong upon database communication
+     * @throws IOException  IOException in case something goes wrong during file read
      */
     @Deprecated
     public static void deployNodesDatabase(Connection connection, File nodesDmpFile) throws SQLException, IOException {
@@ -171,7 +174,7 @@ public class NodesDBDeployer {
         PreparedStatement preparedStatement = null;
 
         //Prepare a validation lookup
-        Map<String, Integer> ranks_ids=NodesDBDeployer.collectRanksValidationLookup(connection);
+        Map<String, Integer> ranks_ids = NodesDBDeployer.collectRanksValidationLookup(connection);
 
         //Read the input file line by line
         BufferedReader bufferedReader = null;
@@ -179,10 +182,10 @@ public class NodesDBDeployer {
         try {
             bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
             String line;
-            int counter=0;
+            int counter = 0;
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] split = line.split("\t|\t");
+                String[] split = line.split("\t\\|\t");
 
                 preparedStatement = connection.prepareStatement("insert into " + LookupNames.dbs.NCBI.nodes.name
                         + " ("
@@ -192,12 +195,12 @@ public class NodesDBDeployer {
                         + ")" + " values(?,?,?) ");
                 preparedStatement.setInt(1, Integer.parseInt(split[0]));
                 preparedStatement.setInt(2, Integer.parseInt(split[1]));
-                preparedStatement.setInt(3, ranks_ids.get(split[3]));
+                preparedStatement.setInt(3, ranks_ids.get(split[2]));
                 preparedStatement.addBatch();
                 counter++;
-                if(counter==NodesDBDeployer.batchSize){
+                if (counter == NodesDBDeployer.batchSize) {
                     preparedStatement.executeBatch();
-                    counter=0;
+                    counter = 0;
                 }
 
             }
@@ -208,10 +211,88 @@ public class NodesDBDeployer {
             throw ioe;
         } catch (SQLException sqle) {
             throw sqle;
-        }finally{
+        } finally {
             //Close and cleanup
             bufferedReader.close();
             preparedStatement.close();
+        }
+    }
+
+    /**
+     * Re-parses the nodes.dmp file. Extracts the taxid, parent_taxid fields as well as the rank, but upon extraction - goes throught the validation table and assigns the id
+     * instead of the redundant usage of character representation.
+     *
+     * @param connection   {@link Connection} to the database
+     * @param nodesDmpFile {@link File} nodes.dmp
+     * @return a new {@link File} that points to the newly filtered file
+     */
+    public static File filterNodesDmpFile(Connection connection, File nodesDmpFile) throws IOException, SQLException {
+        //Read the input file line by line
+        BufferedReader bufferedReader = null;
+        FileWriter fileWriter = null;
+        File filteredNodesDmpFile = null;
+        try {
+            //Prepare a validation lookup
+            Map<String, Integer> ranks_ids = NodesDBDeployer.collectRanksValidationLookup(connection);
+            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+            filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
+            fileWriter = new FileWriter(filteredNodesDmpFile);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] splitter = line.split("\t\\|\t");
+                fileWriter.write(
+                        splitter[0] + '\t'
+                                + splitter[1] + '\t'
+                                + ranks_ids.get(splitter[2])
+                                + '\n'
+                );
+            }
+            fileWriter.flush();
+
+        } catch (FileNotFoundException fnfe) {
+            throw fnfe;
+        } catch (IOException ioe) {
+            throw ioe;
+        } catch (SQLException sqle) {
+            throw sqle;
+        } finally {
+            bufferedReader.close();
+            fileWriter.close();
+        }
+        return filteredNodesDmpFile;
+    }
+
+     /**
+      * Injects the nodes.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
+     * @param connection  {@link Connection} to the database
+     * @param nodesFilteredFile {@link File} nodes.dmp
+     * @throws SQLException in case something goes wrong upon database communication
+     */
+    public static void injectProcessedNodesDmpFile(Connection connection, File nodesFilteredFile) throws SQLException {
+
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.createStatement();
+            //Switch to a correct schema
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
+            statement.execute(
+                    "LOAD DATA INFILE '"
+                            + nodesFilteredFile.toString()
+                            + "' REPLACE INTO TABLE "
+                            + LookupNames.dbs.NCBI.nodes.name
+                            + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +
+                            " ("
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid +", "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid +", "
+                            + LookupNames.dbs.NCBI.nodes.columns.id_ranks
+                            + ")");
+
+        } catch (SQLException sqle) {
+            throw sqle;
+        } finally {
+            statement.close();
         }
     }
 }

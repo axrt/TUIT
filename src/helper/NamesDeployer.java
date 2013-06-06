@@ -28,13 +28,15 @@ public class NamesDeployer {
         throw new AssertionError();
     }
     //TODO: document as soon as working
+    //TODO: implement a faster method throuhg direct file injects
     /**
-     *
+     * <b>Deprecated due to low efficiency, See... </b>
      * @param connection
      * @param namesFile
      * @throws SQLException
      * @throws IOException
      */
+    @Deprecated
     public static void deployNamesTable(Connection connection, File namesFile) throws SQLException, IOException {
         BufferedReader bufferedReader = null;
         PreparedStatement preparedStatement = null;
@@ -64,10 +66,10 @@ public class NamesDeployer {
             int counter = 0;
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] split = line.split("\t|\t");
+                String[] split = line.split("\t\\|\t");
                 if (split[6].equals("scientific name")) {
                     preparedStatement.setInt(1, Integer.valueOf(split[0]));
-                    preparedStatement.setString(2, split[2]);
+                    preparedStatement.setString(2, split[1]);
                     preparedStatement.addBatch();
                     counter++;
                 }

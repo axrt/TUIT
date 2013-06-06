@@ -212,12 +212,12 @@ public class GI_TaxIDDeployer {
     }
 
     /**
-     * Inject the gi_taxid.dmp.mod prefiltered file into the GI_TAXID table of the NCBI schema.
+     * Injects the gi_taxid.dmp.mod prefiltered file into the GI_TAXID table of the NCBI schema.
      * @param connection {@link Connection} to the database
-     * @param gi_taxidFile {@link File} gi_taxid.dmp
+     * @param gi_taxidFilteredFile {@link File} gi_taxid.dmp
      * @throws SQLException in case something goes wrong upon database communication
      */
-    public static void injectProcessedGI_TaxIDDmpFile(Connection connection, File gi_taxidFile) throws SQLException {
+    public static void injectProcessedGI_TaxIDDmpFile(Connection connection, File gi_taxidFilteredFile) throws SQLException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -228,7 +228,7 @@ public class GI_TaxIDDeployer {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
                     "LOAD DATA INFILE '"
-                    + gi_taxidFile.toString()
+                    + gi_taxidFilteredFile.toString()
                     + "' replace into table "
                     + LookupNames.dbs.NCBI.gi_taxid.name
                     + " FIELDS terminated by '\t' lines terminated by '\n'");

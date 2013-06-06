@@ -70,7 +70,7 @@ public class NodesDBDDeployerTest {
 
     }
 
-    @Test
+    //@Test
     public void collectRanksValidationLookupTest() throws SQLException, ClassNotFoundException {
 
         MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
@@ -81,6 +81,24 @@ public class NodesDBDDeployerTest {
         for (Map.Entry<String, Integer> e : ranks_ids.entrySet()) {
             System.out.println(e.getKey() + "\t>" + e.getValue());
         }
+    }
+    //@Test
+    public void filterNodesDmpFileTest() throws SQLException, ClassNotFoundException, IOException {
 
+        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
+        mySQL_connector.connectToDatabase();
+        Connection connection = mySQL_connector.getConnection();
+        NodesDBDeployer.filterNodesDmpFile(connection, new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp"));
+
+    }
+
+    @Test
+    public void injectProcessedNodesDmpFileTest()throws SQLException, ClassNotFoundException, IOException {
+
+        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
+        mySQL_connector.connectToDatabase();
+        Connection connection = mySQL_connector.getConnection();
+
+        NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection,new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp")));
     }
 }
