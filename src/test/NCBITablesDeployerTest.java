@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class NCBITablesDeployerTest {
 
-    @Test
+   /* @Test
     public void downloadFileFromNCBIFTPTest(){
 
         File tmpDir=new File("/home/alext/Downloads/tmp");
@@ -27,7 +27,7 @@ public class NCBITablesDeployerTest {
         }
 
 
-    }
+    }*/
 
 
 

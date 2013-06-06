@@ -11,7 +11,6 @@
     <orderEntry type="library" name="JAVA_BIO" level="project" />
     <orderEntry type="library" name="JUnit 4" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1" level="project" />
-    <orderEntry type="library" name="commons-net-3" level="project" />
   </component>
 </module>
 
