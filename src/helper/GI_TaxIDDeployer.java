@@ -18,16 +18,16 @@ public class GI_TaxIDDeployer {
         throw new AssertionError();
     }
 
-
     /**
      * Deploys a GI_TAXID database table for the NCBI table gi_taxid.dmp, downloaded form the NCBI FTP.
      * Depends of the existence of the NCBI schema and an empty GI_TAXID table existence.
      * <b>Deprecated due to low efficiency.
      * See GI_TaxIDDeployer.filterGI_TaxIDDmp(Connection connection, File gi_taxidFile) for a preferred method.</b>
-     * @param connection {@link Connection} to the database
+     *
+     * @param connection   {@link Connection} to the database
      * @param gi_taxidFile {@link File} gi_taxid.dmp
      * @throws SQLException in case something goes wrong upon database communication
-     * @throws IOException in case something goes wrong during file read
+     * @throws IOException  in case something goes wrong during file read
      */
     @Deprecated
     public static void deployGI_TaxIDTable(Connection connection, File gi_taxidFile) throws SQLException, IOException {
@@ -48,7 +48,9 @@ public class GI_TaxIDDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if (statement != null) {
+                statement.close();
+            }
         }
 
         //Create a set of existing taxids
@@ -77,8 +79,12 @@ public class GI_TaxIDDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            resultSet.close();
-            statement.close();
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
         }
 
         try {
@@ -125,8 +131,12 @@ public class GI_TaxIDDeployer {
             throw ioe;
         } finally {
             //Close and cleanup
-            bufferedReader.close();
-            preparedStatement.close();
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         }
     }
 
@@ -135,11 +145,12 @@ public class GI_TaxIDDeployer {
      * As long as the taxid field of the GI_TAXID database has a foreigh key of taxid form the Names database,
      * it first extracts all existing taxids form the Names table and generates a {@link HashSet<Integer>}.
      * It then reads the .dmp file line by line and writes to a .mod file only those lines, that contain a valid taxid.
-     * @param connection {@link Connection} to the database
+     *
+     * @param connection   {@link Connection} to the database
      * @param gi_taxidFile {@link File} gi_taxid.dmp
      * @return {@link File} .mod file that contains the filtered database table .dmp file
      * @throws SQLException in case something goes wrong upon database communication
-     * @throws IOException IOException in case something goes wrong during file read/write
+     * @throws IOException  IOException in case something goes wrong during file read/write
      */
     public static File filterGI_TaxIDDmp(Connection connection, File gi_taxidFile) throws SQLException, IOException {
 
@@ -152,7 +163,9 @@ public class GI_TaxIDDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if (statement != null) {
+                statement.close();
+            }
         }
 
         //Create a set of existing taxids
@@ -182,8 +195,12 @@ public class GI_TaxIDDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            resultSet.close();
-            statement.close();
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
         }
         //Open the gi_taxid.dmp file and read line by line
         BufferedReader bufferedReader = null;
@@ -195,7 +212,7 @@ public class GI_TaxIDDeployer {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (existingTaxIDs.contains(Integer.parseInt(line.split("\t")[1]))) {
-                    fileWriter.write(line+'\n');
+                    fileWriter.write(line + '\n');
                 }
             }
         } catch (FileNotFoundException fnfe) {
@@ -203,17 +220,21 @@ public class GI_TaxIDDeployer {
         } catch (IOException ioe) {
             throw ioe;
         } finally {
-            bufferedReader.close();
-            fileWriter.flush();
-            fileWriter.close();
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+            if (fileWriter != null) {
+                fileWriter.flush();
+                fileWriter.close();
+            }
+            return outFile;
         }
-
-        return outFile;
     }
 
     /**
      * Injects the gi_taxid.dmp.mod prefiltered file into the GI_TAXID table of the NCBI schema.
-     * @param connection {@link Connection} to the database
+     *
+     * @param connection           {@link Connection} to the database
      * @param gi_taxidFilteredFile {@link File} gi_taxid.dmp
      * @throws SQLException in case something goes wrong upon database communication
      */
@@ -228,15 +249,20 @@ public class GI_TaxIDDeployer {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
                     "LOAD DATA INFILE '"
-                    + gi_taxidFilteredFile.toString()
-                    + "' REPLACE INTO TABLE "
-                    + LookupNames.dbs.NCBI.gi_taxid.name
-                    + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");
+                            + gi_taxidFilteredFile.toString()
+                            + "' REPLACE INTO TABLE "
+                            + LookupNames.dbs.NCBI.gi_taxid.name
+                            + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");
 
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
         }
     }
 

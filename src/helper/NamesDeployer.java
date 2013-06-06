@@ -4,7 +4,6 @@ import db.mysqlwb.tables.LookupNames;
 
 import java.io.*;
 import java.sql.*;
-import java.util.Map;
 
 /**
  * Contains utility methods for nodes database deployment from names.dmp file from NCBI
@@ -13,11 +12,11 @@ public class NamesDeployer {
     /**
      * A size for batch inserts
      */
-    private static int batchSize = 10000;
+    private static int BATCH_SIZE = 10000;
     /**
      * The "scientific name" that indicates that the taxid points to a valid name for a taxonomic group
      */
-    private static String scientific_name = "scientific name";
+    private static String SCIENTIFIC_NAME = "scientific name";
 
     /**
      * Constructor grants non-instantiability
@@ -48,7 +47,9 @@ public class NamesDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close();
+            }  
         }
 
         try {
@@ -74,7 +75,7 @@ public class NamesDeployer {
                     counter++;
                 }
                 //Execute batch every time the batch buffer gets full
-                if (counter == NamesDeployer.batchSize) {
+                if (counter == NamesDeployer.BATCH_SIZE) {
                     preparedStatement.executeBatch();
                     System.out.println("Another batch inserted into names, the last gi was: " + split[0]);
                     counter = 0;
@@ -90,8 +91,12 @@ public class NamesDeployer {
             throw ioe;
         } finally {
             //Close and cleanup
-            bufferedReader.close();
-            preparedStatement.close();
+            if(bufferedReader!=null){
+                bufferedReader.close(); 
+            }
+            if(preparedStatement!=null){
+                preparedStatement.close();
+            }
         }
     }
 
@@ -117,7 +122,7 @@ public class NamesDeployer {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] splitter = line.split("\t");
                 String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
-                if (split[6].equals(NamesDeployer.scientific_name)) {
+                if (split[6].equals(NamesDeployer.SCIENTIFIC_NAME)) {
                     fileWriter.write(split[0] + '\t' + split[2] + '\n');
                 }
             }
@@ -129,9 +134,11 @@ public class NamesDeployer {
             throw ioe;
         } finally {
             bufferedReader.close();
-            fileWriter.close();
+            if(fileWriter!=null){
+                fileWriter.close();
+            }
+            return filteredNamesDmpFile;
         }
-        return filteredNamesDmpFile;
     }
 
     /**
@@ -163,7 +170,9 @@ public class NamesDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close(); 
+            }      
         }
     }
 }

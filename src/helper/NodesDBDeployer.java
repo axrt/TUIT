@@ -16,7 +16,7 @@ public class NodesDBDeployer {
     /**
      * A size for batch inserts
      */
-    private static int batchSize = 10000;
+    private static int BATCH_SIZE = 10000;
 
     /**
      * Constructor grants non-instantiability
@@ -50,7 +50,9 @@ public class NodesDBDeployer {
             throw ioe;
         } finally {
             //Close everything and return the set
-            bufferedReader.close();
+            if(bufferedReader!=null){
+                bufferedReader.close();
+            }
             return ranks;
         }
 
@@ -93,7 +95,9 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close();
+            }
         }
 
         PreparedStatement preparedStatement = null;
@@ -113,7 +117,9 @@ public class NodesDBDeployer {
             throw sqle;
         } finally {
             //Close and cleanup
-            preparedStatement.close();
+            if(preparedStatement!=null){
+                preparedStatement.close();
+            }
         }
     }
 
@@ -143,7 +149,9 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close();
+            }
             return ranks_ids;
         }
     }
@@ -168,7 +176,9 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close();
+            }
         }
 
         PreparedStatement preparedStatement = null;
@@ -198,7 +208,7 @@ public class NodesDBDeployer {
                 preparedStatement.setInt(3, ranks_ids.get(split[2]));
                 preparedStatement.addBatch();
                 counter++;
-                if (counter == NodesDBDeployer.batchSize) {
+                if (counter == NodesDBDeployer.BATCH_SIZE) {
                     preparedStatement.executeBatch();
                     counter = 0;
                 }
@@ -213,8 +223,12 @@ public class NodesDBDeployer {
             throw sqle;
         } finally {
             //Close and cleanup
-            bufferedReader.close();
-            preparedStatement.close();
+            if(bufferedReader!=null){
+                bufferedReader.close();
+            }
+            if(preparedStatement!=null){
+                preparedStatement.close();
+            }
         }
     }
 
@@ -256,10 +270,15 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            bufferedReader.close();
-            fileWriter.close();
+            if(bufferedReader!=null){
+                bufferedReader.close();
+            }
+            if(fileWriter!=null){
+                fileWriter.close();
+            }
+            return filteredNodesDmpFile;
         }
-        return filteredNodesDmpFile;
+
     }
 
      /**
@@ -291,7 +310,9 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            statement.close();
+            if(statement!=null){
+                statement.close();
+            }
         }
     }
 }

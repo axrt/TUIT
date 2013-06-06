@@ -92,7 +92,7 @@ public class NodesDBDDeployerTest {
 
     }
 
-    @Test
+    //@Test
     public void injectProcessedNodesDmpFileTest()throws SQLException, ClassNotFoundException, IOException {
 
         MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");

@@ -1,14 +1,13 @@
 package db.mysqlwb.tables;
 
 /**
- * Created with IntelliJ IDEA.
- * User: alext
- * Date: 5/31/13
- * Time: 12:43 PM
- * To change this template use File | Settings | File Templates.
+ * Provides common lookup names for the NCBI schema within the database
  */
 public class LookupNames {
 
+    /**
+     * Constructor grants non-instantiability
+     */
     private LookupNames() {
         throw new AssertionError();
     }
