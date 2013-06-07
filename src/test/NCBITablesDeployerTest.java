@@ -1,10 +1,13 @@
 package test;
 
+import db.mysql.MySQL_Connector;
 import helper.NCBITablesDeployer;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,21 +18,27 @@ import java.io.IOException;
  */
 public class NCBITablesDeployerTest {
 
-   /* @Test
-    public void downloadFileFromNCBIFTPTest(){
+    @Test
+    public  void updateDatabasesFromNCBITest(){
 
-        File tmpDir=new File("/home/alext/Downloads/tmp");
 
         try {
-            NCBITablesDeployer.downloadFileFromNCBIFTP(tmpDir, NCBITablesDeployer.GI_TAXID_ARCH);
+            MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
+            mySQL_connector.connectToDatabase();
+            Connection connection = mySQL_connector.getConnection();
+
+            NCBITablesDeployer.updateDatabasesFromNCBI(connection, new File("/home/alext/Downloads/tmp"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
 
-    }*/
-
-
+    }
 
 
 }

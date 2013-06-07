@@ -36,7 +36,7 @@ public class NCBITablesDeployer {
      * @throws SQLException in case something goes wrong upon database communication
      */
     @Deprecated
-    public static void deployNCBIDatabasesFromFiles(Connection connection, File gi_taxidDmpFile, File namesDmpFile, File nodesDmpFile) throws IOException, SQLException {
+    public static void deployNCBIDatabasesFromFiles(final Connection connection, final File gi_taxidDmpFile, final File namesDmpFile, final File nodesDmpFile) throws IOException, SQLException {
 
         //Deploy the names table
         System.out.println("Deploying Names Database..");
@@ -48,7 +48,7 @@ public class NCBITablesDeployer {
         System.out.println("GI_TaxID Database deployed");
         //Read and create a validation table for the nodes.dmp
         System.out.println("Preparing Rank-validation table..");
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.calculateASetOfRanksFromFile(nodesDmpFile));
+        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
         System.out.println("Rank-validation table deployed");
         //Deploy the nodes table
         System.out.println("Deploying Nodes Database..");
@@ -67,11 +67,11 @@ public class NCBITablesDeployer {
      * @throws IOException  in case something goes wrong during file read
      * @throws SQLException in case something goes wrong upon database communication
      */
-    public static void fastDeployNCBIDatabasesFromFiles(Connection connection, File gi_taxidDmpFile, File namesDmpFile, File nodesDmpFile) throws IOException, SQLException {
+    public static void fastDeployNCBIDatabasesFromFiles(final Connection connection, final File gi_taxidDmpFile, final File namesDmpFile, final File nodesDmpFile) throws IOException, SQLException {
 
         //Deploy the names table
         System.out.println("Deploying Names Database..");
-        NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNodesDmpFile(namesDmpFile));
+        NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(namesDmpFile));
         System.out.println("Names Database deployed");
         //Deploy the gi_taxid table
         System.out.println("Deploying GI_TaxID Database..");
@@ -79,7 +79,7 @@ public class NCBITablesDeployer {
         System.out.println("GI_TaxID Database deployed");
         //Read and create a validation table for the nodes.dmp
         System.out.println("Preparing Rank-validation table..");
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.calculateASetOfRanksFromFile(nodesDmpFile));
+        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
         System.out.println("Rank-validation table deployed");
         //Deploy the nodes table
         System.out.println("Deploying Nodes Database..");
@@ -87,6 +87,36 @@ public class NCBITablesDeployer {
         System.out.println("Nodes Database deployed");
         System.out.println("NCBI database tables are ready.");
 
+    }
+
+    /**
+     * //TODO: documetn as soon as works
+     * @param connection
+     * @param tmpDir
+     * @throws IOException
+     * @throws SQLException
+     */
+    public static void updateDatabasesFromNCBI(final Connection connection, final File tmpDir) throws IOException, SQLException {
+        //Downloading files
+        System.out.println("Downloading updates..");
+        System.out.println("Downloading "+SystemUtil.TAXDUMP_ARCH);
+        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
+        System.out.println("Downloading "+SystemUtil.GI_TAXID_UPD_FILE_ARCH+" updates..");
+        File gi_taxid_update= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_UPD_FILE_ARCH));
+
+        System.out.println("Extracting "+SystemUtil.TAXDUMP_ARCH);
+        File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
+        System.out.println("Extracting "+SystemUtil.GI_TAXID_UPD_FILE_ARCH);
+        File gi_taxid_update_dir=SystemUtil.unArchiveGZFile(gi_taxid_update,tmpDir);
+
+        System.out.println("Updating Names Database..");
+        NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(new File(taxdump_dir,SystemUtil.NAMES_FILE)));
+        System.out.println("Updating GI_TAXID Database..");
+        GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_update_dir,SystemUtil.GI_TAXID_FILE)));
+        System.out.println("Updating Nodes Database..");
+        NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
+
+        System.out.println("Database update completed successfully..");
     }
 
 }

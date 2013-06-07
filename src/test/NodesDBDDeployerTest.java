@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
@@ -66,7 +65,7 @@ public class NodesDBDDeployerTest {
         mySQL_connector.connectToDatabase();
         Connection connection = mySQL_connector.getConnection();
 
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.calculateASetOfRanksFromFile(nodes_dmp_file));
+        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
 
     }
 
@@ -100,5 +99,26 @@ public class NodesDBDDeployerTest {
         Connection connection = mySQL_connector.getConnection();
 
         NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection,new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp")));
+    }
+    @Test
+    public void validateDoubfulRanks(){
+
+        try {
+            BufferedReader bufferedReader=new BufferedReader(new FileReader(new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp")));
+            String line;
+            while ((line=bufferedReader.readLine())!=null){
+               String[]split=line.split("\t\\|\t");
+                if(split[2].equals("forma")){
+                    System.out.println(line);
+                    //break;
+                }
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
     }
 }

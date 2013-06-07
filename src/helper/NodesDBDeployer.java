@@ -4,15 +4,48 @@ import db.mysqlwb.tables.LookupNames;
 
 import java.io.*;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Contains utility methods for nodes database deployment from nodes.dmp file from NCBI
  */
 public class NodesDBDeployer {
+    /**
+     * A list of taxonomic ranks in order in which they appear in nature
+     */
+    public static final List<String> ranks = new ArrayList<String>(
+            Arrays.asList(
+                    new String[]{
+                            "no rank",
+                            "superkingdom",
+                            "kingdom",
+                            "subkingdom",
+                            "superphylum",
+                            "phylum",
+                            "subphylum",
+                            "superclass",
+                            "class",
+                            "subclass",
+                            "infraclass",
+                            "superorder",
+                            "order",
+                            "suborder",
+                            "infraorder",
+                            "parvorder",
+                            "superfamily",
+                            "family",
+                            "subfamily",
+                            "tribe",
+                            "subtribe",
+                            "genus",
+                            "subgenus",
+                            "species group",
+                            "species subgroup",
+                            "species",
+                            "subspecies",
+                            "varietas",
+                            "forma"
+                    }));
     /**
      * A size for batch inserts
      */
@@ -33,6 +66,7 @@ public class NodesDBDeployer {
      * @return a {@link Set<String>} of all possible ranks within the file
      * @throws IOException in case smth goes wrong during file read and parsing
      */
+    @Deprecated
     public static Set<String> calculateASetOfRanksFromFile(File nodesDmpFile) throws IOException {
         //Prepare a new set to store the ranks
         Set<String> ranks = new HashSet<String>();
@@ -50,7 +84,7 @@ public class NodesDBDeployer {
             throw ioe;
         } finally {
             //Close everything and return the set
-            if(bufferedReader!=null){
+            if (bufferedReader != null) {
                 bufferedReader.close();
             }
             return ranks;
@@ -59,6 +93,7 @@ public class NodesDBDeployer {
     }
 
     /**
+     * <b>Deprectaed due to that the database needs strongly a strongly ordered set of ranks.</b>
      * Generates a {@link Map<String, Integer>} that helps create a validation table for the nodes NCBI taxonomic database.
      * <b>Deprecated due to redundancy</b>
      *
@@ -86,7 +121,7 @@ public class NodesDBDeployer {
      * @param ranks      a {@link Set<String>} of rank names
      * @throws SQLException in case an error occurs during database communication
      */
-    public static void deployRanksValidataionTable(Connection connection, Set<String> ranks) throws SQLException {
+    public static void deployRanksValidataionTable(Connection connection, List<String> ranks) throws SQLException {
         //Switch to a correct table
         Statement statement = null;
         try {
@@ -95,7 +130,7 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            if(statement!=null){
+            if (statement != null) {
                 statement.close();
             }
         }
@@ -117,19 +152,21 @@ public class NodesDBDeployer {
             throw sqle;
         } finally {
             //Close and cleanup
-            if(preparedStatement!=null){
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
         }
     }
 
     /**
+     * <b>Deprecated due to a lack of any potential use. Does not reflect the real ranks.</b>
      * Collects a lookup map that will further allow easy lookup during the nodes.dmp insert
      *
      * @param connection {@link Connection} to the database
      * @return a {@link Map<String, Integer>} lookup from the database id_ranks, rank validation table columns
      * @throws SQLException in case an error occurs during database communication
      */
+    @Deprecated
     public static Map<String, Integer> collectRanksValidationLookup(Connection connection) throws SQLException {
         //Switch to a correct table
         Statement statement = null;
@@ -149,7 +186,7 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            if(statement!=null){
+            if (statement != null) {
                 statement.close();
             }
             return ranks_ids;
@@ -162,8 +199,8 @@ public class NodesDBDeployer {
      *
      * @param connection   {@link Connection} to the database
      * @param nodesDmpFile {@link File} nodes.dmp
-     * @throws SQLException  in case something goes wrong upon database communication
-     * @throws IOException   in case something goes wrong during file read
+     * @throws SQLException in case something goes wrong upon database communication
+     * @throws IOException  in case something goes wrong during file read
      */
     @Deprecated
     public static void deployNodesDatabase(Connection connection, File nodesDmpFile) throws SQLException, IOException {
@@ -176,7 +213,7 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            if(statement!=null){
+            if (statement != null) {
                 statement.close();
             }
         }
@@ -223,10 +260,10 @@ public class NodesDBDeployer {
             throw sqle;
         } finally {
             //Close and cleanup
-            if(bufferedReader!=null){
+            if (bufferedReader != null) {
                 bufferedReader.close();
             }
-            if(preparedStatement!=null){
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
         }
@@ -270,10 +307,10 @@ public class NodesDBDeployer {
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            if(bufferedReader!=null){
+            if (bufferedReader != null) {
                 bufferedReader.close();
             }
-            if(fileWriter!=null){
+            if (fileWriter != null) {
                 fileWriter.close();
             }
             return filteredNodesDmpFile;
@@ -281,9 +318,10 @@ public class NodesDBDeployer {
 
     }
 
-     /**
-      * Injects the nodes.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
-     * @param connection  {@link Connection} to the database
+    /**
+     * Injects the nodes.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
+     *
+     * @param connection        {@link Connection} to the database
      * @param nodesFilteredFile {@link File} nodes.dmp
      * @throws SQLException in case something goes wrong upon database communication
      */
@@ -302,15 +340,15 @@ public class NodesDBDeployer {
                             + LookupNames.dbs.NCBI.nodes.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +
                             " ("
-                            + LookupNames.dbs.NCBI.nodes.columns.taxid +", "
-                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid +", "
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid + ", "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid + ", "
                             + LookupNames.dbs.NCBI.nodes.columns.id_ranks
                             + ")");
 
         } catch (SQLException sqle) {
             throw sqle;
         } finally {
-            if(statement!=null){
+            if (statement != null) {
                 statement.close();
             }
         }

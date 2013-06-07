@@ -108,7 +108,7 @@ public class NamesDeployer {
      * @throws IOException
      * @throws SQLException
      */
-    public static File filterNodesDmpFile(File namesDmpFile) throws IOException {
+    public static File filterNamesDmpFile(File namesDmpFile) throws IOException {
         //Read the input file line by line
         BufferedReader bufferedReader = null;
         FileWriter fileWriter = null;
@@ -160,7 +160,7 @@ public class NamesDeployer {
                     "LOAD DATA INFILE '"
                             + nodesFilteredFile.toString()
                             + "' REPLACE INTO TABLE "
-                            + LookupNames.dbs.NCBI.nodes.name
+                            + LookupNames.dbs.NCBI.names.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +
                             " ("
                             + LookupNames.dbs.NCBI.names.columns.taxid + ", "

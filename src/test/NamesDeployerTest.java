@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,6 +35,19 @@ public class NamesDeployerTest {
     }
     //@Test
     public void filterNodesDmpFileTest() throws IOException {
-        System.out.println(NamesDeployer.filterNodesDmpFile(new File("/home/alext/Downloads/NCBI/taxdump/names.dmp")));
+        System.out.println(NamesDeployer.filterNamesDmpFile(new File("/home/alext/Downloads/NCBI/taxdump/names.dmp")));
+    }
+
+    @Test
+    public void printOutFullRanksSet() throws SQLException, ClassNotFoundException, IOException {
+
+        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
+        mySQL_connector.connectToDatabase();
+        Connection connection = mySQL_connector.getConnection();
+
+        Set<String> ranks=NodesDBDeployer.calculateASetOfRanksFromFile(new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp"));
+        for (String s:ranks){
+            System.out.println(s);
+        }
     }
 }
