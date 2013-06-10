@@ -6,6 +6,7 @@ package helper;
  * A list of taxonomic ranks in order in which they appear in nature
  */
 public enum Ranks {
+    root_of_life("root of life"),
     no_rank("no rank"),
     superkingdom("superkingdom"),
     kingdom("kingdom"),
@@ -44,6 +45,14 @@ public enum Ranks {
 
     public String getName() {
         return name;
+    }
+
+    public static Ranks previous (Ranks rank){
+       if(rank==Ranks.root_of_life){
+          return root_of_life;
+       }else{
+           return Ranks.values()[rank.ordinal()-1];
+       }
     }
 }
 

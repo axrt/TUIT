@@ -17,7 +17,7 @@ public class TaxonomicNode {
 
     protected TaxonomicNode(final int taxid, final Ranks rank, final TaxonomicNode parent, final List<TaxonomicNode> children) {
         this.taxid = taxid;
-        this.rank = rank;
+        this.rank=rank;
         this.parent = parent;
         this.children = children;
         if (this.parent.getTaxid() == this.taxid) {
@@ -28,15 +28,19 @@ public class TaxonomicNode {
     }
 
     public int getTaxid() {
-        return taxid;
+        return this.taxid;
     }
 
     public TaxonomicNode getParent() {
-        return parent;
+        return this.parent;
     }
 
     public boolean isRoot() {
-        return isRoot;
+        return this.isRoot;
+    }
+
+    public Ranks getRank() {
+        return this.rank;
     }
 
     public boolean addChild(TaxonomicNode child) {
@@ -71,4 +75,5 @@ public class TaxonomicNode {
             }
         }
     }
+
 }
