@@ -1,6 +1,6 @@
 package helper;
 
-import db.mysqlwb.tables.LookupNames;
+import db.tables.LookupNames;
 
 import java.io.*;
 import java.sql.*;
@@ -10,42 +10,7 @@ import java.util.*;
  * Contains utility methods for nodes database deployment from nodes.dmp file from NCBI
  */
 public class NodesDBDeployer {
-    /**
-     * A list of taxonomic ranks in order in which they appear in nature
-     */
-    public static final List<String> ranks = new ArrayList<String>(
-            Arrays.asList(
-                    new String[]{
-                            "no rank",
-                            "superkingdom",
-                            "kingdom",
-                            "subkingdom",
-                            "superphylum",
-                            "phylum",
-                            "subphylum",
-                            "superclass",
-                            "class",
-                            "subclass",
-                            "infraclass",
-                            "superorder",
-                            "order",
-                            "suborder",
-                            "infraorder",
-                            "parvorder",
-                            "superfamily",
-                            "family",
-                            "subfamily",
-                            "tribe",
-                            "subtribe",
-                            "genus",
-                            "subgenus",
-                            "species group",
-                            "species subgroup",
-                            "species",
-                            "subspecies",
-                            "varietas",
-                            "forma"
-                    }));
+
     /**
      * A size for batch inserts
      */
@@ -118,10 +83,9 @@ public class NodesDBDeployer {
      * empty Ranks validation table.
      *
      * @param connection {@link Connection} to the database
-     * @param ranks      a {@link Set<String>} of rank names
      * @throws SQLException in case an error occurs during database communication
      */
-    public static void deployRanksValidataionTable(Connection connection, List<String> ranks) throws SQLException {
+    public static void deployRanksValidataionTable(Connection connection) throws SQLException {
         //Switch to a correct table
         Statement statement = null;
         try {
@@ -141,9 +105,9 @@ public class NodesDBDeployer {
             preparedStatement = connection.prepareStatement(
                     "insert into " + LookupNames.dbs.NCBI.ranks.name
                             + " (" + LookupNames.dbs.NCBI.ranks.columns.rank.name() + ")" + " values(?) ");
-            for (String s : ranks) {
+            for (Ranks r : Ranks.values()) {
                 //Populate the batch
-                preparedStatement.setString(1, s);
+                preparedStatement.setString(1, r.getName());
                 preparedStatement.addBatch();
             }
             //Execute the batch

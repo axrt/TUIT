@@ -1,4 +1,4 @@
-package db.mysqlwb.tables;
+package db.tables;
 
 /**
  * Provides common lookup names for the NCBI schema within the database

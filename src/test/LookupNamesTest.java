@@ -1,5 +1,5 @@
 package test;
-import db.mysqlwb.tables.LookupNames;
+import db.tables.LookupNames;
 import org.junit.Test;
 /**
  * Created with IntelliJ IDEA.

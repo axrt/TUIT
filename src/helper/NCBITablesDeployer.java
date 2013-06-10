@@ -48,7 +48,7 @@ public class NCBITablesDeployer {
         System.out.println("GI_TaxID Database deployed");
         //Read and create a validation table for the nodes.dmp
         System.out.println("Preparing Rank-validation table..");
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
+        NodesDBDeployer.deployRanksValidataionTable(connection);
         System.out.println("Rank-validation table deployed");
         //Deploy the nodes table
         System.out.println("Deploying Nodes Database..");
@@ -79,7 +79,7 @@ public class NCBITablesDeployer {
         System.out.println("GI_TaxID Database deployed");
         //Read and create a validation table for the nodes.dmp
         System.out.println("Preparing Rank-validation table..");
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
+        NodesDBDeployer.deployRanksValidataionTable(connection);
         System.out.println("Rank-validation table deployed");
         //Deploy the nodes table
         System.out.println("Deploying Nodes Database..");

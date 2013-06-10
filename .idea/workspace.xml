@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/helper/ranks.ods" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/JUnit_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/JAVA_BIO.xml" afterPath="$PROJECT_DIR$/.idea/libraries/JAVA_BIO.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/NormalizedHit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/helper/Ranks.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/db/mysqlwb/tables/LookupNames.java" afterPath="$PROJECT_DIR$/src/db/tables/LookupNames.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" afterPath="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/LookupNamesTest.java" afterPath="$PROJECT_DIR$/src/test/LookupNamesTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/NCBITablesDeployerTest.java" afterPath="$PROJECT_DIR$/src/test/NCBITablesDeployerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NamesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NamesDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/NamesDeployerTest.java" afterPath="$PROJECT_DIR$/src/test/NamesDeployerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java" afterPath="$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
@@ -26,7 +28,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369921719467" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923874934" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923872952" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370610238587" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370860113353" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -60,16 +62,16 @@
     <file path="/MySQL_ConnectorTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369986965182" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/mysql/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954021560" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954048641" ignored="false" />
-    <file path="/NodesDBDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370618411427" ignored="false" />
-    <file path="/NodesDBDDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370619297063" ignored="false" />
+    <file path="/NodesDBDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370854082161" ignored="false" />
+    <file path="/NodesDBDDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370862294666" ignored="false" />
     <file path="/LookupNames.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370509832581" ignored="false" />
     <file path="/LookupNamesTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369992396722" ignored="false" />
-    <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370515344678" ignored="false" />
+    <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370857089945" ignored="false" />
     <file path="/deployGI_TaxIDTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370355861656" ignored="false" />
     <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370606811506" ignored="false" />
     <file path="/NamesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370614281578" ignored="false" />
     <file path="/*.regexp" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370211084548" ignored="false" />
-    <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370606741449" ignored="false" />
+    <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370852346554" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370363240865" ignored="false" />
     <file path="/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370361824839" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370522758561" ignored="false" />
@@ -88,6 +90,19 @@
     <file path="/SystemUtilTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370605605339" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370610184476" ignored="false" />
     <file path="/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370610184476" ignored="false" />
+    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630528117" ignored="false" />
+    <file path="/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630521945" ignored="false" />
+    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
+    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370857656524" ignored="false" />
+    <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370855111877" ignored="false" />
+    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370854020472" ignored="false" />
+    <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370858363689" ignored="false" />
+    <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370859391710" ignored="false" />
+    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863400513" ignored="false" />
+    <file path="/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863396791" ignored="false" />
+    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/NCBITaxonomicTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370860179644" ignored="false" />
+    <file path="/NCBITaxonomicTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370864367284" ignored="false" />
+    <file path="/NCBITaxonomicTreeTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370864152867" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,26 +164,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NodesDBDeployer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/helper/NodesDBDeployer.java">
+      <file leaf-file-name="BLAST_Identifier.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="158" selection-start="1886" selection-end="1886" vertical-scroll-proportion="1.1687764">
+            <state line="15" column="48" selection-start="367" selection-end="367" vertical-scroll-proportion="0.3164557">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#388#396#0" expanded="true" />
-                <element signature="e#2615#2623#0" expanded="true" />
-                <element signature="e#3965#3982#0" expanded="true" />
-                <element signature="e#6653#6670#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NodesDBDDeployerTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java">
+      <file leaf-file-name="NormalyzedIteration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/NormalyzedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="155" selection-start="2856" selection-end="2856" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="33" column="18" selection-start="826" selection-end="830" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NormalizedHit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -191,20 +215,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/general.java" />
-        <option value="$PROJECT_DIR$/src/format/EncodedFasta.java" />
-        <option value="$PROJECT_DIR$/src/test/LookupNamesTest.java" />
-        <option value="$PROJECT_DIR$/src/test/deployGI_TaxIDTableTest.java" />
-        <option value="$PROJECT_DIR$/src/io/file/FileOperator.java" />
         <option value="$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/db/mysqlwb/tables/LookupNames.java" />
-        <option value="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" />
         <option value="$PROJECT_DIR$/src/test/NCBITablesDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NamesDeployer.java" />
         <option value="$PROJECT_DIR$/src/test/NamesDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/Ranks.java" />
         <option value="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" />
+        <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
+        <option value="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
+        <option value="$PROJECT_DIR$/src/blast/NormalizedHit.java" />
+        <option value="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" />
         <option value="$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/NCBITaxonomicTreeTest.java" />
+        <option value="$PROJECT_DIR$/src/blast/NCBITaxonomicTree.java" />
       </list>
     </option>
   </component>
@@ -348,25 +374,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mysqlwb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysqlwb" />
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -385,6 +393,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysqlwb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -412,7 +486,14 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.NodesDBDDeployerTest">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/db/mysqlwb" />
+      <recent name="$PROJECT_DIR$/src/db" />
+      <recent name="$PROJECT_DIR$/src/connect" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.NCBITaxonomicTreeTest">
     <configuration default="false" name="NodesDBDDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="TUIT" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -497,28 +578,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="GI_TaxIDDeployerTest.testFilterGI_TaxIDDmp" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="TUIT" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.GI_TaxIDDeployerTest" />
-      <option name="METHOD_NAME" value="testFilterGI_TaxIDDmp" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="NCBITablesDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="TUIT" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -544,6 +603,28 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="NCBITaxonomicTreeTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="TUIT" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.NCBITaxonomicTreeTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -586,16 +667,16 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.NamesDeployerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest.testFilterGI_TaxIDDmp" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.NCBITablesDeployerTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.NCBITablesDeployerTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.NCBITaxonomicTreeTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.NamesDeployerTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.NCBITablesDeployerTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest.testFilterGI_TaxIDDmp" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.NCBITaxonomicTreeTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.NamesDeployerTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.NCBITablesDeployerTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -667,7 +748,11 @@
       <created>1370516806072</created>
       <updated>1370516806072</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Taxonomic ranks implemented">
+      <created>1370619787243</created>
+      <updated>1370619787243</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -692,7 +777,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-6" width="1922" height="1052" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -707,7 +792,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.8098901" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.8098901" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1901099" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -758,7 +843,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="FTP interaction method abstracted to JAVA_BIO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Taxonomic ranks implemented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -782,6 +867,7 @@
     <MESSAGE value="Database deployment rewritten to a faster file-inject implementation" />
     <MESSAGE value="Deployers reformatted to check for nulls in finally blocks" />
     <MESSAGE value="FTP interaction method abstracted to JAVA_BIO" />
+    <MESSAGE value="Taxonomic ranks implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -791,67 +877,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/sql/Statement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="581" column="10" selection-start="26360" selection-end="26360" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/lang/Long.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="537" column="23" selection-start="20003" selection-end="20003" vertical-scroll-proportion="0.33333334" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/math/BigInteger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="947" column="29" selection-start="35145" selection-end="35145" vertical-scroll-proportion="4.4102564" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="974" column="0" selection-start="37482" selection-end="37482" vertical-scroll-proportion="1.377176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/FileOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="23" selection-start="2599" selection-end="2599" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="4" selection-start="2675" selection-end="2675" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/mysqlwb/tables/LookupNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="140" selection-end="140" vertical-scroll-proportion="0.18103448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="9" selection-start="8985" selection-end="8985" vertical-scroll-proportion="6.6731143">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/LookupNamesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="16" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/NamesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="158" column="62" selection-start="5988" selection-end="5988" vertical-scroll-proportion="0.0">
@@ -866,15 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="85" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/NCBITablesDeployerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="191" selection-start="833" selection-end="833" vertical-scroll-proportion="0.0">
@@ -882,22 +898,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java">
+    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/BLAST/NCBI/output/Hit.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="155" selection-start="2856" selection-end="2856" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="432" selection-end="432" vertical-scroll-proportion="0.10932945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="20" selection-start="1032" selection-end="1032" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/NodesDBDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="158" selection-start="1886" selection-end="1886" vertical-scroll-proportion="1.1687764">
+        <state line="109" column="58" selection-start="4075" selection-end="4075" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#388#396#0" expanded="true" />
-            <element signature="e#2615#2623#0" expanded="true" />
-            <element signature="e#3965#3982#0" expanded="true" />
-            <element signature="e#6653#6670#0" expanded="true" />
+            <element signature="e#1190#1198#0" expanded="true" />
+            <element signature="e#2540#2557#0" expanded="true" />
+            <element signature="e#5165#5182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="62" selection-start="1970" selection-end="1970" vertical-scroll-proportion="1.0744985">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="4" selection-start="2675" selection-end="2675" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="7" selection-start="240" selection-end="240" vertical-scroll-proportion="0.25316456">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="62" selection-start="2236" selection-end="2236" vertical-scroll-proportion="0.2742616">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/connect/DatabaseOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="61" selection-start="381" selection-end="381" vertical-scroll-proportion="0.4008439">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/NormalyzedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="18" selection-start="826" selection-end="830" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="48" selection-start="367" selection-end="367" vertical-scroll-proportion="0.3164557">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

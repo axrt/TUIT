@@ -2,6 +2,7 @@ package test;
 
 import db.mysql.MySQL_Connector;
 import helper.NodesDBDeployer;
+import helper.Ranks;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -65,7 +66,7 @@ public class NodesDBDDeployerTest {
         mySQL_connector.connectToDatabase();
         Connection connection = mySQL_connector.getConnection();
 
-        NodesDBDeployer.deployRanksValidataionTable(connection, NodesDBDeployer.ranks);
+        NodesDBDeployer.deployRanksValidataionTable(connection);
 
     }
 

@@ -1,6 +1,6 @@
 package helper;
 
-import db.mysqlwb.tables.LookupNames;
+import db.tables.LookupNames;
 
 import java.io.*;
 import java.sql.*;
