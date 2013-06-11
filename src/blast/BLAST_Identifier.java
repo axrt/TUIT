@@ -36,16 +36,24 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     }
 
     protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
-        TUITCutoffSet tuitCutoffSet = this.cutoffSetMap.get(rank);
-        if (tuitCutoffSet == null) {
+        TUITCutoffSet tuitCutoffSet;
+        if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||normalizedHit==null||rank==null) {
             return true;
         } else {
             return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
         }
     }
+    protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank){
+        TUITCutoffSet tuitCutoffSet;
+        if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||oneNormalizedHit==null||anotherNormalizedHit==null) {
+            return true;
+        } else {
+            return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit,anotherNormalizedHit);
+        }
+    }
 
     @Override
-    public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws SQLException, BadFromatException {
+    public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws SQLException{
 
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;

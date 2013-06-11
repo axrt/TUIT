@@ -62,7 +62,7 @@ public class NormalyzedIteration {
     }
 
     protected boolean couldLiftCurrentRank() {
-        if (this.currentRank != Ranks.root_of_life) {
+        if (this.currentRank != Ranks.superkingdom) {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
@@ -72,6 +72,7 @@ public class NormalyzedIteration {
 
     /**
      * Creates a list of hits that display GIs that point to the current taxonomic rank
+     *
      * @return {@link List<NormalizedHit>} of normalized hits at current taxonomic rank
      */
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
@@ -99,8 +100,10 @@ public class NormalyzedIteration {
 
     /**
      * Ensures that all of the hits from a given {@link List<NormalizedHit>} pass the cutoffs threshold at the current level of taxonomic identification.
+     *
      * @param normalizedHitsUnderTest{@link List<NormalizedHit>} of normalized hits to test
-     * @return {@link List<NormalizedHit>} of only those normalized hits that have passed
+     * @return {@link List<NormalizedHit>} of only those normalized hits that have passed, {@link null} in case none of the normalized hits passed the cutoffs,
+     *         if a {@link null} or an empty list was passed as a parameter.
      * @throws SQLException in case a communication error occurs during the database interaction
      */
     protected List<NormalizedHit> ensureNormalyzedHitsPassCutoffsAtCurrentRank(List<NormalizedHit> normalizedHitsUnderTest) throws SQLException {
@@ -128,10 +131,19 @@ public class NormalyzedIteration {
         }
     }
 
+    /**
+     * Assembles a list of normalized hits that have better E-values than the potential pivotal hit.
+     *
+     * @return {@link List<NormalizedHit>} of normalized hits that have better E-values than the potential pivotal hit.
+     *         {@link null} in case the current potential pivotal hit was the first one on the list, or if the potential pivotal hit
+     *         has not been assigned yet
+     */
     protected List<NormalizedHit> getNormalyzedHitsWithBetterEvalue() {
+        //Check if any potential pivotal hit has been assigned
         if (this.pivotalHit != null) {
+            //Prepare a new list to store the normalized hits that have better E-values than the potential pivotal hit.
             List<NormalizedHit> normalizedHitsWithBetterEvalue = new ArrayList<NormalizedHit>();
-
+            //Add hits until the potential pivotal has been found
             for (NormalizedHit normalizedHit : this.normalizedHits) {
                 if (!normalizedHit.equals(this.pivotalHit)) {
                     normalizedHitsWithBetterEvalue.add(normalizedHit);
@@ -139,6 +151,7 @@ public class NormalyzedIteration {
                     break;
                 }
             }
+            //If the potential pivotal hit was the first one on the list - just return null
             if (normalizedHitsWithBetterEvalue.size() > 0) {
                 return normalizedHitsWithBetterEvalue;
             } else {
@@ -151,10 +164,25 @@ public class NormalyzedIteration {
 
     }
 
+    /**
+     * Checks whether a sublist of normalized hits that possess a better E-value than the current potential pivotal hit
+     * allow the assignment of the pivotal hit. If any of the hits with better E-value point to a taxonomic group that does not
+     * contain a subnode of the potential pivotal hit, than such a normalized hit "contradicts" the assignment of the potential
+     * pivotal hit
+     *
+     * @return {@link true} if the normalized hits with better E-value allow the assignment of the pivotal,
+     *         {@link false} otherwise
+     * @throws SQLException in case something goes wrong during the database communication
+     */
     protected boolean normalyzedHitsWithBetterEvalueAllowPivotal() throws SQLException {
-        List<NormalizedHit> normalizedHitsWithBetterEvalue;
-        if ((normalizedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue()) != null) {
+        //Prepare a list of hits with better E-value than the current potential pivotal hit
+        List<NormalizedHit> normalizedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue();
+        if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
+                //Assign taxonomy down to the leaves for each hit on the list
+                normalizedHit = this.blastIdentifier.assignTaxonomy(normalizedHit);
+                //Check if the any of the hits point to a taxonomic node that is (despite being higher ranked then the pivotal hit)
+                //different form that to which the pivotal hit points
                 if (normalizedHit.refusesParenthood(this.pivotalHit)) {
                     return false;
                 }
@@ -165,23 +193,49 @@ public class NormalyzedIteration {
         return true;
     }
 
+    /**
+     * Attempts to set a potential pivotal hit at current taxonomic level.
+     *
+     * @return {@link true} in case succeeds, {@link false} in case was not able to
+     *         set any hit as pivotal at the current level of specification
+     * @throws SQLException in case something goes wrong during the database communication
+     */
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
-
+        //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
+            //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
             return true;
         } else {
+            //Try lifting one step the current rank
             if (this.couldLiftCurrentRank()) {
+                //Retry to set potential pivotal hit
                 return this.couldSetPivotalHitAtCurrentRank();
             }
             return false;
         }
-
     }
 
     protected boolean normalyzedHitsWithWorseEvalueAllowPivotal() {
-        return false;
+
+        //Go through the hits that have worse E-value than the pivotal hit
+        if(this.pivotalHit!=null){
+            for(int i=this.normalizedHits.indexOf(this.pivotalHit)+1;i<this.normalizedHits.size();i++){
+                NormalizedHit normalizedHit=this.normalizedHits.get(i);
+                //If the next hit has current rank and points to a different taxonomic node
+                if(normalizedHit.getAssignedRank()==this.currentRank){
+                    //if the E-value difference (in folds) between the next hit and the current pivotal
+                    //is less then the threshold cutoff - do not allow the pivotal hit
+                    if(this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit,this.currentRank)){
+                        return true;
+                    }
+                }
+            }
+            return true;
+        } else{
+            return false;
+        }
     }
 
     protected void specify() throws SQLException, BadFromatException {
@@ -192,8 +246,10 @@ public class NormalyzedIteration {
         while (couldSetPivotalHitAtCurrentRank()) {
             if (normalyzedHitsWithBetterEvalueAllowPivotal() && normalyzedHitsWithWorseEvalueAllowPivotal()) {
                 //success
+                break;
             }
         }
+        //fail
     }
 
 }
