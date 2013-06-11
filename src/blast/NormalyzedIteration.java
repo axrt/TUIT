@@ -15,7 +15,7 @@ public class NormalyzedIteration {
 
     protected final BLAST_Identifier blastIdentifier;
     protected final Iteration iteration;
-    protected List<NormalyzedHit> normalizedHits;
+    protected List<NormalizedHit> normalizedHits;
     protected final int queryLength;
 
     /**
@@ -23,9 +23,9 @@ public class NormalyzedIteration {
      */
     protected Ranks currentRank;
     /**
-     * A current candidate NormalyzedHit that may become the pivotal one
+     * A current candidate NormalizedHit that may become the pivotal one
      */
-    protected NormalyzedHit pivotalHit;
+    protected NormalizedHit pivotalHit;
 
     public NormalyzedIteration(Iteration iteration, BLAST_Identifier blastIdentifier) {
         this.iteration = iteration;
@@ -34,13 +34,15 @@ public class NormalyzedIteration {
     }
 
     protected void normalyzeHits() throws SQLException {
-
+        //Check if the costly procedure of Hits normalization has already been performed
         if (this.normalizedHits == null) {
-
-            this.normalizedHits = new ArrayList<NormalyzedHit>(this.iteration.getIterationHits().getHit().size());
-
+            //If not yet - create a new list of the size of the list of hits
+            this.normalizedHits = new ArrayList<NormalizedHit>(this.iteration.getIterationHits().getHit().size());
+            //For every hit on the hit list
             for (Hit hit : this.iteration.getIterationHits().getHit()) {
-                NormalyzedHit normalizedHit = this.blastIdentifier.normalyzeHit(hit, this.queryLength);
+                //Create a normalized version and store in the newly created list
+                NormalizedHit normalizedHit = this.blastIdentifier.normalyzeHit(hit, this.queryLength);
+                //The hit may be returned as null upon errors and inability of the blastIdentifier module to process the request
                 if (normalizedHit != null) {
                     this.normalizedHits.add(normalizedHit);
                 }
@@ -50,8 +52,8 @@ public class NormalyzedIteration {
 
     protected void findLowestRank() {
 
-        Ranks lowestRank = Ranks.no_rank;
-        for (NormalyzedHit normalizedHit : this.normalizedHits) {
+        Ranks lowestRank = Ranks.root_of_life;
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().ordinal() > lowestRank.ordinal()) {
                 this.currentRank = normalizedHit.getAssignedRank();
             }
@@ -67,38 +69,38 @@ public class NormalyzedIteration {
         }
     }
 
-    protected List<NormalyzedHit> gatherHitsAtCurrentRank() {
+    protected List<NormalizedHit> gatherHitsAtCurrentRank() {
         int numberOfHitsThatQualify = 0;
-        for (NormalyzedHit normalyzedHit : this.normalizedHits) {
-            if (normalyzedHit.getAssignedRank().equals(this.currentRank)) {
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
+            if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
                 numberOfHitsThatQualify++;
             }
         }
         if (numberOfHitsThatQualify > 0) {
-            List<NormalyzedHit> normalyzedHitsAtCurrentRank = new ArrayList<NormalyzedHit>(numberOfHitsThatQualify);
-            for (NormalyzedHit normalyzedHit : this.normalizedHits) {
-                if (normalyzedHit.getAssignedRank().equals(this.currentRank)) {
-                    normalyzedHitsAtCurrentRank.add(normalyzedHit);
+            List<NormalizedHit> normalizedHitsAtCurrentRank = new ArrayList<NormalizedHit>(numberOfHitsThatQualify);
+            for (NormalizedHit normalizedHit : this.normalizedHits) {
+                if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
+                    normalizedHitsAtCurrentRank.add(normalizedHit);
                 }
             }
-            return normalyzedHitsAtCurrentRank;
+            return normalizedHitsAtCurrentRank;
         } else {
             return null;
         }
     }
 
-    protected List<NormalyzedHit> ensureNormalyzedHitsPassCutoffsAtCurrentRank(List<NormalyzedHit> normalizedHitsUnderTest) throws SQLException {
+    protected List<NormalizedHit> ensureNormalyzedHitsPassCutoffsAtCurrentRank(List<NormalizedHit> normalizedHitsUnderTest) throws SQLException {
         if (normalizedHitsUnderTest != null && normalizedHitsUnderTest.size() > 0) {
-            List<NormalyzedHit> esuredNormalyzedHits = new ArrayList<NormalyzedHit>(normalizedHitsUnderTest.size());
-            for (NormalyzedHit normalyzedHit : normalizedHitsUnderTest) {
-                if (this.blastIdentifier.normalyzedHitChecksAgainstParametersForRank(normalyzedHit, this.currentRank)) {
-                    esuredNormalyzedHits.add(normalyzedHit);
+            List<NormalizedHit> esuredNormalizedHits = new ArrayList<NormalizedHit>(normalizedHitsUnderTest.size());
+            for (NormalizedHit normalizedHit : normalizedHitsUnderTest) {
+                if (this.blastIdentifier.normalyzedHitChecksAgainstParametersForRank(normalizedHit, this.currentRank)) {
+                    esuredNormalizedHits.add(normalizedHit);
                 } else {
-                    this.blastIdentifier.liftRankForNormalyzedHit(normalyzedHit);
+                    this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
                 }
             }
-            if (esuredNormalyzedHits.size() > 0) {
-                return esuredNormalyzedHits;
+            if (esuredNormalizedHits.size() > 0) {
+                return esuredNormalizedHits;
             } else {
                 return null;
             }
@@ -108,19 +110,19 @@ public class NormalyzedIteration {
         }
     }
 
-    protected List<NormalyzedHit> getNormalyzedHitsWithBetterEvalue() {
+    protected List<NormalizedHit> getNormalyzedHitsWithBetterEvalue() {
         if (this.pivotalHit != null) {
-            List<NormalyzedHit> normalyzedHitsWithBetterEvalue = new ArrayList<NormalyzedHit>();
+            List<NormalizedHit> normalizedHitsWithBetterEvalue = new ArrayList<NormalizedHit>();
 
-            for (NormalyzedHit normalyzedHit : this.normalizedHits) {
-                if (!normalyzedHit.equals(this.pivotalHit)) {
-                    normalyzedHitsWithBetterEvalue.add(normalyzedHit);
+            for (NormalizedHit normalizedHit : this.normalizedHits) {
+                if (!normalizedHit.equals(this.pivotalHit)) {
+                    normalizedHitsWithBetterEvalue.add(normalizedHit);
                 } else {
                     break;
                 }
             }
-            if (normalyzedHitsWithBetterEvalue.size() > 0) {
-                return normalyzedHitsWithBetterEvalue;
+            if (normalizedHitsWithBetterEvalue.size() > 0) {
+                return normalizedHitsWithBetterEvalue;
             } else {
                 return null;
             }
@@ -132,10 +134,10 @@ public class NormalyzedIteration {
     }
 
     protected boolean normalyzedHitsWithBetterEvalueAllowPivotal() throws SQLException {
-        List<NormalyzedHit> normalyzedHitsWithBetterEvalue;
-        if ((normalyzedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue()) != null) {
-            for (NormalyzedHit normalyzedHit : normalyzedHitsWithBetterEvalue) {
-                if (normalyzedHit.deniesParenthood(this.pivotalHit)) {
+        List<NormalizedHit> normalizedHitsWithBetterEvalue;
+        if ((normalizedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue()) != null) {
+            for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
+                if (normalizedHit.refusesParenthood(this.pivotalHit)) {
                     return false;
                 }
             }
@@ -147,9 +149,9 @@ public class NormalyzedIteration {
 
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
 
-        List<NormalyzedHit> normalyzedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
-        if (normalyzedHitsAtCurrentRank != null) {
-            this.pivotalHit = normalyzedHitsAtCurrentRank.get(0);
+        List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
+        if (normalizedHitsAtCurrentRank != null) {
+            this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
             return true;
         } else {
             if (this.couldLiftCurrentRank()) {

@@ -297,6 +297,7 @@ public class NodesDBDeployer {
             statement = connection.createStatement();
             //Switch to a correct schema
             statement.execute("use " + LookupNames.dbs.NCBI.name);
+            statement.execute("SET foreign_key_checks = 0;");
             statement.execute(
                     "LOAD DATA INFILE '"
                             + nodesFilteredFile.toString()
@@ -308,7 +309,7 @@ public class NodesDBDeployer {
                             + LookupNames.dbs.NCBI.nodes.columns.parent_taxid + ", "
                             + LookupNames.dbs.NCBI.nodes.columns.id_ranks
                             + ")");
-
+            statement.execute("SET foreign_key_checks = 1;");
         } catch (SQLException sqle) {
             throw sqle;
         } finally {

@@ -26,17 +26,22 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    protected boolean normalyzedHitChecksAgainstParametersForRank(NormalyzedHit normalizedHit, Ranks ranks){
+    protected boolean normalyzedHitChecksAgainstParametersForRank(NormalizedHit normalizedHit, Ranks ranks){
         return false;
     }
 
     @Override
-    public NormalyzedHit normalyzeHit(Hit hit, int queryLength) throws SQLException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public NormalizedHit normalyzeHit(Hit hit, int queryLength) throws SQLException {
+
+        //Create a raw NormalizedHit
+        //Get its taxid and reconstruct its child taxonomic nodes
+        //Set the nodes to the hits taxonomy field
+
+        return null;
     }
 
     @Override
-    public NormalyzedHit liftRankForNormalyzedHit(NormalyzedHit hit) throws SQLException {
+    public NormalizedHit liftRankForNormalyzedHit(NormalizedHit hit) throws SQLException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
