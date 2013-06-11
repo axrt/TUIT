@@ -51,6 +51,19 @@ public class LookupNames {
                     id_ranks;
                 }
             }
+            public enum views{
+                taxon_by_gi("taxon_by_gi"),
+                f_level_children_by_parent("f_level_children_by_parent");
+
+                private String name;
+                private views(String name){
+                     this.name=name;
+                }
+                public String getName(){
+                    return this.name;
+                }
+            }
         }
     }
+
 }

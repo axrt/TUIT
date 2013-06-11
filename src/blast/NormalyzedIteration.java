@@ -2,6 +2,7 @@ package blast;
 
 import BLAST.NCBI.output.Hit;
 import BLAST.NCBI.output.Iteration;
+import format.BadFromatException;
 import helper.Ranks;
 
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class NormalyzedIteration {
         this.queryLength = Integer.parseInt(this.iteration.getIterationQueryLen());
     }
 
-    protected void normalyzeHits() throws SQLException {
+    protected void normalyzeHits() throws SQLException, BadFromatException {
         //Check if the costly procedure of Hits normalization has already been performed
         if (this.normalizedHits == null) {
             //If not yet - create a new list of the size of the list of hits
@@ -69,16 +70,23 @@ public class NormalyzedIteration {
         }
     }
 
+    /**
+     * Creates a list of hits that display GIs that point to the current taxonomic rank
+     * @return {@link List<NormalizedHit>} of normalized hits at current taxonomic rank
+     */
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
+        //First - count how many hits with this rank exist
         int numberOfHitsThatQualify = 0;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
                 numberOfHitsThatQualify++;
             }
         }
+        //Knowing the exact number - create a list of exactly the needed size
         if (numberOfHitsThatQualify > 0) {
             List<NormalizedHit> normalizedHitsAtCurrentRank = new ArrayList<NormalizedHit>(numberOfHitsThatQualify);
             for (NormalizedHit normalizedHit : this.normalizedHits) {
+                //and then put all matching normalized hits into the list
                 if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
                     normalizedHitsAtCurrentRank.add(normalizedHit);
                 }
@@ -89,8 +97,17 @@ public class NormalyzedIteration {
         }
     }
 
+    /**
+     * Ensures that all of the hits from a given {@link List<NormalizedHit>} pass the cutoffs threshold at the current level of taxonomic identification.
+     * @param normalizedHitsUnderTest{@link List<NormalizedHit>} of normalized hits to test
+     * @return {@link List<NormalizedHit>} of only those normalized hits that have passed
+     * @throws SQLException in case a communication error occurs during the database interaction
+     */
     protected List<NormalizedHit> ensureNormalyzedHitsPassCutoffsAtCurrentRank(List<NormalizedHit> normalizedHitsUnderTest) throws SQLException {
+        //First check the incoming list for null and for that at least one normalized hit exists there
         if (normalizedHitsUnderTest != null && normalizedHitsUnderTest.size() > 0) {
+            //Create a new list to hold those hits that have passed the cutoffs assuming in an optimistic way that all of the
+            //hits will pass and a list of the same size will be needed
             List<NormalizedHit> esuredNormalizedHits = new ArrayList<NormalizedHit>(normalizedHitsUnderTest.size());
             for (NormalizedHit normalizedHit : normalizedHitsUnderTest) {
                 if (this.blastIdentifier.normalyzedHitChecksAgainstParametersForRank(normalizedHit, this.currentRank)) {
@@ -166,7 +183,7 @@ public class NormalyzedIteration {
         return false;
     }
 
-    protected void specify() throws SQLException {
+    protected void specify() throws SQLException, BadFromatException {
 
         this.normalyzeHits();
         this.findLowestRank();

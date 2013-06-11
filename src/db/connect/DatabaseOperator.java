@@ -2,6 +2,7 @@ package db.connect;
 
 import BLAST.NCBI.output.Hit;
 import blast.NormalizedHit;
+import taxonomy.TaxonomicNode;
 
 import java.sql.SQLException;
 
@@ -17,7 +18,7 @@ public interface DatabaseOperator {
      * @return {@code null} in case the database has no match for a given hit GI
      * @throws Exception
      */
-   public NormalizedHit normalyzeHit(Hit hit,int queryLength) throws SQLException;
+   public NormalizedHit normalyzeHit(Hit hit,int queryLength) throws Exception;
 
    public NormalizedHit liftRankForNormalyzedHit(NormalizedHit hit) throws SQLException;
 

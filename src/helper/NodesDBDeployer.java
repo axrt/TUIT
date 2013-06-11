@@ -123,14 +123,12 @@ public class NodesDBDeployer {
     }
 
     /**
-     * <b>Deprecated due to a lack of any potential use. Does not reflect the real ranks.</b>
      * Collects a lookup map that will further allow easy lookup during the nodes.dmp insert
      *
      * @param connection {@link Connection} to the database
      * @return a {@link Map<String, Integer>} lookup from the database id_ranks, rank validation table columns
      * @throws SQLException in case an error occurs during database communication
      */
-    @Deprecated
     public static Map<String, Integer> collectRanksValidationLookup(Connection connection) throws SQLException {
         //Switch to a correct table
         Statement statement = null;

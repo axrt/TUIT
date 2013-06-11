@@ -1,6 +1,7 @@
 package blast;
 
 import BLAST.NCBI.output.Hit;
+import format.BadFromatException;
 import helper.Ranks;
 import taxonomy.TaxonomicNode;
 import util.BlastOutputUtil;
@@ -12,12 +13,18 @@ import util.BlastOutputUtil;
  * E-value and Query coverage. Moreover, it stores the {@link Hit}'s
  * taxonomy in an appropriate field.
  */
+//Todo: document
+
 public class NormalizedHit {
 
     /**
      * An ancestor hit that was normalized to have convenient parameters
      */
     protected final Hit hit;
+    /**
+     * An int representation of the GI
+     */
+    protected final int GI;
     /**
      * Double representation of the pIdent
      */
@@ -45,12 +52,13 @@ public class NormalizedHit {
      * @param hit         {@link Hit} that need normalization
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
      */
-    protected NormalizedHit(final Hit hit, final int queryLength) {
+    protected NormalizedHit(final Hit hit, final int queryLength) throws BadFromatException {
         super();
         this.hit = hit;
         this.pIdent = BlastOutputUtil.calculatePIdent(hit);
         this.hitQueryCoverage = BlastOutputUtil.calculateQueryCoverage(queryLength, hit);
         this.hitEvalue = BlastOutputUtil.getEvalueFromHit(hit);
+        this.GI=Integer.parseInt(BlastOutputUtil.extractGIFromHitID(hit.getHitId()));
     }
 
     /**
@@ -83,12 +91,30 @@ public class NormalizedHit {
     /**
      * Focus node setter
      *
-     * @param focusNode {@link TaxonomicNode} sets the current focus node
      */
     public void setFocusNode(TaxonomicNode focusNode) {
         this.focusNode = focusNode;
     }
 
+    /**
+     * A getter for GI
+     * @return {@link  int} the GI for the current hit
+     */
+    public int getGI() {
+        return GI;
+    }
+
+    public double getpIdent() {
+        return pIdent;
+    }
+
+    public double getHitQueryCoverage() {
+        return hitQueryCoverage;
+    }
+
+    public double getHitEvalue() {
+        return hitEvalue;
+    }
     /**
      * This method is needed to check whether this hit may point to a taxid,
      * that is parent to the {@link NormalizedHit} candidate's in test taxid.
@@ -113,7 +139,9 @@ public class NormalizedHit {
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
      * @return
      */
-    public static NormalizedHit newDefaultInstance(final Hit hit, final int queryLength) {
+    public static NormalizedHit newDefaultInstance(final Hit hit, final int queryLength) throws BadFromatException {
         return new NormalizedHit(hit, queryLength);
     }
+
+
 }

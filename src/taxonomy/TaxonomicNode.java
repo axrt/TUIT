@@ -2,6 +2,7 @@ package taxonomy;
 
 import helper.Ranks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,20 +12,17 @@ public class TaxonomicNode {
 
     protected final int taxid;
     protected final Ranks rank;
-    protected final TaxonomicNode parent;
+    protected TaxonomicNode parent;
     protected final List<TaxonomicNode> children;
-    protected final boolean isRoot;
+    protected boolean isRoot;
+    protected final String scientificName;
 
-    protected TaxonomicNode(final int taxid, final Ranks rank, final TaxonomicNode parent, final List<TaxonomicNode> children) {
+    protected TaxonomicNode(final int taxid, final Ranks rank, final String scientificName) {
         this.taxid = taxid;
         this.rank=rank;
-        this.parent = parent;
-        this.children = children;
-        if (this.parent.getTaxid() == this.taxid) {
-            this.isRoot = true;
-        } else {
-            this.isRoot = false;
-        }
+        this.scientificName=scientificName;
+        this.children = new ArrayList<TaxonomicNode>();
+        this.isRoot=false;
     }
 
     public int getTaxid() {
@@ -45,6 +43,19 @@ public class TaxonomicNode {
 
     public boolean addChild(TaxonomicNode child) {
         return this.children.add(child);
+    }
+
+    public List<TaxonomicNode> getChildren() {
+        return children;
+    }
+
+    public void setParent(TaxonomicNode parent) {
+        this.parent = parent;
+        if (this.parent.getTaxid() == this.taxid) {
+            this.isRoot = true;
+        } else {
+            this.isRoot = false;
+        }
     }
 
     public boolean isParentOf(int taxid) {
@@ -76,4 +87,14 @@ public class TaxonomicNode {
         }
     }
 
+    /**
+     *
+     * @param taxid
+     * @param rank
+     * @param scientificName
+     * @return
+     */
+    public static TaxonomicNode newDefaultInstance(final int taxid, final Ranks rank, final String scientificName){
+        return new TaxonomicNode(taxid,rank,scientificName);
+    }
 }

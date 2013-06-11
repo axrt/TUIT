@@ -10,6 +10,8 @@ import java.util.Set;
 /**
  * Contains utility methods for nodes database deployment from gi_taxid.dmp file from NCBI
  */
+
+//TODO: delete all rethrows from everywhere
 public class GI_TaxIDDeployer {
     /**
      * Constructor grants non-instantiability
