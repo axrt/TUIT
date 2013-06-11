@@ -70,6 +70,10 @@ public class NormalizedHit {
         return this.focusNode.getRank();
     }
 
+    public int getAssignedTaxid(){
+        return this.focusNode.getTaxid();
+    }
+
     /**
      * Taxonomy setter
      *

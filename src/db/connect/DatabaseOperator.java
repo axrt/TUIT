@@ -14,12 +14,12 @@ public interface DatabaseOperator {
 
     /**
      *
-     * @param hit
+     * @param normalizedHit
      * @return {@code null} in case the database has no match for a given hit GI
      * @throws Exception
      */
-   public NormalizedHit normalyzeHit(Hit hit,int queryLength) throws Exception;
+   public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws Exception;
 
-   public NormalizedHit liftRankForNormalyzedHit(NormalizedHit hit) throws SQLException;
+   public NormalizedHit liftRankForNormalyzedHit(final NormalizedHit normalizedHit) throws SQLException;
 
 }

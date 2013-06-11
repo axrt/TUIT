@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" afterPath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" afterPath="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" afterPath="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/tables/LookupNames.java" afterPath="$PROJECT_DIR$/src/db/tables/LookupNames.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NamesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NamesDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/NormalizedHit.java" afterPath="$PROJECT_DIR$/src/blast/NormalizedHit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" afterPath="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java" afterPath="$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -25,7 +21,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369921719467" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923874934" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923872952" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370938336905" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370961850821" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -65,7 +61,7 @@
     <file path="/LookupNamesTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369992396722" ignored="false" />
     <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370953075752" ignored="false" />
     <file path="/deployGI_TaxIDTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370355861656" ignored="false" />
-    <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370606811506" ignored="false" />
+    <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370962883091" ignored="false" />
     <file path="/NamesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370614281578" ignored="false" />
     <file path="/*.regexp" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370211084548" ignored="false" />
     <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370852346554" ignored="false" />
@@ -90,11 +86,11 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630528117" ignored="false" />
     <file path="/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630521945" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
-    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370961688081" ignored="false" />
-    <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370961199538" ignored="false" />
+    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370966074339" ignored="false" />
+    <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370964301318" ignored="false" />
     <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370880339660" ignored="false" />
-    <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370940483844" ignored="false" />
-    <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370959449712" ignored="false" />
+    <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370963557595" ignored="false" />
+    <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370963368614" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863400513" ignored="false" />
     <file path="/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863396791" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/NCBITaxonomicTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370860179644" ignored="false" />
@@ -164,10 +160,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="NodesDBDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NodesDBDeployer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="39" selection-start="4857" selection-end="4857" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1190#1198#0" expanded="true" />
+                <element signature="e#2540#2557#0" expanded="true" />
+                <element signature="e#5055#5072#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NamesDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NamesDeployer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="125" column="94" selection-start="4923" selection-end="4923" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BLAST_Identifier.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="33" selection-start="5185" selection-end="5198" vertical-scroll-proportion="0.04761905">
+            <state line="93" column="49" selection-start="3356" selection-end="3380" vertical-scroll-proportion="0.58201057">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,7 +197,18 @@
       <file leaf-file-name="DatabaseOperator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/db/connect/DatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+            <state line="22" column="82" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="85" column="88" selection-start="4003" selection-end="4003" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,12 +219,12 @@
       <file leaf-file-name="NormalyzedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/NormalyzedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="60" selection-start="4984" selection-end="4984" vertical-scroll-proportion="0.0">
+            <state line="44" column="136" selection-start="1683" selection-end="1683" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3279#3294#0" expanded="true" />
-                <element signature="e#4801#4816#0" expanded="true" />
-                <element signature="e#5654#5669#0" expanded="true" />
+                <element signature="e#3315#3330#0" expanded="true" />
+                <element signature="e#4837#4852#0" expanded="true" />
+                <element signature="e#5826#5841#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,7 +233,7 @@
       <file leaf-file-name="NormalizedHit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="0" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.0">
+            <state line="73" column="41" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -229,7 +259,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
         <option value="$PROJECT_DIR$/src/test/NCBITaxonomicTreeTest.java" />
         <option value="$PROJECT_DIR$/src/blast/NCBITaxonomicTree.java" />
         <option value="$PROJECT_DIR$/src/blast/NormalyzedHit.java" />
@@ -241,10 +270,11 @@
         <option value="$PROJECT_DIR$/src/helper/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java" />
         <option value="$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/NamesDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" />
+        <option value="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
         <option value="$PROJECT_DIR$/src/blast/NormalizedHit.java" />
         <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
-        <option value="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
       </list>
     </option>
   </component>
@@ -739,6 +769,11 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -826,7 +861,11 @@
       <created>1370938340468</created>
       <updated>1370938340468</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="TUITCutoffSet implemented">
+      <created>1370961856454</created>
+      <updated>1370961856454</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -917,7 +956,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="NormalizedHit documented" />
+    <option name="LAST_COMMIT_MESSAGE" value="TUITCutoffSet implemented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -946,6 +985,7 @@
     <MESSAGE value="TaxonomicNode implemented" />
     <MESSAGE value="NormalyzedIteration almost implemented" />
     <MESSAGE value="NormalizedHit documented" />
+    <MESSAGE value="TUITCutoffSet implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -969,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NamesDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="97" selection-start="5895" selection-end="5949" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/db/tables/LookupNames.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="16" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0">
@@ -994,27 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="780" selection-end="780" vertical-scroll-proportion="0.3221957">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NodesDBDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="39" selection-start="4857" selection-end="4857" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1190#1198#0" expanded="true" />
-            <element signature="e#2540#2557#0" expanded="true" />
-            <element signature="e#5055#5072#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="88" selection-start="4003" selection-end="4003" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,30 +1064,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/NormalyzedIteration.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="60" selection-start="4984" selection-end="4984" vertical-scroll-proportion="0.0">
+        <state line="85" column="88" selection-start="4003" selection-end="4003" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3279#3294#0" expanded="true" />
-            <element signature="e#4801#4816#0" expanded="true" />
-            <element signature="e#5654#5669#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/NodesDBDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.0">
+        <state line="131" column="39" selection-start="4857" selection-end="4857" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1190#1198#0" expanded="true" />
+            <element signature="e#2540#2557#0" expanded="true" />
+            <element signature="e#5055#5072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/NormalyzedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="136" selection-start="1683" selection-end="1683" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3315#3330#0" expanded="true" />
+            <element signature="e#4837#4852#0" expanded="true" />
+            <element signature="e#5826#5841#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/connect/DatabaseOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+        <state line="22" column="82" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NamesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="94" selection-start="4923" selection-end="4923" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="41" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1084,7 +1124,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="33" selection-start="5185" selection-end="5198" vertical-scroll-proportion="0.04761905">
+        <state line="93" column="49" selection-start="3356" selection-end="3380" vertical-scroll-proportion="0.58201057">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

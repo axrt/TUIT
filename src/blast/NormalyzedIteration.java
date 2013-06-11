@@ -42,7 +42,7 @@ public class NormalyzedIteration {
             //For every hit on the hit list
             for (Hit hit : this.iteration.getIterationHits().getHit()) {
                 //Create a normalized version and store in the newly created list
-                NormalizedHit normalizedHit = this.blastIdentifier.normalyzeHit(hit, this.queryLength);
+                NormalizedHit normalizedHit = this.blastIdentifier.assignTaxonomy(NormalizedHit.newDefaultInstance(hit, this.queryLength));
                 //The hit may be returned as null upon errors and inability of the blastIdentifier module to process the request
                 if (normalizedHit != null) {
                     this.normalizedHits.add(normalizedHit);
@@ -113,6 +113,7 @@ public class NormalyzedIteration {
                 if (this.blastIdentifier.normalyzedHitChecksAgainstParametersForRank(normalizedHit, this.currentRank)) {
                     esuredNormalizedHits.add(normalizedHit);
                 } else {
+                    //If the hit does not check, it should be identified at a higher taxonomic level in the next round (if such occurs)
                     this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
                 }
             }

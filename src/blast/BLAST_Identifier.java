@@ -27,7 +27,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
                                Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         super(query, query_IDs, tempDir, executive, parameterList);
         this.connection = connection;
-        this.cutoffSetMap=cutoffSetMap;
+        this.cutoffSetMap = cutoffSetMap;
     }
 
     @Override
@@ -35,17 +35,18 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    protected boolean normalyzedHitChecksAgainstParametersForRank(NormalizedHit normalizedHit, Ranks ranks) {
-
-
-        return false;
+    protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
+        TUITCutoffSet tuitCutoffSet = this.cutoffSetMap.get(rank);
+        if (tuitCutoffSet == null) {
+            return true;
+        } else {
+            return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
+        }
     }
 
     @Override
-    public NormalizedHit normalyzeHit(Hit hit, int queryLength) throws SQLException, BadFromatException {
+    public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws SQLException, BadFromatException {
 
-        //Create a raw NormalizedHit
-        NormalizedHit normalizedHit = NormalizedHit.newDefaultInstance(hit, queryLength);
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -59,37 +60,75 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
                             + "=?");
             preparedStatement.setInt(1, normalizedHit.getGI());
             resultSet = preparedStatement.executeQuery();
+
+            int taxid;
+            Ranks rank;
+            String scientificName;
+            if (resultSet.next()) {
+                taxid = resultSet.getInt(2);
+                scientificName = resultSet.getString(3);
+                rank = Ranks.values()[resultSet.getInt(5) - 1];
+                TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
+                normalizedHit.setTaxonomy(taxonomicNode);
+                normalizedHit.setFocusNode(taxonomicNode);
+            } else {
+                return null;
+            }
         } finally {
             //Close and cleanup
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-        }
-        int taxid;
-        Ranks rank;
-        String scientificName;
-        if (resultSet.next()) {
-            taxid = resultSet.getInt(2);
-            scientificName = resultSet.getString(3);
-            rank = Ranks.values()[resultSet.getInt(5) - 1];
-            TaxonomicNode initialNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
-            normalizedHit.setTaxonomy(initialNode);
-
-        } else {
-            return null;
-        }
-        if (resultSet != null) {
-            resultSet.close();
+            if (resultSet != null) {
+                resultSet.close();
+            }
         }
 
+        //TODO: remove all resultsets.close() from the finally blocks
         //Set the nodes to the hits taxonomy field
 
         return normalizedHit;
     }
 
     @Override
-    public NormalizedHit liftRankForNormalyzedHit(NormalizedHit hit) throws SQLException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public NormalizedHit liftRankForNormalyzedHit(final NormalizedHit normalizedHit) throws SQLException {
+        //Get its taxid and reconstruct its child taxonomic nodes
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = this.connection.prepareStatement(
+                    "SELECT * FROM"
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name()
+                            + "=(SELECT "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
+                            + " FROM "
+                            + LookupNames.dbs.NCBI.nodes.name
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
+            preparedStatement.setInt(1, normalizedHit.getAssignedTaxid());
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(resultSet.getInt(2),
+                        Ranks.values()[resultSet.getInt(5) - 1],
+                        resultSet.getString(3));
+                taxonomicNode.addChild(normalizedHit.getFocusNode());
+                normalizedHit.setTaxonomy(taxonomicNode);
+                normalizedHit.setFocusNode(taxonomicNode);
+            } else {
+                return null;
+            }
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
+        }
+        return normalizedHit;
     }
 
     protected TaxonomicNode attachChildrenForTaxonomicNode(TaxonomicNode parentNode) throws SQLException {
@@ -129,8 +168,8 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
     public static BLAST_Identifier newDefaultInstance(List<? extends NculeotideFasta> query, List<String> query_IDs,
                                                       File tempDir, File executive, String[] parameterList,
-                                                      Connection connection,Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, query_IDs, tempDir, executive, parameterList, connection,cutoffSetMap);
+                                                      Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+        return new BLAST_Identifier(query, query_IDs, tempDir, executive, parameterList, connection, cutoffSetMap);
     }
 
     protected class TUITCutoffSet {

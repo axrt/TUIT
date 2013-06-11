@@ -123,6 +123,7 @@ public class NamesDeployer {
                 String[] splitter = line.split("\t");
                 String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
                 if (split[6].equals(NamesDeployer.SCIENTIFIC_NAME)) {
+                    //TODO: input another check which filters out environmental and other crap
                     fileWriter.write(split[0] + '\t' + split[2] + '\n');
                 }
             }
