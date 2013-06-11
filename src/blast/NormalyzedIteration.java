@@ -4,6 +4,7 @@ import BLAST.NCBI.output.Hit;
 import BLAST.NCBI.output.Iteration;
 import format.BadFromatException;
 import helper.Ranks;
+import taxonomy.TaxonomicNode;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -180,7 +181,9 @@ public class NormalyzedIteration {
         if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
-                normalizedHit = this.blastIdentifier.assignTaxonomy(normalizedHit);
+                TaxonomicNode taxonomicNode= this.blastIdentifier.attachChildrenForTaxonomicNode(normalizedHit.getFocusNode());
+                normalizedHit.setTaxonomy(taxonomicNode);
+                normalizedHit.setFocusNode(taxonomicNode);
                 //Check if the any of the hits point to a taxonomic node that is (despite being higher ranked then the pivotal hit)
                 //different form that to which the pivotal hit points
                 if (normalizedHit.refusesParenthood(this.pivotalHit)) {

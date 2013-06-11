@@ -155,6 +155,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
             resultSet = preparedStatement.executeQuery();
 
             TaxonomicNode taxonomicNode;
+            parentNode.getChildren().clear();
             while (resultSet.next()) {
                 taxonomicNode = TaxonomicNode.newDefaultInstance(
                         resultSet.getInt(2),
