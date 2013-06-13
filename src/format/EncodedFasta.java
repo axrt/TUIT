@@ -1,15 +1,13 @@
 package format;
 
-import format.fasta.nucleotide.NculeotideFasta;
-import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
-import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
-import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
+import format.fasta.nucleotide.*;
+
 
 /**
  * A representation of a sepcial case of a nucleotide fasta record that can also have a patient barcode for further
  * processing analysis
  */
-public class EncodedFasta extends NculeotideFasta {
+public class EncodedFasta extends NucleotideFasta {
 
     /**
      * A barcode that is used to identify a patient in a uniform way

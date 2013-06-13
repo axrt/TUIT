@@ -3,6 +3,10 @@ package test;
 import blast.BLAST_Identifier;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;
+import format.fasta.Fasta;
+import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
+import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
+import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 import helper.Ranks;
 import org.junit.Test;
 import taxonomy.TaxonomicNode;
@@ -20,8 +24,31 @@ import java.sql.SQLException;
  * To change this template use File | Settings | File Templates.
  */
 public class BLAST_IdentifierTest {
-
     @Test
+    public void BLAST_IdentifierTest (){
+
+        //Preparing a query fasta
+        String queryFasta=">GR749QQ02HKHXJ\tv2bBar1031L\t16\n" +
+                "TATCGGAACGTACCCGGAAATGGGGATAACGTAGCGAAAGTTACGCTA" +
+                "ATACCGCATATGCCCTGAGGGGGAAAGCGGGGGATTCGTAAGAACCTCGCG" +
+                "TTTTCGGAGCGGCCGATATCGGATTAGCTAGTAGGTGAGGTAAAGGCTCACC" +
+                "TAGGCGACGATCCGTAGCTGGTCTGAGAGGACGACCAGCCACACTGGAACTGA" +
+                "GACACGGTCCAGACTCCTACGGGAGGCAGCAGTGGGGAATTTTGGACAATGGGCG" +
+                "CAAGCCTGATCCAGCCATGCCGCGTGAGTGAAGAAGGCCTTCGGGTTGTAAAGCTC" +
+                "TTTCAGCCGGAAAGAAAACGCACGGGTTAATACCCTGTGTGGATGACGGTACCGGAA" +
+                "GAAGAAGCACCGGCTAACTACGTG\n";
+
+            //NucleotideFasta nculeotideFasta=NucleotideFasta.newInstanceFromFromattedText(queryFasta);
+
+
+
+    }
+
+
+
+
+
+    //@Test
     public void attachChildrenForTaxonomicNodeTest() throws SQLException, ClassNotFoundException {
 
         MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");

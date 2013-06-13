@@ -1,15 +1,16 @@
 package blast;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLASTN;
-import BLAST.NCBI.output.Hit;
 import db.connect.DatabaseOperator;
 import db.tables.LookupNames;
-import format.BadFromatException;
-import format.fasta.nucleotide.NculeotideFasta;
+import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
+import org.xml.sax.SAXException;
 import taxonomy.TaxonomicNode;
 
+import javax.xml.bind.JAXBException;
 import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     protected final Connection connection;
     protected final Map<Ranks, TUITCutoffSet> cutoffSetMap;
 
-    protected BLAST_Identifier(List<? extends NculeotideFasta> query, List<String> query_IDs,
+    protected BLAST_Identifier(List<? extends NucleotideFasta> query, List<String> query_IDs,
                                File tempDir, File executive, String[] parameterList,
                                Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         super(query, query_IDs, tempDir, executive, parameterList);
@@ -32,7 +33,21 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
     @Override
     public void run() {
-        //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            this.BLAST();
+            this.BLASTed=true;
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (JAXBException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (SAXException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
     }
 
     protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
@@ -175,7 +190,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         return parentNode;
     }
 
-    public static BLAST_Identifier newDefaultInstance(List<? extends NculeotideFasta> query, List<String> query_IDs,
+    public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query, List<String> query_IDs,
                                                       File tempDir, File executive, String[] parameterList,
                                                       Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         return new BLAST_Identifier(query, query_IDs, tempDir, executive, parameterList, connection, cutoffSetMap);
