@@ -22,7 +22,7 @@ import java.util.Map;
  * TODO: document
  */
 public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator {
-
+    protected static final TUITCutoffSet defaultCutoff = TUITCutoffSet.newDefaultInstance(60, 70, 100);
     protected final Connection connection;
     protected final Map<Ranks, TUITCutoffSet> cutoffSetMap;
     protected List<NormalyzedIteration> normalyzedIterations;
@@ -40,10 +40,10 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
         try {
             this.BLAST();
-            this.normalyzedIterations=new ArrayList<NormalyzedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-            this.BLASTed=true;
+            this.normalyzedIterations = new ArrayList<NormalyzedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+            this.BLASTed = true;
             this.normalizeIterations();
-            for(NormalyzedIteration normalyzedIteration:this.normalyzedIterations){
+            for (NormalyzedIteration normalyzedIteration : this.normalyzedIterations) {
                 normalyzedIteration.specify();
             }
         } catch (IOException e) {
@@ -64,32 +64,23 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     }
 
     protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
-          return true;
-        //TODO: commented for testing
-        /*TUITCutoffSet tuitCutoffSet;
-        if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||normalizedHit==null||rank==null) {
-            return true;
-        } else {
-            return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
-        }*/
-    }
-    protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank){
-        if((oneNormalizedHit.getHitEvalue()/anotherNormalizedHit.getHitEvalue())>=100){
-            return true;
-        } else{
-            return false;
+        TUITCutoffSet tuitCutoffSet;
+        if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || normalizedHit == null || rank == null) {
+            tuitCutoffSet = BLAST_Identifier.defaultCutoff;
         }
-        //TODO: commented for testing
-        /*TUITCutoffSet tuitCutoffSet;
-        if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||oneNormalizedHit==null||anotherNormalizedHit==null) {
-            return true;
-        } else {
-            return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit,anotherNormalizedHit);
-        }*/
+        return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
+    }
+
+    protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
+        TUITCutoffSet tuitCutoffSet;
+        if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || oneNormalizedHit == null || anotherNormalizedHit == null) {
+            tuitCutoffSet = BLAST_Identifier.defaultCutoff;
+        }
+        return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit, anotherNormalizedHit);
     }
 
     @Override
-    public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws SQLException{
+    public NormalizedHit assignTaxonomy(final NormalizedHit normalizedHit) throws SQLException {
 
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
@@ -212,10 +203,10 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         return parentNode;
     }
 
-    protected void normalizeIterations(){
+    protected void normalizeIterations() {
         //Normalize each iteration
-        for(Iteration iteration:this.blastOutput.getBlastOutputIterations().getIteration()){
-            this.normalyzedIterations.add(NormalyzedIteration.newDefaultInstance(iteration,this));
+        for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
+            this.normalyzedIterations.add(NormalyzedIteration.newDefaultInstance(iteration, this));
         }
     }
 
@@ -225,33 +216,4 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         return new BLAST_Identifier(query, query_IDs, tempDir, executive, parameterList, connection, cutoffSetMap);
     }
 
-    protected class TUITCutoffSet {
-        protected final double pIdentCutoff;
-        protected final double querryCoverageCutoff;
-        protected final double evalueDifferenceCutoff;
-
-        protected TUITCutoffSet(final double pIdentCutoff, final double querryCoverageCutoff, final double evalueDifferenceCutoff) {
-            this.pIdentCutoff = pIdentCutoff;
-            this.querryCoverageCutoff = querryCoverageCutoff;
-            this.evalueDifferenceCutoff = evalueDifferenceCutoff;
-        }
-
-        public boolean normalizedHitPassesCheck(final NormalizedHit normalizedHit) {
-            if (normalizedHit.getpIdent() < this.pIdentCutoff) {
-                return false;
-            }
-            if (normalizedHit.getHitQueryCoverage() < this.querryCoverageCutoff) {
-                return false;
-            }
-            return true;
-        }
-
-        public boolean hitsAreFarEnoughByEvalue(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
-            if (oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
 }

@@ -121,9 +121,9 @@ public class NormalyzedIteration {
                     esuredNormalizedHits.add(normalizedHit);
                 } else {
                     //If the hit does not check, it should be identified at a higher taxonomic level in the next round (if such occurs)
-                    System.out.println("The "+normalizedHit.getGI()+" had low parameters at"+this.currentRank+".");
+                    //System.out.println("The "+normalizedHit.getGI()+" had low parameters at"+this.currentRank+".");
                     this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
-                    System.out.println("Its rank was lifted to "+ normalizedHit.getAssignedRank()+" with taxid: "+ normalizedHit.getAssignedTaxid());
+                    //System.out.println("Its rank was lifted to "+ normalizedHit.getAssignedRank()+" with taxid: "+ normalizedHit.getAssignedTaxid());
                 }
             }
             if (esuredNormalizedHits.size() > 0) {
@@ -219,7 +219,7 @@ public class NormalyzedIteration {
         System.out.println("Attempting to set current potential pivotal hit");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
-            System.out.println("A subset of hits at current rank of "+this.currentRank+" conatins "+normalizedHitsAtCurrentRank.size()+" hits.");
+            System.out.println("A subset of hits at current rank of "+this.currentRank+" conatins "+normalizedHitsAtCurrentRank.size()+" hits (that satisfy cutoffs of).");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
             System.out.println("Current pivotal hit was set to: "+this.pivotalHit.getGI());

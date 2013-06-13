@@ -2,6 +2,7 @@ package test;
 
 import BLAST.NCBI.output.Iteration;
 import blast.BLAST_Identifier;
+import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;
 import format.fasta.Fasta;
@@ -19,7 +20,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -65,8 +68,21 @@ public class BLAST_IdentifierTest {
             mySQL_connector.connectToDatabase();
             Connection connection = mySQL_connector.getConnection();
 
+            //Prepare a set of cutoffs
+            Map<Ranks, TUITCutoffSet> cutoffSetMap=new HashMap<Ranks, TUITCutoffSet>();
+            cutoffSetMap.put(Ranks.species,TUITCutoffSet.newDefaultInstance(97.5,95, 100));
+            cutoffSetMap.put(Ranks.species_subgroup,TUITCutoffSet.newDefaultInstance(97.5,95, 100));
+            cutoffSetMap.put(Ranks.species_group,TUITCutoffSet.newDefaultInstance(97.5,95, 100));
+
+            cutoffSetMap.put(Ranks.genus,TUITCutoffSet.newDefaultInstance(95,90, 100));
+            cutoffSetMap.put(Ranks.subgenus,TUITCutoffSet.newDefaultInstance(95,90, 100));
+
+            cutoffSetMap.put(Ranks.family,TUITCutoffSet.newDefaultInstance(80,90, 100));
+            cutoffSetMap.put(Ranks.subfamily,TUITCutoffSet.newDefaultInstance(80,90, 100));
+            cutoffSetMap.put(Ranks.superfamily,TUITCutoffSet.newDefaultInstance(80,90, 100));
+
             //Prepare the BLAST_Identifier
-            BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(nucleotideFastas, null, tmpDir, executable, parameters, connection, null);
+            BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(nucleotideFastas, null, tmpDir, executable, parameters, connection, cutoffSetMap);
             blast_identifier.run();
 
             System.out.println("Finished");
