@@ -49,7 +49,7 @@ public class NormalyzedIteration {
                     this.normalizedHits.add(normalizedHit);
                 }
             }
-        }
+        }//TODO: could through a special kind of exception here
     }
 
     protected void findLowestRank() {
@@ -67,6 +67,7 @@ public class NormalyzedIteration {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
+            System.out.println("Was not able to set the rank any higher");
             return false;
         }
     }
@@ -78,6 +79,7 @@ public class NormalyzedIteration {
      */
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
         //First - count how many hits with this rank exist
+        System.out.println("Attempting to gather hits at current rank of "+this.currentRank);
         int numberOfHitsThatQualify = 0;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
@@ -87,9 +89,10 @@ public class NormalyzedIteration {
         //Knowing the exact number - create a list of exactly the needed size
         if (numberOfHitsThatQualify > 0) {
             List<NormalizedHit> normalizedHitsAtCurrentRank = new ArrayList<NormalizedHit>(numberOfHitsThatQualify);
+            System.out.println("At current rank of "+this.currentRank+" "+numberOfHitsThatQualify+" hits were found.");
             for (NormalizedHit normalizedHit : this.normalizedHits) {
                 //and then put all matching normalized hits into the list
-                if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
+                if (normalizedHit.getAssignedRank()==this.currentRank) {
                     normalizedHitsAtCurrentRank.add(normalizedHit);
                 }
             }
@@ -118,7 +121,9 @@ public class NormalyzedIteration {
                     esuredNormalizedHits.add(normalizedHit);
                 } else {
                     //If the hit does not check, it should be identified at a higher taxonomic level in the next round (if such occurs)
+                    System.out.println("The "+normalizedHit.getGI()+" had low parameters at"+this.currentRank+".");
                     this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
+                    System.out.println("Its rank was lifted to "+ normalizedHit.getAssignedRank()+" with taxid: "+ normalizedHit.getAssignedTaxid());
                 }
             }
             if (esuredNormalizedHits.size() > 0) {
@@ -154,8 +159,10 @@ public class NormalyzedIteration {
             }
             //If the potential pivotal hit was the first one on the list - just return null
             if (normalizedHitsWithBetterEvalue.size() > 0) {
+                System.out.println("Have found "+normalizedHitsWithBetterEvalue.size()+" hits with better E-value.");
                 return normalizedHitsWithBetterEvalue;
             } else {
+                System.out.println("There are no hits with better E-value.");
                 return null;
             }
 
@@ -177,21 +184,25 @@ public class NormalyzedIteration {
      */
     protected boolean normalyzedHitsWithBetterEvalueAllowPivotal() throws SQLException {
         //Prepare a list of hits with better E-value than the current potential pivotal hit
+        System.out.println("Looking for hits with better E-value..");
         List<NormalizedHit> normalizedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue();
         if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
-                TaxonomicNode taxonomicNode= this.blastIdentifier.attachChildrenForTaxonomicNode(normalizedHit.getFocusNode());
+                System.out.println("Attaching taxonomy for hits with better E-value.");
+                TaxonomicNode taxonomicNode = this.blastIdentifier.attachChildrenForTaxonomicNode(normalizedHit.getFocusNode());
                 normalizedHit.setTaxonomy(taxonomicNode);
                 normalizedHit.setFocusNode(taxonomicNode);
                 //Check if the any of the hits point to a taxonomic node that is (despite being higher ranked then the pivotal hit)
                 //different form that to which the pivotal hit points
                 if (normalizedHit.refusesParenthood(this.pivotalHit)) {
+                    System.out.println("Hit with "+normalizedHit.getGI()+ " did not allow the current potential pivotal because \n" +
+                            " it points to a taxid, which is not a parent to the current potential pivotal taxid.");
                     return false;
                 }
             }
         } else {
-            return false;
+            return true;
         }
         return true;
     }
@@ -205,13 +216,18 @@ public class NormalyzedIteration {
      */
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
         //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
+        System.out.println("Attempting to set current potential pivotal hit");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
+            System.out.println("A subset of hits at current rank of "+this.currentRank+" conatins "+normalizedHitsAtCurrentRank.size()+" hits.");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
+            System.out.println("Current pivotal hit was set to: "+this.pivotalHit.getGI());
             return true;
         } else {
             //Try lifting one step the current rank
+            this.liftCurrentRankOfSpecificationForHits();
+            System.out.println("A subset of hits at current rank of "+this.currentRank+" is empty, lifting current rank and attempting once again.");
             if (this.couldLiftCurrentRank()) {
                 //Retry to set potential pivotal hit
                 return this.couldSetPivotalHitAtCurrentRank();
@@ -220,39 +236,75 @@ public class NormalyzedIteration {
         }
     }
 
-    protected boolean normalyzedHitsWithWorseEvalueAllowPivotal() {
+    protected void liftCurrentRankOfSpecificationForHits() throws SQLException {
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
+            if (normalizedHit.getAssignedRank() == this.currentRank) {
+                this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
+            }
+        }
+    }
+
+    protected boolean normalyzedHitsWithWorseEvalueAllowPivotal() throws SQLException {
 
         //Go through the hits that have worse E-value than the pivotal hit
-        if(this.pivotalHit!=null){
-            for(int i=this.normalizedHits.indexOf(this.pivotalHit)+1;i<this.normalizedHits.size();i++){
-                NormalizedHit normalizedHit=this.normalizedHits.get(i);
+        if (this.pivotalHit != null) {
+            for (int i = this.normalizedHits.indexOf(this.pivotalHit) + 1; i < this.normalizedHits.size(); i++) {
+                NormalizedHit normalizedHit = this.normalizedHits.get(i);
                 //If the next hit has current rank and points to a different taxonomic node
-                if(normalizedHit.getAssignedRank()==this.currentRank){
+                if (normalizedHit.getAssignedRank() == this.currentRank && normalizedHit.getAssignedTaxid() != this.pivotalHit.getAssignedTaxid()) {
+                    System.out.println("A hit with worse E-value was from the same rank of \'"+this.currentRank+
+                            "\", but from different taxonomic group with taxid: "+normalizedHit.getAssignedTaxid()
+                    +" (while the current pivotal hit has: "+this.pivotalHit.getAssignedTaxid()+").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
-                    if(this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit,this.currentRank)){
+                    System.out.println("Checking whether the hits are far enough by the E-value in folds..");
+                    if (this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
+                        System.out.println("The hits are far enough.");
                         return true;
+                    } else {
+                        System.out.println("The hits are not far enough.");
+                        return false;
                     }
                 }
             }
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
     protected void specify() throws SQLException, BadFromatException {
+        if (this.iteration.getIterationHits().getHit().size() > 0) {
+            this.normalyzeHits();
+            System.out.println("Current number of normalized hits is: " + this.normalizedHits.size());
+            this.findLowestRank();
+            System.out.println("Attempting to find the lowest rank..");
+            System.out.println("The lowest rank is: "+this.currentRank);
+            while (couldSetPivotalHitAtCurrentRank()) {
+                if (normalyzedHitsWithBetterEvalueAllowPivotal() && normalyzedHitsWithWorseEvalueAllowPivotal()) {
+                    //success
+                    System.out.println("success");
+                    System.out.println(this.pivotalHit.getGI());
+                    System.out.println(this.pivotalHit.getFocusNode().getTaxid());
+                    break;
+                } else {
 
-        this.normalyzeHits();
-        this.findLowestRank();
-
-        while (couldSetPivotalHitAtCurrentRank()) {
-            if (normalyzedHitsWithBetterEvalueAllowPivotal() && normalyzedHitsWithWorseEvalueAllowPivotal()) {
-                //success
-                break;
+                   System.out.println("Lifting up current rank of specification for those hits that has "+this.currentRank);
+                   this.liftCurrentRankOfSpecificationForHits();
+                   if(this.couldLiftCurrentRank()){
+                       System.out.println("Trying a higher rank of rank \""+this.currentRank+"\"");
+                   } else{
+                       break;
+                   }
+                }
             }
+        } else {
+            System.out.println("fail");
         }
         //fail
     }
 
+    public static NormalyzedIteration newDefaultInstance(Iteration iteration, BLAST_Identifier blastIdentifier) {
+        return new NormalyzedIteration(iteration, blastIdentifier);
+    }
 }

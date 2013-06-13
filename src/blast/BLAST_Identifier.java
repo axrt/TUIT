@@ -1,8 +1,10 @@
 package blast;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLASTN;
+import BLAST.NCBI.output.Iteration;
 import db.connect.DatabaseOperator;
 import db.tables.LookupNames;
+import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
 import org.xml.sax.SAXException;
@@ -12,6 +14,7 @@ import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +25,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
     protected final Connection connection;
     protected final Map<Ranks, TUITCutoffSet> cutoffSetMap;
+    protected List<NormalyzedIteration> normalyzedIterations;
 
     protected BLAST_Identifier(List<? extends NucleotideFasta> query, List<String> query_IDs,
                                File tempDir, File executive, String[] parameterList,
@@ -36,7 +40,12 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
         try {
             this.BLAST();
+            this.normalyzedIterations=new ArrayList<NormalyzedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
             this.BLASTed=true;
+            this.normalizeIterations();
+            for(NormalyzedIteration normalyzedIteration:this.normalyzedIterations){
+                normalyzedIteration.specify();
+            }
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (InterruptedException e) {
@@ -45,26 +54,38 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (SAXException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (BadFromatException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
 
     }
 
     protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
-        TUITCutoffSet tuitCutoffSet;
+          return true;
+        //TODO: commented for testing
+        /*TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||normalizedHit==null||rank==null) {
             return true;
         } else {
             return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
-        }
+        }*/
     }
     protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank){
-        TUITCutoffSet tuitCutoffSet;
+        if((oneNormalizedHit.getHitEvalue()/anotherNormalizedHit.getHitEvalue())>=100){
+            return true;
+        } else{
+            return false;
+        }
+        //TODO: commented for testing
+        /*TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet= this.cutoffSetMap.get(rank)) == null||oneNormalizedHit==null||anotherNormalizedHit==null) {
             return true;
         } else {
             return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit,anotherNormalizedHit);
-        }
+        }*/
     }
 
     @Override
@@ -120,7 +141,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         ResultSet resultSet = null;
         try {
             preparedStatement = this.connection.prepareStatement(
-                    "SELECT * FROM"
+                    "SELECT * FROM "
                             + LookupNames.dbs.NCBI.name + "."
                             + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
                             + " WHERE "
@@ -128,6 +149,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
                             + "=(SELECT "
                             + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
                             + " FROM "
+                            + LookupNames.dbs.NCBI.name + "."
                             + LookupNames.dbs.NCBI.nodes.name
                             + " WHERE "
                             + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
@@ -188,6 +210,13 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
             }
         }
         return parentNode;
+    }
+
+    protected void normalizeIterations(){
+        //Normalize each iteration
+        for(Iteration iteration:this.blastOutput.getBlastOutputIterations().getIteration()){
+            this.normalyzedIterations.add(NormalyzedIteration.newDefaultInstance(iteration,this));
+        }
     }
 
     public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query, List<String> query_IDs,

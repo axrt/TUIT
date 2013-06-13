@@ -57,7 +57,12 @@ public class NormalizedHit {
         this.hit = hit;
         this.pIdent = BlastOutputUtil.calculatePIdent(hit);
         this.hitQueryCoverage = BlastOutputUtil.calculateQueryCoverage(queryLength, hit);
-        this.hitEvalue = BlastOutputUtil.getEvalueFromHit(hit);
+        double eval=BlastOutputUtil.getEvalueFromHit(hit);
+        if(eval==0){
+            this.hitEvalue=2.225074e-308;
+        }else{
+            this.hitEvalue=eval;
+        }
         this.GI=Integer.parseInt(BlastOutputUtil.extractGIFromHitID(hit.getHitId()));
     }
 
