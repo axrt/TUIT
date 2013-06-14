@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" afterPath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/Ranks.java" afterPath="$PROJECT_DIR$/src/helper/Ranks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -18,7 +17,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923874934" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923872952" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371198885385" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199848845" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -84,7 +83,7 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
     <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199749552" ignored="false" />
     <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371137819896" ignored="false" />
-    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370880339660" ignored="false" />
+    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371200058200" ignored="false" />
     <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371192541120" ignored="false" />
     <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371135143017" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863400513" ignored="false" />
@@ -179,19 +178,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="26" selection-start="366" selection-end="379" vertical-scroll-proportion="0.085518815">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ranks.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Ranks.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="31" selection-start="141" selection-end="441" vertical-scroll-proportion="0.0">
+            <state line="5" column="17" selection-start="117" selection-end="122" vertical-scroll-proportion="0.034207527">
               <folding />
             </state>
           </provider>
@@ -257,7 +247,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/helper/Ranks.java" />
         <option value="$PROJECT_DIR$/src/test/NCBITablesDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/test/NodesDBDDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/db/tables/LookupNames.java" />
@@ -273,6 +262,7 @@
         <option value="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
         <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
         <option value="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" />
+        <option value="$PROJECT_DIR$/src/helper/Ranks.java" />
       </list>
     </option>
   </component>
@@ -891,7 +881,11 @@
       <created>1371198890640</created>
       <updated>1371198890640</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="TUITCutoffSet documented">
+      <created>1371199852260</created>
+      <updated>1371199852260</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -982,7 +976,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="BLAST_Identifier documented" />
+    <option name="LAST_COMMIT_MESSAGE" value="TUITCutoffSet documented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1019,6 +1013,7 @@
     <MESSAGE value="Lots of debugging and works in tests" />
     <MESSAGE value="Debugged and cutoffs implemented" />
     <MESSAGE value="BLAST_Identifier documented" />
+    <MESSAGE value="TUITCutoffSet documented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1124,13 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="141" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="89" selection-start="2863" selection-end="2923" vertical-scroll-proportion="0.11060433">
@@ -1155,6 +1143,13 @@
     <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="26" selection-start="366" selection-end="379" vertical-scroll-proportion="0.085518815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="117" selection-end="122" vertical-scroll-proportion="0.034207527">
           <folding />
         </state>
       </provider>

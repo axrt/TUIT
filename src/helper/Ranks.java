@@ -1,9 +1,7 @@
 package helper;
 
 /**
- * //TODO: document
- *
- * A list of taxonomic ranks in order in which they appear in nature
+ * A list of taxonomic ranks in order in which they appear in the NCBI taxonomy
  */
 public enum Ranks {
     root_of_life("root of life"),
@@ -37,16 +35,33 @@ public enum Ranks {
     varietas("varietas"),
     forma("forma");
 
+    /**
+     * A {@link String} representation of the name
+     */
     private final String name;
 
+    /**
+     * Private constructor
+     * @param s {@link String} of the name for the given rank
+     */
     private Ranks(String s) {
         name = s;
     }
 
+    /**
+     * A getter for the name
+     * @return {@link String} name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns a previous {@link Ranks} for a given {@link Ranks}
+     * @param rank {@link Ranks}
+     * @return a previous {@link Ranks} for a given {@link Ranks} if such exists, otherwise, if the
+     * {@link Ranks.root_of_life} given - the {@link Ranks.root_of_life} will be returned
+     */
     public static Ranks previous (Ranks rank){
        if(rank==Ranks.root_of_life){
           return root_of_life;
