@@ -28,7 +28,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     /**
      * A Map for default cutoff sets, which are used whenever a custom set was not given
      */
-    protected static final Map<Ranks, TUITCutoffSet> defaultCutoffs = new HashMap<Ranks, TUITCutoffSet>();
+    protected static final Map<Ranks, TUITCutoffSet> DEFAULT_CUTOFFS = new HashMap<Ranks, TUITCutoffSet>();
 
     /**
      * Filling in the cutoff set map
@@ -36,43 +36,43 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     static {
 
         //Species-level-related
-        defaultCutoffs.put(Ranks.subspecies, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        defaultCutoffs.put(Ranks.species, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        defaultCutoffs.put(Ranks.species_subgroup, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        defaultCutoffs.put(Ranks.species_group, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        defaultCutoffs.put(Ranks.varietas, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        defaultCutoffs.put(Ranks.forma, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subspecies, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.species, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.species_subgroup, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.species_group, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.varietas, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.forma, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
 
 
         //Genus-level-related
-        defaultCutoffs.put(Ranks.subgenus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
-        defaultCutoffs.put(Ranks.genus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subgenus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.genus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
 
         //Family-level-related
-        defaultCutoffs.put(Ranks.subfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        defaultCutoffs.put(Ranks.family, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        defaultCutoffs.put(Ranks.superfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        defaultCutoffs.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.family, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.superfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
 
         //Oreder-level-related
-        defaultCutoffs.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        defaultCutoffs.put(Ranks.parvorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        defaultCutoffs.put(Ranks.infraorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        defaultCutoffs.put(Ranks.suborder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        defaultCutoffs.put(Ranks.superorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.parvorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.infraorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.suborder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.superorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
 
         //Any other level-related
-        defaultCutoffs.put(Ranks.subclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.c_lass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.superclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.subphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.phylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.superphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.subkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.kingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.superkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.no_rank, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        defaultCutoffs.put(Ranks.root_of_life, TUITCutoffSet.newDefaultInstance(0, 0, 1));
+        DEFAULT_CUTOFFS.put(Ranks.subclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.c_lass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.superclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.phylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.superphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.kingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.superkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.no_rank, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.root_of_life, TUITCutoffSet.newDefaultInstance(0, 0, 1));
 
     }
 
@@ -159,7 +159,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         //Cecks if a cutoff set exists at a given ranks
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null) {
             //If not - substitutes it with a default cutoff set
-            tuitCutoffSet = BLAST_Identifier.defaultCutoffs.get(rank);
+            tuitCutoffSet = BLAST_Identifier.DEFAULT_CUTOFFS.get(rank);
         }
         if (normalizedHit == null || rank == null) {
             return false;
@@ -181,7 +181,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || oneNormalizedHit == null || anotherNormalizedHit == null) {
-            tuitCutoffSet = BLAST_Identifier.defaultCutoffs.get(rank);
+            tuitCutoffSet = BLAST_Identifier.DEFAULT_CUTOFFS.get(rank);
         }
         return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit, anotherNormalizedHit);
     }

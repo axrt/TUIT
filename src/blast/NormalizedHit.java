@@ -13,10 +13,13 @@ import util.BlastOutputUtil;
  * E-value and Query coverage. Moreover, it stores the {@link Hit}'s
  * taxonomy in an appropriate field.
  */
-//Todo: document
 
 public class NormalizedHit {
 
+    /**
+     * A minimal E-value at which the E-value is rounded to 0.0
+     */
+    public static double MINIMAL_EVLAUE = 2.225074e-308;
     /**
      * An ancestor hit that was normalized to have convenient parameters
      */
@@ -47,9 +50,10 @@ public class NormalizedHit {
     protected TaxonomicNode focusNode;
 
     /**
-     * A constructor from
+     * A protected constructor from a given set of parameters
      *
-     * @param hit         {@link Hit} that need normalization
+     * @param hit         {@link Hit} that need normalization. If a given {@link Hit} has the E-value as 0.0 -
+     *                    the minimal value of 2.225074e-308 will be assigned
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
      */
     protected NormalizedHit(final Hit hit, final int queryLength) throws BadFromatException {
@@ -57,13 +61,15 @@ public class NormalizedHit {
         this.hit = hit;
         this.pIdent = BlastOutputUtil.calculatePIdent(hit);
         this.hitQueryCoverage = BlastOutputUtil.calculateQueryCoverage(queryLength, hit);
-        double eval=BlastOutputUtil.getEvalueFromHit(hit);
-        if(eval==0){
-            this.hitEvalue=2.225074e-308;
-        }else{
-            this.hitEvalue=eval;
+        double eval = BlastOutputUtil.getEvalueFromHit(hit);
+        //If the E-value was rounded to 0.0, change it to the minimal value so that the
+        //E-value with any other hit could be told by division
+        if (eval == 0) {
+            this.hitEvalue = NormalizedHit.MINIMAL_EVLAUE;
+        } else {
+            this.hitEvalue = eval;
         }
-        this.GI=Integer.parseInt(BlastOutputUtil.extractGIFromHitID(hit.getHitId()));
+        this.GI = Integer.parseInt(BlastOutputUtil.extractGIFromHitID(hit.getHitId()));
     }
 
     /**
@@ -75,7 +81,12 @@ public class NormalizedHit {
         return this.focusNode.getRank();
     }
 
-    public int getAssignedTaxid(){
+    /**
+     * A getter for the current hit taxid (at the current rank)
+     *
+     * @return
+     */
+    public int getAssignedTaxid() {
         return this.focusNode.getTaxid();
     }
 
@@ -99,7 +110,6 @@ public class NormalizedHit {
 
     /**
      * Focus node setter
-     *
      */
     public void setFocusNode(TaxonomicNode focusNode) {
         this.focusNode = focusNode;
@@ -107,23 +117,40 @@ public class NormalizedHit {
 
     /**
      * A getter for GI
+     *
      * @return {@link  int} the GI for the current hit
      */
     public int getGI() {
         return GI;
     }
 
+    /**
+     * A getter for the pIdent
+     *
+     * @return {@link double} pident
+     */
     public double getpIdent() {
         return pIdent;
     }
 
+    /**
+     * A getter of the query coverage
+     *
+     * @return {@link double} query coverage
+     */
     public double getHitQueryCoverage() {
         return hitQueryCoverage;
     }
 
+    /**
+     * A getter for the E-value
+     *
+     * @return {@link double} E-value
+     */
     public double getHitEvalue() {
         return hitEvalue;
     }
+
     /**
      * This method is needed to check whether this hit may point to a taxid,
      * that is parent to the {@link NormalizedHit} candidate's in test taxid.
@@ -143,10 +170,11 @@ public class NormalizedHit {
     }
 
     /**
-     * A static factory from
+     * A static factory from a given set of parameters
+     *
      * @param hit         {@link Hit} that need normalization
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
-     * @return
+     * @return a new instance of {@link NormalizedHit} form a given set of parameters
      */
     public static NormalizedHit newDefaultInstance(final Hit hit, final int queryLength) throws BadFromatException {
         return new NormalizedHit(hit, queryLength);
