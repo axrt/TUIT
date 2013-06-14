@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 /**
  TODO: document
+ TODO: this should be extended by another interface that allows to communicate in order to get the taxonomy
 
  */
 public interface DatabaseOperator {
