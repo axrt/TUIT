@@ -90,11 +90,10 @@ public class NCBITablesDeployer {
     }
 
     /**
-     * //TODO: documetn as soon as works
-     * @param connection
-     * @param tmpDir
-     * @throws IOException
-     * @throws SQLException
+     * @param connection  {@link Connection} to the database
+     * @param tmpDir a {@link File} directory that the temporary update files will be downloaded to
+     * @throws IOException upon file read/write errors
+     * @throws SQLException in case a database communication error occurs
      */
     public static void updateDatabasesFromNCBI(final Connection connection, final File tmpDir) throws IOException, SQLException {
         //Downloading files
