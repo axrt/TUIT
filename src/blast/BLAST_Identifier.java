@@ -7,6 +7,8 @@ import db.tables.LookupNames;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
+import io.file.TUITFileOperator;
+import io.file.TUITFileOperator;
 import org.xml.sax.SAXException;
 import taxonomy.TaxonomicNode;
 
@@ -109,9 +111,10 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      *                      default set
      */
     protected BLAST_Identifier(List<? extends NucleotideFasta> query, List<String> query_IDs,
-                               File tempDir, File executive, String[] parameterList,
+                               File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
                                Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        super(query, query_IDs, tempDir, executive, parameterList);
+        super(query, query_IDs, tempDir, executive, parameterList,
+                identifierFileOperator);
         this.connection = connection;
         this.cutoffSetMap = cutoffSetMap;
     }
@@ -347,8 +350,6 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      /**
      * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
      *                      fasta-formatted records
-     * @param query_IDs     {@link List<String>} a list of AC numbers of sequences in a
-     *                      database
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
      *                      executable
@@ -364,10 +365,10 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      *                      default set
      * @return a new instance of {@link BLAST_Identifier} from the given parameters
      */
-    public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query, List<String> query_IDs,
-                                                      File tempDir, File executive, String[] parameterList,
+    public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query,
+                                                      File tempDir, File executive, String[] parameterList,TUITFileOperator dentifierFileOperator,
                                                       Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, query_IDs, tempDir, executive, parameterList, connection, cutoffSetMap);
+        return new BLAST_Identifier(query, null, tempDir, executive, parameterList,dentifierFileOperator, connection, cutoffSetMap);
     }
 
 }

@@ -1,5 +1,6 @@
 package io.file;
 
+import BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator;
 import format.EncodedFasta;
 import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
@@ -11,13 +12,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * //TODO: document
  * This class handles file opening for the  whole system
  */
-public enum FileOperator {
+public class TUITFileOperator extends NCBI_EX_BLAST_FileOperator {
+
+    private File nodes;
+    private File names;
+    private File gi_taxid;
+
     /**
-     * Singleton instance
+     * A static getter for the singleton instance
+     * @return a singleton instance of the {@link TUITFileOperator}
      */
-    INSTANCE;
+    public static TUITFileOperator getInstance(){
+        return TUITFileOperator.SingletonHolder.instance;
+    }
+    //TODO: make this keep track of all the files for the program (like dmps, etc)
+    /**
+     * Private constructor
+     */
+    private TUITFileOperator(){
+
+    }
+    /**
+     * Not initialized until referenced
+     */
+    private static final class SingletonHolder{
+        static final TUITFileOperator instance=new TUITFileOperator();
+    }
 
     /**
      * @param file {@link File} a file that contains the a list of fasta records (may be reperesented by a single record
@@ -69,6 +92,4 @@ public enum FileOperator {
             return encodedFastas;
         }
     }
-    //TODO: implement the double locking singleton here
-
 }

@@ -11,6 +11,8 @@ import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 import helper.Ranks;
+import io.file.TUITFileOperator;
+import io.file.TUITFileOperator;
 import org.junit.Test;
 import taxonomy.TaxonomicNode;
 
@@ -82,7 +84,10 @@ public class BLAST_IdentifierTest {
             cutoffSetMap.put(Ranks.superfamily,TUITCutoffSet.newDefaultInstance(80,90, 100));
 
             //Prepare the BLAST_Identifier
-            BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(nucleotideFastas, null, tmpDir, executable, parameters, connection, cutoffSetMap);
+            BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(
+                    nucleotideFastas, tmpDir, executable,
+                    parameters, TUITFileOperator.getInstance(),
+                    connection, cutoffSetMap);
             blast_identifier.run();
 
             System.out.println("Finished");
