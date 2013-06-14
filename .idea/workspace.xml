@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Debugged and cutoffs implemented">
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" afterPath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" afterPath="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -18,7 +18,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923874934" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923872952" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371198873816" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371198885385" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -82,7 +82,7 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630528117" ignored="false" />
     <file path="/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630521945" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
-    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371198829885" ignored="false" />
+    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199749552" ignored="false" />
     <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371137819896" ignored="false" />
     <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370880339660" ignored="false" />
     <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371192541120" ignored="false" />
@@ -117,7 +117,8 @@
     <file path="/NucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371115855996" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371115839846" ignored="false" />
     <file path="/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371115838965" ignored="false" />
-    <file path="/TUTICutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371139773041" ignored="false" />
+    <file path="/TUTICutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199836815" ignored="false" />
+    <file path="/TUITCutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199809386" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,36 +179,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BLAST_Identifier.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="345" column="74" selection-start="17598" selection-end="17614" vertical-scroll-proportion="0.4355758">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#964#986#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="91" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
+            <state line="8" column="26" selection-start="366" selection-end="379" vertical-scroll-proportion="0.085518815">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BLAST_IdentifierTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="89" selection-start="2863" selection-end="2923" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1962#1979#0" expanded="true" />
-                <element signature="e#2808#2830#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -292,11 +268,11 @@
         <option value="$PROJECT_DIR$/src/format/EncodedFasta.java" />
         <option value="$PROJECT_DIR$/src/blast/NormalizedHit.java" />
         <option value="$PROJECT_DIR$/src/blast/TUTICutoffSet.java" />
-        <option value="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" />
         <option value="$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java" />
         <option value="$PROJECT_DIR$/src/blast/NormalyzedIteration.java" />
         <option value="$PROJECT_DIR$/src/db/connect/DatabaseOperator.java" />
         <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
+        <option value="$PROJECT_DIR$/src/blast/TUITCutoffSet.java" />
       </list>
     </option>
   </component>
@@ -911,7 +887,11 @@
       <created>1371140641504</created>
       <updated>1371140641504</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="BLAST_Identifier documented">
+      <created>1371198890640</created>
+      <updated>1371198890640</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1002,7 +982,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debugged and cutoffs implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="BLAST_Identifier documented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1038,6 +1018,7 @@
     <MESSAGE value="NucleotideFasta refactored" />
     <MESSAGE value="Lots of debugging and works in tests" />
     <MESSAGE value="Debugged and cutoffs implemented" />
+    <MESSAGE value="BLAST_Identifier documented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1143,16 +1124,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="91" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
+        <state line="18" column="31" selection-start="141" selection-end="441" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="89" selection-start="2863" selection-end="2923" vertical-scroll-proportion="0.0">
+        <state line="72" column="89" selection-start="2863" selection-end="2923" vertical-scroll-proportion="0.11060433">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1962#1979#0" expanded="true" />
@@ -1161,20 +1142,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="141" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="345" column="74" selection-start="17598" selection-end="17614" vertical-scroll-proportion="0.4355758">
+        <state line="364" column="83" selection-start="18988" selection-end="18988" vertical-scroll-proportion="0.8118586">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#964#986#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="26" selection-start="366" selection-end="379" vertical-scroll-proportion="0.085518815">
+          <folding />
         </state>
       </provider>
     </entry>

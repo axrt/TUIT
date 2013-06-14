@@ -362,6 +362,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      *                      taxonomic information
      * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
      *                      default set
+     * @return a new instance of {@link BLAST_Identifier} from the given parameters
      */
     public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query, List<String> query_IDs,
                                                       File tempDir, File executive, String[] parameterList,
