@@ -87,7 +87,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     /**
      * A list of normalized hits that the algorithm will operate upon
      */
-    protected List<NormalyzedIteration> normalyzedIterations;
+    protected List<NormalizedIteration> normalizedIterations;
 
     /**
      * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
@@ -125,11 +125,11 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
         try {
             this.BLAST();
             //TODO: input checks for whether the output iterations have at least one iteration
-            this.normalyzedIterations = new ArrayList<NormalyzedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+            this.normalizedIterations = new ArrayList<NormalizedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
             this.BLASTed = true;
             this.normalizeIterations();
-            for (NormalyzedIteration normalyzedIteration : this.normalyzedIterations) {
-                normalyzedIteration.specify();
+            for (NormalizedIteration normalizedIteration : this.normalizedIterations) {
+                normalizedIteration.specify();
             }
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -338,7 +338,7 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     protected void normalizeIterations() {
         //Normalize each iteration
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
-            this.normalyzedIterations.add(NormalyzedIteration.newDefaultInstance(iteration, this));
+            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration(iteration, this));
         }
     }
 

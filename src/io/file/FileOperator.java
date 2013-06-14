@@ -63,13 +63,12 @@ public enum FileOperator {
             for (String s : splitter) {
                 encodedFastas.add(EncodedFasta.newInstanceFromFromattedText(recordAC, s));
             }
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             //Finally return the prepared list of records
             bufferedReader.close();
             return encodedFastas;
         }
     }
+    //TODO: implement the double locking singleton here
 
 }

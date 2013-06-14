@@ -14,7 +14,7 @@ import util.BlastOutputUtil;
  * taxonomy in an appropriate field.
  */
 
-public class NormalizedHit {
+public class NormalizedHit<H extends Hit> {
 
     /**
      * A minimal E-value at which the E-value is rounded to 0.0
@@ -23,7 +23,7 @@ public class NormalizedHit {
     /**
      * An ancestor hit that was normalized to have convenient parameters
      */
-    protected final Hit hit;
+    protected final H hit;
     /**
      * An int representation of the GI
      */
@@ -56,7 +56,7 @@ public class NormalizedHit {
      *                    the minimal value of 2.225074e-308 will be assigned
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
      */
-    protected NormalizedHit(final Hit hit, final int queryLength) throws BadFromatException {
+    protected NormalizedHit(final H hit, final int queryLength) throws BadFromatException {
         super();
         this.hit = hit;
         this.pIdent = BlastOutputUtil.calculatePIdent(hit);
@@ -175,8 +175,9 @@ public class NormalizedHit {
      * @param hit         {@link Hit} that need normalization
      * @param queryLength {@link int} of the initial query length (to derive Query coverage from)
      * @return a new instance of {@link NormalizedHit} form a given set of parameters
+     * @throws {@link BadFromatException} in case formatting the {@link Hit} GI fails
      */
-    public static NormalizedHit newDefaultInstance(final Hit hit, final int queryLength) throws BadFromatException {
+    public static NormalizedHit newDefaultInstanceFromHit(final Hit hit, final int queryLength) throws BadFromatException {
         return new NormalizedHit(hit, queryLength);
     }
 
