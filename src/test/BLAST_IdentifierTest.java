@@ -34,7 +34,7 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class BLAST_IdentifierTest {
-    @Test
+    //@Test
     public void BLAST_IdentifierTest() {
         try {
             //Preparing a query fasta
