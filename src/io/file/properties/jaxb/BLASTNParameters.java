@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,38 +29,38 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "TMPDir")
-public class TMPDir {
+@XmlRootElement(name = "pIdentCutoff")
+public class PIdentCutoff {
 
-    @XmlAttribute(name = "path", required = true)
+    @XmlAttribute(name = "value", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
-    protected String path;
+    protected String value;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the path property.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPath() {
-        return path;
+    public String getValue() {
+        return value;
     }
 
     /**
-     * Sets the value of the path property.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPath(String value) {
-        this.path = value;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     /**

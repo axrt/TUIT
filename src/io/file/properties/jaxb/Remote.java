@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3c.dom.Element;
 
@@ -29,38 +29,38 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "MaxFilesInBatch")
-public class MaxFilesInBatch {
+@XmlRootElement(name = "Remote")
+public class Remote {
 
-    @XmlAttribute(name = "value", required = true)
-    @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
-    protected String value;
+    @XmlAttribute(name = "deligate", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String deligate;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the deligate property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getValue() {
-        return value;
+    public String getDeligate() {
+        return deligate;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the deligate property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setDeligate(String value) {
+        this.deligate = value;
     }
 
     /**

@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,38 +29,92 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "EvalueRatioCutoff")
-public class EvalueRatioCutoff {
+@XmlRootElement(name = "DBConnection")
+public class DBConnection {
 
-    @XmlAttribute(name = "value", required = true)
+    @XmlAttribute(name = "url", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
-    protected String value;
+    protected String url;
+    @XmlAttribute(name = "login", required = true)
+    @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
+    protected String login;
+    @XmlAttribute(name = "password", required = true)
+    @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
+    protected String password;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the url property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getValue() {
-        return value;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the url property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setUrl(String value) {
+        this.url = value;
+    }
+
+    /**
+     * Gets the value of the login property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLogin() {
+        return login;
+    }
+
+    /**
+     * Sets the value of the login property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLogin(String value) {
+        this.login = value;
+    }
+
+    /**
+     * Gets the value of the password property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the value of the password property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
     }
 
     /**

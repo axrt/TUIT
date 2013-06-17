@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +29,8 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "EntrezQuery")
-public class EntrezQuery {
+@XmlRootElement(name = "EvalueRatioCutoff")
+public class EvalueRatioCutoff {
 
     @XmlAttribute(name = "value", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)

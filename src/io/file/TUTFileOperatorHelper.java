@@ -1,6 +1,6 @@
 package io.file;
 
-import io.file.jaxb.TUITProperties;
+import io.file.properties.jaxb.TUITProperties;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;

@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
-<!DOCTYPE BlastOutput PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
+<!DOCTYPE TUITProperties PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
 <TUITProperties>
     <DBConnection url="localhost" login="ocular" password="ocular"/>
     <BLASTNPath path="/usr/bin/blastn"/>
     <TMPDir path="/home/alext/Downloads/tmp"/>
     <BLASTNParameters>
+        <Database use="nt"/>
+        <Database use="est"/>
         <Expect value="10"/>
         <EntrezQuery value="not uncultured not enrichment not unclassified not uncultivated not unspecified"/>
         <Remote deligate="yes"/>

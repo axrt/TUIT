@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,38 +29,38 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "QueryCoveragCutoff")
-public class QueryCoveragCutoff {
+@XmlRootElement(name = "BLASTNPath")
+public class BLASTNPath {
 
-    @XmlAttribute(name = "value", required = true)
+    @XmlAttribute(name = "path", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
-    protected String value;
+    protected String path;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the path property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getValue() {
-        return value;
+    public String getPath() {
+        return path;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the path property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setPath(String value) {
+        this.path = value;
     }
 
     /**

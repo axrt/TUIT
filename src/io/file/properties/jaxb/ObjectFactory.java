@@ -6,7 +6,7 @@
 //
 
 
-package io.file.jaxb;
+package io.file.properties.jaxb;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
