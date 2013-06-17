@@ -17,6 +17,11 @@ import java.util.List;
  */
 public class TUITFileOperator extends NCBI_EX_BLAST_FileOperator {
 
+    private File tmpDir;
+    private File executable;
+
+    private File properies;
+
     private File nodes;
     private File names;
     private File gi_taxid;

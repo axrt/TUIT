@@ -1,0 +1,27 @@
+<!ELEMENT TUITProperties (DBConnection,BLASTNPath,TMPDir,BLASTNParameters,SpecificationParameters*)>
+        <!ELEMENT DBConnection ANY>
+        <!ATTLIST DBConnection url CDATA #REQUIRED login CDATA #REQUIRED password CDATA #REQUIRED>
+        <!ELEMENT BLASTNPath ANY>
+        <!ATTLIST BLASTNPath path CDATA #REQUIRED>
+        <!ELEMENT TMPDir ANY>
+        <!ATTLIST TMPDir path CDATA #REQUIRED>
+        <!ELEMENT BLASTNParameters (Database*, Expect, EntrezQuery, Remote, MaxFilesInBatch)>
+        <!ELEMENT Database ANY>
+        <!ATTLIST Database use (nt|est) #REQUIRED>
+        <!ELEMENT Expect ANY>
+        <!ATTLIST Expect value CDATA #REQUIRED>
+        <!ELEMENT EntrezQuery ANY>
+        <!ATTLIST EntrezQuery value CDATA #REQUIRED>
+        <!ELEMENT Remote ANY>
+        <!ATTLIST Remote deligate (yes|no) #REQUIRED>
+        <!ELEMENT MaxFilesInBatch ANY>
+        <!ATTLIST MaxFilesInBatch value CDATA #REQUIRED>
+        <!ELEMENT SpecificationParameters (CutoffSet)>
+        <!ELEMENT CutoffSet (pIdentCutoff,QueryCoveragCutoff,EvalueRatioCutoff)>
+        <!ATTLIST CutoffSet rank (root_of_life | no_rank | superkingdom | kingdom | subkingdom | superphylum | phylum | subphylum | superclass | c_lass | subclass |infraclass | superorder | order | suborder | infraorder | parvorder | superfamily | family | subfamily | tribe | subtribe | genus | subgenus | species_group | species_subgroup | species | subspecies | varietas | forma ) #REQUIRED>
+        <!ELEMENT pIdentCutoff ANY>
+        <!ATTLIST pIdentCutoff value CDATA #REQUIRED>
+        <!ELEMENT QueryCoveragCutoff ANY>
+        <!ATTLIST QueryCoveragCutoff value CDATA #REQUIRED>
+        <!ELEMENT EvalueRatioCutoff ANY>
+        <!ATTLIST EvalueRatioCutoff value CDATA #REQUIRED>
