@@ -366,9 +366,9 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      * @return a new instance of {@link BLAST_Identifier} from the given parameters
      */
     public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query,
-                                                      File tempDir, File executive, String[] parameterList,TUITFileOperator dentifierFileOperator,
+                                                      File tempDir, File executive, String[] parameterList,TUITFileOperator identifierFileOperator,
                                                       Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, null, tempDir, executive, parameterList,dentifierFileOperator, connection, cutoffSetMap);
+        return new BLAST_Identifier(query, null, tempDir, executive, parameterList,identifierFileOperator, connection, cutoffSetMap);
     }
 
 }
