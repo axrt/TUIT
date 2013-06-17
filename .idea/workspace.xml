@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/exception/TUITPropertyBadFormatException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/BLASTNParameters.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/BLASTNParameters.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/BLASTNPath.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/BLASTNPath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/CutoffSet.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/CutoffSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/DBConnection.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/DBConnection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/Database.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/Database.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/EntrezQuery.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/EntrezQuery.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/EvalueRatioCutoff.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/EvalueRatioCutoff.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/Expect.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/Expect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/MaxFilesInBatch.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/MaxFilesInBatch.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/ObjectFactory.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/ObjectFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/PIdentCutoff.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/PIdentCutoff.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/QueryCoveragCutoff.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoveragCutoff.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/Remote.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/Remote.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/SpecificationParameters.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/SpecificationParameters.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/TMPDir.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/TMPDir.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/TUITProperties.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITProperties.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/jaxb/properties.dtd" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoveragCutoff.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoverageCutoff.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/CutoffSet.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/CutoffSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/ObjectFactory.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/ObjectFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/Ranks.java" afterPath="$PROJECT_DIR$/src/helper/Ranks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" afterPath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/TUTFileOperatorHelperTest.java" afterPath="$PROJECT_DIR$/src/test/TUTFileOperatorHelperTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/properties.xml" afterPath="$PROJECT_DIR$/src/test/properties.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -38,7 +23,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923874934" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369923872952" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371460245300" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371467228364" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -104,7 +89,7 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
     <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371217659245" ignored="false" />
     <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371202606599" ignored="false" />
-    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371200058200" ignored="false" />
+    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371473778540" ignored="false" />
     <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371192541120" ignored="false" />
     <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371204452382" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370863400513" ignored="false" />
@@ -142,7 +127,7 @@
     <file path="/BLAST_IdentifierFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371217426186" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371218070035" ignored="false" />
     <file path="/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371217974931" ignored="false" />
-    <file path="/properties.dtd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371454949450" ignored="false" />
+    <file path="/properties.dtd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472003765" ignored="false" />
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePair.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371246301358" ignored="false" />
     <file path="/ActionValuePair.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371246300557" ignored="false" />
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairList.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371234952274" ignored="false" />
@@ -155,10 +140,11 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457045601" ignored="false" />
     <file path="/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457028884" ignored="false" />
     <file path="/BLASTNParameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457293906" ignored="false" />
-    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371465147907" ignored="false" />
+    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472008126" ignored="false" />
     <file path="/TUTFileOperatorHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371459824457" ignored="false" />
     <file path="/TUITPropertyBadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371462970737" ignored="false" />
-    <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371467051318" ignored="false" />
+    <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371474949472" ignored="false" />
+    <file path="/QueryCoveragCutoff.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472038682" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +225,25 @@
       <file leaf-file-name="BLAST_Identifier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="45" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.0">
+            <state line="329" column="166" selection-start="17173" selection-end="17173" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ranks.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="5" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -248,7 +252,7 @@
       <file leaf-file-name="TUITPropertiesLoader.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="33" selection-start="352" selection-end="372" vertical-scroll-proportion="0.25510204">
+            <state line="16" column="33" selection-start="373" selection-end="393" vertical-scroll-proportion="0.27210885">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -259,7 +263,7 @@
       <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="24" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
+            <state line="17" column="26" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -268,19 +272,8 @@
       <file leaf-file-name="properties.dtd" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="38" selection-start="26" selection-end="38" vertical-scroll-proportion="-0.0">
+            <state line="19" column="55" selection-start="1031" selection-end="1031" vertical-scroll-proportion="-11.875">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITPropertyBadFormatException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exception/TUITPropertyBadFormatException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="59" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -314,10 +307,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/io/file/jaxb/EvalueRatioCutoff.java" />
-        <option value="$PROJECT_DIR$/src/io/file/jaxb/Expect.java" />
-        <option value="$PROJECT_DIR$/src/io/file/jaxb/MaxFilesInBatch.java" />
-        <option value="$PROJECT_DIR$/src/io/file/jaxb/ObjectFactory.java" />
         <option value="$PROJECT_DIR$/src/io/file/jaxb/PIdentCutoff.java" />
         <option value="$PROJECT_DIR$/src/io/file/jaxb/QueryCoveragCutoff.java" />
         <option value="$PROJECT_DIR$/src/io/file/jaxb/Remote.java" />
@@ -328,7 +317,11 @@
         <option value="$PROJECT_DIR$/src/test/TUTFileOperatorHelperTest.java" />
         <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
         <option value="$PROJECT_DIR$/src/exception/TUITPropertyBadFormatException.java" />
+        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd" />
         <option value="$PROJECT_DIR$/src/test/properties.xml" />
+        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoveragCutoff.java" />
+        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoverageCutoff.java" />
+        <option value="$PROJECT_DIR$/src/helper/Ranks.java" />
         <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
       </list>
     </option>
@@ -1021,7 +1014,11 @@
       <created>1371460250264</created>
       <updated>1371460250264</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="TUITPropertiesLoader almost implemented">
+      <created>1371467234548</created>
+      <updated>1371467234548</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1062,7 +1059,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.65164834" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27588046" sideWeight="0.44493392" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27588046" sideWeight="0.67070484" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5271318" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1112,7 +1109,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Properties loading tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="TUITPropertiesLoader almost implemented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1126,7 +1123,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Nodes table deployment rewritten to an &quot;inject from file way&quot;" />
     <MESSAGE value="Names table deployment rewritten to an &quot;inject from file way&quot;" />
     <MESSAGE value="Database deployment rewritten to a faster file-inject implementation" />
     <MESSAGE value="Deployers reformatted to check for nulls in finally blocks" />
@@ -1151,6 +1147,7 @@
     <MESSAGE value="TUITFileOperator created" />
     <MESSAGE value="properties.dtd edited, jaxb classes compiled" />
     <MESSAGE value="Properties loading tested" />
+    <MESSAGE value="TUITPropertiesLoader almost implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1164,20 +1161,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/MaxFilesInBatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="355" selection-end="355" vertical-scroll-proportion="0.05102041">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/ObjectFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="20" selection-start="355" selection-end="355" vertical-scroll-proportion="0.05102041">
@@ -1186,13 +1169,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/PIdentCutoff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="355" selection-end="355" vertical-scroll-proportion="0.05102041">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoveragCutoff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="20" selection-start="355" selection-end="355" vertical-scroll-proportion="0.05102041">
           <folding />
@@ -1229,31 +1205,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TUTFileOperatorHelperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exception/TUITPropertyBadFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="59" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="38" selection-start="26" selection-end="38" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="13" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.33333334">
@@ -1265,23 +1216,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoverageCutoff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="25" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.27210885">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="24" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
+        <state line="17" column="26" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/TUITCutoffSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TUTFileOperatorHelperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/Ranks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="5" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exception/TUITPropertyBadFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="59" selection-start="313" selection-end="313" vertical-scroll-proportion="0.24390244">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="55" selection-start="1031" selection-end="1031" vertical-scroll-proportion="-11.875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="45" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.0">
+        <state line="329" column="166" selection-start="17173" selection-end="17173" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="33" selection-start="352" selection-end="372" vertical-scroll-proportion="0.25510204">
+        <state line="16" column="33" selection-start="373" selection-end="393" vertical-scroll-proportion="0.27210885">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

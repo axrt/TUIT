@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "pIdentCutoff",
-    "queryCoveragCutoff",
+    "queryCoverageCutoff",
     "evalueRatioCutoff"
 })
 @XmlRootElement(name = "CutoffSet")
@@ -35,8 +35,8 @@ public class CutoffSet {
     protected String rank;
     @XmlElement(required = true)
     protected PIdentCutoff pIdentCutoff;
-    @XmlElement(name = "QueryCoveragCutoff", required = true)
-    protected QueryCoveragCutoff queryCoveragCutoff;
+    @XmlElement(name = "QueryCoverageCutoff", required = true)
+    protected QueryCoverageCutoff queryCoverageCutoff;
     @XmlElement(name = "EvalueRatioCutoff", required = true)
     protected EvalueRatioCutoff evalueRatioCutoff;
 
@@ -89,27 +89,27 @@ public class CutoffSet {
     }
 
     /**
-     * Gets the value of the queryCoveragCutoff property.
+     * Gets the value of the queryCoverageCutoff property.
      * 
      * @return
      *     possible object is
-     *     {@link QueryCoveragCutoff }
+     *     {@link QueryCoverageCutoff }
      *     
      */
-    public QueryCoveragCutoff getQueryCoveragCutoff() {
-        return queryCoveragCutoff;
+    public QueryCoverageCutoff getQueryCoverageCutoff() {
+        return queryCoverageCutoff;
     }
 
     /**
-     * Sets the value of the queryCoveragCutoff property.
+     * Sets the value of the queryCoverageCutoff property.
      * 
      * @param value
      *     allowed object is
-     *     {@link QueryCoveragCutoff }
+     *     {@link QueryCoverageCutoff }
      *     
      */
-    public void setQueryCoveragCutoff(QueryCoveragCutoff value) {
-        this.queryCoveragCutoff = value;
+    public void setQueryCoverageCutoff(QueryCoverageCutoff value) {
+        this.queryCoverageCutoff = value;
     }
 
     /**

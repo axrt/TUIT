@@ -29,8 +29,8 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "QueryCoveragCutoff")
-public class QueryCoveragCutoff {
+@XmlRootElement(name = "QueryCoverageCutoff")
+public class QueryCoverageCutoff {
 
     @XmlAttribute(name = "value", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)

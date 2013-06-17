@@ -15,7 +15,7 @@
     <SpecificationParameters>
         <CutoffSet rank="species">
             <pIdentCutoff value="98.5"/>
-            <QueryCoveragCutoff value="95"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>

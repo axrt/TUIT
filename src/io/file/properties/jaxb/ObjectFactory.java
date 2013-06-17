@@ -117,11 +117,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link QueryCoveragCutoff }
+     * Create an instance of {@link QueryCoverageCutoff }
      * 
      */
-    public QueryCoveragCutoff createQueryCoveragCutoff() {
-        return new QueryCoveragCutoff();
+    public QueryCoverageCutoff createQueryCoveragCutoff() {
+        return new QueryCoverageCutoff();
     }
 
     /**

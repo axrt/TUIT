@@ -4,6 +4,7 @@ package helper;
  * A list of taxonomic ranks in order in which they appear in the NCBI taxonomy
  */
 public enum Ranks {
+
     root_of_life("root of life"),
     no_rank("no rank"),
     superkingdom("superkingdom"),
@@ -35,6 +36,15 @@ public enum Ranks {
     varietas("varietas"),
     forma("forma");
 
+    public static String LIST_RANKS;
+    static {
+        StringBuilder stringBuilder=new StringBuilder();
+        for(Ranks r:Ranks.values()){
+            stringBuilder.append(r.getName());
+            stringBuilder.append("\n");
+        }
+        Ranks.LIST_RANKS=stringBuilder.toString();
+    }
     /**
      * A {@link String} representation of the name
      */
