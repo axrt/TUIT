@@ -1,5 +1,6 @@
 package io.file;
 
+import BLAST.NCBI.output.Iteration;
 import blast.NormalizedIteration;
 import format.fasta.nucleotide.NucleotideFasta;
 
@@ -10,7 +11,7 @@ import format.fasta.nucleotide.NucleotideFasta;
  * Time: 1:50 PM
  * To change this template use File | Settings | File Templates.
  */
-public class NucleotideFastaTUITFileOperator extends TUITFileOperator {
+public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
     /**
      * A static getter for the singleton instance
      *
@@ -32,7 +33,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator {
     }
 
     @Override
-    public boolean acceptResults(NucleotideFasta query, NormalizedIteration normalizedIteration) {
+    public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

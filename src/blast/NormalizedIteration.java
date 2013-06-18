@@ -351,6 +351,7 @@ public class NormalizedIteration<I extends Iteration> {
                     System.out.println("success");
                     System.out.println(this.pivotalHit.getGI());
                     System.out.println(this.pivotalHit.getFocusNode().getTaxid());
+                    this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
                     System.out.println("Lifting up current rank of specification for those hits that has " + this.currentRank);

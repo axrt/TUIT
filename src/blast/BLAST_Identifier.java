@@ -197,6 +197,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                 normalizedHit.setTaxonomy(taxonomicNode);
                 normalizedHit.setFocusNode(taxonomicNode);
             } else {
+                preparedStatement.close();
                 return null;
             }
         } finally {
@@ -249,6 +250,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                 normalizedHit.setTaxonomy(taxonomicNode);
                 normalizedHit.setFocusNode(taxonomicNode);
             } else {
+                preparedStatement.close();
                 return null;
             }
         } finally {
@@ -257,6 +259,57 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
             }
         }
         return normalizedHit;
+    }
+
+    //Todo: document
+    public TaxonomicNode attachFullDirectLineage(TaxonomicNode taxonomicNode) throws SQLException {
+
+        //Get its taxid and reconstruct its child taxonomic nodes
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        TaxonomicNode parentTaxonomicNode=null;
+        try {
+            preparedStatement = this.connection.prepareStatement(
+                    "SELECT * FROM "
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name()
+                            + "=(SELECT "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
+                            + " FROM "
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.nodes.name
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
+            preparedStatement.setInt(1, taxonomicNode.getTaxid());
+            resultSet = preparedStatement.executeQuery();
+            int parent_taxid;
+            int taxid;
+            String scientificName;
+            Ranks rank;
+            if (resultSet.next()) {
+                parent_taxid = resultSet.getInt(1);
+                taxid = resultSet.getInt(2);
+                scientificName = resultSet.getString(3);
+                rank = Ranks.values()[resultSet.getInt(5)-1];
+                parentTaxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
+                parentTaxonomicNode.addChild(taxonomicNode);
+                taxonomicNode.setParent(parentTaxonomicNode);
+                if(parent_taxid!=taxid){
+                    parentTaxonomicNode=this.attachFullDirectLineage(parentTaxonomicNode);
+                }
+            } else {
+                preparedStatement.close();
+                return null;
+            }
+
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+        return taxonomicNode;
     }
 
     /**
@@ -269,7 +322,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      * @throws SQLException in case a database communication error occurs
      */
     public TaxonomicNode attachChildrenForTaxonomicNode(TaxonomicNode parentNode) throws SQLException {
-
+        //Todo: should be contained within the interface
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -335,10 +388,10 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      *                      default set
      * @return a new instance of {@link BLAST_Identifier} from the given parameters
      */
-    public static <T extends NucleotideFasta> BLAST_Identifier newDefaultInstance(List<T> query,
-                                                                                  File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                                                                                  Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap){
+    public static BLAST_Identifier newDefaultInstance(List<NucleotideFasta> query,
+                                                      File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
+                                                      Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+        return new BLAST_Identifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
             /**
              * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
              */
@@ -352,8 +405,8 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                     this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
                     this.BLASTed = true;
                     this.normalizeIterations();
-                    for (int i=0;i<this.normalizedIterations.size();i++) {
-                        NormalizedIteration<Iteration> normalizedIteration=(NormalizedIteration<Iteration>)this.normalizedIterations.get(i);
+                    for (int i = 0; i < this.normalizedIterations.size(); i++) {
+                        NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
                         normalizedIteration.specify();
                     }
                 } catch (IOException e) {

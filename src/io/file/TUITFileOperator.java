@@ -1,6 +1,7 @@
 package io.file;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator;
+import BLAST.NCBI.output.Iteration;
 import blast.NormalizedIteration;
 import format.EncodedFasta;
 import format.fasta.Fasta;
@@ -74,6 +75,6 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
     }
 
 
-    public abstract boolean acceptResults(T query, NormalizedIteration normalizedIteration);
+    public abstract boolean acceptResults(T  query, NormalizedIteration<Iteration> normalizedIteration);
 
 }

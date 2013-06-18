@@ -2,6 +2,7 @@ package test;
 
 import BLAST.NCBI.output.Iteration;
 import blast.BLAST_Identifier;
+import blast.NormalizedIteration;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;
@@ -34,7 +35,7 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class BLAST_IdentifierTest {
-    //@Test
+    @Test
     public void BLAST_IdentifierTest() {
         try {
             //Preparing a query fasta
@@ -55,7 +56,7 @@ public class BLAST_IdentifierTest {
 
             List<NucleotideFasta> nucleotideFastas = new ArrayList<NucleotideFasta>(1);
             nucleotideFastas.add(nculeotideFasta);
-            nucleotideFastas.add(nculeotideFasta);
+            //nucleotideFastas.add(nculeotideFasta);
             //nucleotideFastas.add(nculeotideFasta);
             //Prepare files
             File executable = new File("blastn");
@@ -63,7 +64,7 @@ public class BLAST_IdentifierTest {
 
             //Prepare parameters
             String[] parameters = new String[]{
-                    "-db", "nt", "-remote", "-entrez_query", "not uncultured not enrichment not unclassified not uncultivated not unspecified"
+                    "-db", "nt",  "-entrez_query", "not uncultured not enrichment not unclassified not uncultivated not unspecified","-remote"
             };
 
             //Prepare MySQL connection
@@ -87,7 +88,17 @@ public class BLAST_IdentifierTest {
             //Prepare the BLAST_Identifier
             BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(
                     nucleotideFastas, tmpDir, executable,
-                    parameters, null,
+                    parameters, new TUITFileOperator<NucleotideFasta>() {
+                @Override
+                protected NucleotideFasta newFastaFromRecord(String record) throws Exception {
+                    return null;  //To change body of implemented methods use File | Settings | File Templates.
+                }
+
+                @Override
+                public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+                    return false;  //To change body of implemented methods use File | Settings | File Templates.
+                }
+            },
                     connection, cutoffSetMap);
             blast_identifier.run();
 
