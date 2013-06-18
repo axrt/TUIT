@@ -1,8 +1,10 @@
 package io.file;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator;
+import blast.NormalizedIteration;
 import format.EncodedFasta;
 import format.fasta.Fasta;
+import format.fasta.nucleotide.NucleotideFasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
@@ -15,86 +17,63 @@ import java.util.List;
  * //TODO: document
  * This class handles file opening for the  whole system
  */
-public class TUITFileOperator extends NCBI_EX_BLAST_FileOperator {
+public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator {
 
-    private File tmpDir;
-    private File executable;
+    protected BufferedReader bufferedReader;
+    protected File inputFile;
+    protected String line;
 
-    private File properies;
-
-    private File nodes;
-    private File names;
-    private File gi_taxid;
-
-    /**
-     * A static getter for the singleton instance
-     * @return a singleton instance of the {@link TUITFileOperator}
-     */
-    public static TUITFileOperator getInstance(){
-        return TUITFileOperator.SingletonHolder.instance;
-    }
-    //TODO: make this keep track of all the files for the program (like dmps, etc)
-    /**
-     * Private constructor
-     */
-    private TUITFileOperator(){
-
-    }
-    /**
-     * Not initialized until referenced
-     */
-    private static final class SingletonHolder{
-        static final TUITFileOperator instance=new TUITFileOperator();
+    public void setInputFile(File inputFile) throws FileNotFoundException {
+        if (this.inputFile == null && this.bufferedReader == null) {
+            this.inputFile = inputFile;
+            this.bufferedReader = new BufferedReader(new FileReader(inputFile));
+        } else throw new IllegalStateException("Could not set a given file while the previous file is open.");
     }
 
-    /**
-     * @param file {@link File} a file that contains the a list of fasta records (may be reperesented by a single record
-     * @return {@link List<EncodedFasta>} of fasta records
-     * @throws IOException in case opening and reading the file fails
-     * @throws NucleotideFasta_BadFromat_Exception
-     *                     in case of a single line format or none at all
-     * @throws NucleotideFasta_AC_BadFormatException
-     *                     in case the AC is formatted badly
-     * @throws NucleotideFasta_Sequence_BadFromatException
-     *                     in case it encounters an error within the nucleotide compound
-     */
-    public static List<EncodedFasta> recordsFromFile(File file) throws IOException,
-            NucleotideFasta_BadFromat_Exception, NucleotideFasta_AC_BadFormatException,
-            NucleotideFasta_Sequence_BadFromatException {
-        //Open file and check whether it is even Fasta at all
-        List<EncodedFasta> encodedFastas = null;
-        BufferedReader bufferedReader = null;
+    protected abstract T newFastaFromRecord(String record) throws Exception;
+
+    public List<T> nextBatch(int size) throws Exception {
+        List<T> batch = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader(file));
+            batch = new ArrayList<T>(size);
             StringBuilder stringBuilder = new StringBuilder();
-            String recordAC = file.getName().split(".")[0];//Get the file name that is supposed to be the AC without ".fasta" extention or whatever the extention is bein used
-            String line;
-            //Read the first line to see if it is fromatted properly
-            line = bufferedReader.readLine().trim();//trim() is needed in case there had been white traces
-            if (line.startsWith(Fasta.fastaStart)) {
+            int fastaCounter = 1;
+            if (this.line != null) {
                 stringBuilder.append(line);
-                stringBuilder.append('\n');
-            } else {
-                bufferedReader.close();
-                throw new NucleotideFasta_BadFromat_Exception("Nucleotide Fasta record: bad format; record does not start with '>' identifier ");
+                stringBuilder.append("\n");
             }
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-                stringBuilder.append('\n');
+            while ((this.line = this.bufferedReader.readLine()) != null) {
+                if (line.contains(Fasta.fastaStart)) {
+                    fastaCounter++;
+                    if (fastaCounter >= size) {
+                        break;
+                    }
+                    stringBuilder.append(line);
+                    stringBuilder.append("\n");
+                }
             }
-            //Try splitting the file by > if it is possible
-            String[] splitter = stringBuilder.toString().split(Fasta.fastaStart);
-            stringBuilder = null;
-            //Prepare a list of a split size to store the records
-            encodedFastas = new ArrayList<EncodedFasta>(splitter.length);
-            //Parse every record and then store it in the list
-            for (String s : splitter) {
-                encodedFastas.add(EncodedFasta.newInstanceFromFromattedText(recordAC, s));
+            String[] split = stringBuilder.toString().split(Fasta.fastaStart);
+            for (String s : split) {
+                batch.add(this.newFastaFromRecord(Fasta.fastaStart + s));
             }
-        } finally {
-            //Finally return the prepared list of records
-            bufferedReader.close();
-            return encodedFastas;
+            if (this.line == null) {
+                this.reset();
+            }
+        } catch (Exception e) {
+            this.reset();
+            throw e;
         }
+        return batch;
     }
+
+    protected void reset() throws IOException {
+        this.line = null;
+        this.inputFile = null;
+        this.bufferedReader.close();
+        this.bufferedReader = null;
+    }
+
+
+    public abstract boolean acceptResults(T query, NormalizedIteration normalizedIteration);
+
 }

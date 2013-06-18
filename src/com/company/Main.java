@@ -4,16 +4,12 @@ import blast.BLAST_Identifier;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
-import format.EncodedFasta;
-import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
-import io.file.TUITFileOperator;
 import io.file.properties.jaxb.Database;
 import io.file.properties.jaxb.SpecificationParameters;
 import io.file.properties.jaxb.TUITProperties;
 import io.file.properties.jaxb.TUITPropertiesLoader;
 import org.apache.commons.cli.*;
-import org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactory;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;

@@ -374,7 +374,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
      * @return a new instance of {@link NormalizedIteration} from a given set of parameters
      */
-    public static NormalizedIteration newDefaultInstanceFromIteration(Iteration iteration, BLAST_Identifier blastIdentifier) {
-        return new NormalizedIteration(iteration, blastIdentifier);
+    public static <I extends Iteration>NormalizedIteration newDefaultInstanceFromIteration(I iteration, BLAST_Identifier blastIdentifier) {
+        return new NormalizedIteration<I>(iteration, blastIdentifier);
     }
 }

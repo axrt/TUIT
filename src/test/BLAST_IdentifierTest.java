@@ -55,7 +55,8 @@ public class BLAST_IdentifierTest {
 
             List<NucleotideFasta> nucleotideFastas = new ArrayList<NucleotideFasta>(1);
             nucleotideFastas.add(nculeotideFasta);
-
+            nucleotideFastas.add(nculeotideFasta);
+            //nucleotideFastas.add(nculeotideFasta);
             //Prepare files
             File executable = new File("blastn");
             File tmpDir = new File("/home/alext/Downloads/tmp");
@@ -86,7 +87,7 @@ public class BLAST_IdentifierTest {
             //Prepare the BLAST_Identifier
             BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(
                     nucleotideFastas, tmpDir, executable,
-                    parameters, TUITFileOperator.getInstance(),
+                    parameters, null,
                     connection, cutoffSetMap);
             blast_identifier.run();
 

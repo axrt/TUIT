@@ -8,7 +8,6 @@ import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
 import io.file.TUITFileOperator;
-import io.file.TUITFileOperator;
 import org.xml.sax.SAXException;
 import taxonomy.TaxonomicNode;
 
@@ -25,7 +24,7 @@ import java.util.Map;
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
  * given queries automatically.
  */
-public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator {
+public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements DatabaseOperator {
 
     /**
      * A Map for default cutoff sets, which are used whenever a custom set was not given
@@ -89,10 +88,10 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
     /**
      * A list of normalized hits that the algorithm will operate upon
      */
-    protected List<NormalizedIteration> normalizedIterations;
+    protected List<NormalizedIteration<Iteration>> normalizedIterations;
 
     /**
-     * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
+     * @param query         {@link List<T extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
      *                      fasta-formatted records
      * @param query_IDs     {@link List<String>} a list of AC numbers of sequences in a
      *                      database
@@ -110,43 +109,13 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
      *                      default set
      */
-    protected BLAST_Identifier(List<? extends NucleotideFasta> query, List<String> query_IDs,
+    protected BLAST_Identifier(List<T> query, List<String> query_IDs,
                                File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
                                Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         super(query, query_IDs, tempDir, executive, parameterList,
                 identifierFileOperator);
         this.connection = connection;
         this.cutoffSetMap = cutoffSetMap;
-    }
-
-    /**
-     * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
-     */
-    @Override
-    public void run() {
-
-        try {
-            this.BLAST();
-            //TODO: input checks for whether the output iterations have at least one iteration
-            this.normalizedIterations = new ArrayList<NormalizedIteration>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-            this.BLASTed = true;
-            this.normalizeIterations();
-            for (NormalizedIteration normalizedIteration : this.normalizedIterations) {
-                normalizedIteration.specify();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (JAXBException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (SAXException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (BadFromatException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
     }
 
     /**
@@ -347,7 +316,8 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
 
     /**
      * A static factory to get a new instance of a {@link BLAST_Identifier}
-     /**
+     * /**
+     *
      * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
      *                      fasta-formatted records
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
@@ -365,10 +335,41 @@ public class BLAST_Identifier extends NCBI_EX_BLASTN implements DatabaseOperator
      *                      default set
      * @return a new instance of {@link BLAST_Identifier} from the given parameters
      */
-    public static BLAST_Identifier newDefaultInstance(List<? extends NucleotideFasta> query,
-                                                      File tempDir, File executive, String[] parameterList,TUITFileOperator identifierFileOperator,
-                                                      Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, null, tempDir, executive, parameterList,identifierFileOperator, connection, cutoffSetMap);
-    }
+    public static <T extends NucleotideFasta> BLAST_Identifier newDefaultInstance(List<T> query,
+                                                                                  File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
+                                                                                  Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+        return new BLAST_Identifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap){
+            /**
+             * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
+             */
+            @Override
+            public void run() {
 
+                try {
+
+                    this.BLAST();
+                    //TODO: input checks for whether the output iterations have at least one iteration
+                    this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+                    this.BLASTed = true;
+                    this.normalizeIterations();
+                    for (int i=0;i<this.normalizedIterations.size();i++) {
+                        NormalizedIteration<Iteration> normalizedIteration=(NormalizedIteration<Iteration>)this.normalizedIterations.get(i);
+                        normalizedIteration.specify();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (InterruptedException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (JAXBException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (SAXException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (SQLException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (BadFromatException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+            }
+        };
+    }
 }

@@ -159,7 +159,7 @@ public class TUITPropertiesLoader {
         if (blastnParameters.getMaxFilesInBatch() != null) {
             try {
                 Integer i = Integer.parseInt(blastnParameters.getMaxFilesInBatch().getValue());
-                if (i < 1) {
+                if (i < 0) {
                     throw new TUITPropertyBadFormatException("Erroneous \"maximum files in a batch\" property, "
                             + "please use reasonable unsigned integer values.");
                 }
