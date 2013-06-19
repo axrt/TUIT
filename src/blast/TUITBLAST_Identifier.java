@@ -41,7 +41,7 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
                     NormalizedIteration<Iteration> normalizedIteration=(NormalizedIteration<Iteration>)this.normalizedIterations.get(i);
                     normalizedIteration.specify();
                 }
-                //tuitFileOperator.acceptResults();
+                //tuitFileOperator.saveResults();
             }while ((this.query=tuitFileOperator.nextBatch(this.batchSize))!=null);
             this.BLASTed = true;
 

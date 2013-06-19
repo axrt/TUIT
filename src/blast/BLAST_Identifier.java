@@ -362,8 +362,25 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      */
     protected void normalizeIterations() {
         //Normalize each iteration
+        int i=0;
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
-            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration(iteration, this));
+            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta)this.query.get(i),iteration, this));
+            i++;
+        }
+    }
+
+    /**
+     * Accepts a result pair of a query {@link NucleotideFasta} and its {@link NormalizedIteration} (thereby specified)
+     * {@link TUITFileOperator} in order to save the result in the way defined by the current file operator
+     * @param query {@link NucleotideFasta}
+     * @param normalizedIteration {@link NormalizedIteration}
+     * @return {@link true} if the file operator returns success, {@link false} otherwise
+     */
+    public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+        if(((TUITFileOperator)this.fileOperator).saveResults(query,normalizedIteration)){
+            return true;
+        }else{
+            return false;
         }
     }
 

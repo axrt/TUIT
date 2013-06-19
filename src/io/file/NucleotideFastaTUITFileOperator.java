@@ -33,7 +33,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
     }
 
     @Override
-    public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

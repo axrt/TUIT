@@ -3,6 +3,7 @@ package blast;
 import BLAST.NCBI.output.Hit;
 import BLAST.NCBI.output.Iteration;
 import format.BadFromatException;
+import format.fasta.nucleotide.NucleotideFasta;
 import helper.Ranks;
 import taxonomy.TaxonomicNode;
 
@@ -41,17 +42,30 @@ public class NormalizedIteration<I extends Iteration> {
      * A current candidate NormalizedHit that may become the pivotal one
      */
     protected NormalizedHit pivotalHit;
-
+    /**
+     * A nucleotide fasta used as a query for the given BLAST iteration
+     */
+    protected NucleotideFasta query;
     /**
      * A protected constructor to use with static factories
-     *
+     * @param query a {@link NucleotideFasta} used as a query for the given BLAST iteration
      * @param iteration       I extends {@link Iteration} that will be used to perform taxonomic specification
      * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
+     *
      */
-    protected NormalizedIteration(I iteration, BLAST_Identifier blastIdentifier) {
+    protected NormalizedIteration(NucleotideFasta query, I iteration, BLAST_Identifier blastIdentifier) {
+        this.query=query;
         this.iteration = iteration;
         this.blastIdentifier = blastIdentifier;
         this.queryLength = Integer.parseInt(this.iteration.getIterationQueryLen());
+    }
+
+    /**
+     * A getter for the current pivotal hit
+     * @return current pivotal {@link NormalizedHit}
+     */
+    public NormalizedHit getPivotalHit() {
+        return pivotalHit;
     }
 
     /**
@@ -348,10 +362,9 @@ public class NormalizedIteration<I extends Iteration> {
                 //deeper specification, and has no compatitors among those that have worse E-values
                 if (normalyzedHitsWithBetterEvalueAllowPivotal() && normalyzedHitsWithWorseEvalueAllowPivotal()) {
                     //success
-                    System.out.println("success");
-                    System.out.println(this.pivotalHit.getGI());
-                    System.out.println(this.pivotalHit.getFocusNode().getTaxid());
+                    System.out.println("Success");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
+                    this.blastIdentifier.acceptResults(this.query, this);
                     break;
                 } else {
                     System.out.println("Lifting up current rank of specification for those hits that has " + this.currentRank);
@@ -375,7 +388,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
      * @return a new instance of {@link NormalizedIteration} from a given set of parameters
      */
-    public static <I extends Iteration>NormalizedIteration newDefaultInstanceFromIteration(I iteration, BLAST_Identifier blastIdentifier) {
-        return new NormalizedIteration<I>(iteration, blastIdentifier);
+    public static <I extends Iteration>NormalizedIteration newDefaultInstanceFromIteration(NucleotideFasta query,I iteration, BLAST_Identifier blastIdentifier) {
+        return new NormalizedIteration<I>(query,iteration, blastIdentifier);
     }
 }

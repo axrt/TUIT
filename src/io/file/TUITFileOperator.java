@@ -75,6 +75,6 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
     }
 
 
-    public abstract boolean acceptResults(T  query, NormalizedIteration<Iteration> normalizedIteration);
+    public abstract boolean saveResults(T query, NormalizedIteration<Iteration> normalizedIteration);
 
 }

@@ -154,6 +154,29 @@ public class TaxonomicNode {
     }
 
     /**
+     * Recursively appends all the parent scientific names and ranks until the root is reached
+     *
+     * @return A full taxinomic lineage from the root for this node separated by " -> "
+     */
+    public String getFormattedLineage(){
+        StringBuilder stringBuilder=new StringBuilder();
+        if(this.parent!=null){
+           stringBuilder.append(parent.getFormattedLineage());
+           stringBuilder.append(" -> ");
+        }
+        stringBuilder.append(this.getFormattedNameRank());
+        return stringBuilder.toString();
+    }
+
+    /**
+     * Returns a scientific name with ( taxonomic rank of the node)
+     * @return {@link String} representation of the name and taxonomic rank
+     */
+    public String getFormattedNameRank(){
+        return this.scientificName+" ("+this.rank.getName()+")";
+    }
+
+    /**
      * A static factory to create a new instance of a {@link TaxonomicNode} from a given set of parameters
      * @param taxid {@link int} taxid
      * @param rank  {@link Ranks} rank

@@ -6,13 +6,11 @@ import blast.NormalizedIteration;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;
-import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 import helper.Ranks;
-import io.file.TUITFileOperator;
 import io.file.TUITFileOperator;
 import org.junit.Test;
 import taxonomy.TaxonomicNode;
@@ -95,8 +93,9 @@ public class BLAST_IdentifierTest {
                 }
 
                 @Override
-                public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
-                    return false;  //To change body of implemented methods use File | Settings | File Templates.
+                public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+                    System.out.println(query.getAC()+": " + normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+                    return true;  //To change body of implemented methods use File | Settings | File Templates.
                 }
             },
                     connection, cutoffSetMap);
