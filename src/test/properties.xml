@@ -6,15 +6,14 @@
     <TMPDir path="/home/alext/Downloads/tmp"/>
     <BLASTNParameters>
         <Database use="nt"/>
-        <Database use="est"/>
         <Expect value="10"/>
         <EntrezQuery value="not uncultured not enrichment not unclassified not uncultivated not unspecified"/>
         <Remote deligate="yes"/>
-        <MaxFilesInBatch value="500"/>
+        <MaxFilesInBatch value="1"/>
     </BLASTNParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">
-            <pIdentCutoff value="98.5"/>
+            <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>

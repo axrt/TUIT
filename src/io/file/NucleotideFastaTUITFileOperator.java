@@ -4,6 +4,8 @@ import BLAST.NCBI.output.Iteration;
 import blast.NormalizedIteration;
 import format.fasta.nucleotide.NucleotideFasta;
 
+import java.io.IOException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: alext
@@ -33,7 +35,10 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
     }
 
     @Override
-    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
+        this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+        this.bufferedWriter.newLine();
+        this.bufferedWriter.flush();
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

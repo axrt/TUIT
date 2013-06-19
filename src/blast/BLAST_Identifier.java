@@ -376,7 +376,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      * @param normalizedIteration {@link NormalizedIteration}
      * @return {@link true} if the file operator returns success, {@link false} otherwise
      */
-    public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
+    public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
         if(((TUITFileOperator)this.fileOperator).saveResults(query,normalizedIteration)){
             return true;
         }else{

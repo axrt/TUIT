@@ -31,8 +31,9 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
 
     @Override
     public void run() {
+        TUITFileOperator<NucleotideFasta> tuitFileOperator=(TUITFileOperator<NucleotideFasta>)this.fileOperator;
         try {
-            TUITFileOperator<NucleotideFasta> tuitFileOperator=(TUITFileOperator<NucleotideFasta>)this.fileOperator;
+
             do{
                 this.BLAST();
                 this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
@@ -41,8 +42,9 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
                     NormalizedIteration<Iteration> normalizedIteration=(NormalizedIteration<Iteration>)this.normalizedIterations.get(i);
                     normalizedIteration.specify();
                 }
-                //tuitFileOperator.saveResults();
+
             }while ((this.query=tuitFileOperator.nextBatch(this.batchSize))!=null);
+            tuitFileOperator.reset();
             this.BLASTed = true;
 
         } catch (IOException e) {

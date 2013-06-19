@@ -1,10 +1,12 @@
 package com.company;
 
 import blast.BLAST_Identifier;
+import blast.TUITBLAST_Identifier;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
 import helper.Ranks;
+import io.file.NucleotideFastaTUITFileOperator;
 import io.file.properties.jaxb.Database;
 import io.file.properties.jaxb.SpecificationParameters;
 import io.file.properties.jaxb.TUITProperties;
@@ -18,6 +20,8 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 //TODO: comment as soon as works
 public class Main {
@@ -73,7 +77,7 @@ public class Main {
             }
             //Correct the output file option if needed
             if (!commandLine.hasOption(Main.OUT)) {
-                outputFile = new File(inputFile.getPath().split(".")[0] + Main.TUIT_EXT);
+                outputFile = new File((inputFile.getPath()).split("\\.")[0] + Main.TUIT_EXT);
             } else {
                 outputFile = new File(commandLine.getOptionValue(Main.OUT));
             }
@@ -88,9 +92,9 @@ public class Main {
             } else if (inputFile.isDirectory()) {
                 throw new Exception("Properties file points to a directory.");
             }
-            if (!outputFile.canWrite()) {
-                throw new Exception("Cannot write the output file, please check file system permissions.");
-            }
+            /*if (!outputFile.canWrite()) {
+                throw new Exception("Cannot write the output file "+outputFile.getPath()+", please check file system permissions.");
+            }*/
             //Load properties
             tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
             tuitProperties = tuitPropertiesLoader.getTuitProperties();
@@ -99,12 +103,12 @@ public class Main {
             blastnExecutable = new File(tuitProperties.getBLASTNPath().getPath());
             //Create blast parameters
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("\"");
+            //stringBuilder.append("\"");
             for (Database database : tuitProperties.getBLASTNParameters().getDatabase()) {
                 stringBuilder.append(database.getUse());
                 stringBuilder.append(" ");//Gonna insert an unessessary space for the last database
             }
-            stringBuilder.append("\"");
+            //stringBuilder.append("\"");
             String remote;
             if (tuitProperties.getBLASTNParameters().getRemote().getDeligate().equals("yes")) {
                 remote = "-remote";
@@ -114,8 +118,8 @@ public class Main {
             parameters = new String[]{
                     "-db", stringBuilder.toString(),
                     remote,
-                    "-entrez_query", "\"" + tuitProperties.getBLASTNParameters().getEntrezQuery() + "\"",
-                    "-expect", tuitProperties.getBLASTNParameters().getExpect().getValue()
+                    "-entrez_query", tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
+                    "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
             };
             //Connect to the database
             mySQL_connector = MySQL_Connector.newDefaultInstance(
@@ -137,25 +141,43 @@ public class Main {
             } else {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>();
             }
-            //Load the query
+            NucleotideFastaTUITFileOperator.getInstance().setInputFile(inputFile);
+            NucleotideFastaTUITFileOperator.getInstance().setOutputFile(outputFile);
+            //Create blast identifier
+            blast_identifier = TUITBLAST_Identifier.newInstanceFromFileOperator(
+                    tmpDir, blastnExecutable, parameters,
+                    NucleotideFastaTUITFileOperator.getInstance(),connection,
+                    cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
+
+
+            Future<?> runnableFuture= Executors.newSingleThreadExecutor().submit(blast_identifier);
+            runnableFuture.get();
 
 
         } catch (ParseException pe) {
             System.out.println(pe.getMessage());
+            pe.printStackTrace();
         } catch (SAXException saxe) {
             System.out.println(saxe.getMessage());
+            saxe.printStackTrace();
         } catch (FileNotFoundException fnfe) {
             System.out.println(fnfe.getMessage());
+            fnfe.printStackTrace();
         } catch (TUITPropertyBadFormatException tpbfe) {
             System.out.println(tpbfe.getMessage());
+            tpbfe.printStackTrace();
         } catch (JAXBException jaxbee) {
             System.out.println(jaxbee.getMessage());
+            jaxbee.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             System.out.println(cnfe.getMessage());
+            cnfe.printStackTrace();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
+            sqle.printStackTrace();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             System.out.println("Exiting");
             System.exit(1);

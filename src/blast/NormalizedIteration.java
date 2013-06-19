@@ -364,7 +364,12 @@ public class NormalizedIteration<I extends Iteration> {
                     //success
                     System.out.println("Success");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
-                    this.blastIdentifier.acceptResults(this.query, this);
+                    try{
+                        this.blastIdentifier.acceptResults(this.query, this);
+                    } catch (Exception e){
+                        System.out.println("Failed to save results!");//TODO: improve
+                    }
+
                     break;
                 } else {
                     System.out.println("Lifting up current rank of specification for those hits that has " + this.currentRank);

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TUIT:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TUIT_jar</output-path>
+    <root id="archive" name="TUIT.jar">
+      <element id="module-output" name="TUIT" />
+      <element id="extracted-dir" path="/usr/lib/JLF/commons-cli-1.2/commons-cli-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/usr/lib/JLF/commons-cli-1.2/commons-cli-1.2-javadoc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/usr/lib/JLF/commons-cli-1.2/commons-cli-1.2-sources.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
