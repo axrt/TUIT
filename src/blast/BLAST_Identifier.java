@@ -226,7 +226,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         ResultSet resultSet = null;
         try {
             //Try selecting the parent node for the given hit
-            //Asuming the database is consistent - one taxid should have only one immediate parent
+            //Assuming the database is consistent - one taxid should have only one immediate parent
             preparedStatement = this.connection.prepareStatement(
                     "SELECT * FROM "
                             + LookupNames.dbs.NCBI.name + "."
@@ -267,7 +267,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        TaxonomicNode parentTaxonomicNode=null;
+        TaxonomicNode parentTaxonomicNode = null;
         try {
             preparedStatement = this.connection.prepareStatement(
                     "SELECT * FROM "
@@ -292,12 +292,12 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                 parent_taxid = resultSet.getInt(1);
                 taxid = resultSet.getInt(2);
                 scientificName = resultSet.getString(3);
-                rank = Ranks.values()[resultSet.getInt(5)-1];
+                rank = Ranks.values()[resultSet.getInt(5) - 1];
                 parentTaxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
                 parentTaxonomicNode.addChild(taxonomicNode);
                 taxonomicNode.setParent(parentTaxonomicNode);
-                if(parent_taxid!=taxid){
-                    parentTaxonomicNode=this.attachFullDirectLineage(parentTaxonomicNode);
+                if (parent_taxid != taxid) {
+                    parentTaxonomicNode = this.attachFullDirectLineage(parentTaxonomicNode);
                 }
             } else {
                 preparedStatement.close();
@@ -356,15 +356,53 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         }
         return parentNode;
     }
+    //TODO: document
+    public boolean isParentOrSiblingTo(int parentTaxid, int taxid) throws SQLException {
+        if (parentTaxid == taxid) {
+            return true;
+        }
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            //try selecting all children for a given taxid
+            preparedStatement = this.connection.prepareStatement(
+                    "SELECT "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
+                            + " FROM "
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
+                            + " where "
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid.name()
+                            + "=?");
+            preparedStatement.setInt(1, taxid);
+            resultSet = preparedStatement.executeQuery();
+            TaxonomicNode taxonomicNode;
+            if (resultSet.next()) {
+                if (parentTaxid == resultSet.getInt(1)) {
+                 return true;
+                } else if (resultSet.getInt(1) != 1) {
+                    return this.isParentOrSiblingTo(parentTaxid, resultSet.getInt(1));
+                } else {
+                    return false;
+                }
+            }
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+        return false;
+    }
 
     /**
      * Normalizes the {@link Iteration}s returned by the BLASTN within the output
      */
     protected void normalizeIterations() {
         //Normalize each iteration
-        int i=0;
+        int i = 0;
+        System.out.println(this.blastOutput.getBlastOutputIterations().getIteration().size());
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
-            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta)this.query.get(i),iteration, this));
+            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
             i++;
         }
     }
@@ -372,14 +410,15 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
     /**
      * Accepts a result pair of a query {@link NucleotideFasta} and its {@link NormalizedIteration} (thereby specified)
      * {@link TUITFileOperator} in order to save the result in the way defined by the current file operator
-     * @param query {@link NucleotideFasta}
+     *
+     * @param query               {@link NucleotideFasta}
      * @param normalizedIteration {@link NormalizedIteration}
      * @return {@link true} if the file operator returns success, {@link false} otherwise
      */
     public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
-        if(((TUITFileOperator)this.fileOperator).saveResults(query,normalizedIteration)){
+        if (((TUITFileOperator) this.fileOperator).saveResults(query, normalizedIteration)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

@@ -7,9 +7,9 @@
     <BLASTNParameters>
         <Database use="nt"/>
         <Expect value="1.0"/>
-        <EntrezQuery value="not uncultured not enrichment not unclassified not uncultivated not unspecified"/>
-        <Remote deligate="no"/>
-        <MaxFilesInBatch value="2"/>
+        <EntrezQuery value="not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental"/>
+        <Remote deligate="yes"/>
+        <MaxFilesInBatch value="10"/>
     </BLASTNParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">

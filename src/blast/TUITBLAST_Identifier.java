@@ -39,7 +39,6 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
                     remote = true;
                     break;
                 }
-
             }
             if (remote) {
                 System.out.println("Starting job, using NCBI server BLAST");
@@ -90,7 +89,7 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
             //e.printStackTrace();
         } catch (Exception e) {
             System.err.println(e.getMessage());
-           //e.printStackTrace();
+           e.printStackTrace();
         }
     }
 

@@ -36,20 +36,22 @@ public class TaxonomicNode {
 
     /**
      * A protected constructor to use with static factories
-     * @param taxid {@link int} taxid
-     * @param rank  {@link Ranks} rank
+     *
+     * @param taxid          {@link int} taxid
+     * @param rank           {@link Ranks} rank
      * @param scientificName {@link String} scientific name
      */
     protected TaxonomicNode(final int taxid, final Ranks rank, final String scientificName) {
         this.taxid = taxid;
-        this.rank=rank;
-        this.scientificName=scientificName;
+        this.rank = rank;
+        this.scientificName = scientificName;
         this.children = new ArrayList<TaxonomicNode>();
-        this.isRoot=false;
+        this.isRoot = false;
     }
 
     /**
      * A getter for the taxid
+     *
      * @return {@link int} taxid
      */
     public int getTaxid() {
@@ -58,6 +60,7 @@ public class TaxonomicNode {
 
     /**
      * A getter for the parent {@link TaxonomicNode}
+     *
      * @return {@link TaxonomicNode} parent
      */
     public TaxonomicNode getParent() {
@@ -66,6 +69,7 @@ public class TaxonomicNode {
 
     /**
      * A getter for {@link boolean} isRoot
+     *
      * @return {@link boolean} isRoot
      */
     public boolean isRoot() {
@@ -74,6 +78,7 @@ public class TaxonomicNode {
 
     /**
      * A getter rot the {@link Ranks} rank
+     *
      * @return {@link Ranks} rank
      */
     public Ranks getRank() {
@@ -82,6 +87,7 @@ public class TaxonomicNode {
 
     /**
      * Adds a new child {@link TaxonomicNode} to the list of children
+     *
      * @param child {@link TaxonomicNode}
      * @return {@link true} if success, otherwise - {@link false}
      */
@@ -91,6 +97,7 @@ public class TaxonomicNode {
 
     /**
      * A getter for the {@link List} of {@link TaxonomicNode} children
+     *
      * @return a {@link List} of {@link TaxonomicNode} children
      */
     public List<TaxonomicNode> getChildren() {
@@ -100,6 +107,7 @@ public class TaxonomicNode {
     /**
      * Sets the parent {@link TaxonomicNode}. If the parent has the same taxid as the taxid of this node,
      * then the node is considered root and sets the isRoot to {@link true}
+     *
      * @param parent {@link TaxonomicNode}
      */
     public void setParent(TaxonomicNode parent) {
@@ -111,8 +119,18 @@ public class TaxonomicNode {
         }
     }
 
+    //TODO: document
+    public boolean isSiblingOf(int taxid) {
+        if (this.taxid == taxid) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Checks whether the list of {@link TaxonomicNode} children contains a child node with the given taxid
+     *
      * @param taxid {@link int} taxid
      * @return {@link true} if such a node exists, otherwise - {@link false}
      */
@@ -133,17 +151,15 @@ public class TaxonomicNode {
      *
      * @param taxid {@link int} taxid of a hypothetical ancestor
      * @return returns {@link true} if the node is root or if the node has a {@link TaxonomicNode} with the given taxid
-     * in its lineage
+     *         in its lineage
      */
     public boolean isChildOf(int taxid) {
         if (this.isRoot) {
-
             if (this.taxid == taxid) {
                 return true;
             } else {
                 return false;
             }
-
         } else {
             if (this.parent.getTaxid() == taxid) {
                 return true;
@@ -158,11 +174,11 @@ public class TaxonomicNode {
      *
      * @return A full taxinomic lineage from the root for this node separated by " -> "
      */
-    public String getFormattedLineage(){
-        StringBuilder stringBuilder=new StringBuilder();
-        if(this.parent!=null){
-           stringBuilder.append(parent.getFormattedLineage());
-           stringBuilder.append(" -> ");
+    public String getFormattedLineage() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (this.parent != null) {
+            stringBuilder.append(parent.getFormattedLineage());
+            stringBuilder.append(" -> ");
         }
         stringBuilder.append(this.getFormattedNameRank());
         return stringBuilder.toString();
@@ -170,20 +186,22 @@ public class TaxonomicNode {
 
     /**
      * Returns a scientific name with ( taxonomic rank of the node)
+     *
      * @return {@link String} representation of the name and taxonomic rank
      */
-    public String getFormattedNameRank(){
-        return this.scientificName+" ("+this.rank.getName()+")";
+    public String getFormattedNameRank() {
+        return this.scientificName + " (" + this.rank.getName() + ")";
     }
 
     /**
      * A static factory to create a new instance of a {@link TaxonomicNode} from a given set of parameters
-     * @param taxid {@link int} taxid
-     * @param rank  {@link Ranks} rank
+     *
+     * @param taxid          {@link int} taxid
+     * @param rank           {@link Ranks} rank
      * @param scientificName {@link String} scientific name
      * @return a new instance of {@link TaxonomicNode} from a given set of parameters
      */
-    public static TaxonomicNode newDefaultInstance(final int taxid, final Ranks rank, final String scientificName){
-        return new TaxonomicNode(taxid,rank,scientificName);
+    public static TaxonomicNode newDefaultInstance(final int taxid, final Ranks rank, final String scientificName) {
+        return new TaxonomicNode(taxid, rank, scientificName);
     }
 }

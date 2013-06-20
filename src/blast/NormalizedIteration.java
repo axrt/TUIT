@@ -46,15 +46,16 @@ public class NormalizedIteration<I extends Iteration> {
      * A nucleotide fasta used as a query for the given BLAST iteration
      */
     protected NucleotideFasta query;
+
     /**
      * A protected constructor to use with static factories
-     * @param query a {@link NucleotideFasta} used as a query for the given BLAST iteration
+     *
+     * @param query           a {@link NucleotideFasta} used as a query for the given BLAST iteration
      * @param iteration       I extends {@link Iteration} that will be used to perform taxonomic specification
      * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
-     *
      */
     protected NormalizedIteration(NucleotideFasta query, I iteration, BLAST_Identifier blastIdentifier) {
-        this.query=query;
+        this.query = query;
         this.iteration = iteration;
         this.blastIdentifier = blastIdentifier;
         this.queryLength = Integer.parseInt(this.iteration.getIterationQueryLen());
@@ -62,6 +63,7 @@ public class NormalizedIteration<I extends Iteration> {
 
     /**
      * A getter for the current pivotal hit
+     *
      * @return current pivotal {@link NormalizedHit}
      */
     public NormalizedHit getPivotalHit() {
@@ -70,7 +72,8 @@ public class NormalizedIteration<I extends Iteration> {
 
     /**
      * Normalizes the {@link Hit}s from the I extends {@link Iteration} hit list
-     * @throws SQLException in case a database communicaton error occurs
+     *
+     * @throws SQLException       in case a database communicaton error occurs
      * @throws BadFromatException in case formatting the {@link Hit} GI fails
      */
     protected void normalyzeHits() throws SQLException, BadFromatException {
@@ -104,19 +107,22 @@ public class NormalizedIteration<I extends Iteration> {
     /**
      * Looks for the lowest {@link Ranks} amont ghe {@link Ranks} of the {@link NormalizedHit}s and sets currentHit field to the lowest that was found
      */
-    protected void findLowestRank() {
+    protected void findLowestRank() throws SQLException {
         //Go down starting with the root of life
         //The algorithm is only interested in real ranks, so the "no rank" is of no interest
+        this.reduceNoRanks();
         Ranks lowestRank = Ranks.root_of_life;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().ordinal() > lowestRank.ordinal()) {
-                this.currentRank = normalizedHit.getAssignedRank();
+                lowestRank = normalizedHit.getAssignedRank();
             }
         }
+        this.currentRank = lowestRank;
     }
 
     /**
      * Tries to lift the current {@link Ranks} of specification,
+     *
      * @return {@link true} if succeeds, {@link false} it the {@link Ranks} is already {@link Ranks.root_of_life}, and no further rising is possible
      */
     protected boolean couldLiftCurrentRank() {
@@ -247,18 +253,14 @@ public class NormalizedIteration<I extends Iteration> {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
                 System.out.println("Attaching taxonomy for hits with better E-value.");
-                TaxonomicNode taxonomicNode = this.blastIdentifier.attachChildrenForTaxonomicNode(normalizedHit.getFocusNode());
-                normalizedHit.setTaxonomy(taxonomicNode);
-                normalizedHit.setFocusNode(taxonomicNode);
-                //Check if the any of the hits point to a taxonomic node that is (despite being higher ranked then the pivotal hit)
-                //different form that to which the pivotal hit points
-                if (normalizedHit.refusesParenthood(this.pivotalHit)) {
-                    System.out.println("Hit with " + normalizedHit.getGI() + " did not allow the current potential pivotal because \n" +
-                            " it points to a taxid, which is not a parent to the current potential pivotal taxid.");
+                if(this.blastIdentifier.isParentOrSiblingTo(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())){
+                    System.out.println("Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
+                            " it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
                     return false;
                 }
             }
         } else {
+            System.out.println("Hit with better E-value allow current pivotal hit");
             return true;
         }
         return true;
@@ -272,11 +274,16 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case something goes wrong during the database communication
      */
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
+        //TODO: add to the properties file
+        if (this.currentRank == Ranks.superphylum) {
+            return false;
+        }//This is a current quick fix for the maximum rank that makes sence to identify
+
         //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
         System.out.println("Attempting to set current potential pivotal hit");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
-            System.out.println("A subset of hits at current rank of " + this.currentRank + " conatins " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs of).");
+            System.out.println("A subset of hits at current rank of " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs)");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
             System.out.println("Current pivotal hit was set to: " + this.pivotalHit.getGI());
@@ -293,9 +300,18 @@ public class NormalizedIteration<I extends Iteration> {
         }
     }
 
+    protected void reduceNoRanks() throws SQLException {
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
+            while (normalizedHit.getAssignedRank() == Ranks.no_rank) {
+                this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
+            }
+        }
+    }
+
     /**
      * Attempts to lift the current {@link Ranks} of specificaton one step higher for all those {@link NormalizedHit}s that
      * are set to the current {@link Ranks}.
+     *
      * @throws SQLException in case an error occurs during the database communication
      */
     protected void liftCurrentRankOfSpecificationForHits() throws SQLException {
@@ -309,9 +325,10 @@ public class NormalizedIteration<I extends Iteration> {
     /**
      * Check whether the {@link NormalizedHit}s that have worse (higher) E-value point to the same taxid as the potential pivotal hit, and if so -
      * whether the E-value difference (in folds, ratio) is more than the cutoff value at the current {@link Ranks} of specification
+     *
      * @return {@link false} in two cases - 1. if current potential pivotal hit is {@link null}
-     * 2. if there was a {@link NormalizedHit} that pointed to a different taxid at the current {@link Ranks} and the E-value ratio was less than the cutoff
-     * otherwise - returns true
+     *         2. if there was a {@link NormalizedHit} that pointed to a different taxid at the current {@link Ranks} and the E-value ratio was less than the cutoff
+     *         otherwise - returns true
      * @throws SQLException in case an error occurs during the database communication
      */
     protected boolean normalyzedHitsWithWorseEvalueAllowPivotal() throws SQLException {
@@ -345,31 +362,26 @@ public class NormalizedIteration<I extends Iteration> {
 
     /**
      * Performs the taxonomic specification.
-     * @throws SQLException in case an error occurs during the database communication
+     *
+     * @throws SQLException       in case an error occurs during the database communication
      * @throws BadFromatException in case formatting the {@link Hit} GI fails
      */
     protected void specify() throws SQLException, BadFromatException {
         if (this.iteration.getIterationHits().getHit().size() > 0) {
             this.normalyzeHits();
             System.out.println("Current number of normalized hits is: " + this.normalizedHits.size());
-            this.findLowestRank();
             System.out.println("Attempting to find the lowest rank..");
+            this.findLowestRank();
             System.out.println("The lowest rank is: " + this.currentRank);
             //Moving up the taxonomic ranks
             while (couldSetPivotalHitAtCurrentRank()) {
                 //Try finding such a hit that is supported as a pivotal one for the taxonomic specification by both
                 //hits with better and worse E-values (belongs to the same taxon as those with better E-value, but allows
                 //deeper specification, and has no compatitors among those that have worse E-values
-                if (normalyzedHitsWithBetterEvalueAllowPivotal() && normalyzedHitsWithWorseEvalueAllowPivotal()) {
+                if (this.normalyzedHitsWithBetterEvalueAllowPivotal() && this.normalyzedHitsWithWorseEvalueAllowPivotal()) {
                     //success
                     System.out.println("Success");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
-                    try{
-                        this.blastIdentifier.acceptResults(this.query, this);
-                    } catch (Exception e){
-                        System.out.println("Failed to save results!");//TODO: improve
-                    }
-
                     break;
                 } else {
                     System.out.println("Lifting up current rank of specification for those hits that has " + this.currentRank);
@@ -381,6 +393,12 @@ public class NormalizedIteration<I extends Iteration> {
                     }
                 }
             }
+            //Save results whatever they are
+            try {
+                this.blastIdentifier.acceptResults(this.query, this);
+            } catch (Exception e) {
+                System.out.println("Failed to save results!");//TODO: improve
+            }
         } else {
             System.out.println("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the properties configuration file.");
         }
@@ -389,11 +407,12 @@ public class NormalizedIteration<I extends Iteration> {
 
     /**
      * A static factory to create a new instance of {@link NormalizedIteration} from a given set of parameters
+     *
      * @param iteration       I extends {@link Iteration} that will be used to perform taxonomic specification
      * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
      * @return a new instance of {@link NormalizedIteration} from a given set of parameters
      */
-    public static <I extends Iteration>NormalizedIteration newDefaultInstanceFromIteration(NucleotideFasta query,I iteration, BLAST_Identifier blastIdentifier) {
-        return new NormalizedIteration<I>(query,iteration, blastIdentifier);
+    public static <I extends Iteration> NormalizedIteration newDefaultInstanceFromIteration(NucleotideFasta query, I iteration, BLAST_Identifier blastIdentifier) {
+        return new NormalizedIteration<I>(query, iteration, blastIdentifier);
     }
 }

@@ -169,6 +169,17 @@ public class NormalizedHit<H extends Hit> {
         }
     }
 
+    //todo:document
+    public boolean refusesBratherhood(NormalizedHit candidate) {
+
+        if (this.taxonomy.isSiblingOf(candidate.getFocusNode().getTaxid())) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
     /**
      * A static factory from a given set of parameters
      *
