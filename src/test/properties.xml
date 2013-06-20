@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE TUITProperties PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
 <TUITProperties>
-    <DBConnection url="localhost" login="ocular" password="ocular"/>
+    <DBConnection url="localhost" login="tuit" password="tuit"/>
     <BLASTNPath path="/usr/bin/blastn"/>
     <TMPDir path="/home/alext/Downloads/tmp"/>
     <BLASTNParameters>
         <Database use="nt"/>
-        <Expect value="10"/>
+        <Expect value="1.0"/>
         <EntrezQuery value="not uncultured not enrichment not unclassified not uncultivated not unspecified"/>
-        <Remote deligate="yes"/>
-        <MaxFilesInBatch value="1"/>
+        <Remote deligate="no"/>
+        <MaxFilesInBatch value="2"/>
     </BLASTNParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">

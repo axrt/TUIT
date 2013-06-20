@@ -382,7 +382,7 @@ public class NormalizedIteration<I extends Iteration> {
                 }
             }
         } else {
-            System.out.println("No hits returned from BLASTN..");
+            System.out.println("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the properties configuration file.");
         }
         //fail
     }

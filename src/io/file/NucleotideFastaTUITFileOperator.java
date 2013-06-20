@@ -36,6 +36,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
 
     @Override
     public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
+        //TODO: input preparsing for fasta naming collisions
         this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();

@@ -59,6 +59,9 @@ public class TUTFileOperatorHelper {
                 String file = null;
                 if (systemId.contains("properties.dtd")) {
                     file = "properties.dtd";
+                } else{
+                    throw new SAXException("Wrong name for the schema dtd, please correct to \n" +
+                            "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"properties.dtd\">");
                 }
                 return new InputSource(TUITProperties.class
                         .getResourceAsStream(file));

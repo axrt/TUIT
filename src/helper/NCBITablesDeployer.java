@@ -10,10 +10,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * A master class that contains functions that deploy all databases form a given set of dmp files
+ * A master class that contains functions that deploy all databases form a given set of dmp files.
+ * Standard login is "tuit", password "tuit"
  */
 public class NCBITablesDeployer {
-
+    //TODO: correct the ocular to a tuit password
+    /**
+     * Database login
+     */
+    public static final String login="tuit";
+    /**
+     * Database password
+     */
+    public static final String password="tuit";
 
     /**
      * Constructor grants non-instantiability

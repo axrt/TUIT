@@ -5,6 +5,7 @@ import blast.TUITBLAST_Identifier;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
+import helper.NCBITablesDeployer;
 import helper.Ranks;
 import io.file.NucleotideFastaTUITFileOperator;
 import io.file.properties.jaxb.Database;
@@ -51,16 +52,14 @@ public class Main {
         //
         Map<Ranks, TUITCutoffSet> cutoffMap;
         //
-
-        //
         BLAST_Identifier blast_identifier;
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
-        options.addOption(Main.IN, "input", true, "Input file (currently fasta-formatted only)");
-        options.addOption(Main.OUT, "input", true, "Output file (in " + Main.TUIT_EXT + " format)");
-        options.addOption(Main.P, "input", true, "Properties file (XML formatted)");
-
+        options.addOption(Main.IN, "input<file>", true, "Input file (currently fasta-formatted only)");
+        options.addOption(Main.OUT, "output<file>", true, "Output file (in " + Main.TUIT_EXT + " format)");
+        options.addOption(Main.P, "prop<file>", true, "Properties file (XML formatted)");
+        HelpFormatter formatter = new HelpFormatter();
         try {
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
@@ -110,17 +109,23 @@ public class Main {
             }
             //stringBuilder.append("\"");
             String remote;
+            String entrez_query;
             if (tuitProperties.getBLASTNParameters().getRemote().getDeligate().equals("yes")) {
                 remote = "-remote";
+                entrez_query = "-entrez_query";
+                parameters = new String[]{
+                        "-db", stringBuilder.toString(),
+                        remote,
+                        entrez_query, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
+                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
+                };
             } else {
-                remote = "";
+                parameters = new String[]{
+                        "-db", stringBuilder.toString(),
+                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
+                };
             }
-            parameters = new String[]{
-                    "-db", stringBuilder.toString(),
-                    remote,
-                    "-entrez_query", tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
-                    "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
-            };
+
             //Connect to the database
             mySQL_connector = MySQL_Connector.newDefaultInstance(
                     "jdbc:mysql://" + tuitProperties.getDBConnection().getUrl().trim() + "/",
@@ -155,31 +160,37 @@ public class Main {
 
 
         } catch (ParseException pe) {
-            System.out.println(pe.getMessage());
-            pe.printStackTrace();
+            System.err.println(pe.getMessage());
+            formatter.printHelp( "tuit", options );
+            //pe.printStackTrace();
         } catch (SAXException saxe) {
-            System.out.println(saxe.getMessage());
-            saxe.printStackTrace();
+            System.err.println(saxe.getMessage());
+            //saxe.printStackTrace();
         } catch (FileNotFoundException fnfe) {
-            System.out.println(fnfe.getMessage());
-            fnfe.printStackTrace();
+            System.err.println(fnfe.getMessage());
+            //fnfe.printStackTrace();
         } catch (TUITPropertyBadFormatException tpbfe) {
-            System.out.println(tpbfe.getMessage());
-            tpbfe.printStackTrace();
+            System.err.println(tpbfe.getMessage());
+            //tpbfe.printStackTrace();
         } catch (JAXBException jaxbee) {
-            System.out.println(jaxbee.getMessage());
-            jaxbee.printStackTrace();
+            System.err.println("The properties file is not well formatted. Please ensure that the XML is consistent with the properties.dtd schema.");
+            //jaxbee.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
-            System.out.println(cnfe.getMessage());
-            cnfe.printStackTrace();
+            //Probably won't happen unless the library deleted from the .jar
+            System.err.println(cnfe.getMessage());
+            //cnfe.printStackTrace();
         } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-            sqle.printStackTrace();
+            System.err.println("A database communication error occurred with the following message:\n" +
+                    sqle.getMessage());
+            if(sqle.getMessage().contains("Access denied for user")){
+                System.err.println("Please use standard database login: "+ NCBITablesDeployer.login+" and password: "+ NCBITablesDeployer.password);
+            }
+            //sqle.printStackTrace();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } finally {
-            System.out.println("Exiting");
+            System.err.println("exiting..");
             System.exit(1);
         }
     }

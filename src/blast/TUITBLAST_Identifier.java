@@ -31,36 +31,66 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
 
     @Override
     public void run() {
-        TUITFileOperator<NucleotideFasta> tuitFileOperator=(TUITFileOperator<NucleotideFasta>)this.fileOperator;
+        TUITFileOperator<NucleotideFasta> tuitFileOperator = (TUITFileOperator<NucleotideFasta>) this.fileOperator;
         try {
-
-            do{
-                this.BLAST();
-                this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-                this.normalizeIterations();
-                for (int i=0;i<this.normalizedIterations.size();i++) {
-                    NormalizedIteration<Iteration> normalizedIteration=(NormalizedIteration<Iteration>)this.normalizedIterations.get(i);
-                    normalizedIteration.specify();
+            boolean remote = false;
+            for (String s : this.parameterList) {
+                if (s.equals("-remote")) {
+                    remote = true;
+                    break;
                 }
 
-            }while ((this.query=tuitFileOperator.nextBatch(this.batchSize))!=null);
+            }
+            if (remote) {
+                System.out.println("Starting job, using NCBI server BLAST");
+            } else {
+                System.out.println("Starting job, using local machine BLAST");
+            }
+            do {
+                if(remote){
+                    System.out.println("Sending BLASTN request..");
+                } else{
+                    System.out.println("BLASTN started..");
+                }
+
+                this.BLAST();
+
+                if(remote){
+                    System.out.println("BLASTN results received..");
+                } else{
+                    System.out.println("BLASTN finished");
+                }
+                this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+                this.normalizeIterations();
+                for (int i = 0; i < this.normalizedIterations.size(); i++) {
+                    NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
+                    normalizedIteration.specify();
+                }
+            } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             tuitFileOperator.reset();
             this.BLASTed = true;
 
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (JAXBException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (BadFromatException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+            //e.printStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.err.println(e.getMessage());
+           //e.printStackTrace();
         }
     }
 

@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/TUIT_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" afterPath="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/NormalizedIteration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TUIT.iml" afterPath="$PROJECT_DIR$/TUIT.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java" afterPath="$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" afterPath="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" afterPath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/properties.xml" afterPath="$PROJECT_DIR$/src/test/properties.xml" />
@@ -24,7 +23,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624110188" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624110188" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371625311589" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371632160606" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -66,7 +65,7 @@
     <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370962883091" ignored="false" />
     <file path="/NamesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370614281578" ignored="false" />
     <file path="/*.regexp" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370211084548" ignored="false" />
-    <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371204886342" ignored="false" />
+    <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371719416668" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371542405363" ignored="false" />
     <file path="/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371542366022" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371542281266" ignored="false" />
@@ -134,17 +133,17 @@
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairList.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371234952274" ignored="false" />
     <file path="/ActionValuePairList.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371234069785" ignored="false" />
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371247565413" ignored="false" />
-    <file path="/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371630596481" ignored="false" />
+    <file path="/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371726149888" ignored="false" />
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371251218912" ignored="false" />
     <file path="/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371247613959" ignored="false" />
-    <file path="/TUTFileOperatorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371460214238" ignored="false" />
+    <file path="/TUTFileOperatorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371716095911" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457045601" ignored="false" />
     <file path="/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457028884" ignored="false" />
     <file path="/BLASTNParameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457293906" ignored="false" />
-    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472008126" ignored="false" />
+    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371727567048" ignored="false" />
     <file path="/TUTFileOperatorHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371459824457" ignored="false" />
     <file path="/TUITPropertyBadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371462970737" ignored="false" />
-    <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371474949472" ignored="false" />
+    <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371727888790" ignored="false" />
     <file path="/QueryCoveragCutoff.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472038682" ignored="false" />
     <file path="/TUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371631859896" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/multithread/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371541868485" ignored="false" />
@@ -155,8 +154,8 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
     <file path="/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
     <file path="/TUITBLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371543896870" ignored="false" />
-    <file path="/NucleotideFastaTUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371632143843" ignored="false" />
-    <file path="/TUITBLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371630532723" ignored="false" />
+    <file path="/NucleotideFastaTUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371713113235" ignored="false" />
+    <file path="/TUITBLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371717993486" ignored="false" />
     <file path="/NormalizedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371626181139" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/BLAST/NCBI/local/exec/NCBI_EX_BLAST.class" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624129084" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -236,41 +235,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
+      <file leaf-file-name="BLAST_Identifier.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="107" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+            <state line="237" column="51" selection-start="12368" selection-end="12368" vertical-scroll-proportion="-1.28">
+              <folding>
+                <element signature="e#1034#1056#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/NormalizedIteration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="374" column="44" selection-start="19623" selection-end="19627" vertical-scroll-proportion="-134.48">
+              <folding>
+                <element signature="e#6235#6250#0" expanded="true" />
+                <element signature="e#8034#8049#0" expanded="true" />
+                <element signature="e#9894#9909#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="properties.dtd" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="30" selection-start="855" selection-end="855" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="28" selection-start="2791" selection-end="2791" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="15" column="13" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxonomicNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java">
+      <file leaf-file-name="properties.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="158" column="170" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="15" column="36" selection-start="658" selection-end="658" vertical-scroll-proportion="0.25510204">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <file leaf-file-name="TUITPropertiesLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="38" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.6632653">
+            <state line="249" column="83" selection-start="14554" selection-end="14554" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -281,7 +300,7 @@
       <file leaf-file-name="TUITBLAST_Identifier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="53" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.0">
+            <state line="79" column="179" selection-start="3094" selection-end="3094" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -292,7 +311,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="172" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0">
+            <state line="118" column="36" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -318,22 +337,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoveragCutoff.java" />
-        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/QueryCoverageCutoff.java" />
         <option value="$PROJECT_DIR$/src/helper/Ranks.java" />
         <option value="$PROJECT_DIR$/src/blast/TUITBlASTer.java" />
         <option value="$PROJECT_DIR$/src/blast/TUITBLASTer.java" />
-        <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
-        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
         <option value="$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java" />
         <option value="$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java" />
-        <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
-        <option value="$PROJECT_DIR$/src/blast/NormalizedIteration.java" />
-        <option value="$PROJECT_DIR$/src/test/properties.xml" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java" />
         <option value="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
+        <option value="$PROJECT_DIR$/src/blast/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
+        <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
+        <option value="$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java" />
+        <option value="$PROJECT_DIR$/src/blast/BLAST_Identifier.java" />
+        <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
+        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java" />
+        <option value="$PROJECT_DIR$/src/test/properties.xml" />
       </list>
     </option>
   </component>
@@ -1067,7 +1086,11 @@
       <created>1371625318452</created>
       <updated>1371625318452</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Untested fully working set">
+      <created>1371632168409</created>
+      <updated>1371632168409</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1104,7 +1127,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1222467" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819384" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.4735683" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1158,7 +1181,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully tested, prints out results." />
+    <option name="LAST_COMMIT_MESSAGE" value="Untested fully working set" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1172,7 +1195,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="TaxonomicNode implemented" />
     <MESSAGE value="NormalyzedIteration almost implemented" />
     <MESSAGE value="TUITCutoffSet implemented" />
     <MESSAGE value="liftRankForNormalyzedHit implemented" />
@@ -1197,6 +1219,7 @@
     <MESSAGE value="Generification corrected" />
     <MESSAGE value="attachFullDirectLineage(TaxonomicNode taxonomicNode) implemented to fully characterize the pivotal hit's ancestors" />
     <MESSAGE value="Successfully tested, prints out results." />
+    <MESSAGE value="Untested fully working set" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1210,120 +1233,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/org/xml/sax/XMLReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="410" column="172" selection-start="14522" selection-end="14522" vertical-scroll-proportion="0.73170733">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="5" selection-start="5684" selection-end="5684" vertical-scroll-proportion="0.0">
+        <state line="62" column="42" selection-start="2527" selection-end="2527" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="25" selection-start="8160" selection-end="8160" vertical-scroll-proportion="0.4">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedHit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="488" selection-end="488" vertical-scroll-proportion="-0.4085603">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/net/SocketInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="23" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/BLAST/NCBI/local/exec/NCBI_EX_BLASTN.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="173" selection-end="173" vertical-scroll-proportion="0.08886256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/format/fasta/Fasta.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="28" selection-start="778" selection-end="778" vertical-scroll-proportion="0.6306069">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedIteration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="369" column="85" selection-start="19507" selection-end="19507" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#6235#6250#0" expanded="true" />
-            <element signature="e#8034#8049#0" expanded="true" />
-            <element signature="e#9894#9909#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_21/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="763" column="179" selection-start="31997" selection-end="31997" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="22" selection-start="749" selection-end="749" vertical-scroll-proportion="-0.9013606">
-          <folding>
-            <element signature="e#1034#1056#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="107" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="170" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="131" selection-start="2458" selection-end="2537" vertical-scroll-proportion="0.48249027">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2002#2019#0" expanded="true" />
-            <element signature="e#2953#2975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="172" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="53" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2141#2853#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1339,10 +1262,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="38" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.6632653">
+        <state line="38" column="60" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.64625853">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/TaxonomicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="170" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.3877551">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/GI_TaxIDDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="291" selection-end="291" vertical-scroll-proportion="0.15306123">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="131" selection-start="2458" selection-end="2537" vertical-scroll-proportion="-0.271777">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2002#2019#0" expanded="true" />
+            <element signature="e#2953#2975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.18707483">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/BLAST_Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="237" column="51" selection-start="12368" selection-end="12368" vertical-scroll-proportion="-1.28">
+          <folding>
+            <element signature="e#1034#1056#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="374" column="44" selection-start="19623" selection-end="19627" vertical-scroll-proportion="-134.48">
+          <folding>
+            <element signature="e#6235#6250#0" expanded="true" />
+            <element signature="e#8034#8049#0" expanded="true" />
+            <element signature="e#9894#9909#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="36" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/properties.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="30" selection-start="855" selection-end="855" vertical-scroll-proportion="-10.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/TUITBLAST_Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="179" selection-start="3094" selection-end="3094" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/properties/jaxb/TUITPropertiesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="249" column="83" selection-start="14554" selection-end="14554" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="36" selection-start="658" selection-end="658" vertical-scroll-proportion="0.25510204">
+          <folding />
         </state>
       </provider>
     </entry>
