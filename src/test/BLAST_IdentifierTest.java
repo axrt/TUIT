@@ -93,6 +93,11 @@ public class BLAST_IdentifierTest {
                 }
 
                 @Override
+                protected boolean inputFileFormattingIsFine() throws Exception {
+                    return false;  //To change body of implemented methods use File | Settings | File Templates.
+                }
+
+                @Override
                 public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
                     System.out.println(query.getAC()+": " + normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
                     return true;  //To change body of implemented methods use File | Settings | File Templates.

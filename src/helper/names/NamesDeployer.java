@@ -44,12 +44,10 @@ public class NamesDeployer {
         try {
             statement = connection.createStatement();
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
-            if(statement!=null){
+            if (statement != null) {
                 statement.close();
-            }  
+            }
         }
 
         try {
@@ -85,16 +83,12 @@ public class NamesDeployer {
             //Execute batch for the trace in the buffer
             preparedStatement.executeBatch();
 
-        } catch (SQLException sqle) {
-            throw sqle;
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             //Close and cleanup
-            if(bufferedReader!=null){
-                bufferedReader.close(); 
+            if (bufferedReader != null) {
+                bufferedReader.close();
             }
-            if(preparedStatement!=null){
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
         }
@@ -123,19 +117,14 @@ public class NamesDeployer {
                 String[] splitter = line.split("\t");
                 String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
                 if (split[6].equals(NamesDeployer.SCIENTIFIC_NAME)) {
-                    //TODO: input another check which filters out environmental and other crap
                     fileWriter.write(split[0] + '\t' + split[2] + '\n');
                 }
             }
             fileWriter.flush();
 
-        } catch (FileNotFoundException fnfe) {
-            throw fnfe;
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             bufferedReader.close();
-            if(fileWriter!=null){
+            if (fileWriter != null) {
                 fileWriter.close();
             }
             return filteredNamesDmpFile;
@@ -156,8 +145,8 @@ public class NamesDeployer {
         try {
             statement = connection.createStatement();
             //Switch to a correct schema
-            statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
+                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "LOAD DATA INFILE '"
                             + nodesFilteredFile.toString()
                             + "' REPLACE INTO TABLE "
@@ -168,12 +157,10 @@ public class NamesDeployer {
                             + LookupNames.dbs.NCBI.names.columns.name
                             + ")");
 
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
-            if(statement!=null){
-                statement.close(); 
-            }      
+            if (statement != null) {
+                statement.close();
+            }
         }
     }
 }

@@ -46,8 +46,6 @@ public class NodesDBDeployer {
                 //Put every rank value into the set
                 ranks.add(line.split("\t|\t")[4]);
             }
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             //Close everything and return the set
             if (bufferedReader != null) {
@@ -92,12 +90,10 @@ public class NodesDBDeployer {
         try {
             statement = connection.createStatement();
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();
-            }                             //TODO: move all such cases to the prepared statement
+            }
         }
 
         PreparedStatement preparedStatement = null;
@@ -113,8 +109,6 @@ public class NodesDBDeployer {
             }
             //Execute the batch
             preparedStatement.executeBatch();
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             //Close and cleanup
             if (preparedStatement != null) {
@@ -139,15 +133,13 @@ public class NodesDBDeployer {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             //Create a statement and execute
             ResultSet resultSet = statement.executeQuery(
-                    "select * from " + LookupNames.dbs.NCBI.ranks.name
+                    "use " + LookupNames.dbs.NCBI.name + ";" +
+                            "select * from " + LookupNames.dbs.NCBI.ranks.name
             );
 
             while (resultSet.next()) {
                 ranks_ids.put(resultSet.getString(2), resultSet.getInt(1));
             }
-
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();
@@ -173,8 +165,6 @@ public class NodesDBDeployer {
         try {
             statement = connection.createStatement();
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();
@@ -217,10 +207,6 @@ public class NodesDBDeployer {
             //Flush the batch
             preparedStatement.executeBatch();
 
-        } catch (IOException ioe) {
-            throw ioe;
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             //Close and cleanup
             if (bufferedReader != null) {
@@ -263,12 +249,6 @@ public class NodesDBDeployer {
             }
             fileWriter.flush();
 
-        } catch (FileNotFoundException fnfe) {
-            throw fnfe;
-        } catch (IOException ioe) {
-            throw ioe;
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (bufferedReader != null) {
                 bufferedReader.close();
@@ -308,8 +288,6 @@ public class NodesDBDeployer {
                             + LookupNames.dbs.NCBI.nodes.columns.id_ranks
                             + ")");
             statement.execute("SET foreign_key_checks = 1;");
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();

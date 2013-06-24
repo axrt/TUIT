@@ -10,24 +10,31 @@ import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 /**
- * //TODO:document
+ * This class loads and checks the properties XML file, thereby passing the parameters values to the program
  */
 public class TUITPropertiesLoader {
-
+    /**
+     * Is printed out as an example of DBConnection formatting
+     */
     private static String DBCONNECTION_EXAMPLE = "please correct as shown below: \n" +
             "<TUITProperties>\n" +
             "    <DBConnection url=\"localhost (or an ip address)\" login=\"login\" password=\"passwd\"/>\n" +
             "    <BLASTNPath path=...";
-
+    /**
+     * Is printed out as an example of BLASTNPath formatting
+     */
     private static String BLASTNPATH_EXAMPLE = "please correct as shown below: \n" +
             "<BLASTNPath path=\"/usr/bin/blastn\"/>";
-
+    /**
+     * Is printed out as an example of TMPDir formatting
+     */
     private static String TMPDIRPATH_EXAMPLE = "please correct as shown below: \n" +
             "<TMPDir path=\"/home/user/tmp\"/>";
-
+    /**
+     * Is printed out as an example of CutoffSet formatting
+     */
     private static String CUTOFFSET_EXAMPLE = "please correct as shown below: \n" +
             "<SpecificationParameters>\n" +
             "        <CutoffSet rank=\"species\">\n" +
@@ -36,9 +43,13 @@ public class TUITPropertiesLoader {
             "            <EvalueRatioCutoff value=\"100\"/>\n" +
             "        </CutoffSet>\n" +
             "    </SpecificationParameters>";
-
+    /**
+     * Is printed out as an example of BLASTNPath formatting
+     */
     private static String CORRECT_TO_UNSIGNED_DOUBLE = ", please correct to a unsigned double value in [1.0,100.0]";
-
+    /**
+     * A preset of BLASTNParameters to substitue any of those missing from the properties file
+     */
     private static BLASTNParameters DEFAULT_BLASTN_PARAMETERS = new BLASTNParameters();
 
     static {
@@ -61,14 +72,27 @@ public class TUITPropertiesLoader {
         //Database
         Database defaultDatabase = new Database();
         defaultDatabase.setUse("nt");
-        TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.database = new ArrayList<Database>();
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getDatabase().add(defaultDatabase);
     }
 
-
+    /**
+     * Lazy inicialized TUITProperties
+     */
     private volatile TUITProperties tuitProperties = null;
+
+    /**
+     * Properties file
+     */
     private final File propertiesFile;
 
+    /**
+     * A lazy inicialization thread-safe implementation of a TUITProperties getter
+     * @return {@link TUITProperties}, loaded from the xml and checked for consistency.
+     * @throws FileNotFoundException
+     * @throws JAXBException
+     * @throws SAXException
+     * @throws TUITPropertyBadFormatException
+     */
     public TUITProperties getTuitProperties() throws FileNotFoundException, JAXBException, SAXException, TUITPropertyBadFormatException {
         TUITProperties tp = tuitProperties;
         if (tp == null) {
@@ -82,10 +106,20 @@ public class TUITPropertiesLoader {
         return tp;
     }
 
+    /**
+     * Constructor from the properties file
+     * @param propertiesFile
+     */
     private TUITPropertiesLoader(File propertiesFile) {
         this.propertiesFile = propertiesFile;
     }
 
+    /**
+     * Performs a full check of the properties, praloaded form the properties file.
+     * @param tuitProperties {@link TUITProperties} loaded from the XML properties file
+     * @return {@link TUITProperties} that points to the same object, but has been checked for consistency.
+     * @throws TUITPropertyBadFormatException thrown in case any of the properties were badly formatted or make no sense.
+     */
     private TUITProperties checkProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
 
         //Check the database connection
@@ -139,8 +173,8 @@ public class TUITPropertiesLoader {
             tuitProperties.setBLASTNParameters(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS);
             System.out.println("No BLASTN parameters loaded, using default.");
         }
-        if (blastnParameters.getDatabase() == null || blastnParameters.getDatabase().size() == 0) {
-            blastnParameters.database = new ArrayList<Database>(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getDatabase());
+        if (blastnParameters.getDatabase().size() == 0) {
+            blastnParameters.getDatabase().addAll(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getDatabase());
             System.out.println("No BLASTN Database property, using default: nt.");
         } else {
             for (Database database : blastnParameters.getDatabase()) {
@@ -179,7 +213,7 @@ public class TUITPropertiesLoader {
                 throw new TUITPropertyBadFormatException("Erroneous Remote value, please provide \"yes\" or \"no\"");
             }
         }
-        if (blastnParameters.getMaxFilesInBatch() != null&&blastnParameters.getMaxFilesInBatch().getValue()!=null) {
+        if (blastnParameters.getMaxFilesInBatch() != null && blastnParameters.getMaxFilesInBatch().getValue() != null) {
             try {
                 Integer i = Integer.parseInt(blastnParameters.getMaxFilesInBatch().getValue());
                 if (i < 0) {
@@ -204,9 +238,9 @@ public class TUITPropertiesLoader {
                     throw new TUITPropertyBadFormatException("No rank specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
                 } else {
                     try {
-                        if(specificationParameters.getCutoffSet().getRank()!=null){
+                        if (specificationParameters.getCutoffSet().getRank() != null) {
                             Ranks.valueOf(specificationParameters.getCutoffSet().getRank());
-                        }else{
+                        } else {
                             throw new TUITPropertyBadFormatException("No rank property specified at cutoff set number  " + i);
                         }
                     } catch (IllegalArgumentException iae) {
@@ -214,7 +248,7 @@ public class TUITPropertiesLoader {
                                 Ranks.LIST_RANKS);
                     }
                 }
-                if (specificationParameters.getCutoffSet().getPIdentCutoff() == null||specificationParameters.getCutoffSet().getPIdentCutoff().getValue()==null) {
+                if (specificationParameters.getCutoffSet().getPIdentCutoff() == null || specificationParameters.getCutoffSet().getPIdentCutoff().getValue() == null) {
                     throw new TUITPropertyBadFormatException("No pIdent cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
                 } else {
                     try {
@@ -226,7 +260,7 @@ public class TUITPropertiesLoader {
                         throw new TUITPropertyBadFormatException("Bad pIdent cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
                     }
                 }
-                if (specificationParameters.getCutoffSet().getQueryCoverageCutoff() == null||specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue() == null) {
+                if (specificationParameters.getCutoffSet().getQueryCoverageCutoff() == null || specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue() == null) {
                     throw new TUITPropertyBadFormatException("No Query coverage cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
                 } else {
                     try {
@@ -238,7 +272,7 @@ public class TUITPropertiesLoader {
                         throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
                     }
                 }
-                if (specificationParameters.getCutoffSet().getEvalueRatioCutoff() == null||specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue() == null) {
+                if (specificationParameters.getCutoffSet().getEvalueRatioCutoff() == null || specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue() == null) {
                     throw new TUITPropertyBadFormatException("No E-value ratio cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
                 } else {
                     try {
@@ -257,10 +291,22 @@ public class TUITPropertiesLoader {
         return tuitProperties;
     }
 
+    /**
+     * Loads properties from a formatted XML file into a {@link TUITProperties} object
+     * @return {@link TUITProperties} loaded from the properties file
+     * @throws FileNotFoundException
+     * @throws JAXBException
+     * @throws SAXException
+     */
     private TUITProperties loadProperties() throws FileNotFoundException, JAXBException, SAXException {
         return TUTFileOperatorHelper.catchProperties(new FileInputStream(this.propertiesFile));
     }
 
+    /**
+     * A static factory to create a new instance of {@link TUITPropertiesLoader}
+     * @param propertiesFile {@link File} that contains the XML formatted TUIT properties.
+     * @return a new instance of {@link TUITPropertiesLoader}
+     */
     public static TUITPropertiesLoader newInstanceFromFile(File propertiesFile) {
         return new TUITPropertiesLoader(propertiesFile);
     }

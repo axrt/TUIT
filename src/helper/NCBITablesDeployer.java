@@ -16,7 +16,6 @@ import java.sql.SQLException;
  * Standard login is "tuit", password "tuit"
  */
 public class NCBITablesDeployer {
-    //TODO: correct the ocular to a tuit password
     /**
      * Database login
      */
@@ -32,8 +31,6 @@ public class NCBITablesDeployer {
     private NCBITablesDeployer() {
         throw new AssertionError();
     }
-
-    //TODO: implement the sql script that deploys the full schema from MySQL Workbench
 
     /**
      * Deploys the full set of files for the NCBI taxonomic database

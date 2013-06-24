@@ -254,7 +254,7 @@ public class NormalizedIteration<I extends Iteration> {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
                 System.out.println("Attaching taxonomy for hits with better E-value.");
-                if(this.blastIdentifier.isParentOrSiblingTo(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())){
+                if(this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(), this.pivotalHit.getAssignedTaxid())){
                     System.out.println("Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
                             " it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
                     return false;

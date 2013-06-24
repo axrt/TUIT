@@ -11,7 +11,6 @@ import java.util.Set;
  * Contains utility methods for nodes database deployment from gi_taxid.dmp file from NCBI
  */
 
-//TODO: delete all rethrows from everywhere
 public class GI_TaxIDDeployer {
     /**
      * Constructor grants non-instantiability
@@ -41,26 +40,13 @@ public class GI_TaxIDDeployer {
         //As long as the NCBI database is not fully consistent and not all of the GIs have assigned "scientific names" through the
         //"names" database, it is assumed that the names database has been successfully deployed and the existing taxids already
         //exist within the database.
-
-
-        //Switch to a correct schema
-        try {
-            statement = connection.createStatement();
-            statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } catch (SQLException sqle) {
-            throw sqle;
-        } finally {
-            if (statement != null) {
-                statement.close();            //TODO: transfer this and all the analogous to the prepared statement
-            }
-        }
-
         //Create a set of existing taxids
         Set<Integer> existingTaxIDs = null;
         try {
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery(
+                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "select count("
                             + LookupNames.dbs.NCBI.names.columns.taxid + ") from "
                             + LookupNames.dbs.NCBI.names.name);
@@ -78,8 +64,6 @@ public class GI_TaxIDDeployer {
                 existingTaxIDs.add(resultSet.getInt(1));
             }
 
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();
@@ -124,10 +108,6 @@ public class GI_TaxIDDeployer {
             //Execute batch for the trace in the buffer
             preparedStatement.executeBatch();
 
-        } catch (SQLException sqle) {
-            throw sqle;
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             //Close and cleanup
             if (bufferedReader != null) {
@@ -155,17 +135,7 @@ public class GI_TaxIDDeployer {
 
         Statement statement = null;
         ResultSet resultSet = null;
-        //Switch to a correct schema
-        try {
-            statement = connection.createStatement();
-            statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } catch (SQLException sqle) {
-            throw sqle;
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
-        }
+
 
         //Create a set of existing taxids
         Set<Integer> existingTaxIDs = null;
@@ -174,6 +144,7 @@ public class GI_TaxIDDeployer {
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery(
+                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "select count("
                             + LookupNames.dbs.NCBI.names.columns.taxid + ") from "
                             + LookupNames.dbs.NCBI.names.name);
@@ -191,9 +162,7 @@ public class GI_TaxIDDeployer {
                 existingTaxIDs.add(resultSet.getInt(1));
             }
 
-        } catch (SQLException sqle) {
-            throw sqle;
-        } finally {
+        }finally {
             if (statement != null) {
                 statement.close();
             }
@@ -214,10 +183,6 @@ public class GI_TaxIDDeployer {
                     fileWriter.write(line + '\n');
                 }
             }
-        } catch (FileNotFoundException fnfe) {
-            throw fnfe;
-        } catch (IOException ioe) {
-            throw ioe;
         } finally {
             if (bufferedReader != null) {
                 bufferedReader.close();
@@ -245,16 +210,14 @@ public class GI_TaxIDDeployer {
         try {
             statement = connection.createStatement();
             //Switch to a correct schema
-            statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
+                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "LOAD DATA INFILE '"
                             + gi_taxidFilteredFile.toString()
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.gi_taxid.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");
 
-        } catch (SQLException sqle) {
-            throw sqle;
         } finally {
             if (statement != null) {
                 statement.close();

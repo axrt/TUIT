@@ -5,7 +5,7 @@ import BLAST.NCBI.output.Iteration;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.hit.NormalizedHit;
 import blast.normal.iteration.NormalizedIteration;
-import db.connect.DatabaseOperator;
+import db.connect.TaxonomicDatabaseOperator;
 import db.tables.LookupNames;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
@@ -27,7 +27,7 @@ import java.util.Map;
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
  * given queries automatically.
  */
-public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements DatabaseOperator {
+public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements TaxonomicDatabaseOperator {
 
     /**
      * A Map for default cutoff sets, which are used whenever a custom set was not given
@@ -380,7 +380,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      * @throws SQLException in case a database communication error occurs
      */
     @Override
-    public boolean isParentOrSiblingTo(int parentTaxid, int taxid) throws SQLException {
+    public boolean isParentOf(int parentTaxid, int taxid) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -401,7 +401,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                 if (parentTaxid == resultSet.getInt(1)) {
                     return true;
                 } else if (resultSet.getInt(1) != 1) {
-                    return this.isParentOrSiblingTo(parentTaxid, resultSet.getInt(1));
+                    return this.isParentOf(parentTaxid, resultSet.getInt(1));
                 } else {
                     return false;
                 }

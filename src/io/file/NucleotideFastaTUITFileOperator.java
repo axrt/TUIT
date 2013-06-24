@@ -2,16 +2,19 @@ package io.file;
 
 import BLAST.NCBI.output.Iteration;
 import blast.normal.iteration.NormalizedIteration;
+import exception.FastaInputFileException;
+import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Created with IntelliJ IDEA.
- * User: alext
- * Date: 6/18/13
- * Time: 1:50 PM
- * To change this template use File | Settings | File Templates.
+ * A {@link TUITFileOperator} for the {@link NucleotideFasta}s.
  */
 public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
     /**
@@ -30,13 +33,31 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
     }
 
     @Override
+    protected boolean inputFileFormattingIsFine() throws FastaInputFileException, IOException {
+
+        BufferedReader bf=new BufferedReader(new FileReader(this.inputFile));
+        Set<String> fastaACs=new HashSet<String>();
+        String nextLine;
+        int fastaNumber=0;
+        while ((nextLine=bf.readLine())!=null){
+             if(line.startsWith(Fasta.fastaStart)){
+                 fastaNumber++;
+                 if(!fastaACs.add(nextLine)){
+                      throw new FastaInputFileException("A non-unique name at "+fastaNumber+" record.");
+                 }
+             }
+        }
+
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     protected NucleotideFasta newFastaFromRecord(String record) throws Exception {
         return NucleotideFasta.newInstanceFromFromattedText(record);
     }
 
     @Override
     public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
-        //TODO: input preparsing for fasta naming collisions
         this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();

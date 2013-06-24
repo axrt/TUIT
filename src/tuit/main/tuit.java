@@ -24,15 +24,28 @@ import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-//TODO: comment as soon as works
-//TODO: rename package from company to smth normal
-public class Main {
+/**
+ * A main class for the tuit module implementation
+ */
 
+public class tuit {
+
+    /**
+     * The -in flag for the input file
+     */
     public final static String IN = "in";
+    /**
+     * The -out flag for the output file
+     */
     public final static String OUT = "out";
+    /**
+     * the -p flag for the properties file
+     */
     public final static String P = "p";
+    /**
+     * tuit output file extension
+     */
     public final static String TUIT_EXT = ".tuit";
-    public final static String USAGE = "";//TODO: give a correct usage explanation
 
     public static void main(String[] args) {
 
@@ -57,29 +70,29 @@ public class Main {
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
-        options.addOption(Main.IN, "input<file>", true, "Input file (currently fasta-formatted only)");
-        options.addOption(Main.OUT, "output<file>", true, "Output file (in " + Main.TUIT_EXT + " format)");
-        options.addOption(Main.P, "prop<file>", true, "Properties file (XML formatted)");
+        options.addOption(tuit.IN, "input<file>", true, "Input file (currently fasta-formatted only)");
+        options.addOption(tuit.OUT, "output<file>", true, "Output file (in " + tuit.TUIT_EXT + " format)");
+        options.addOption(tuit.P, "prop<file>", true, "Properties file (XML formatted)");
         HelpFormatter formatter = new HelpFormatter();
         try {
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
             //Check vital parameters
-            if (!commandLine.hasOption(Main.IN)) {
+            if (!commandLine.hasOption(tuit.IN)) {
                 throw new ParseException("No input file option found, exiting.");
             } else {
-                inputFile = new File(commandLine.getOptionValue(Main.IN));
+                inputFile = new File(commandLine.getOptionValue(tuit.IN));
             }
-            if (!commandLine.hasOption(Main.P)) {
+            if (!commandLine.hasOption(tuit.P)) {
                 throw new ParseException("No io.properties file option found, exiting.");
             } else {
-                properties = new File(commandLine.getOptionValue(Main.P));
+                properties = new File(commandLine.getOptionValue(tuit.P));
             }
             //Correct the output file option if needed
-            if (!commandLine.hasOption(Main.OUT)) {
-                outputFile = new File((inputFile.getPath()).split("\\.")[0] + Main.TUIT_EXT);
+            if (!commandLine.hasOption(tuit.OUT)) {
+                outputFile = new File((inputFile.getPath()).split("\\.")[0] + tuit.TUIT_EXT);
             } else {
-                outputFile = new File(commandLine.getOptionValue(Main.OUT));
+                outputFile = new File(commandLine.getOptionValue(tuit.OUT));
             }
             //Try all files
             if (!inputFile.exists() || !inputFile.canRead()) {

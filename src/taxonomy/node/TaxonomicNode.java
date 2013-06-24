@@ -119,15 +119,6 @@ public class TaxonomicNode {
         }
     }
 
-    //TODO: document
-    public boolean isSiblingOf(int taxid) {
-        if (this.taxid == taxid) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Checks whether the list of {@link TaxonomicNode} children contains a child node with the given taxid
      *
