@@ -64,9 +64,9 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
     }
 
     /**
-     * Should be able to create a new {@link T} for a {@link String} representation
+     * Should be able to create a new T-representation for a {@link String} representation
      * @param record {@link String} representation of a fasta-formatted record
-     * @return {@link T} newly created from the record.
+     * @return newly created from the record.
      * @throws Exception
      */
     protected abstract T newFastaFromRecord(String record) throws Exception;
@@ -80,9 +80,9 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
     protected abstract boolean inputFileFormattingIsFine() throws Exception;
 
     /**
-     * Returns a {@code List} of {@link T} that will be used as query for specification.
+     * Returns a {@code List} of T that will be used as query for specification.
      * @param size
-     * @return {@link List} of query {@link T}s if the file contained any more records, {@code null} if
+     * @return {@link List} of query Ts if the file contained any more records, {@code null} if
      * the file contained none.
      * @throws Exception
      */

@@ -26,10 +26,10 @@ public class NodesDBDeployer {
 
     /**
      * Creates a set of ranks from the nodes.dmp file. Used to create a validation table,
-     * (with the help of {@code NodesDBDeployerassingIDsToRanks(Set<String> ranks)} otherwise the NCBI database contains too much redundancy.
+     * (with the help of {@code NodesDBDeployerassingIDsToRanks(Set ranks)} otherwise the NCBI database contains too much redundancy.
      *
      * @param nodesDmpFile an NCBI nodes.dmp {@link File} that contains the full set of ranks in a redundant format
-     * @return a {@link Set<String>} of all possible ranks within the file
+     * @return a {@link Set} of all possible ranks within the file
      * @throws IOException in case smth goes wrong during file read and parsing
      */
     @Deprecated
@@ -58,11 +58,11 @@ public class NodesDBDeployer {
 
     /**
      * <b>Deprectaed due to that the database needs strongly a strongly ordered set of ranks.</b>
-     * Generates a {@link Map<String, Integer>} that helps create a validation table for the nodes NCBI taxonomic database.
+     * Generates a {@link Map} that helps create a validation table for the nodes NCBI taxonomic database.
      * <b>Deprecated due to redundancy</b>
      *
-     * @param ranks {@link Set<String>} of ranks
-     * @return a new {@link  Map<String, Integer>} where each ranks has been assigned a unique ID
+     * @param ranks {@link Set} of ranks
+     * @return a new {@link  Map} where each ranks has been assigned a unique ID
      */
     @Deprecated
     public static Map<String, Integer> assingIDsToRanks(Set<String> ranks) {
@@ -121,7 +121,7 @@ public class NodesDBDeployer {
      * Collects a lookup map that will further allow easy lookup during the nodes.dmp insert
      *
      * @param connection {@link Connection} to the database
-     * @return a {@link Map<String, Integer>} lookup from the database id_ranks, rank validation table columns
+     * @return a {@link Map} lookup from the database id_ranks, rank validation table columns
      * @throws SQLException in case an error occurs during database communication
      */
     public static Map<String, Integer> collectRanksValidationLookup(Connection connection) throws SQLException {

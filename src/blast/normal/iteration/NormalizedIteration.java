@@ -124,7 +124,7 @@ public class NormalizedIteration<I extends Iteration> {
     /**
      * Tries to lift the current {@link Ranks} of specification,
      *
-     * @return {@code true} if succeeds, {@code false} it the {@link Ranks} is already {@link Ranks.root_of_life}, and no further rising is possible
+     * @return {@code true} if succeeds, {@code false} it the {@link Ranks} is already {@link Ranks}.root_of_life, and no further rising is possible
      */
     protected boolean couldLiftCurrentRank() {
         if (this.currentRank != Ranks.superkingdom) {
@@ -139,7 +139,7 @@ public class NormalizedIteration<I extends Iteration> {
     /**
      * Creates a list of hits that display GIs that point to the current taxonomic rank
      *
-     * @return {@link List<NormalizedHit>} of normalized hits at current taxonomic rank
+     * @return {@link List} of normalized hits at current taxonomic rank
      */
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
         //First - count how many hits with this rank exist
@@ -167,10 +167,10 @@ public class NormalizedIteration<I extends Iteration> {
     }
 
     /**
-     * Ensures that all of the hits from a given {@link List<NormalizedHit>} pass the cutoffs threshold at the current level of taxonomic identification.
+     * Ensures that all of the hits from a given {@link List} pass the cutoffs threshold at the current level of taxonomic identification.
      *
-     * @param normalizedHitsUnderTest{@link List<NormalizedHit>} of normalized hits to test
-     * @return {@link List<NormalizedHit>} of only those normalized hits that have passed, {@code null} in case none of the normalized hits passed the cutoffs,
+     * @param normalizedHitsUnderTest {@link List} of normalized hits to test
+     * @return {@link List} of only those normalized hits that have passed, {@code null} in case none of the normalized hits passed the cutoffs,
      *         if a {@code null} or an empty list was passed as a parameter.
      * @throws SQLException in case a communication error occurs during the database interaction
      */
@@ -204,7 +204,7 @@ public class NormalizedIteration<I extends Iteration> {
     /**
      * Assembles a list of normalized hits that have better E-values than the potential pivotal hit.
      *
-     * @return {@link List<NormalizedHit>} of normalized hits that have better E-values than the potential pivotal hit.
+     * @return {@link List} of normalized hits that have better E-values than the potential pivotal hit.
      *         {@code null} in case the current potential pivotal hit was the first one on the list, or if the potential pivotal hit
      *         has not been assigned yet
      */
@@ -329,7 +329,7 @@ public class NormalizedIteration<I extends Iteration> {
      * Check whether the {@link NormalizedHit}s that have worse (higher) E-value point to the same taxid as the potential pivotal hit, and if so -
      * whether the E-value difference (in folds, ratio) is more than the cutoff value at the current {@link Ranks} of specification
      *
-     * @return {@link false} in two cases - 1. if current potential pivotal hit is {@code null}
+     * @return {@code false} in two cases - 1. if current potential pivotal hit is {@code null}
      *         2. if there was a {@link NormalizedHit} that pointed to a different taxid at the current {@link Ranks} and the E-value ratio was less than the cutoff
      *         otherwise - returns true
      * @throws SQLException in case an error occurs during the database communication

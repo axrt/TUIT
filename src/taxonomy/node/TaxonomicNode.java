@@ -68,9 +68,9 @@ public class TaxonomicNode {
     }
 
     /**
-     * A getter for {@link boolean} isRoot
+     * A getter for {@code boolean} isRoot
      *
-     * @return {@link boolean} isRoot
+     * @return {@code boolean} isRoot
      */
     public boolean isRoot() {
         return this.isRoot;

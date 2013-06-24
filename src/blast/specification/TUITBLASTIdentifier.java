@@ -28,7 +28,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
     /**
      * A protected constructor.
      *
-     * @param query                  {@link List<NucleotideFasta  >} a list of query
+     * @param query                  {@link List} a list of query
      *                               fasta-formatted records
      * @param tempDir                {@link File} - A temporary directory that will be used to dump
      *                               the input and output files, that are used by the ncbi+
@@ -36,13 +36,13 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * @param executive              {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                               allow to create an input file as well as catch the blast
      *                               output
-     * @param parameterList          {@link String[]} A list of parameters. Should maintain a
+     * @param parameterList          {@link String}[] A list of parameters. Should maintain a
      *                               certain order. {"<-command>", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
      * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
      *                               taxonomic information
-     * @param cutoffSetMap           a {@link Map<Ranks,  blast.specification.cutoff.TUITCutoffSet >}, provided by the user and that may differ from the
+     * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
      * @param batchSize              {@code int} number of fasta records in one batch
      */
@@ -135,13 +135,13 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * @param executive              {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                               allow to create an input file as well as catch the blast
      *                               output
-     * @param parameterList          {@link String[]} A list of parameters. Should maintain a
+     * @param parameterList          {@link String}[] A list of parameters. Should maintain a
      *                               certain order. {"<-command>", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
      * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
      *                               taxonomic information
-     * @param cutoffSetMap           a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
+     * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
      * @return                       {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
      * @throws Exception if the input file read error occurs

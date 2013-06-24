@@ -84,7 +84,7 @@ public class NormalizedHit<H extends Hit> {
     /**
      * A getter for the current hit taxid (at the current rank)
      *
-     * @return
+     * @return {@code int} taxid
      */
     public int getAssignedTaxid() {
         return this.focusNode.getTaxid();
@@ -118,7 +118,7 @@ public class NormalizedHit<H extends Hit> {
     /**
      * A getter for GI
      *
-     * @return {@link  int} the GI for the current hit
+     * @return {@code  int} the GI for the current hit
      */
     public int getGI() {
         return GI;

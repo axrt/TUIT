@@ -94,9 +94,9 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     protected List<NormalizedIteration<Iteration>> normalizedIterations;
 
     /**
-     * @param query         {@link List<T extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
+     * @param query         {@link List} a list of query
      *                      fasta-formatted records
-     * @param query_IDs     {@link List<String>} a list of AC numbers of sequences in a
+     * @param query_IDs     {@link List} a list of AC numbers of sequences in a
      *                      database
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
@@ -104,12 +104,12 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param executive     {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                      allow to create an input file as well as catch the blast
      *                      output
-     * @param parameterList {@link String[]} A list of parameters. Should maintain a
+     * @param parameterList {@link String}[] A list of parameters. Should maintain a
      *                      certain order. {"<-command>", "[value]"}, just the way if in
      *                      the blast+ executable input
      * @param connection    a connection to the SQL Database that contains a NCBI schema with all the nessessary
      *                      taxonomic information
-     * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
+     * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
      *                      default set
      */
     protected BLASTIdentifier(List<T> query, List<String> query_IDs,
@@ -127,7 +127,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param normalizedHit {@link blast.normal.hit.NormalizedHit} a hit to check
      * @param rank          {@link Ranks} a rank at which to check
      * @return {@code true} if the {@link blast.normal.hit.NormalizedHit} checks, otherwise {@code false} is returned. Upon null instead of either normalizedHit or rank
-     *         returns {@link false}.
+     *         returns {@code false}.
      */
     public boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
@@ -151,7 +151,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param rank                 {@link Ranks} at which the E-value difference is being monitored
      * @return {@code true} if the {@link NormalizedHit}'s ratio (difference in folds) is greater than the cutoff, otherwise {@code false}
      *         is returned. Upon null instead of either normalizedHit or rank
-     *         returns {@link false}.
+     *         returns {@code false}.
      */
     public boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
@@ -447,7 +447,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * A static factory to get a new instance of a {@link BLASTIdentifier}
      * /**
      *
-     * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
+     * @param query         {@link List} a list of query
      *                      fasta-formatted records
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
@@ -455,12 +455,12 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param executive     {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                      allow to create an input file as well as catch the blast
      *                      output
-     * @param parameterList {@link String[]} A list of parameters. Should maintain a
+     * @param parameterList {@link String}[] A list of parameters. Should maintain a
      *                      certain order. {"<-command>", "[value]"}, just the way if in
      *                      the blast+ executable input
      * @param connection    a connection to the SQL Database that contains a NCBI schema with all the nessessary
      *                      taxonomic information
-     * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
+     * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
      *                      default set
      * @return a new instance of {@link BLASTIdentifier} from the given parameters
      */

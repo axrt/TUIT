@@ -122,7 +122,7 @@ public class GI_TaxIDDeployer {
     /**
      * Makes a filtered copy of the gi_taxid.dmo database dump file, downloaded from the NCBI FTP.
      * As long as the taxid field of the GI_TAXID database has a foreigh key of taxid form the Names database,
-     * it first extracts all existing taxids form the Names table and generates a {@link HashSet<Integer>}.
+     * it first extracts all existing taxids form the Names table and generates a {@link HashSet}.
      * It then reads the .dmp file line by line and writes to a .mod file only those lines, that contain a valid taxid.
      *
      * @param connection   {@link Connection} to the database
