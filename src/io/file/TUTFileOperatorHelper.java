@@ -57,11 +57,11 @@ public class TUTFileOperatorHelper {
             public InputSource resolveEntity(String publicId, String systemId)
                     throws SAXException, IOException {
                 String file = null;
-                if (systemId.contains("io.properties.dtd")) {
-                    file = "io.properties.dtd";
+                if (systemId.contains("properties.dtd")) {
+                    file = "properties.dtd";
                 } else{
                     throw new SAXException("Wrong name for the schema dtd, please correct to \n" +
-                            "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"io.properties.dtd\">");
+                            "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"properties.dtd\">");
                 }
                 return new InputSource(TUITProperties.class
                         .getResourceAsStream(file));

@@ -44,9 +44,8 @@ public class GI_TaxIDDeployer {
         Set<Integer> existingTaxIDs = null;
         try {
             statement = connection.createStatement();
-
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
             resultSet = statement.executeQuery(
-                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "select count("
                             + LookupNames.dbs.NCBI.names.columns.taxid + ") from "
                             + LookupNames.dbs.NCBI.names.name);
@@ -142,9 +141,8 @@ public class GI_TaxIDDeployer {
 
         try {
             statement = connection.createStatement();
-
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
             resultSet = statement.executeQuery(
-                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "select count("
                             + LookupNames.dbs.NCBI.names.columns.taxid + ") from "
                             + LookupNames.dbs.NCBI.names.name);
@@ -210,8 +208,8 @@ public class GI_TaxIDDeployer {
         try {
             statement = connection.createStatement();
             //Switch to a correct schema
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
-                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "LOAD DATA INFILE '"
                             + gi_taxidFilteredFile.toString()
                             + "' REPLACE INTO TABLE "

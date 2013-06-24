@@ -98,6 +98,37 @@ public class NCBITablesDeployer {
     }
 
     /**
+     * Fully deploys the NCBI taxonomic database directly from the NCBI FTP server
+     * @param connection  {@link Connection} to the database
+     * @param tmpDir a {@link File} directory that the temporary update files will be downloaded to
+     * @throws IOException upon file read/write errors
+     * @throws SQLException in case a database communication error occurs
+     */
+    public static void fastDeployNCBIDatabasesFromNCBI(final Connection connection, final File tmpDir)throws IOException, SQLException{
+        //Downloading files
+        System.out.println("Downloading files..");
+        System.out.println("Downloading " + SystemUtil.TAXDUMP_ARCH);
+        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
+        System.out.println("Downloading "+SystemUtil.GI_TAXID_DMP_ARCH+" updates..");
+        File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_DMP_ARCH));
+        //Extracting files
+        System.out.println("Extracting "+SystemUtil.TAXDUMP_ARCH);
+        File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
+        System.out.println("Extracting "+SystemUtil.GI_TAXID_DMP_ARCH);
+        File gi_taxid_deploy_dir=SystemUtil.unArchiveGZFile(gi_taxid_dmp,tmpDir);
+        //Deploying the database
+        System.out.println("Deploying Names Database..");
+        NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(new File(taxdump_dir, SystemUtil.NAMES_FILE)));
+        System.out.println("Deploying GI_TAXID Database..");
+        GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_deploy_dir, SystemUtil.GI_TAXID_UPD_FILE)));
+        System.out.println("Deploying Nodes Database..");
+        NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
+        //Reporting
+        System.out.println("Database deployed successfully..");
+
+    }
+    /**
+     * Fully updates the NCBI taxonomic database directly from the NCBI FTP server
      * @param connection  {@link Connection} to the database
      * @param tmpDir a {@link File} directory that the temporary update files will be downloaded to
      * @throws IOException upon file read/write errors
@@ -110,19 +141,19 @@ public class NCBITablesDeployer {
         File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
         System.out.println("Downloading "+SystemUtil.GI_TAXID_UPD_FILE_ARCH+" updates..");
         File gi_taxid_update= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_UPD_FILE_ARCH));
-
+        //Extracting files
         System.out.println("Extracting "+SystemUtil.TAXDUMP_ARCH);
         File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
         System.out.println("Extracting "+SystemUtil.GI_TAXID_UPD_FILE_ARCH);
         File gi_taxid_update_dir=SystemUtil.unArchiveGZFile(gi_taxid_update,tmpDir);
-
+        //Updating the database
         System.out.println("Updating Names Database..");
         NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(new File(taxdump_dir,SystemUtil.NAMES_FILE)));
         System.out.println("Updating GI_TAXID Database..");
-        GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_update_dir,SystemUtil.GI_TAXID_FILE)));
+        GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_update_dir,SystemUtil.GI_TAXID_UPD_FILE)));
         System.out.println("Updating Nodes Database..");
         NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
-
+        //Reporting
         System.out.println("Database update completed successfully..");
     }
 

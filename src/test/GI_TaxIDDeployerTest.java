@@ -73,7 +73,7 @@ public class GI_TaxIDDeployerTest {
 
     }
 
-    @Test
+    //@Test
     public void injectProcessedGI_TaxIDDmpFileTest() throws SQLException, ClassNotFoundException {
 
         MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");

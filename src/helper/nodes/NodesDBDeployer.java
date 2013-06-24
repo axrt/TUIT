@@ -132,9 +132,9 @@ public class NodesDBDeployer {
             statement = connection.createStatement();
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             //Create a statement and execute
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
             ResultSet resultSet = statement.executeQuery(
-                    "use " + LookupNames.dbs.NCBI.name + ";" +
-                            "select * from " + LookupNames.dbs.NCBI.ranks.name
+                    "select * from " + LookupNames.dbs.NCBI.ranks.name
             );
 
             while (resultSet.next()) {
@@ -238,8 +238,10 @@ public class NodesDBDeployer {
             filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
             fileWriter = new FileWriter(filteredNodesDmpFile);
             String line;
+            String empty="";
             while ((line = bufferedReader.readLine()) != null) {
                 String[] splitter = line.split("\t\\|\t");
+                if(!splitter[0].equals(empty)&&!splitter[1].equals(empty))
                 fileWriter.write(
                         splitter[0] + '\t'
                                 + splitter[1] + '\t'

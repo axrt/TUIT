@@ -145,8 +145,9 @@ public class NamesDeployer {
         try {
             statement = connection.createStatement();
             //Switch to a correct schema
+            statement.execute("use " + LookupNames.dbs.NCBI.name);
+            statement.execute("SET foreign_key_checks = 0;");
             statement.execute(
-                    "use " + LookupNames.dbs.NCBI.name+";" +
                     "LOAD DATA INFILE '"
                             + nodesFilteredFile.toString()
                             + "' REPLACE INTO TABLE "
@@ -156,7 +157,7 @@ public class NamesDeployer {
                             + LookupNames.dbs.NCBI.names.columns.taxid + ", "
                             + LookupNames.dbs.NCBI.names.columns.name
                             + ")");
-
+            statement.execute("SET foreign_key_checks = 1;");
         } finally {
             if (statement != null) {
                 statement.close();
