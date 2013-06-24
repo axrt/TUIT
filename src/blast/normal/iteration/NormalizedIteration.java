@@ -2,11 +2,11 @@ package blast.normal.iteration;
 
 import BLAST.NCBI.output.Hit;
 import BLAST.NCBI.output.Iteration;
-import blast.BLAST_Identifier;
+import blast.specification.BLAST_Identifier;
 import blast.normal.hit.NormalizedHit;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
-import helper.Ranks;
+import taxonomy.Ranks;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 public class NormalizedIteration<I extends Iteration> {
 
     /**
-     * A parent {@link blast.BLAST_Identifier} that will perform database-related tasks
+     * A parent {@link blast.specification.BLAST_Identifier} that will perform database-related tasks
      */
     protected final BLAST_Identifier blastIdentifier;
     /**
@@ -406,7 +406,7 @@ public class NormalizedIteration<I extends Iteration> {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the properties configuration file.");
+            System.out.println("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
         }
         //fail
     }

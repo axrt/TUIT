@@ -1,7 +1,7 @@
 package test;
 
 import io.file.TUTFileOperatorHelper;
-import io.file.properties.jaxb.TUITProperties;
+import io.properties.jaxb.TUITProperties;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -25,7 +25,7 @@ public class TUTFileOperatorHelperTest {
     public void testPropertiesLoading(){
 
         try {
-           InputStream inputStream=new FileInputStream(new File("/home/alext/Developer/IdeaProjects/TUIT/src/test/properties.xml"));
+           InputStream inputStream=new FileInputStream(new File("/home/alext/Developer/IdeaProjects/TUIT/src/test/io.properties.xml"));
            TUITProperties tuitProperties= TUTFileOperatorHelper.catchProperties(inputStream);
             System.out.println("hit");
         } catch (SAXException e) {

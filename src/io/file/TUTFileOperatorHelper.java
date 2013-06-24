@@ -5,7 +5,7 @@ import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
-import io.file.properties.jaxb.TUITProperties;
+import io.properties.jaxb.TUITProperties;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A helper class that allows to load TUIT properties from an XML formatted input
+ * A helper class that allows to load TUIT io.properties from an XML formatted input
  */
 public class TUTFileOperatorHelper {
 
@@ -57,11 +57,11 @@ public class TUTFileOperatorHelper {
             public InputSource resolveEntity(String publicId, String systemId)
                     throws SAXException, IOException {
                 String file = null;
-                if (systemId.contains("properties.dtd")) {
-                    file = "properties.dtd";
+                if (systemId.contains("io.properties.dtd")) {
+                    file = "io.properties.dtd";
                 } else{
                     throw new SAXException("Wrong name for the schema dtd, please correct to \n" +
-                            "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"properties.dtd\">");
+                            "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"io.properties.dtd\">");
                 }
                 return new InputSource(TUITProperties.class
                         .getResourceAsStream(file));

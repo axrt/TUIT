@@ -1,7 +1,7 @@
 package db.connect;
 
 import blast.normal.hit.NormalizedHit;
-import taxonomy.TaxonomicNode;
+import taxonomy.node.TaxonomicNode;
 
 /**
  * TODO: document
@@ -21,5 +21,6 @@ public interface DatabaseOperator {
     public TaxonomicNode attachChildrenForTaxonomicNode(TaxonomicNode parentNode) throws Exception;
 
     public boolean isParentOrSiblingTo(int parentTaxid, int taxid) throws Exception;
+
     public TaxonomicNode attachFullDirectLineage(TaxonomicNode taxonomicNode) throws Exception;
 }

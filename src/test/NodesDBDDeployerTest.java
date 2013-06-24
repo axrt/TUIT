@@ -1,9 +1,7 @@
 package test;
 
 import db.mysql.MySQL_Connector;
-import helper.NodesDBDeployer;
-import helper.Ranks;
-import junit.framework.Assert;
+import helper.nodes.NodesDBDeployer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

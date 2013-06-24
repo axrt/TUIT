@@ -1,19 +1,19 @@
 package test;
 
 import BLAST.NCBI.output.Iteration;
-import blast.BLAST_Identifier;
+import blast.specification.BLAST_Identifier;
 import blast.normal.iteration.NormalizedIteration;
-import blast.TUITCutoffSet;
+import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;
 import format.fasta.nucleotide.NucleotideFasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
-import helper.Ranks;
+import taxonomy.Ranks;
 import io.file.TUITFileOperator;
 import org.junit.Test;
-import taxonomy.TaxonomicNode;
+import taxonomy.node.TaxonomicNode;
 
 import java.io.File;
 import java.sql.Connection;

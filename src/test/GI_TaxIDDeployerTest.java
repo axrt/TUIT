@@ -1,7 +1,7 @@
 package test;
 
 import db.mysql.MySQL_Connector;
-import helper.GI_TaxIDDeployer;
+import helper.gitaxid.GI_TaxIDDeployer;
 import org.junit.Test;
 
 import java.io.*;

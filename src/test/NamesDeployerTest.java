@@ -1,14 +1,13 @@
 package test;
 import db.mysql.MySQL_Connector;
-import helper.NamesDeployer;
-import helper.NodesDBDeployer;
+import helper.names.NamesDeployer;
+import helper.nodes.NodesDBDeployer;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.Set;
 
 /**

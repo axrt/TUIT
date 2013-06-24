@@ -1,7 +1,6 @@
 package exception;
 
 import format.BadFromatException;
-import io.file.properties.jaxb.DBConnection;
 
 /**
 * //Todo: document
