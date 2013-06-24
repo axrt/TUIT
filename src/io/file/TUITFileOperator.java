@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * This class handles file opening for the {@link blast.specification.BLAST_Identifier}
+ * This class handles file opening for the {@link blast.specification.BLASTIdentifier}
  */
 public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator {
     /**

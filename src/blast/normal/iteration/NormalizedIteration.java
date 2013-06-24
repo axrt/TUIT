@@ -2,7 +2,7 @@ package blast.normal.iteration;
 
 import BLAST.NCBI.output.Hit;
 import BLAST.NCBI.output.Iteration;
-import blast.specification.BLAST_Identifier;
+import blast.specification.BLASTIdentifier;
 import blast.normal.hit.NormalizedHit;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
@@ -19,9 +19,9 @@ import java.util.List;
 public class NormalizedIteration<I extends Iteration> {
 
     /**
-     * A parent {@link blast.specification.BLAST_Identifier} that will perform database-related tasks
+     * A parent {@link blast.specification.BLASTIdentifier} that will perform database-related tasks
      */
-    protected final BLAST_Identifier blastIdentifier;
+    protected final BLASTIdentifier blastIdentifier;
     /**
      * I extends {@link Iteration}
      */
@@ -53,9 +53,9 @@ public class NormalizedIteration<I extends Iteration> {
      *
      * @param query           a {@link NucleotideFasta} used as a query for the given BLAST iteration
      * @param iteration       I extends {@link Iteration} that will be used to perform taxonomic specification
-     * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
+     * @param blastIdentifier {@link blast.specification.BLASTIdentifier} that will perform cutoff checks and database communication and cutoff checks
      */
-    protected NormalizedIteration(NucleotideFasta query, I iteration, BLAST_Identifier blastIdentifier) {
+    protected NormalizedIteration(NucleotideFasta query, I iteration, BLASTIdentifier blastIdentifier) {
         this.query = query;
         this.iteration = iteration;
         this.blastIdentifier = blastIdentifier;
@@ -415,10 +415,10 @@ public class NormalizedIteration<I extends Iteration> {
      * A static factory to create a new instance of {@link NormalizedIteration} from a given set of parameters
      *
      * @param iteration       I extends {@link Iteration} that will be used to perform taxonomic specification
-     * @param blastIdentifier {@link BLAST_Identifier} that will perform cutoff checks and database communication and cutoff checks
+     * @param blastIdentifier {@link blast.specification.BLASTIdentifier} that will perform cutoff checks and database communication and cutoff checks
      * @return a new instance of {@link NormalizedIteration} from a given set of parameters
      */
-    public static <I extends Iteration> NormalizedIteration newDefaultInstanceFromIteration(NucleotideFasta query, I iteration, BLAST_Identifier blastIdentifier) {
+    public static <I extends Iteration> NormalizedIteration newDefaultInstanceFromIteration(NucleotideFasta query, I iteration, BLASTIdentifier blastIdentifier) {
         return new NormalizedIteration<I>(query, iteration, blastIdentifier);
     }
 }

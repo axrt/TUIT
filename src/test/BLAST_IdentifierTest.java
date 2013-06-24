@@ -1,7 +1,7 @@
 package test;
 
 import BLAST.NCBI.output.Iteration;
-import blast.specification.BLAST_Identifier;
+import blast.specification.BLASTIdentifier;
 import blast.normal.iteration.NormalizedIteration;
 import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
@@ -83,8 +83,8 @@ public class BLAST_IdentifierTest {
             cutoffSetMap.put(Ranks.subfamily,TUITCutoffSet.newDefaultInstance(80,90, 100));
             cutoffSetMap.put(Ranks.superfamily,TUITCutoffSet.newDefaultInstance(80,90, 100));
 
-            //Prepare the BLAST_Identifier
-            BLAST_Identifier blast_identifier = BLAST_Identifier.newDefaultInstance(
+            //Prepare the BLASTIdentifier
+            BLASTIdentifier blast_identifier = BLASTIdentifier.newDefaultInstance(
                     nucleotideFastas, tmpDir, executable,
                     parameters, new TUITFileOperator<NucleotideFasta>() {
                 @Override
@@ -99,7 +99,7 @@ public class BLAST_IdentifierTest {
 
                 @Override
                 public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) {
-                    System.out.println(query.getAC()+": " + normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+                    System.out.println(query.getAC() + ": " + normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
                     return true;  //To change body of implemented methods use File | Settings | File Templates.
                 }
             },

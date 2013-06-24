@@ -1,7 +1,7 @@
 package tuit.main;
 
-import blast.specification.BLAST_Identifier;
-import blast.specification.TUITBLAST_Identifier;
+import blast.specification.BLASTIdentifier;
+import blast.specification.TUITBLASTIdentifier;
 import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
@@ -66,7 +66,7 @@ public class tuit {
         //
         Map<Ranks, TUITCutoffSet> cutoffMap;
         //
-        BLAST_Identifier blast_identifier;
+        BLASTIdentifier blast_identifier;
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
@@ -163,9 +163,9 @@ public class tuit {
             NucleotideFastaTUITFileOperator.getInstance().setInputFile(inputFile);
             NucleotideFastaTUITFileOperator.getInstance().setOutputFile(outputFile);
             //Create blast identifier
-            blast_identifier = TUITBLAST_Identifier.newInstanceFromFileOperator(
+            blast_identifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                     tmpDir, blastnExecutable, parameters,
-                    NucleotideFastaTUITFileOperator.getInstance(),connection,
+                    NucleotideFastaTUITFileOperator.getInstance(), connection,
                     cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
 
 

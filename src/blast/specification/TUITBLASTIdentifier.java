@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A {@link BLAST_Identifier} that is specifically adapted for the TUIT algorithm: it
+ * A {@link BLASTIdentifier} that is specifically adapted for the TUIT algorithm: it
  */
-public class TUITBLAST_Identifier extends BLAST_Identifier {
+public class TUITBLASTIdentifier extends BLASTIdentifier {
 
     protected int batchSize;
 
@@ -46,13 +46,13 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
      *                               default set
      * @param batchSize              {@code int} number of fasta records in one batch
      */
-    protected TUITBLAST_Identifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
+    protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
         super(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
         this.batchSize = batchSize;
     }
 
     /**
-     * An overridden run() for the TUIT version of the {@link BLAST_Identifier}. Does the BLASTN and specification in batches, so that the input fasta file does not cause
+     * An overridden run() for the TUIT version of the {@link BLASTIdentifier}. Does the BLASTN and specification in batches, so that the input fasta file does not cause
      * a memory error or a BLAST query error due to too many sequences loaded at a time.
      */
     @Override
@@ -126,7 +126,7 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
     }
 
     /**
-     * A static factory that returns a newly created {@link TUITBLAST_Identifier} which had been loaded with the first batch
+     * A static factory that returns a newly created {@link TUITBLASTIdentifier} which had been loaded with the first batch
      * from the input file.
      *
      * @param tempDir                {@link File} - A temporary directory that will be used to dump
@@ -143,15 +143,15 @@ public class TUITBLAST_Identifier extends BLAST_Identifier {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
      *                               default set
-     * @return                       {@link TUITBLAST_Identifier} ready  to perform the first iteraton of BLASTN and specification
+     * @return                       {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
-    public static TUITBLAST_Identifier newInstanceFromFileOperator(
+    public static TUITBLASTIdentifier newInstanceFromFileOperator(
             File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
             Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) throws Exception {
         List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
-            TUITBLAST_Identifier tuitblastIdentifier = new TUITBLAST_Identifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
             return tuitblastIdentifier;
         } else {
             throw new Exception("The batch is empty, please check the input file");

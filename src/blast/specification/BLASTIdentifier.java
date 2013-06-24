@@ -27,7 +27,7 @@ import java.util.Map;
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
  * given queries automatically.
  */
-public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements TaxonomicDatabaseOperator {
+public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements TaxonomicDatabaseOperator {
 
     /**
      * A Map for default cutoff sets, which are used whenever a custom set was not given
@@ -112,9 +112,9 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
      *                      default set
      */
-    protected BLAST_Identifier(List<T> query, List<String> query_IDs,
-                               File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                               Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+    protected BLASTIdentifier(List<T> query, List<String> query_IDs,
+                              File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
+                              Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         super(query, query_IDs, tempDir, executive, parameterList,
                 identifierFileOperator);
         this.connection = connection;
@@ -134,7 +134,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         //Cecks if a cutoff set exists at a given ranks
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null) {
             //If not - substitutes it with a default cutoff set
-            tuitCutoffSet = BLAST_Identifier.DEFAULT_CUTOFFS.get(rank);
+            tuitCutoffSet = BLASTIdentifier.DEFAULT_CUTOFFS.get(rank);
         }
         if (normalizedHit == null || rank == null) {
             return false;
@@ -156,7 +156,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
     public boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || oneNormalizedHit == null || anotherNormalizedHit == null) {
-            tuitCutoffSet = BLAST_Identifier.DEFAULT_CUTOFFS.get(rank);
+            tuitCutoffSet = BLASTIdentifier.DEFAULT_CUTOFFS.get(rank);
         }
         return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit, anotherNormalizedHit);
     }
@@ -444,7 +444,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
     }
 
     /**
-     * A static factory to get a new instance of a {@link BLAST_Identifier}
+     * A static factory to get a new instance of a {@link BLASTIdentifier}
      * /**
      *
      * @param query         {@link List<? extends   format.fasta.nucleotide.NucleotideFasta  >} a list of query
@@ -462,12 +462,12 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      *                      taxonomic information
      * @param cutoffSetMap  a {@link Map<Ranks, TUITCutoffSet>}, provided by the user and that may differ from the
      *                      default set
-     * @return a new instance of {@link BLAST_Identifier} from the given parameters
+     * @return a new instance of {@link BLASTIdentifier} from the given parameters
      */
-    public static BLAST_Identifier newDefaultInstance(List<NucleotideFasta> query,
+    public static BLASTIdentifier newDefaultInstance(List<NucleotideFasta> query,
                                                       File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
                                                       Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLAST_Identifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
+        return new BLASTIdentifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
             /**
              * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
              */
