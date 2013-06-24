@@ -1,4 +1,4 @@
-package tuit.update;
+package tuit.deploy;
 
 import db.mysql.MySQL_Connector;
 import helper.NCBITablesDeployer;
@@ -8,8 +8,11 @@ import org.apache.commons.cli.*;
 
 import java.io.File;
 import java.sql.Connection;
-//TODO document
-public class update {
+
+/**
+ * //TODO document
+ */
+public class deploy {
     /**
      * the -p flag for the properties file
      */
@@ -28,16 +31,16 @@ public class update {
         MySQL_Connector mySQL_connector;
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
-        options.addOption(update.P, "TMP<file>", true, "Temporary directory file (XML formatted)");
+        options.addOption(deploy.P, "TMP<file>", true, "Temporary directory file (XML formatted)");
         HelpFormatter formatter = new HelpFormatter();
-        try{
+        try {
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
             //Check vital parameters
-            if (!commandLine.hasOption(update.P)) {
+            if (!commandLine.hasOption(deploy.P)) {
                 throw new ParseException("No input file option found, exiting.");
             } else {
-                properties = new File(commandLine.getOptionValue(update.P));
+                properties = new File(commandLine.getOptionValue(deploy.P));
             }
             //Load io.properties
             tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
@@ -51,8 +54,8 @@ public class update {
                     tuitProperties.getDBConnection().getPassword().trim());
             mySQL_connector.connectToDatabase();
             connection = mySQL_connector.getConnection();
-            //Update the databases
-            NCBITablesDeployer.updateDatabasesFromNCBI(connection,tmpDir);
+            //Deploy the databases
+            NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, tmpDir);
             //
         } catch (ParseException e) {
             e.printStackTrace();  //TODO: improve
@@ -60,7 +63,8 @@ public class update {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-          //
+            //
         }
     }
 }
+
