@@ -37,7 +37,7 @@ public class TaxonomicNode {
     /**
      * A protected constructor to use with static factories
      *
-     * @param taxid          {@link int} taxid
+     * @param taxid          {@code int} taxid
      * @param rank           {@link Ranks} rank
      * @param scientificName {@link String} scientific name
      */
@@ -52,7 +52,7 @@ public class TaxonomicNode {
     /**
      * A getter for the taxid
      *
-     * @return {@link int} taxid
+     * @return {@code int} taxid
      */
     public int getTaxid() {
         return this.taxid;
@@ -89,7 +89,7 @@ public class TaxonomicNode {
      * Adds a new child {@link TaxonomicNode} to the list of children
      *
      * @param child {@link TaxonomicNode}
-     * @return {@link true} if success, otherwise - {@link false}
+     * @return {@code true} if success, otherwise - {@code false}
      */
     public boolean addChild(TaxonomicNode child) {
         return this.children.add(child);
@@ -106,7 +106,7 @@ public class TaxonomicNode {
 
     /**
      * Sets the parent {@link TaxonomicNode}. If the parent has the same taxid as the taxid of this node,
-     * then the node is considered root and sets the isRoot to {@link true}
+     * then the node is considered root and sets the isRoot to {@code true}, otherwise remains {@code false}
      *
      * @param parent {@link TaxonomicNode}
      */
@@ -131,8 +131,8 @@ public class TaxonomicNode {
     /**
      * Checks whether the list of {@link TaxonomicNode} children contains a child node with the given taxid
      *
-     * @param taxid {@link int} taxid
-     * @return {@link true} if such a node exists, otherwise - {@link false}
+     * @param taxid {@code int} taxid
+     * @return {@code true} if such a node exists, otherwise - {@code false}
      */
     public boolean isParentOf(int taxid) {
         for (TaxonomicNode taxonomicNode : this.children) {
@@ -149,9 +149,9 @@ public class TaxonomicNode {
      * Checks whether this {@link TaxonomicNode} is an ancestor (not only an immediate child of) any node that
      * has a taxid of the given
      *
-     * @param taxid {@link int} taxid of a hypothetical ancestor
-     * @return returns {@link true} if the node is root or if the node has a {@link TaxonomicNode} with the given taxid
-     *         in its lineage
+     * @param taxid {@code int} taxid of a hypothetical ancestor
+     * @return returns {@code true} if the node is root or if the node has a {@link TaxonomicNode} with the given taxid
+     *         in its lineage, {@code false} otherwise.
      */
     public boolean isChildOf(int taxid) {
         if (this.isRoot) {
@@ -196,7 +196,7 @@ public class TaxonomicNode {
     /**
      * A static factory to create a new instance of a {@link TaxonomicNode} from a given set of parameters
      *
-     * @param taxid          {@link int} taxid
+     * @param taxid          {@code int} taxid
      * @param rank           {@link Ranks} rank
      * @param scientificName {@link String} scientific name
      * @return a new instance of {@link TaxonomicNode} from a given set of parameters

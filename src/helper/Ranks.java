@@ -70,7 +70,7 @@ public enum Ranks {
      * Returns a previous {@link Ranks} for a given {@link Ranks}
      * @param rank {@link Ranks}
      * @return a previous {@link Ranks} for a given {@link Ranks} if such exists, otherwise, if the
-     * {@link Ranks.root_of_life} given - the {@link Ranks.root_of_life} will be returned
+     * {@link Ranks.root_of_life} is given - the {@link Ranks.root_of_life} will be returned
      */
     public static Ranks previous (Ranks rank){
        if(rank==Ranks.root_of_life){

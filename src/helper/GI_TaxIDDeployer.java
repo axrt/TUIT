@@ -51,7 +51,7 @@ public class GI_TaxIDDeployer {
             throw sqle;
         } finally {
             if (statement != null) {
-                statement.close();
+                statement.close();            //TODO: transfer this and all the analogous to the prepared statement
             }
         }
 
@@ -83,9 +83,6 @@ public class GI_TaxIDDeployer {
         } finally {
             if (statement != null) {
                 statement.close();
-            }
-            if (resultSet != null) {
-                resultSet.close();
             }
         }
 
@@ -262,10 +259,6 @@ public class GI_TaxIDDeployer {
             if (statement != null) {
                 statement.close();
             }
-            if (resultSet != null) {
-                resultSet.close();
-            }
         }
     }
-
 }

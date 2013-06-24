@@ -118,8 +118,10 @@ public class TUTFileOperatorHelper {
             }
         } finally {
             //Finally return the prepared list of records
-            bufferedReader.close();
-            return encodedFastas;
+            if(bufferedReader!=null){
+                bufferedReader.close();
+            }
         }
+        return encodedFastas;
     }
 }

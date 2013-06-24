@@ -52,9 +52,9 @@ public class NodesDBDeployer {
             if (bufferedReader != null) {
                 bufferedReader.close();
             }
-            return ranks;
-        }
 
+        }
+        return ranks;
     }
 
     /**
@@ -96,7 +96,7 @@ public class NodesDBDeployer {
         } finally {
             if (statement != null) {
                 statement.close();
-            }
+            }                             //TODO: move all such cases to the prepared statement
         }
 
         PreparedStatement preparedStatement = null;
@@ -275,9 +275,8 @@ public class NodesDBDeployer {
             if (fileWriter != null) {
                 fileWriter.close();
             }
-            return filteredNodesDmpFile;
         }
-
+        return filteredNodesDmpFile;
     }
 
     /**

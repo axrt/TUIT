@@ -2,6 +2,8 @@ package blast;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLASTN;
 import BLAST.NCBI.output.Iteration;
+import blast.normal.hit.NormalizedHit;
+import blast.normal.iteration.NormalizedIteration;
 import db.connect.DatabaseOperator;
 import db.tables.LookupNames;
 import format.BadFromatException;
@@ -119,14 +121,14 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
     }
 
     /**
-     * Checks whether a given {@link NormalizedHit} checks against the cutoffs at a given {@link Ranks} of specification
+     * Checks whether a given {@link blast.normal.hit.NormalizedHit} checks against the cutoffs at a given {@link Ranks} of specification
      *
-     * @param normalizedHit {@link NormalizedHit} a hit to check
+     * @param normalizedHit {@link blast.normal.hit.NormalizedHit} a hit to check
      * @param rank          {@link Ranks} a rank at which to check
-     * @return {@link true} if the {@link NormalizedHit} checks, otherwise {@link false} is returned. Upon null instead of either normalizedHit or rank
+     * @return {@code true} if the {@link blast.normal.hit.NormalizedHit} checks, otherwise {@code false} is returned. Upon null instead of either normalizedHit or rank
      *         returns {@link false}.
      */
-    protected boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
+    public boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
         //Cecks if a cutoff set exists at a given ranks
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null) {
@@ -146,11 +148,11 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      * @param oneNormalizedHit     {@link NormalizedHit} first hit (a hit with a worse E-value)
      * @param anotherNormalizedHit a {@link NormalizedHit}  with a better E-value)
      * @param rank                 {@link Ranks} at which the E-value difference is being monitored
-     * @return {@link true} if the {@link NormalizedHit}'s ratio (difference in folds) is greater than the cutoff, otherwise {@link false}
+     * @return {@code true} if the {@link NormalizedHit}'s ratio (difference in folds) is greater than the cutoff, otherwise {@code false}
      *         is returned. Upon null instead of either normalizedHit or rank
      *         returns {@link false}.
      */
-    protected boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
+    public boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || oneNormalizedHit == null || anotherNormalizedHit == null) {
             tuitCutoffSet = BLAST_Identifier.DEFAULT_CUTOFFS.get(rank);
@@ -206,7 +208,6 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                 preparedStatement.close();
             }
         }
-        //TODO: remove all resultsets.close() from the finally blocks
         return normalizedHit;
     }
 
@@ -261,7 +262,15 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         return normalizedHit;
     }
 
-    //Todo: document
+    /**
+     * For a given {@link TaxonomicNode} attaches its parent and higher lineage structure. Originally used to
+     * save results in a form of a taxonomic branch.
+     *
+     * @param taxonomicNode {@link TaxonomicNode} that needs to get its full lineage structure
+     * @return a pointer to the same {@link TaxonomicNode} objcet, but with attached pointers to its taxonomic lineage
+     * @throws SQLException in case an error in database communication occurs
+     */
+    @Override
     public TaxonomicNode attachFullDirectLineage(TaxonomicNode taxonomicNode) throws SQLException {
 
         //Get its taxid and reconstruct its child taxonomic nodes
@@ -284,8 +293,8 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
                             + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
             preparedStatement.setInt(1, taxonomicNode.getTaxid());
             resultSet = preparedStatement.executeQuery();
-            int parent_taxid;
-            int taxid;
+            int parent_taxid = 0;
+            int taxid = 0;
             String scientificName;
             Ranks rank;
             if (resultSet.next()) {
@@ -321,8 +330,8 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      *         {@link TaxonomicNode} of full taxonomy including leaves from a given {@link Ranks}
      * @throws SQLException in case a database communication error occurs
      */
+    @Override
     public TaxonomicNode attachChildrenForTaxonomicNode(TaxonomicNode parentNode) throws SQLException {
-        //Todo: should be contained within the interface
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -356,11 +365,21 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
         }
         return parentNode;
     }
-    //TODO: document
+
+    /**
+     * Checks whether a given parent taxid is indeed a parent taxid for the given one, as well as it checks
+     * whether the parant taxid may be a sibling taxid for the given. Used to check for if the normalized hits with
+     * better E-value restrict the chosen pivotal hit.
+     *
+     * @param parentTaxid a taxid of a {@link TaxonomicNode} that should be a parent to the given taxid in order to
+     *                    support the choice of the pivotal normalized hit
+     * @param taxid       of the {@link TaxonomicNode} of the pivotal taxid
+     * @return {@code true} if the parent taxid is indeed parent (direct parent or grand parent within the lineage) of
+     *         the given taxid, {@code false} otherwise.
+     * @throws SQLException in case a database communication error occurs
+     */
+    @Override
     public boolean isParentOrSiblingTo(int parentTaxid, int taxid) throws SQLException {
-        if (parentTaxid == taxid) {
-            return true;
-        }
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -379,7 +398,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
             TaxonomicNode taxonomicNode;
             if (resultSet.next()) {
                 if (parentTaxid == resultSet.getInt(1)) {
-                 return true;
+                    return true;
                 } else if (resultSet.getInt(1) != 1) {
                     return this.isParentOrSiblingTo(parentTaxid, resultSet.getInt(1));
                 } else {
@@ -413,7 +432,7 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
      *
      * @param query               {@link NucleotideFasta}
      * @param normalizedIteration {@link NormalizedIteration}
-     * @return {@link true} if the file operator returns success, {@link false} otherwise
+     * @return {@code true} if the file operator returns success, {@code false} otherwise
      */
     public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
         if (((TUITFileOperator) this.fileOperator).saveResults(query, normalizedIteration)) {
@@ -453,30 +472,33 @@ public abstract class BLAST_Identifier<T extends NucleotideFasta> extends NCBI_E
              */
             @Override
             public void run() {
-
                 try {
-
                     this.BLAST();
-                    //TODO: input checks for whether the output iterations have at least one iteration
-                    this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-                    this.BLASTed = true;
-                    this.normalizeIterations();
-                    for (int i = 0; i < this.normalizedIterations.size(); i++) {
-                        NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
-                        normalizedIteration.specify();
+                    if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
+
+                        this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+                        this.BLASTed = true;
+                        this.normalizeIterations();
+                        for (int i = 0; i < this.normalizedIterations.size(); i++) {
+                            NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
+                            normalizedIteration.specify();
+                        }
+                    } else {
+                        System.err.println("No Iterations were returned, an error might have occured during BLAST.");
+                        return;
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 } catch (JAXBException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 } catch (SAXException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 } catch (SQLException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 } catch (BadFromatException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    System.err.print(e);
                 }
             }
         };

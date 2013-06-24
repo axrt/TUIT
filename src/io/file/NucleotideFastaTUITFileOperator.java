@@ -1,7 +1,7 @@
 package io.file;
 
 import BLAST.NCBI.output.Iteration;
-import blast.NormalizedIteration;
+import blast.normal.iteration.NormalizedIteration;
 import format.fasta.nucleotide.NucleotideFasta;
 
 import java.io.IOException;

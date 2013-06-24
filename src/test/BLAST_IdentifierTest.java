@@ -2,7 +2,7 @@ package test;
 
 import BLAST.NCBI.output.Iteration;
 import blast.BLAST_Identifier;
-import blast.NormalizedIteration;
+import blast.normal.iteration.NormalizedIteration;
 import blast.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import db.tables.LookupNames;

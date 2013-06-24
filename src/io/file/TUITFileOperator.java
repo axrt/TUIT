@@ -2,13 +2,9 @@ package io.file;
 
 import BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator;
 import BLAST.NCBI.output.Iteration;
-import blast.NormalizedIteration;
-import format.EncodedFasta;
+import blast.normal.iteration.NormalizedIteration;
 import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta;
-import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
-import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
-import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 
 import java.io.*;
 import java.util.ArrayList;

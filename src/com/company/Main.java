@@ -25,6 +25,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 //TODO: comment as soon as works
+//TODO: rename package from company to smth normal
 public class Main {
 
     public final static String IN = "in";
@@ -190,7 +191,7 @@ public class Main {
             System.err.println(e.getMessage());
             //e.printStackTrace();
         } finally {
-            System.err.println("exiting..");
+            System.err.println("Exiting..");
             System.exit(1);
         }
     }
