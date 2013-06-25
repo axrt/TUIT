@@ -6,6 +6,7 @@ import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
 import helper.NCBITablesDeployer;
+import logger.Log;
 import taxonomy.Ranks;
 import io.file.NucleotideFastaTUITFileOperator;
 import io.properties.jaxb.Database;
@@ -23,6 +24,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.logging.Level;
 
 /**
  * A main class for the tuit module implementation
@@ -39,9 +41,13 @@ public class tuit {
      */
     public final static String OUT = "out";
     /**
-     * the -p flag for the properties file
+     * The -p flag for the properties file
      */
     public final static String P = "p";
+    /**
+     * The -v flag for the verbose output file
+     */
+    public final static String V = "v";
     /**
      * tuit output file extension
      */
@@ -73,6 +79,7 @@ public class tuit {
         options.addOption(tuit.IN, "input<file>", true, "Input file (currently fasta-formatted only)");
         options.addOption(tuit.OUT, "output<file>", true, "Output file (in " + tuit.TUIT_EXT + " format)");
         options.addOption(tuit.P, "prop<file>", true, "Properties file (XML formatted)");
+        options.addOption(tuit.V, "verbose", false, "Enable verbose output");
         HelpFormatter formatter = new HelpFormatter();
         try {
             //Read command line
@@ -93,6 +100,13 @@ public class tuit {
                 outputFile = new File((inputFile.getPath()).split("\\.")[0] + tuit.TUIT_EXT);
             } else {
                 outputFile = new File(commandLine.getOptionValue(tuit.OUT));
+            }
+            //Adjust the output level
+            if(commandLine.hasOption(tuit.V)){
+                Log.getInstance().getLogger().setLevel(Level.FINE);
+                Log.getInstance().getLogger().fine("Using verbose output");
+            }else{
+                Log.getInstance().getLogger().setLevel(Level.INFO);
             }
             //Try all files
             if (!inputFile.exists() || !inputFile.canRead()) {
@@ -174,37 +188,37 @@ public class tuit {
 
 
         } catch (ParseException pe) {
-            System.err.println(pe.getMessage());
+            Log.getInstance().getLogger().severe(pe.getMessage());
             formatter.printHelp( "tuit", options );
             //pe.printStackTrace();
         } catch (SAXException saxe) {
-            System.err.println(saxe.getMessage());
+            Log.getInstance().getLogger().severe(saxe.getMessage());
             //saxe.printStackTrace();
         } catch (FileNotFoundException fnfe) {
-            System.err.println(fnfe.getMessage());
+            Log.getInstance().getLogger().severe(fnfe.getMessage());
             //fnfe.printStackTrace();
         } catch (TUITPropertyBadFormatException tpbfe) {
-            System.err.println(tpbfe.getMessage());
+            Log.getInstance().getLogger().severe(tpbfe.getMessage());
             //tpbfe.printStackTrace();
         } catch (JAXBException jaxbee) {
-            System.err.println("The io.properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
+            Log.getInstance().getLogger().severe("The io.properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
             //jaxbee.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             //Probably won't happen unless the library deleted from the .jar
-            System.err.println(cnfe.getMessage());
+            Log.getInstance().getLogger().severe(cnfe.getMessage());
             //cnfe.printStackTrace();
         } catch (SQLException sqle) {
-            System.err.println("A database communication error occurred with the following message:\n" +
+            Log.getInstance().getLogger().severe("A database communication error occurred with the following message:\n" +
                     sqle.getMessage());
             if(sqle.getMessage().contains("Access denied for user")){
-                System.err.println("Please use standard database login: "+ NCBITablesDeployer.login+" and password: "+ NCBITablesDeployer.password);
+                Log.getInstance().getLogger().severe("Please use standard database login: "+ NCBITablesDeployer.login+" and password: "+ NCBITablesDeployer.password);
             }
             //sqle.printStackTrace();
         } catch (Exception e) {
             System.err.println(e.getMessage());
             //e.printStackTrace();
         } finally {
-            System.err.println("Exiting..");
+            Log.getInstance().getLogger().severe("Exiting..");
             System.exit(1);
         }
     }

@@ -5,6 +5,7 @@ import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.iteration.NormalizedIteration;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
+import logger.Log;
 import taxonomy.Ranks;
 import io.file.TUITFileOperator;
 import org.xml.sax.SAXException;
@@ -68,23 +69,23 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
                 }
             }
             if (remote) {
-                System.out.println("Starting job, using NCBI server BLAST");
+                Log.getInstance().getLogger().info("Starting job, using NCBI server BLAST");
             } else {
-                System.out.println("Starting job, using local machine BLAST");
+                Log.getInstance().getLogger().info("Starting job, using local machine BLAST");
             }
             do {
                 if (remote) {
-                    System.out.println("Sending BLASTN request..");
+                    Log.getInstance().getLogger().info("Sending BLASTN request..");
                 } else {
-                    System.out.println("BLASTN started..");
+                    Log.getInstance().getLogger().info("BLASTN started..");
                 }
 
                 this.BLAST();
 
                 if (remote) {
-                    System.out.println("BLASTN results received..");
+                    Log.getInstance().getLogger().info("BLASTN results received..");
                 } else {
-                    System.out.println("BLASTN finished");
+                    Log.getInstance().getLogger().info("BLASTN finished");
                 }
                 if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
                     this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
@@ -94,7 +95,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
                         normalizedIteration.specify();
                     }
                 } else {
-                    System.err.println("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
+                    Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
                 }
 
             } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
@@ -102,26 +103,19 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             this.BLASTed = true;
 
         } catch (IOException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (InterruptedException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (JAXBException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (SAXException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (BadFromatException e) {
-            System.err.println(e.getMessage());
-            //e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (Exception e) {
-            System.err.println(e.getMessage());
-            e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         }
     }
 

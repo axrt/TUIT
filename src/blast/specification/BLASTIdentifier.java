@@ -9,6 +9,7 @@ import db.connect.TaxonomicDatabaseOperator;
 import db.tables.LookupNames;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
+import logger.Log;
 import taxonomy.Ranks;
 import io.file.TUITFileOperator;
 import org.xml.sax.SAXException;
@@ -420,7 +421,6 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     protected void normalizeIterations() {
         //Normalize each iteration
         int i = 0;
-        System.out.println(this.blastOutput.getBlastOutputIterations().getIteration().size());
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
             this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
             i++;
@@ -485,21 +485,21 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                             normalizedIteration.specify();
                         }
                     } else {
-                        System.err.println("No Iterations were returned, an error might have occured during BLAST.");
+                        Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occured during BLAST.");
                         return;
                     }
                 } catch (IOException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 } catch (InterruptedException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 } catch (JAXBException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 } catch (SAXException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 } catch (SQLException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 } catch (BadFromatException e) {
-                    System.err.print(e);
+                    Log.getInstance().getLogger().severe(e.getMessage());
                 }
             }
         };

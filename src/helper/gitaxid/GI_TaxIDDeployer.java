@@ -1,6 +1,7 @@
 package helper.gitaxid;
 
 import db.tables.LookupNames;
+import logger.Log;
 
 import java.io.*;
 import java.sql.*;
@@ -52,7 +53,7 @@ public class GI_TaxIDDeployer {
             int numberOfTaxIDs = 0;
             if (resultSet.next()) {
                 numberOfTaxIDs = resultSet.getInt(1);
-                System.out.println("TaxIDs in database: " + numberOfTaxIDs);
+                Log.getInstance().getLogger().info("TaxIDs in database: " + numberOfTaxIDs);
                 existingTaxIDs = new HashSet<Integer>(numberOfTaxIDs);
             }
 
@@ -94,12 +95,12 @@ public class GI_TaxIDDeployer {
                     preparedStatement.addBatch();
                     counter++;
                 } else {
-                    System.out.println("TaxID " + taxid + " was not included;");
+                    Log.getInstance().getLogger().info("TaxID " + taxid + " was not included;");
                 }
                 //Execute batch every time the batch buffer gets full
                 if (counter == 10000) {
                     preparedStatement.executeBatch();
-                    System.out.println("Another batch inserted into gi_taxid, the last gi was: " + split[0]);
+                    Log.getInstance().getLogger().info("Another batch inserted into gi_taxid, the last gi was: " + split[0]);
                     counter = 0;
                 }
             }
@@ -149,7 +150,7 @@ public class GI_TaxIDDeployer {
             int numberOfTaxIDs = 0;
             if (resultSet.next()) {
                 numberOfTaxIDs = resultSet.getInt(1);
-                System.out.println("TaxIDs in database: " + numberOfTaxIDs);
+                Log.getInstance().getLogger().info("TaxIDs in database: " + numberOfTaxIDs);
                 existingTaxIDs = new HashSet<Integer>(numberOfTaxIDs);
             }
 

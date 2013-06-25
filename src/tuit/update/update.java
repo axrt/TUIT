@@ -4,11 +4,15 @@ import db.mysql.MySQL_Connector;
 import helper.NCBITablesDeployer;
 import io.properties.jaxb.TUITProperties;
 import io.properties.load.TUITPropertiesLoader;
+import logger.Log;
 import org.apache.commons.cli.*;
 
 import java.io.File;
 import java.sql.Connection;
-//TODO document
+
+/**
+ * This module allows to update the pre-existing taxonomic database within the NCBI schema.
+ */
 public class update {
     /**
      * the -p flag for the properties file
@@ -20,10 +24,9 @@ public class update {
         File properties;
         File tmpDir;
         //
-        //
         TUITPropertiesLoader tuitPropertiesLoader;
         TUITProperties tuitProperties;
-
+        //
         Connection connection;
         MySQL_Connector mySQL_connector;
         CommandLineParser parser = new GnuParser();
@@ -55,12 +58,12 @@ public class update {
             NCBITablesDeployer.updateDatabasesFromNCBI(connection,tmpDir);
             //
         } catch (ParseException e) {
-            e.printStackTrace();  //TODO: improve
-
+            Log.getInstance().getLogger().severe(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.getInstance().getLogger().severe(e.getMessage());
         } finally {
-          //
+            System.exit(1);
+            Log.getInstance().getLogger().severe("Exiting..");
         }
     }
 }

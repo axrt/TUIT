@@ -2,6 +2,7 @@ package io.properties.load;
 
 import exception.TUITPropertyBadFormatException;
 import io.properties.jaxb.*;
+import logger.Log;
 import taxonomy.Ranks;
 import io.file.TUTFileOperatorHelper;
 import org.xml.sax.SAXException;
@@ -171,11 +172,11 @@ public class TUITPropertiesLoader {
         BLASTNParameters blastnParameters = tuitProperties.getBLASTNParameters();
         if (blastnParameters == null) {
             tuitProperties.setBLASTNParameters(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS);
-            System.out.println("No BLASTN parameters loaded, using default.");
+            Log.getInstance().getLogger().warning("No BLASTN parameters loaded, using default.");
         }
         if (blastnParameters.getDatabase().size() == 0) {
             blastnParameters.getDatabase().addAll(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getDatabase());
-            System.out.println("No BLASTN Database property, using default: nt.");
+            Log.getInstance().getLogger().warning("No BLASTN Database property, using default: nt.");
         } else {
             for (Database database : blastnParameters.getDatabase()) {
                 if (database.getUse() == null) {
@@ -196,17 +197,17 @@ public class TUITPropertiesLoader {
 
         } else {
             tuitProperties.getBLASTNParameters().setExpect(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getExpect());
-            System.out.println("No BLASTN Expect property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getExpect().getValue() + ".");
+            Log.getInstance().getLogger().warning("No BLASTN Expect property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getExpect().getValue() + ".");
         }
 
         if (blastnParameters.getEntrezQuery() == null || blastnParameters.getEntrezQuery().getValue() == null) {
-            System.out.println("No entrez_query provided, setting to default value");
+            Log.getInstance().getLogger().warning("No entrez_query provided, setting to default value");
             tuitProperties.getBLASTNParameters().setEntrezQuery(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getEntrezQuery());
         }
 
         if (blastnParameters.getRemote() == null || blastnParameters.getRemote().getDeligate() == null) {
             tuitProperties.getBLASTNParameters().setRemote(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote());
-            System.out.println("No BLASTN Remote property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote().getDeligate() + ".");
+            Log.getInstance().getLogger().warning("No BLASTN Remote property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote().getDeligate() + ".");
             tuitProperties.getBLASTNParameters().setRemote(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote());
         } else {
             if (!blastnParameters.getRemote().getDeligate().equals("yes") && !blastnParameters.getRemote().getDeligate().equals("no")) {
@@ -225,7 +226,7 @@ public class TUITPropertiesLoader {
             }
         } else {
             tuitProperties.getBLASTNParameters().setMaxFilesInBatch(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch());
-            System.out.println("No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch().getValue() + ".");
+            Log.getInstance().getLogger().warning("No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch().getValue() + ".");
         }
 
         //Check specification parameters manual input
@@ -286,7 +287,7 @@ public class TUITPropertiesLoader {
                 }
             }
         } else {
-            System.out.println("No specification parameters given, using defaults.");
+            Log.getInstance().getLogger().warning("No specification parameters given, using defaults.");
         }
         return tuitProperties;
     }

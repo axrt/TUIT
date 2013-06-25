@@ -6,6 +6,7 @@ import blast.specification.BLASTIdentifier;
 import blast.normal.hit.NormalizedHit;
 import format.BadFromatException;
 import format.fasta.nucleotide.NucleotideFasta;
+import logger.Log;
 import taxonomy.Ranks;
 
 import java.sql.SQLException;
@@ -131,7 +132,7 @@ public class NormalizedIteration<I extends Iteration> {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
-            System.out.println("Was not able to set the rank any higher");
+            Log.getInstance().getLogger().info("Was not able to set the rank any higher");
             return false;
         }
     }
@@ -143,7 +144,7 @@ public class NormalizedIteration<I extends Iteration> {
      */
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
         //First - count how many hits with this rank exist
-        System.out.println("Attempting to gather hits at current rank of " + this.currentRank);
+        Log.getInstance().getLogger().fine("Attempting to gather hits at current rank of " + this.currentRank);
         int numberOfHitsThatQualify = 0;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
@@ -153,7 +154,7 @@ public class NormalizedIteration<I extends Iteration> {
         //Knowing the exact number - create a list of exactly the needed size
         if (numberOfHitsThatQualify > 0) {
             List<NormalizedHit> normalizedHitsAtCurrentRank = new ArrayList<NormalizedHit>(numberOfHitsThatQualify);
-            System.out.println("At current rank of " + this.currentRank + " " + numberOfHitsThatQualify + " hits were found.");
+            Log.getInstance().getLogger().fine("At current rank of " + this.currentRank + " " + numberOfHitsThatQualify + " hits were found.");
             for (NormalizedHit normalizedHit : this.normalizedHits) {
                 //and then put all matching normalized hits into the list
                 if (normalizedHit.getAssignedRank() == this.currentRank) {
@@ -185,9 +186,7 @@ public class NormalizedIteration<I extends Iteration> {
                     esuredNormalizedHits.add(normalizedHit);
                 } else {
                     //If the hit does not check, it should be identified at a higher taxonomic level in the next round (if such occurs)
-                    //System.out.println("The "+normalizedHit.getGI()+" had low parameters at"+this.currentRank+".");
                     this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
-                    //System.out.println("Its rank was lifted to "+ normalizedHit.getAssignedRank()+" with taxid: "+ normalizedHit.getAssignedTaxid());
                 }
             }
             if (esuredNormalizedHits.size() > 0) {
@@ -223,10 +222,10 @@ public class NormalizedIteration<I extends Iteration> {
             }
             //If the potential pivotal hit was the first one on the list - just return null
             if (normalizedHitsWithBetterEvalue.size() > 0) {
-                System.out.println("Have found " + normalizedHitsWithBetterEvalue.size() + " hits with better E-value.");
+                Log.getInstance().getLogger().fine("Have found " + normalizedHitsWithBetterEvalue.size() + " hits with better E-value.");
                 return normalizedHitsWithBetterEvalue;
             } else {
-                System.out.println("There are no hits with better E-value.");
+                Log.getInstance().getLogger().fine("There are no hits with better E-value.");
                 return null;
             }
 
@@ -248,20 +247,19 @@ public class NormalizedIteration<I extends Iteration> {
      */
     protected boolean normalyzedHitsWithBetterEvalueAllowPivotal() throws SQLException {
         //Prepare a list of hits with better E-value than the current potential pivotal hit
-        System.out.println("Looking for hits with better E-value..");
+        Log.getInstance().getLogger().fine("Looking for hits with better E-value..");
         List<NormalizedHit> normalizedHitsWithBetterEvalue = this.getNormalyzedHitsWithBetterEvalue();
         if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
-                System.out.println("Attaching taxonomy for hits with better E-value.");
                 if(this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(), this.pivotalHit.getAssignedTaxid())){
-                    System.out.println("Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
+                    Log.getInstance().getLogger().fine("Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
                             " it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
                     return false;
                 }
             }
         } else {
-            System.out.println("Hit with better E-value allow current pivotal hit");
+            Log.getInstance().getLogger().fine("Hit with better E-value allow current pivotal hit");
             return true;
         }
         return true;
@@ -276,18 +274,18 @@ public class NormalizedIteration<I extends Iteration> {
      */
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
         //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
-        System.out.println("Attempting to set current potential pivotal hit");
+        Log.getInstance().getLogger().fine("Attempting to set current potential pivotal hit");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalyzedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
-            System.out.println("A subset of hits at current rank of " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs)");
+            Log.getInstance().getLogger().fine("A subset of hits at current rank of " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs)");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
-            System.out.println("Current pivotal hit was set to: " + this.pivotalHit.getGI());
+            Log.getInstance().getLogger().fine("Current pivotal hit was set to: " + this.pivotalHit.getGI());
             return true;
         } else {
             //Try lifting one step the current rank
             this.liftCurrentRankOfSpecificationForHits();
-            System.out.println("A subset of hits at current rank of " + this.currentRank + " is empty, lifting current rank and attempting once again.");
+            Log.getInstance().getLogger().fine("A subset of hits at current rank of " + this.currentRank + " is empty, lifting current rank and attempting once again.");
             if (this.couldLiftCurrentRank()) {
                 //Retry to set potential pivotal hit recursively
                 return this.couldSetPivotalHitAtCurrentRank();
@@ -342,17 +340,17 @@ public class NormalizedIteration<I extends Iteration> {
                 NormalizedHit normalizedHit = this.normalizedHits.get(i);
                 //If the next hit has current rank and points to a different taxonomic node
                 if (normalizedHit.getAssignedRank() == this.currentRank && normalizedHit.getAssignedTaxid() != this.pivotalHit.getAssignedTaxid()) {
-                    System.out.println("A hit with worse E-value was from the same rank of \'" + this.currentRank +
+                    Log.getInstance().getLogger().fine("A hit with worse E-value was from the same rank of \'" + this.currentRank +
                             "\", but from different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
                             + " (while the current pivotal hit has: " + this.pivotalHit.getAssignedTaxid() + ").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
-                    System.out.println("Checking whether the hits are far enough by the E-value in folds..");
+                    Log.getInstance().getLogger().fine("Checking whether the hits are far enough by the E-value in folds..");
                     if (this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
-                        System.out.println("The hits are far enough.");
+                        Log.getInstance().getLogger().fine("The hits are far enough.");
                         return true;
                     } else {
-                        System.out.println("The hits are not far enough.");
+                        Log.getInstance().getLogger().fine("The hits are not far enough.");
                         return false;
                     }
                 }
@@ -374,10 +372,10 @@ public class NormalizedIteration<I extends Iteration> {
     public void specify() throws SQLException, BadFromatException {
         if (this.iteration.getIterationHits().getHit().size() > 0) {
             this.normalyzeHits();
-            System.out.println("Current number of normalized hits is: " + this.normalizedHits.size());
-            System.out.println("Attempting to find the lowest rank..");
+            Log.getInstance().getLogger().fine("Current number of normalized hits is: " + this.normalizedHits.size());
+            Log.getInstance().getLogger().fine("Attempting to find the lowest rank..");
             this.findLowestRank();
-            System.out.println("The lowest rank is: " + this.currentRank);
+            Log.getInstance().getLogger().fine("The lowest rank is: " + this.currentRank);
             //Moving up the taxonomic ranks
             while (couldSetPivotalHitAtCurrentRank()) {
                 //Try finding such a hit that is supported as a pivotal one for the taxonomic specification by both
@@ -385,14 +383,14 @@ public class NormalizedIteration<I extends Iteration> {
                 //deeper specification, and has no compatitors among those that have worse E-values
                 if (this.normalyzedHitsWithBetterEvalueAllowPivotal() && this.normalyzedHitsWithWorseEvalueAllowPivotal()) {
                     //success
-                    System.out.println("Success");
+                    Log.getInstance().getLogger().finest("Success");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
-                    System.out.println("Lifting up current rank of specification for those hits that has " + this.currentRank);
+                    Log.getInstance().getLogger().fine("Lifting up current rank of specification for those hits that has " + this.currentRank);
                     this.liftCurrentRankOfSpecificationForHits();
                     if (this.couldLiftCurrentRank()) {
-                        System.out.println("Trying a higher rank of rank \"" + this.currentRank + "\"");
+                        Log.getInstance().getLogger().fine("Trying a higher rank of rank \"" + this.currentRank + "\"");
                     } else {
                         break;
                     }
@@ -402,11 +400,11 @@ public class NormalizedIteration<I extends Iteration> {
             try {
                 this.blastIdentifier.acceptResults(this.query, this);
             } catch (Exception e) {
-                System.err.println("Unable to save results! The error was:");
+                Log.getInstance().getLogger().severe("Unable to save results! The error was:");
                 e.printStackTrace();
             }
         } else {
-            System.out.println("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
+            Log.getInstance().getLogger().severe("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
         }
         //fail
     }
