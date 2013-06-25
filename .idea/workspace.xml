@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/logger/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" afterPath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" afterPath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit/deploy/deploy.java" afterPath="$PROJECT_DIR$/src/tuit/deploy/deploy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/src.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/deploy.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/update.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tuit/deploy/deploy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tuit/update/update.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logger/Log.java" afterPath="$PROJECT_DIR$/src/logger/Log.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit/main/tuit.java" afterPath="$PROJECT_DIR$/src/tuit/main/tuit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit/update/update.java" afterPath="$PROJECT_DIR$/src/tuit/update/update.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -25,7 +24,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624110188" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624110188" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372147923699" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151588866" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -147,7 +146,7 @@
     <file path="/TUITPropertyBadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372071057596" ignored="false" />
     <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372150136562" ignored="false" />
     <file path="/QueryCoveragCutoff.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472038682" ignored="false" />
-    <file path="/TUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372081044394" ignored="false" />
+    <file path="/TUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372156140910" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/multithread/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371541868485" ignored="false" />
     <file path="/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371541806518" ignored="false" />
     <file path="/TUITBlASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371544201402" ignored="false" />
@@ -156,20 +155,21 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
     <file path="/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
     <file path="/TUITBLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371543896870" ignored="false" />
-    <file path="/NucleotideFastaTUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372077247597" ignored="false" />
+    <file path="/NucleotideFastaTUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372155926438" ignored="false" />
     <file path="/TUITBLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372068172049" ignored="false" />
     <file path="/NormalizedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372149553574" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/BLAST/NCBI/local/exec/NCBI_EX_BLAST.class" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624129084" ignored="false" />
-    <file path="/a.dummy" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372148730018" ignored="false" />
+    <file path="/a.dummy" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372155988589" ignored="false" />
     <file path="/user.sql" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372075906341" ignored="false" />
     <file path="/FastaInputFileException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372077141564" ignored="false" />
-    <file path="/tuit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372150609929" ignored="false" />
+    <file path="/tuit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372156978282" ignored="false" />
     <file path="/BLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372149595038" ignored="false" />
     <file path="/update.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151559610" ignored="false" />
-    <file path="/deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151409593" ignored="false" />
+    <file path="/deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372153715522" ignored="false" />
     <file path="/Logger.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372148956277" ignored="false" />
-    <file path="/Log.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151273984" ignored="false" />
+    <file path="/Log.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372156542649" ignored="false" />
     <file path="/TUITBLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372149756569" ignored="false" />
+    <file path="$PROJECT_DIR$/javadoc/index-files/index-12.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372153650798" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,31 +247,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="65" selection-start="3813" selection-end="3813" vertical-scroll-proportion="0.0">
+            <state line="180" column="177" selection-start="7550" selection-end="7550" vertical-scroll-proportion="0.6912522">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tuit/deploy/deploy.java">
+      <file leaf-file-name="TUITBLASTIdentifier.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="10" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
+            <state line="145" column="65" selection-start="7813" selection-end="7813" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="180" selection-start="4617" selection-end="4617" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="9" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Log.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="39" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tuit/update/update.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="92" selection-start="377" selection-end="377" vertical-scroll-proportion="0.10273973">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -294,10 +321,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/properties.xml" />
-        <option value="$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java" />
-        <option value="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/util/SystemUtil.class" />
-        <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/logger/Logger.java" />
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
@@ -306,10 +329,14 @@
         <option value="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
         <option value="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
         <option value="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
-        <option value="$PROJECT_DIR$/src/tuit/main/tuit.java" />
-        <option value="$PROJECT_DIR$/src/logger/Log.java" />
-        <option value="$PROJECT_DIR$/src/tuit/deploy/deploy.java" />
         <option value="$PROJECT_DIR$/src/tuit/update/update.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/D_MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/META-INF/U_MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/tuit/deploy/deploy.java" />
+        <option value="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
+        <option value="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
+        <option value="$PROJECT_DIR$/src/logger/Log.java" />
+        <option value="$PROJECT_DIR$/src/tuit/main/tuit.java" />
       </list>
     </option>
   </component>
@@ -409,55 +436,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="update" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deploy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -490,10 +469,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taxonomy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -529,7 +504,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logger" />
+              <option name="myItemId" value="io" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -551,51 +526,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="load" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
+              <option name="myItemId" value="file" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -614,64 +545,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="names" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gitaxid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -715,7 +588,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JAVA_BIO" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -726,16 +599,21 @@
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/deploy/src/tuit/deploy" />
+      <recent name="$PROJECT_DIR$/deploy" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/deploy/src/META-INF" />
+      <recent name="$PROJECT_DIR$/deploy/src" />
       <recent name="$PROJECT_DIR$/src/test" />
       <recent name="$PROJECT_DIR$/src/db/mysqlwb" />
       <recent name="$PROJECT_DIR$/src/db" />
-      <recent name="$PROJECT_DIR$/src/connect" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.BLAST_IdentifierTest">
     <configuration default="false" name="NodesDBDDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="update" />
+      <module name="deploy" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test" />
@@ -763,7 +641,7 @@
       <method />
     </configuration>
     <configuration default="false" name="NCBITablesDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="update" />
+      <module name="deploy" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test" />
@@ -791,7 +669,7 @@
       <method />
     </configuration>
     <configuration default="false" name="NCBITaxonomicTreeTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="update" />
+      <module name="deploy" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test" />
@@ -813,7 +691,7 @@
       <method />
     </configuration>
     <configuration default="false" name="BLAST_IdentifierTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="update" />
+      <module name="deploy" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test" />
@@ -841,7 +719,7 @@
       <method />
     </configuration>
     <configuration default="false" name="TUTFileOperatorHelperTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="update" />
+      <module name="deploy" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test" />
@@ -1143,7 +1021,11 @@
       <created>1372092922428</created>
       <updated>1372092922428</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Logger added, all System.out calls substituted, verbose option added">
+      <created>1372151607579</created>
+      <updated>1372151607582</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1173,21 +1055,21 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5550661" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32819384" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14207049" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819384" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.44052863" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26307365" sideWeight="0.67180616" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26307365" sideWeight="0.67070484" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52643174" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14207049" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1234,7 +1116,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logger added, all System.out calls substituted, verbose option added" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1248,7 +1130,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="TUITCutoffSet documented" />
     <MESSAGE value="Ranks documented" />
     <MESSAGE value="NormalizedHit documented" />
     <MESSAGE value="NormalizedIteration renamed from NormalyzedIteration and documented" />
@@ -1273,6 +1154,7 @@
     <MESSAGE value="JavaDoc generates without warnings" />
     <MESSAGE value="fastDeployNCBIDatabasesFromNCBI(final Connection connection, final File tmpDir) implemented" />
     <MESSAGE value="deploy implemented" />
+    <MESSAGE value="Logger added, all System.out calls substituted, verbose option added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1286,32 +1168,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="189" selection-start="843" selection-end="843" vertical-scroll-proportion="0.4054054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/BLAST_IdentifierTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/util/SystemUtil.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="41" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.3150525" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="19" selection-start="9922" selection-end="9922" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/GI_TaxIDDeployerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="5" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.0">
@@ -1329,13 +1185,6 @@
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="501" column="73" selection-start="25834" selection-end="25834" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="65" selection-start="5870" selection-end="5870" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1370,9 +1219,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="23" selection-start="39" selection-end="45" vertical-scroll-proportion="0.025728988">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="9" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="65" selection-start="7813" selection-end="7813" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="180" selection-start="4617" selection-end="4617" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="36" selection-start="1118" selection-end="1118" vertical-scroll-proportion="1.2607204">
+        <state line="50" column="39" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1381,23 +1265,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="65" selection-start="3813" selection-end="3813" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit/deploy/deploy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="10" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit/update/update.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="92" selection-start="377" selection-end="377" vertical-scroll-proportion="0.10273973">
+        <state line="180" column="177" selection-start="7550" selection-end="7550" vertical-scroll-proportion="0.6912522">
           <folding />
         </state>
       </provider>
@@ -1408,7 +1276,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>update</last-edited>
+          <last-edited>tuit</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -35,11 +35,11 @@ public class tuit {
     /**
      * The -in flag for the input file
      */
-    public final static String IN = "in";
+    public final static String IN = "i";
     /**
      * The -out flag for the output file
      */
-    public final static String OUT = "out";
+    public final static String OUT = "o";
     /**
      * The -p flag for the properties file
      */
@@ -48,6 +48,14 @@ public class tuit {
      * The -v flag for the verbose output file
      */
     public final static String V = "v";
+    /**
+     * The -deploy flag for the verbose output file
+     */
+    public final static String DEPLOY = "deploy";
+    /**
+     * The -update flag for the verbose output file
+     */
+    public final static String UPDATE = "update";
     /**
      * tuit output file extension
      */
@@ -80,20 +88,48 @@ public class tuit {
         options.addOption(tuit.OUT, "output<file>", true, "Output file (in " + tuit.TUIT_EXT + " format)");
         options.addOption(tuit.P, "prop<file>", true, "Properties file (XML formatted)");
         options.addOption(tuit.V, "verbose", false, "Enable verbose output");
+        options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
+        options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
         HelpFormatter formatter = new HelpFormatter();
         try {
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
+            if (!commandLine.hasOption(tuit.P)) {
+                throw new ParseException("No properties file option found, exiting.");
+            } else {
+                properties = new File(commandLine.getOptionValue(tuit.P));
+            }
+            //Load properties
+            tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
+            tuitProperties = tuitPropertiesLoader.getTuitProperties();
+            //Connect to the database
+            mySQL_connector = MySQL_Connector.newDefaultInstance(
+                    "jdbc:mysql://" + tuitProperties.getDBConnection().getUrl().trim() + "/",
+                    tuitProperties.getDBConnection().getLogin().trim(),
+                    tuitProperties.getDBConnection().getPassword().trim());
+            mySQL_connector.connectToDatabase();
+            connection = mySQL_connector.getConnection();
+            //Create tmp directory and blastn executable
+            tmpDir = new File(tuitProperties.getTMPDir().getPath());
+            blastnExecutable = new File(tuitProperties.getBLASTNPath().getPath());
+
+            //Check for deploy
+            if(commandLine.hasOption(tuit.DEPLOY)){
+                NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection,tmpDir);
+                Log.getInstance().getLogger().severe("Exiting..");
+                return;
+            }
+            //Check for update
+            if(commandLine.hasOption(tuit.UPDATE)){
+                NCBITablesDeployer.updateDatabasesFromNCBI(connection,tmpDir);
+                Log.getInstance().getLogger().severe("Exiting..");
+                return;
+            }
             //Check vital parameters
             if (!commandLine.hasOption(tuit.IN)) {
                 throw new ParseException("No input file option found, exiting.");
             } else {
                 inputFile = new File(commandLine.getOptionValue(tuit.IN));
-            }
-            if (!commandLine.hasOption(tuit.P)) {
-                throw new ParseException("No io.properties file option found, exiting.");
-            } else {
-                properties = new File(commandLine.getOptionValue(tuit.P));
             }
             //Correct the output file option if needed
             if (!commandLine.hasOption(tuit.OUT)) {
@@ -104,7 +140,7 @@ public class tuit {
             //Adjust the output level
             if(commandLine.hasOption(tuit.V)){
                 Log.getInstance().getLogger().setLevel(Level.FINE);
-                Log.getInstance().getLogger().fine("Using verbose output");
+                Log.getInstance().getLogger().info("Using verbose output for the log");
             }else{
                 Log.getInstance().getLogger().setLevel(Level.INFO);
             }
@@ -119,15 +155,6 @@ public class tuit {
             } else if (inputFile.isDirectory()) {
                 throw new Exception("Properties file points to a directory.");
             }
-            /*if (!outputFile.canWrite()) {
-                throw new Exception("Cannot write the output file "+outputFile.getPath()+", please check file system permissions.");
-            }*/
-            //Load io.properties
-            tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
-            tuitProperties = tuitPropertiesLoader.getTuitProperties();
-            //Create tmp directory and blastn executable
-            tmpDir = new File(tuitProperties.getTMPDir().getPath());
-            blastnExecutable = new File(tuitProperties.getBLASTNPath().getPath());
             //Create blast parameters
             StringBuilder stringBuilder = new StringBuilder();
             //stringBuilder.append("\"");
@@ -153,14 +180,6 @@ public class tuit {
                         "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
                 };
             }
-
-            //Connect to the database
-            mySQL_connector = MySQL_Connector.newDefaultInstance(
-                    "jdbc:mysql://" + tuitProperties.getDBConnection().getUrl().trim() + "/",
-                    tuitProperties.getDBConnection().getLogin().trim(),
-                    tuitProperties.getDBConnection().getPassword().trim());
-            mySQL_connector.connectToDatabase();
-            connection = mySQL_connector.getConnection();
             //Prepare a cutoff Map
             if (tuitProperties.getSpecificationParameters() != null && tuitProperties.getSpecificationParameters().size() > 0) {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>(tuitProperties.getSpecificationParameters().size());
@@ -189,7 +208,7 @@ public class tuit {
 
         } catch (ParseException pe) {
             Log.getInstance().getLogger().severe(pe.getMessage());
-            formatter.printHelp( "tuit", options );
+            //formatter.printHelp( "tuit", options );
             //pe.printStackTrace();
         } catch (SAXException saxe) {
             Log.getInstance().getLogger().severe(saxe.getMessage());
@@ -201,7 +220,7 @@ public class tuit {
             Log.getInstance().getLogger().severe(tpbfe.getMessage());
             //tpbfe.printStackTrace();
         } catch (JAXBException jaxbee) {
-            Log.getInstance().getLogger().severe("The io.properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
+            Log.getInstance().getLogger().severe("The properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
             //jaxbee.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             //Probably won't happen unless the library deleted from the .jar
@@ -215,7 +234,7 @@ public class tuit {
             }
             //sqle.printStackTrace();
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            Log.getInstance().getLogger().severe(e.getMessage());
             //e.printStackTrace();
         } finally {
             Log.getInstance().getLogger().severe("Exiting..");

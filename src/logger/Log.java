@@ -1,8 +1,10 @@
 package logger;
 
-import java.util.logging.ConsoleHandler;
+import java.io.IOException;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * This class is a singleton, that incapsulates a Logger and allows to log messages from every part of the TUIT
@@ -24,17 +26,22 @@ public enum Log {
      */
     private Logger logger;
     /**
-     * Console handler for the logger
+     * File handler for the logger
      */
-    private ConsoleHandler consoleHandler;
+    private FileHandler fileHandler;
 
     /**
      * Private constructor
      */
     private Log() {
         this.logger= Logger.getLogger("tuit.log");
-        this.consoleHandler=new ConsoleHandler();
-        this.logger.addHandler(this.consoleHandler);
+        try {
+            this.fileHandler =new FileHandler("tuit.log");
+            this.fileHandler.setFormatter(new SimpleFormatter());
+        } catch (IOException e) {
+           this.logger.severe(e.getMessage());
+        }
+        this.logger.addHandler(this.fileHandler);
     }
 
     /**
@@ -42,7 +49,7 @@ public enum Log {
      * @param level {@link Level} of output
      */
     public void setLevel(Level level) {
-        this.consoleHandler.setLevel(level);
+        this.fileHandler.setLevel(level);
     }
 
     /**
