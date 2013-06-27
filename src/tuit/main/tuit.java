@@ -173,15 +173,16 @@ public class tuit {
                 parameters = new String[]{
                         "-db", stringBuilder.toString(),
                         remote,
-                        entrez_query, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
+                       entrez_query, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
                         "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
                 };
             } else {
                 parameters = new String[]{
                         "-db", stringBuilder.toString(),
-                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
+                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
+                        /*,
                         "-gilist", TUTFileOperatorHelper.restrictLocalBLASTDatabaseToEntrez(
-                        connection, tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
+                        connection, tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath() */
                 };
             }
             //Prepare a cutoff Map
@@ -203,7 +204,8 @@ public class tuit {
             blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                     tmpDir, blastnExecutable, parameters,
                     NucleotideFastaTUITFileOperator.getInstance(), connection,
-                    cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
+                    cutoffMap,tuitProperties.getBLASTNParameters().getEntrezQuery().getValue(),
+                    Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
 
 
             Future<?> runnableFuture= Executors.newSingleThreadExecutor().submit(blastIdentifier);

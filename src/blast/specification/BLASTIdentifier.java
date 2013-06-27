@@ -19,10 +19,7 @@ import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
@@ -95,6 +92,12 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     protected List<NormalizedIteration<Iteration>> normalizedIterations;
 
     /**
+     * Strings within the scientific names, restricted by the entrez query
+
+     */
+    protected String[] restrictedNames;
+
+    /**
      * @param query         {@link List} a list of query
      *                      fasta-formatted records
      * @param query_IDs     {@link List} a list of AC numbers of sequences in a
@@ -110,16 +113,27 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      *                      the blast+ executable input
      * @param connection    a connection to the SQL Database that contains a NCBI schema with all the nessessary
      *                      taxonomic information
+     * @param restrictedNames  a {@link String}[] list that contains names that should be restricted (such as "unclassified" etc.)
      * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
      *                      default set
      */
     protected BLASTIdentifier(List<T> query, List<String> query_IDs,
                               File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                              Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+                              Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, String[]restrictedNames) {
         super(query, query_IDs, tempDir, executive, parameterList,
                 identifierFileOperator);
+
+        this.restrictedNames=restrictedNames;
         this.connection = connection;
         this.cutoffSetMap = cutoffSetMap;
+    }
+
+    /**
+     * Getter for the restricted names
+     * @return {@link String}[] names restricted by the entrez query
+     */
+    public String[] getRestrictedNames() {
+        return restrictedNames;
     }
 
     /**
@@ -462,12 +476,16 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      *                      taxonomic information
      * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
      *                      default set
+     * @param entrez_query that contains "not smth" formatted restriction names (like "unclassified, etc")
      * @return a new instance of {@link BLASTIdentifier} from the given parameters
      */
     public static BLASTIdentifier newDefaultInstance(List<NucleotideFasta> query,
                                                      File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                                                     Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLASTIdentifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
+                                                     Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, String entrez_query) {
+        String[]split=null;
+        split=entrez_query.split("not ");
+
+        return new BLASTIdentifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, Arrays.copyOfRange(split,1,split.length)) {
             /**
              * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
              */

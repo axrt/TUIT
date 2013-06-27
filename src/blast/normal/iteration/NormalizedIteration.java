@@ -303,7 +303,10 @@ public class NormalizedIteration<I extends Iteration> {
      */
     protected void reduceNoRanks() throws SQLException {
         for (NormalizedHit normalizedHit : this.normalizedHits) {
-            while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1) {
+            while (
+                    (normalizedHit.getAssignedRank() == Ranks.no_rank
+                            ||normalizedHit.getFocusNode().contaisRestricted(this.blastIdentifier.getRestrictedNames()))
+                   &&normalizedHit.getAssignedTaxid()!=1) {
                 this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
             }
         }
@@ -404,7 +407,7 @@ public class NormalizedIteration<I extends Iteration> {
                 e.printStackTrace();
             }
         } else {
-            Log.getInstance().getLogger().severe("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
+            Log.getInstance().getLogger().severe("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the properties configuration file.");
         }
         //fail
     }

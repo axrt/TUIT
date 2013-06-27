@@ -131,7 +131,7 @@ public class TUTFileOperatorHelper {
     }
     /**
      * As long as there is no efficient way to apply entrez query to a local BLAST, a file of the GIs, to which the search
-     * shoul be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
+     * shoul be restrictedNames has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
      * In order to create such a file, the taxonomic database looks for all the entrez query clauses, links those to their GIs
      * and lists out the GIs which were not affected by the entrez query restrictions. The file has a unique name based on the
      * entrez query clauses and is created only once for each entrez query in order to ensure maximum performance.

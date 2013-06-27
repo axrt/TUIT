@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -45,10 +46,11 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
+     * @param restrictedNames  a {@link String}[] list that contains names that should be restricted (such as "unclassified" etc.)
      * @param batchSize              {@code int} number of fasta records in one batch
      */
-    protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
-        super(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
+    protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,String[]restrictedNames, int batchSize) {
+        super(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, restrictedNames);
         this.batchSize = batchSize;
     }
 
@@ -79,7 +81,12 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
                 } else {
                     Log.getInstance().getLogger().info("BLASTN started..");
                 }
-
+                StringBuilder stringBuilder=new StringBuilder();
+                for (String s:this.parameterList){
+                    stringBuilder.append(s);
+                    stringBuilder.append(" ");
+                }
+                Log.getInstance().getLogger().info("BLASTN command: "+stringBuilder.toString());
                 this.BLAST();
 
                 if (remote) {
@@ -137,15 +144,19 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
+     * @param entrez_query that contains "not smth" formatted restriction names (like "unclassified, etc")
      * @return                       {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
     public static TUITBLASTIdentifier newInstanceFromFileOperator(
             File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-            Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) throws Exception {
+            Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,String entrez_query, int batchSize) throws Exception {
+        String[]split=null;
+        split=entrez_query.split("not ");
+
         List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
-            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, Arrays.copyOfRange(split, 1, split.length), batchSize);
             return tuitblastIdentifier;
         } else {
             throw new Exception("The batch is empty, please check the input file");

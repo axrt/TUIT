@@ -4,6 +4,7 @@ import taxonomy.Ranks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * A class that represents a node of a taxonomic tree with its taxid, paren {@link TaxonomicNode}, children {@link TaxonomicNode}s and scientific name
@@ -47,6 +48,20 @@ public class TaxonomicNode {
         this.scientificName = scientificName;
         this.children = new ArrayList<TaxonomicNode>();
         this.isRoot = false;
+    }
+
+    /**
+     * Todo document
+     * @param restricted
+     * @return
+     */
+    public boolean contaisRestricted(String[]restricted){
+        for(String s:restricted){
+            if(Pattern.compile(Pattern.quote(s), Pattern.CASE_INSENSITIVE).matcher(this.scientificName).find()){
+               return true;
+            }
+        }
+        return false;
     }
 
     /**
