@@ -180,7 +180,7 @@ public class tuit {
                 parameters = new String[]{
                         "-db", stringBuilder.toString(),
                         "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
-                        "-gilist", TUTFileOperatorHelper.restrictLocalBLASTDatabaseToEntrez(
+                        "-negative_gilist", TUTFileOperatorHelper.restrictLocalBLASTDatabaseToEntrez(
                         connection, tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
                 };
             }

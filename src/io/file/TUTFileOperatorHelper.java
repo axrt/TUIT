@@ -21,6 +21,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.sax.SAXSource;
 import java.io.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class TUTFileOperatorHelper {
                 String file = null;
                 if (systemId.contains("properties.dtd")) {
                     file = "properties.dtd";
-                } else{
+                } else {
                     throw new SAXException("Wrong name for the schema dtd, please correct to \n" +
                             "<!DOCTYPE TUITProperties PUBLIC \"-//TUIT//TUITProperties/EN\" \"properties.dtd\">");
                 }
@@ -123,12 +124,13 @@ public class TUTFileOperatorHelper {
             }
         } finally {
             //Finally return the prepared list of records
-            if(bufferedReader!=null){
+            if (bufferedReader != null) {
                 bufferedReader.close();
             }
         }
         return encodedFastas;
     }
+
     /**
      * As long as there is no efficient way to apply entrez query to a local BLAST, a file of the GIs, to which the search
      * shoul be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
@@ -136,14 +138,13 @@ public class TUTFileOperatorHelper {
      * and lists out the GIs which were not affected by the entrez query restrictions. The file has a unique name based on the
      * entrez query clauses and is created only once for each entrez query in order to ensure maximum performance.
      *
-     * @param connection {@link Connection} to the database
-     * @param tempDir {@link File} which points to the temporary directory, where the gi restrictiong file will be stored
+     * @param connection   {@link Connection} to the database
+     * @param tempDir      {@link File} which points to the temporary directory, where the gi restrictiong file will be stored
      * @param entrez_query "not smth not smth" formatted {@link String}
-     *
      * @return {@link File} that points to the GI restrictions file, which gets created in the temporary folder
      * @throws java.sql.SQLException in case a database communication error occurs
      */
-    public static File restrictLocalBLASTDatabaseToEntrez(Connection connection, File tempDir, String entrez_query) throws SQLException {
+    public static File restrictLocalBLASTDatabaseToEntrez(Connection connection, File tempDir, String entrez_query) throws SQLException, IOException {
         //Prepare a file name
         //Currently understands only "not" cases
         String[] split = entrez_query.split("not ");
@@ -167,40 +168,130 @@ public class TUTFileOperatorHelper {
         }
         //Prepare a sql part of the entrez
         stringBuilder = new StringBuilder();
-        String nameNotLike = LookupNames.dbs.NCBI.names.columns.name.name() + " not like ";
+        String nameNotLike = "l1."+LookupNames.dbs.NCBI.names.columns.name.name() + " like ";
         for (int i = 1; i < split.length; i++) {
             stringBuilder.append(nameNotLike);
             stringBuilder.append("\"%");
             stringBuilder.append(split[i]);
             stringBuilder.append("%\"");
-            if(i+1<split.length){
-               stringBuilder.append(" and ");
+            if (i + 1 < split.length) {
+                stringBuilder.append(" or ");
             }
         }
         Statement statement = null;
+        BufferedWriter bufferedWriter = null;
         try {
             statement = connection.createStatement();
             //Notify that it's gonna take some time
             Log.getInstance().getLogger().info("Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
             //Process the file
-            statement.execute("USE "+LookupNames.dbs.NCBI.name);
+            statement.execute("USE " + LookupNames.dbs.NCBI.name);
             statement.execute("SELECT "
                     + LookupNames.dbs.NCBI.gi_taxid.columns.gi.name()
                     + " FROM "
                     + LookupNames.dbs.NCBI.views.taxon_by_gi.name()
+                    + " AS l1 "
                     + " WHERE "
                     + stringBuilder.toString()
                     + " INTO OUTFILE \""
                     + restrictedGIs.getAbsolutePath()
                     + "\"");
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT "
+                            + "l2."
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid
+                            + " FROM  "
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent
+                            + " AS l1 JOIN "
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent
+                            + " AS l2 ON l2."
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid
+                            + "=l1."
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid
+                            + " WHERE "
+                            + stringBuilder.toString()
+            );
+            List<Integer> taxids = new ArrayList<Integer>();
+            while (resultSet.next()) {
+                taxids.add(resultSet.getInt(1));
+            }
+            Log.getInstance().getLogger().info(String.valueOf(taxids.size())+" non-reliable nodes have been identified");
+            if (!taxids.isEmpty()) {
+                bufferedWriter = new BufferedWriter(new FileWriter(restrictedGIs, true));
+                for (Integer i : taxids) {
+                    for (Integer leaf : TUTFileOperatorHelper.leavesByTaxid(connection, i, new ArrayList<Integer>())) {
+                        ResultSet giSet = statement.executeQuery(
+                                "SELECT "
+                                        + LookupNames.dbs.NCBI.gi_taxid.columns.gi.name()
+                                        + " FROM "
+                                        + LookupNames.dbs.NCBI.gi_taxid.name
+                                        + " WHERE "
+                                        + LookupNames.dbs.NCBI.gi_taxid.columns.taxid
+                                        + "="
+                                        + leaf);
+                        if(giSet.next()){
+                            bufferedWriter.write(String.valueOf(giSet.getInt(1)));
+                            bufferedWriter.newLine();
+                            bufferedWriter.flush();
+                        }
+                    }
+                }
+            }
         } finally {
             if (statement != null) {
                 statement.close();
+            }
+            if (bufferedWriter != null) {
+                bufferedWriter.flush();
+                bufferedWriter.close();
             }
         }
         //Report success
         Log.getInstance().getLogger().info("Entrez query restrictions have been created successfully");
         //Return the restricting file
         return restrictedGIs;
+    }
+
+    /**
+     * Returns a list of leaves for the given taxid
+     * @param connection {@link Connection} to the database
+     * @param taxid which identifies the branch, which contains the leaves that need to be found
+     * @param leaves {@link List} that will append the taxids of the leaves
+     * @return {@link List} with appended leave's taxids
+     * @throws SQLException in case a database communication error occurs
+     */
+    public static List<Integer> leavesByTaxid(Connection connection, int taxid, List<Integer> leaves) throws SQLException {
+        Statement statement = null;
+        List<Integer> taxids = null;
+        try {
+            statement = connection.createStatement();
+            statement.execute("USE " + LookupNames.dbs.NCBI.name);
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT "
+                            + LookupNames.dbs.NCBI.nodes.columns.taxid.name()
+                            + " FROM "
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
+                            + "=" + String.valueOf(taxid)
+            );
+            taxids = new ArrayList<Integer>();
+            while (resultSet.next()) {
+                taxids.add(resultSet.getInt(1));
+            }
+            if (taxids.isEmpty()) {
+                leaves.add(taxid);
+            } else {
+                for (Integer i : taxids) {
+                    leaves = TUTFileOperatorHelper.leavesByTaxid(connection, i, leaves);
+                }
+            }
+
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+        }
+        return leaves;
     }
 }
