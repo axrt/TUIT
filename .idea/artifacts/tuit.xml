@@ -7,6 +7,8 @@
       <element id="extracted-dir" path="/usr/lib/JLF/commons-cli-1.2/commons-cli-1.2-javadoc.jar" path-in-jar="/" />
       <element id="extracted-dir" path="/usr/lib/JLF/commons-cli-1.2/commons-cli-1.2-sources.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src" />
+      <element id="dir-copy" path="$PROJECT_DIR$/javadoc" />
     </root>
   </artifact>
 </component>

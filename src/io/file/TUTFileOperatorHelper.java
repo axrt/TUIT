@@ -136,7 +136,10 @@ public class TUTFileOperatorHelper {
      * and lists out the GIs which were not affected by the entrez query restrictions. The file has a unique name based on the
      * entrez query clauses and is created only once for each entrez query in order to ensure maximum performance.
      *
+     * @param connection {@link Connection} to the database
+     * @param tempDir {@link File} which points to the temporary directory, where the gi restrictiong file will be stored
      * @param entrez_query "not smth not smth" formatted {@link String}
+     *
      * @return {@link File} that points to the GI restrictions file, which gets created in the temporary folder
      * @throws java.sql.SQLException in case a database communication error occurs
      */
