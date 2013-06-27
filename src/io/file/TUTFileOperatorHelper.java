@@ -1,11 +1,13 @@
 package io.file;
 
+import db.tables.LookupNames;
 import format.EncodedFasta;
 import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
 import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 import io.properties.jaxb.TUITProperties;
+import logger.Log;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -18,6 +20,9 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Source;
 import javax.xml.transform.sax.SAXSource;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,5 +128,76 @@ public class TUTFileOperatorHelper {
             }
         }
         return encodedFastas;
+    }
+    /**
+     * As long as there is no efficient way to apply entrez query to a local BLAST, a file of the GIs, to which the search
+     * shoul be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
+     * In order to create such a file, the taxonomic database looks for all the entrez query clauses, links those to their GIs
+     * and lists out the GIs which were not affected by the entrez query restrictions. The file has a unique name based on the
+     * entrez query clauses and is created only once for each entrez query in order to ensure maximum performance.
+     *
+     * @param entrez_query "not smth not smth" formatted {@link String}
+     * @return {@link File} that points to the GI restrictions file, which gets created in the temporary folder
+     * @throws java.sql.SQLException in case a database communication error occurs
+     */
+    public static File restrictLocalBLASTDatabaseToEntrez(Connection connection, File tempDir, String entrez_query) throws SQLException {
+        //Prepare a file name
+        //Currently understands only "not" cases
+        String[] split = entrez_query.split("not ");
+        for (int i = 1; i < split.length; i++) {
+            split[i] = split[i].trim();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 1; i < split.length; i++) {
+            stringBuilder.append(split[i]);
+            if (i + 1 < split.length) {
+                stringBuilder.append("_");
+            }
+        }
+        //Append the .gil-format file extension
+        stringBuilder.append(".gil");
+        File restrictedGIs = new File(tempDir, stringBuilder.toString());
+        //Check if the file already exists
+        if (restrictedGIs.exists()) {
+            Log.getInstance().getLogger().info("The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
+            return restrictedGIs;
+        }
+        //Prepare a sql part of the entrez
+        stringBuilder = new StringBuilder();
+        String nameNotLike = LookupNames.dbs.NCBI.names.columns.name.name() + " not like ";
+        for (int i = 1; i < split.length; i++) {
+            stringBuilder.append(nameNotLike);
+            stringBuilder.append("\"%");
+            stringBuilder.append(split[i]);
+            stringBuilder.append("%\"");
+            if(i+1<split.length){
+               stringBuilder.append(" and ");
+            }
+        }
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            //Notify that it's gonna take some time
+            Log.getInstance().getLogger().info("Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
+            //Process the file
+            statement.execute("USE "+LookupNames.dbs.NCBI.name);
+            statement.execute("SELECT "
+                    + LookupNames.dbs.NCBI.gi_taxid.columns.gi.name()
+                    + " FROM "
+                    + LookupNames.dbs.NCBI.views.taxon_by_gi.name()
+                    + " WHERE "
+                    + stringBuilder.toString()
+                    + " INTO OUTFILE \""
+                    + restrictedGIs.getAbsolutePath()
+                    + "\"");
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+        }
+        //Report success
+        Log.getInstance().getLogger().info("Entrez query restrictions have been created successfully");
+        //Return the restricting file
+        return restrictedGIs;
     }
 }

@@ -465,8 +465,8 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @return a new instance of {@link BLASTIdentifier} from the given parameters
      */
     public static BLASTIdentifier newDefaultInstance(List<NucleotideFasta> query,
-                                                      File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                                                      Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+                                                     File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
+                                                     Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
         return new BLASTIdentifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
             /**
              * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.

@@ -6,6 +6,7 @@ import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
 import helper.NCBITablesDeployer;
+import io.file.TUTFileOperatorHelper;
 import logger.Log;
 import taxonomy.Ranks;
 import io.file.NucleotideFastaTUITFileOperator;
@@ -75,12 +76,12 @@ public class tuit {
         //
         String[] parameters;
         //
-        Connection connection;
+        Connection connection=null;
         MySQL_Connector mySQL_connector;
         //
         Map<Ranks, TUITCutoffSet> cutoffMap;
         //
-        BLASTIdentifier blast_identifier;
+        BLASTIdentifier blastIdentifier;
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
@@ -91,6 +92,7 @@ public class tuit {
         options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
         options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
         HelpFormatter formatter = new HelpFormatter();
+
         try {
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
@@ -177,7 +179,9 @@ public class tuit {
             } else {
                 parameters = new String[]{
                         "-db", stringBuilder.toString(),
-                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue()
+                        "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
+                        "-l", TUTFileOperatorHelper.restrictLocalBLASTDatabaseToEntrez(
+                        connection, tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
                 };
             }
             //Prepare a cutoff Map
@@ -196,15 +200,14 @@ public class tuit {
             NucleotideFastaTUITFileOperator.getInstance().setInputFile(inputFile);
             NucleotideFastaTUITFileOperator.getInstance().setOutputFile(outputFile);
             //Create blast identifier
-            blast_identifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
+            blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                     tmpDir, blastnExecutable, parameters,
                     NucleotideFastaTUITFileOperator.getInstance(), connection,
                     cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
 
 
-            Future<?> runnableFuture= Executors.newSingleThreadExecutor().submit(blast_identifier);
+            Future<?> runnableFuture= Executors.newSingleThreadExecutor().submit(blastIdentifier);
             runnableFuture.get();
-
 
         } catch (ParseException pe) {
             Log.getInstance().getLogger().severe(pe.getMessage());
@@ -237,6 +240,14 @@ public class tuit {
             Log.getInstance().getLogger().severe(e.getMessage());
             //e.printStackTrace();
         } finally {
+            if(connection!=null){
+                try{
+                    connection.close();
+                } catch (SQLException sqle){
+                     Log.getInstance().getLogger().severe("Problem closing the database connection: "+ sqle);
+                }
+
+            }
             Log.getInstance().getLogger().severe("Exiting..");
             System.exit(1);
         }
