@@ -1,7 +1,8 @@
 package blast.normal.iteration;
 
-import BLAST.NCBI.output.Hit;
-import BLAST.NCBI.output.Iteration;
+
+import blast.ncbi.output.Hit;
+import blast.ncbi.output.Iteration;
 import blast.specification.BLASTIdentifier;
 import blast.normal.hit.NormalizedHit;
 import format.BadFromatException;

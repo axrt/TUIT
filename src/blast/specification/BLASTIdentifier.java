@@ -1,7 +1,8 @@
 package blast.specification;
 
-import BLAST.NCBI.local.exec.NCBI_EX_BLASTN;
-import BLAST.NCBI.output.Iteration;
+
+import blast.ncbi.local.exec.NCBI_EX_BLASTN;
+import blast.ncbi.output.Iteration;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.hit.NormalizedHit;
 import blast.normal.iteration.NormalizedIteration;
@@ -102,7 +103,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
      *                      executable
-     * @param executive     {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
+     * @param executive     {@link File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                      allow to create an input file as well as catch the blast
      *                      output
      * @param parameterList {@link String}[] A list of parameters. Should maintain a
@@ -452,7 +453,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param tempDir       {@link File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
      *                      executable
-     * @param executive     {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
+     * @param executive     {@link File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                      allow to create an input file as well as catch the blast
      *                      output
      * @param parameterList {@link String}[] A list of parameters. Should maintain a

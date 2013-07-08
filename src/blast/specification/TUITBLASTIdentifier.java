@@ -1,6 +1,6 @@
 package blast.specification;
 
-import BLAST.NCBI.output.Iteration;
+import blast.ncbi.output.Iteration;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.iteration.NormalizedIteration;
 import format.BadFromatException;
@@ -34,7 +34,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * @param tempDir                {@link File} - A temporary directory that will be used to dump
      *                               the input and output files, that are used by the ncbi+
      *                               executable
-     * @param executive              {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
+     * @param executive              {@link File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                               allow to create an input file as well as catch the blast
      *                               output
      * @param parameterList          {@link String}[] A list of parameters. Should maintain a
@@ -126,7 +126,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * @param tempDir                {@link File} - A temporary directory that will be used to dump
      *                               the input and output files, that are used by the ncbi+
      *                               executable
-     * @param executive              {@link File} A {@link BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator} that will
+     * @param executive              {@link File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
      *                               allow to create an input file as well as catch the blast
      *                               output
      * @param parameterList          {@link String}[] A list of parameters. Should maintain a

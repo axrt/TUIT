@@ -1,6 +1,6 @@
 package io.file;
 
-import BLAST.NCBI.output.Iteration;
+import blast.ncbi.output.Iteration;
 import blast.normal.iteration.NormalizedIteration;
 import exception.FastaInputFileException;
 import format.fasta.Fasta;

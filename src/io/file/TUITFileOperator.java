@@ -1,7 +1,7 @@
 package io.file;
 
-import BLAST.NCBI.local.exec.NCBI_EX_BLAST_FileOperator;
-import BLAST.NCBI.output.Iteration;
+import blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator;
+import blast.ncbi.output.Iteration;
 import blast.normal.iteration.NormalizedIteration;
 import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * This class handles file opening for the {@link blast.specification.BLASTIdentifier}
  */
-public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator {
+public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator<T> {
     /**
      * A BufferedReader to read the input file
      */

@@ -1,6 +1,6 @@
 package blast.normal.hit;
 
-import BLAST.NCBI.output.Hit;
+import blast.ncbi.output.Hit;
 import format.BadFromatException;
 import taxonomy.Ranks;
 import taxonomy.node.TaxonomicNode;
