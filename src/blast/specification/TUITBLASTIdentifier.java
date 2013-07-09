@@ -60,45 +60,41 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
     public void run() {
         TUITFileOperator<NucleotideFasta> tuitFileOperator = (TUITFileOperator<NucleotideFasta>) this.fileOperator;
         try {
-            //See if the remote option is on. If so - do the BLASTN with the NCBI server, otherwise - BLASTN locally
-            boolean remote = false;
-            for (String s : this.parameterList) {
-                if (s.equals("-remote")) {
-                    remote = true;
-                    break;
-                }
-            }
-            if (remote) {
-                Log.getInstance().getLogger().info("Starting job, using NCBI server BLAST");
-            } else {
-                Log.getInstance().getLogger().info("Starting job, using local machine BLAST");
-            }
-            do {
-                if (remote) {
-                    Log.getInstance().getLogger().info("Sending BLASTN request..");
-                } else {
-                    Log.getInstance().getLogger().info("BLASTN started..");
-                }
-
-                this.BLAST();
-
-                if (remote) {
-                    Log.getInstance().getLogger().info("BLASTN results received..");
-                } else {
-                    Log.getInstance().getLogger().info("BLASTN finished");
-                }
-                if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
-                    this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-                    this.normalizeIterations();
-                    for (int i = 0; i < this.normalizedIterations.size(); i++) {
-                        NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
-                        normalizedIteration.specify();
+            if (this.blastOutput == null) {
+                //See if the remote option is on. If so - do the BLASTN with the NCBI server, otherwise - BLASTN locally
+                boolean remote = false;
+                for (String s : this.parameterList) {
+                    if (s.equals("-remote")) {
+                        remote = true;
+                        break;
                     }
-                } else {
-                    Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
                 }
+                if (remote) {
+                    Log.getInstance().getLogger().info("Starting job, using NCBI server BLAST");
+                } else {
+                    Log.getInstance().getLogger().info("Starting job, using local machine BLAST");
+                }
+                do {
+                    if (remote) {
+                        Log.getInstance().getLogger().info("Sending BLASTN request..");
+                    } else {
+                        Log.getInstance().getLogger().info("BLASTN started..");
+                    }
 
-            } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
+                    this.BLAST();
+
+                    if (remote) {
+                        Log.getInstance().getLogger().info("BLASTN results received..");
+                    } else {
+                        Log.getInstance().getLogger().info("BLASTN finished");
+                    }
+
+                    this.specify();
+
+                } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
+            } else {
+                this.specify();
+            }
             tuitFileOperator.reset();
             this.BLASTed = true;
 
@@ -120,6 +116,24 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
     }
 
     /**
+     * Utility method that handles the process of taxonomic specification
+     * @throws SQLException in case an error occurs during database communication
+     * @throws BadFromatException in case an erro in case formatting the {@link blast.ncbi.output.Hit} GI fails
+     */
+    protected void specify() throws SQLException, BadFromatException {
+        if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
+            this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+            this.normalizeIterations();
+            for (int i = 0; i < this.normalizedIterations.size(); i++) {
+                NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
+                normalizedIteration.specify();
+            }
+        } else {
+            Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
+        }
+    }
+
+    /**
      * A static factory that returns a newly created {@link TUITBLASTIdentifier} which had been loaded with the first batch
      * from the input file.
      *
@@ -137,7 +151,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
-     * @return                       {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
+     * @return {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
     public static TUITBLASTIdentifier newInstanceFromFileOperator(

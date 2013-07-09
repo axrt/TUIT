@@ -9,7 +9,7 @@
         <Expect value="1.0"/>
         <EntrezQuery value="not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
         <Remote deligate="yes"/>
-        <MaxFilesInBatch value="10"/>
+        <MaxFilesInBatch value="50"/>
     </BLASTNParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">

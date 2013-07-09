@@ -17,6 +17,8 @@ import java.util.Set;
  * A {@link TUITFileOperator} for the {@link NucleotideFasta}s.
  */
 public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
+
+    public static final String NOT_IDENTIFIED="<-not identified->";
     /**
      * A static getter for the singleton instance
      *
@@ -57,7 +59,11 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
 
     @Override
     public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
-        this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+        if(normalizedIteration.getPivotalHit()!=null){
+            this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+        }else {
+            this.bufferedWriter.write(NucleotideFastaTUITFileOperator.NOT_IDENTIFIED);
+        }
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();
         return false;  //To change body of implemented methods use File | Settings | File Templates.
