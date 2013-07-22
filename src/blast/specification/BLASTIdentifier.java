@@ -2,6 +2,7 @@ package blast.specification;
 
 
 import blast.ncbi.local.exec.NCBI_EX_BLASTN;
+import blast.ncbi.output.BlastOutput;
 import blast.ncbi.output.Iteration;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.hit.NormalizedHit;
@@ -82,6 +83,13 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
     }
 
+    /**
+     * A setter for a BLAST output to identify
+     * @param blastOutput {@link BlastOutput} that will be used for taxonomic identification
+     */
+    public void setBlastOutput(BlastOutput blastOutput){
+        this.blastOutput=blastOutput;
+    }
     /**
      * A connection to an SQL database, which contains a NCBI schema with taxonomic information
      */

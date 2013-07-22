@@ -1,6 +1,8 @@
 package blast.specification;
 
+import blast.ncbi.output.BlastOutput;
 import blast.ncbi.output.Iteration;
+import blast.ncbi.output.NCBI_BLAST_OutputHelper;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.iteration.NormalizedIteration;
 import format.BadFromatException;
@@ -93,34 +95,45 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
 
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             } else {
-                this.specify();
+                do {
+                    this.specify();
+                } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
-
+            //TODO: comment out all the stacktraces
         } catch (IOException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (InterruptedException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (JAXBException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (SAXException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (SQLException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (BadFromatException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         }
     }
 
     /**
      * Utility method that handles the process of taxonomic specification
-     * @throws SQLException in case an error occurs during database communication
+     *
+     * @throws SQLException       in case an error occurs during database communication
      * @throws BadFromatException in case an erro in case formatting the {@link blast.ncbi.output.Hit} GI fails
      */
     protected void specify() throws SQLException, BadFromatException {
+        Log.getInstance().getLogger().info("Specifying the BLAST output.");
         if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
             this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
             this.normalizeIterations();
@@ -160,6 +173,22 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
         List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
             TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            return tuitblastIdentifier;
+        } else {
+            throw new Exception("The batch is empty, please check the input file");
+        }
+    }
+
+    //TODO: document
+    public static TUITBLASTIdentifier newInstanceFromBLASTOutput(TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
+                                                                 File blastOutput, int batchSize) throws Exception {
+
+        List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
+        if (batch != null) {
+            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, new File(""), null, null, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            tuitblastIdentifier.setBlastOutput(NCBI_BLAST_OutputHelper
+                    .catchBLASTOutput(identifierFileOperator
+                            .readOutputXML(blastOutput)));
             return tuitblastIdentifier;
         } else {
             throw new Exception("The batch is empty, please check the input file");

@@ -19,20 +19,6 @@ import java.util.Set;
 public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
 
     public static final String NOT_IDENTIFIED="<-not identified->";
-    /**
-     * A static getter for the singleton instance
-     *
-     * @return a singleton instance of the {@link TUITFileOperator}
-     */
-    public static NucleotideFastaTUITFileOperator getInstance() {
-        return NucleotideFastaTUITFileOperator.SingletonHolder.instance;
-    }
-    /**
-     * Not initialized until referenced
-     */
-    private static final class SingletonHolder {
-        static final NucleotideFastaTUITFileOperator instance = new NucleotideFastaTUITFileOperator();
-    }
 
     @Override
     protected boolean inputFileFormattingIsFine() throws FastaInputFileException, IOException {
@@ -67,5 +53,10 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();
         return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    //TODO document
+    public static NucleotideFastaTUITFileOperator newInstance(){
+        return new NucleotideFastaTUITFileOperator();
     }
 }

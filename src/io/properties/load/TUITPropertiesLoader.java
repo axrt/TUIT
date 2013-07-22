@@ -88,6 +88,7 @@ public class TUITPropertiesLoader {
 
     /**
      * A lazy inicialization thread-safe implementation of a TUITProperties getter
+     *
      * @return {@link TUITProperties}, loaded from the xml and checked for consistency.
      * @throws FileNotFoundException
      * @throws JAXBException
@@ -101,7 +102,7 @@ public class TUITPropertiesLoader {
                 tp = tuitProperties;
             }
             if (tp == null) {
-                tuitProperties = tp = checkProperties(loadProperties());
+                tuitProperties = tp = checkBLASTNProperties(checkDatabaseProperties(checkSpecificationProperties(loadProperties())));
             }
         }
         return tp;
@@ -109,19 +110,15 @@ public class TUITPropertiesLoader {
 
     /**
      * Constructor from the properties file
+     *
      * @param propertiesFile
      */
     private TUITPropertiesLoader(File propertiesFile) {
         this.propertiesFile = propertiesFile;
     }
 
-    /**
-     * Performs a full check of the properties, praloaded form the properties file.
-     * @param tuitProperties {@link TUITProperties} loaded from the XML properties file
-     * @return {@link TUITProperties} that points to the same object, but has been checked for consistency.
-     * @throws TUITPropertyBadFormatException thrown in case any of the properties were badly formatted or make no sense.
-     */
-    private TUITProperties checkProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
+    //TODO: document
+    private TUITProperties checkDatabaseProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
 
         //Check the database connection
         DBConnection dbConnection = tuitProperties.getDBConnection();
@@ -137,6 +134,84 @@ public class TUITPropertiesLoader {
         if (dbConnection.getPassword() == null || dbConnection.getPassword().equals("")) {
             throw new TUITPropertyBadFormatException("No password provided for the database connection property, " + TUITPropertiesLoader.DBCONNECTION_EXAMPLE);
         }
+
+        return tuitProperties;
+
+    }
+    //TODO: document
+    private TUITProperties checkSpecificationProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
+        //Check specification parameters manual input
+        if (tuitProperties.getSpecificationParameters() != null) {
+            int i = 0;
+            for (SpecificationParameters specificationParameters : tuitProperties.getSpecificationParameters()) {
+                i++;
+                //Check the rank
+                if (specificationParameters.getCutoffSet() == null) {
+                    throw new TUITPropertyBadFormatException("No rank specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
+                } else {
+                    try {
+                        if (specificationParameters.getCutoffSet().getRank() != null) {
+                            Ranks.valueOf(specificationParameters.getCutoffSet().getRank());
+                        } else {
+                            throw new TUITPropertyBadFormatException("No rank property specified at cutoff set number  " + i);
+                        }
+                    } catch (IllegalArgumentException iae) {
+                        throw new TUITPropertyBadFormatException("A bad rank specified at cutoff set number " + i + ", please use one of the following:\n" +
+                                Ranks.LIST_RANKS);
+                    }
+                }
+                if (specificationParameters.getCutoffSet().getPIdentCutoff() == null || specificationParameters.getCutoffSet().getPIdentCutoff().getValue() == null) {
+                    throw new TUITPropertyBadFormatException("No pIdent cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
+                } else {
+                    try {
+                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getPIdentCutoff().getValue());
+                        if (d < 1 || d > 100) {
+                            throw new TUITPropertyBadFormatException("Bad pIdent cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                        }
+                    } catch (NumberFormatException ne) {
+                        throw new TUITPropertyBadFormatException("Bad pIdent cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                    }
+                }
+                if (specificationParameters.getCutoffSet().getQueryCoverageCutoff() == null || specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue() == null) {
+                    throw new TUITPropertyBadFormatException("No Query coverage cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
+                } else {
+                    try {
+                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue());
+                        if (d < 1 || d > 100) {
+                            throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                        }
+                    } catch (NumberFormatException ne) {
+                        throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                    }
+                }
+                if (specificationParameters.getCutoffSet().getEvalueRatioCutoff() == null || specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue() == null) {
+                    throw new TUITPropertyBadFormatException("No E-value ratio cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
+                } else {
+                    try {
+                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue());
+                        if (d < 1 || d > 100) {
+                            throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                        }
+                    } catch (NumberFormatException ne) {
+                        throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
+                    }
+                }
+            }
+        } else {
+            Log.getInstance().getLogger().warning("No specification parameters given, using defaults.");
+        }
+        return tuitProperties;
+    }
+
+
+    /**
+     * Performs a full check of the properties, praloaded form the properties file.
+     *
+     * @param tuitProperties {@link TUITProperties} loaded from the XML properties file
+     * @return {@link TUITProperties} that points to the same object, but has been checked for consistency.
+     * @throws TUITPropertyBadFormatException thrown in case any of the properties were badly formatted or make no sense.
+     */
+    private TUITProperties checkBLASTNProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
 
         //Check BLASTN path
         BLASTNPath blastnPath = tuitProperties.getBLASTNPath();
@@ -229,71 +304,12 @@ public class TUITPropertiesLoader {
             Log.getInstance().getLogger().warning("No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch().getValue() + ".");
         }
 
-        //Check specification parameters manual input
-        if (tuitProperties.getSpecificationParameters() != null) {
-            int i = 0;
-            for (SpecificationParameters specificationParameters : tuitProperties.getSpecificationParameters()) {
-                i++;
-                //Check the rank
-                if (specificationParameters.getCutoffSet() == null) {
-                    throw new TUITPropertyBadFormatException("No rank specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
-                } else {
-                    try {
-                        if (specificationParameters.getCutoffSet().getRank() != null) {
-                            Ranks.valueOf(specificationParameters.getCutoffSet().getRank());
-                        } else {
-                            throw new TUITPropertyBadFormatException("No rank property specified at cutoff set number  " + i);
-                        }
-                    } catch (IllegalArgumentException iae) {
-                        throw new TUITPropertyBadFormatException("A bad rank specified at cutoff set number " + i + ", please use one of the following:\n" +
-                                Ranks.LIST_RANKS);
-                    }
-                }
-                if (specificationParameters.getCutoffSet().getPIdentCutoff() == null || specificationParameters.getCutoffSet().getPIdentCutoff().getValue() == null) {
-                    throw new TUITPropertyBadFormatException("No pIdent cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
-                } else {
-                    try {
-                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getPIdentCutoff().getValue());
-                        if (d < 1 || d > 100) {
-                            throw new TUITPropertyBadFormatException("Bad pIdent cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                        }
-                    } catch (NumberFormatException ne) {
-                        throw new TUITPropertyBadFormatException("Bad pIdent cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                    }
-                }
-                if (specificationParameters.getCutoffSet().getQueryCoverageCutoff() == null || specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue() == null) {
-                    throw new TUITPropertyBadFormatException("No Query coverage cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
-                } else {
-                    try {
-                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue());
-                        if (d < 1 || d > 100) {
-                            throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                        }
-                    } catch (NumberFormatException ne) {
-                        throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                    }
-                }
-                if (specificationParameters.getCutoffSet().getEvalueRatioCutoff() == null || specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue() == null) {
-                    throw new TUITPropertyBadFormatException("No E-value ratio cutoff specified at cutoff set number " + i + ", " + TUITPropertiesLoader.CUTOFFSET_EXAMPLE);
-                } else {
-                    try {
-                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue());
-                        if (d < 1 || d > 100) {
-                            throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                        }
-                    } catch (NumberFormatException ne) {
-                        throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + TUITPropertiesLoader.CORRECT_TO_UNSIGNED_DOUBLE);
-                    }
-                }
-            }
-        } else {
-            Log.getInstance().getLogger().warning("No specification parameters given, using defaults.");
-        }
         return tuitProperties;
     }
 
     /**
      * Loads properties from a formatted XML file into a {@link TUITProperties} object
+     *
      * @return {@link TUITProperties} loaded from the properties file
      * @throws FileNotFoundException
      * @throws JAXBException
@@ -305,6 +321,7 @@ public class TUITPropertiesLoader {
 
     /**
      * A static factory to create a new instance of {@link TUITPropertiesLoader}
+     *
      * @param propertiesFile {@link File} that contains the XML formatted TUIT properties.
      * @return a new instance of {@link TUITPropertiesLoader}
      */

@@ -133,7 +133,11 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
         this.bufferedReader.close();
         this.bufferedReader = null;
     }
-
+    //TODO document
+    @Override
+    public InputStream readOutputXML(File outputFile) throws IOException {
+        return super.readOutputXML(outputFile);
+    }
 
     public abstract boolean saveResults(T query, NormalizedIteration<Iteration> normalizedIteration) throws Exception;
 
