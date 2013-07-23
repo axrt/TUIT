@@ -60,6 +60,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
         DEFAULT_CUTOFFS.put(Ranks.family, TUITCutoffSet.newDefaultInstance(80, 90, 100));
         DEFAULT_CUTOFFS.put(Ranks.superfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
         DEFAULT_CUTOFFS.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subtribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
 
         //Oreder-level-related
         DEFAULT_CUTOFFS.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 100));

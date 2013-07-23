@@ -101,28 +101,21 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
-            //TODO: comment out all the stacktraces
+
         } catch (IOException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (InterruptedException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (JAXBException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (SAXException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (SQLException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (BadFromatException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } catch (Exception e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -164,6 +157,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
+     * @param batchSize              a size of a batch that's being sent to BLASTN at a time
      * @return {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
@@ -179,7 +173,20 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
         }
     }
 
-    //TODO: document
+    /**
+     * A static factory that returns a newly created {@link TUITBLASTIdentifier}, which has already been provided with an XML-formatted blast output
+     *
+     * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
+     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
+     *                               taxonomic information
+     * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
+     *                               default set
+     * @param blastOutput            {@link File} that contains an XML BLASTN output
+     * @param batchSize              a size of a batch that's being specified at a time
+     * @return
+     * @return {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
+     * @throws Exception if the input file read error occurs
+     */
     public static TUITBLASTIdentifier newInstanceFromBLASTOutput(TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
                                                                  File blastOutput, int batchSize) throws Exception {
 

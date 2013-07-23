@@ -48,14 +48,17 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
         if(normalizedIteration.getPivotalHit()!=null){
             this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
         }else {
-            this.bufferedWriter.write(NucleotideFastaTUITFileOperator.NOT_IDENTIFIED);
+            this.bufferedWriter.write(query.getAC()+": "+NucleotideFastaTUITFileOperator.NOT_IDENTIFIED);
         }
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    //TODO document
+    /**
+     * A static factory to create a new instance of a {@link NucleotideFastaTUITFileOperator}
+     * @return new {@link NucleotideFastaTUITFileOperator}
+     */
     public static NucleotideFastaTUITFileOperator newInstance(){
         return new NucleotideFastaTUITFileOperator();
     }

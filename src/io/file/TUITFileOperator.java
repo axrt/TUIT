@@ -133,7 +133,13 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
         this.bufferedReader.close();
         this.bufferedReader = null;
     }
-    //TODO document
+
+    /**
+     * Overridden version has public access instead of protected
+     * @param outputFile {@link File} a file that contains an XML BLASTN outpu
+     * @return {@link InputStream} that allows to read an {@link blast.ncbi.output.BlastOutput} representation from the XML representation
+     * @throws IOException in case an error reading file or the inputstream occurs
+     */
     @Override
     public InputStream readOutputXML(File outputFile) throws IOException {
         return super.readOutputXML(outputFile);

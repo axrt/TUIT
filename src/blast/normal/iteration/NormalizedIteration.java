@@ -371,7 +371,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws BadFromatException in case formatting the {@link Hit} GI fails
      */
     public void specify() throws SQLException, BadFromatException {
-        if (this.iteration.getIterationHits().getHit().size() > 0) {
+        if (!this.iteration.getIterationHits().getHit().isEmpty()) {
             this.normalyzeHits();
             Log.getInstance().getLogger().fine("Current number of normalized hits is: " + this.normalizedHits.size());
             Log.getInstance().getLogger().fine("Attempting to find the lowest rank..");
@@ -405,6 +405,11 @@ public class NormalizedIteration<I extends Iteration> {
                 e.printStackTrace();
             }
         } else {
+            try {
+            this.blastIdentifier.acceptResults(this.query, this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Log.getInstance().getLogger().severe("No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
         }
         //fail

@@ -117,7 +117,12 @@ public class TUITPropertiesLoader {
         this.propertiesFile = propertiesFile;
     }
 
-    //TODO: document
+    /**
+     * Checks the database-related part of the properties in order to ensure its consistency.
+     * @param tuitProperties {@link TUITProperties}
+     * @return the same reference {@link TUITProperties} as the input, and throws {@link TUITPropertyBadFormatException} if the properties fail to pass checks
+     * @throws TUITPropertyBadFormatException if the properties fail to pass checks
+     */
     private TUITProperties checkDatabaseProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
 
         //Check the database connection
@@ -138,7 +143,12 @@ public class TUITPropertiesLoader {
         return tuitProperties;
 
     }
-    //TODO: document
+    /**
+     * Checks the taxonomic specification-related part of the properties in order to ensure its consistency.
+     * @param tuitProperties {@link TUITProperties}
+     * @return the same reference {@link TUITProperties} as the input, and throws {@link TUITPropertyBadFormatException} if the properties fail to pass checks
+     * @throws TUITPropertyBadFormatException if the properties fail to pass checks
+     */
     private TUITProperties checkSpecificationProperties(TUITProperties tuitProperties) throws TUITPropertyBadFormatException {
         //Check specification parameters manual input
         if (tuitProperties.getSpecificationParameters() != null) {

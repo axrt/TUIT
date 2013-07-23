@@ -69,12 +69,12 @@ public class tuit {
     public static void main(String[] args) {
 
         //Declare variables
-        File inputFile=null;
+        File inputFile = null;
         File outputFile;
         File tmpDir;
         File blastnExecutable;
         File properties;
-        File blastOutputFile=null;
+        File blastOutputFile = null;
         //
         TUITPropertiesLoader tuitPropertiesLoader;
         TUITProperties tuitProperties;
@@ -162,8 +162,8 @@ public class tuit {
                 Log.getInstance().getLogger().setLevel(Level.INFO);
             }
             //Try all files
-            if (inputFile!=null){
-                if(!inputFile.exists() || !inputFile.canRead()) {
+            if (inputFile != null) {
+                if (!inputFile.exists() || !inputFile.canRead()) {
                     throw new Exception("Input file either does not exist, or is not readable.");
                 } else if (inputFile.isDirectory()) {
                     throw new Exception("Input file points to a directory.");
@@ -216,53 +216,43 @@ public class tuit {
             } else {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>();
             }
-            NucleotideFastaTUITFileOperator nucleotideFastaTUITFileOperator= NucleotideFastaTUITFileOperator.newInstance();
+            NucleotideFastaTUITFileOperator nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance();
             nucleotideFastaTUITFileOperator.setInputFile(inputFile);
             nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
             //Create blast identifier
-            if(blastOutputFile==null){
+            if (blastOutputFile == null) {
                 blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                         tmpDir, blastnExecutable, parameters,
                         NucleotideFastaTUITFileOperator.newInstance(), connection,
                         cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
                 Future<?> runnableFuture = Executors.newSingleThreadExecutor().submit(blastIdentifier);
                 runnableFuture.get();
-            } else{
-                try{
-                    blastIdentifier=TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
-                            cutoffMap, blastOutputFile,Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
+            } else {
+                try {
+                    blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
+                            cutoffMap, blastOutputFile, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
                     Future<?> runnableFuture = Executors.newSingleThreadExecutor().submit(blastIdentifier);
                     runnableFuture.get();
-                } catch (Exception e){
-                    Log.getInstance().getLogger().severe("Error reading "+ blastOutputFile.getName()+", please check input. The file must be XML formatted.");
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    Log.getInstance().getLogger().severe("Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
                 }
             }
 
-
-        //TODO: comment out all the printstacks
         } catch (ParseException pe) {
-            //Log.getInstance().getLogger().severe(pe.getMessage());
-            formatter.printHelp( "tuit", options );
-            pe.printStackTrace();
+            Log.getInstance().getLogger().severe(pe.getMessage());
+            formatter.printHelp("tuit", options);
         } catch (SAXException saxe) {
-            //Log.getInstance().getLogger().severe(saxe.getMessage());
-            saxe.printStackTrace();
+            Log.getInstance().getLogger().severe(saxe.getMessage());
         } catch (FileNotFoundException fnfe) {
-            //Log.getInstance().getLogger().severe(fnfe.getMessage());
-            fnfe.printStackTrace();
+            Log.getInstance().getLogger().severe(fnfe.getMessage());
         } catch (TUITPropertyBadFormatException tpbfe) {
-            //Log.getInstance().getLogger().severe(tpbfe.getMessage());
-            tpbfe.printStackTrace();
+            Log.getInstance().getLogger().severe(tpbfe.getMessage());
         } catch (JAXBException jaxbee) {
             Log.getInstance().getLogger().severe("The properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
-            jaxbee.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             //Probably won't happen unless the library deleted from the .jar
             Log.getInstance().getLogger().severe(cnfe.getMessage());
-            cnfe.printStackTrace();
         } catch (SQLException sqle) {
-            sqle.printStackTrace();
             Log.getInstance().getLogger().severe("A database communication error occurred with the following message:\n" +
                     sqle.getMessage());
             if (sqle.getMessage().contains("Access denied for user")) {
@@ -270,7 +260,6 @@ public class tuit {
             }
         } catch (Exception e) {
             Log.getInstance().getLogger().severe(e.getMessage());
-            e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
@@ -278,7 +267,6 @@ public class tuit {
                 } catch (SQLException sqle) {
                     Log.getInstance().getLogger().severe("Problem closing the database connection: " + sqle);
                 }
-
             }
             Log.getInstance().getLogger().severe("Exiting..");
             System.exit(1);
