@@ -25,9 +25,14 @@ import java.util.Map;
  * A {@link BLASTIdentifier} that is specifically adapted for the TUIT algorithm: it
  */
 public class TUITBLASTIdentifier extends BLASTIdentifier {
-
+    /**
+     * A size of a batch
+     */
     protected int batchSize;
-
+    /**
+     * The number of the last record specified
+     */
+    protected int progressEdge;
     /**
      * A protected constructor.
      *
@@ -52,6 +57,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
     protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
         super(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
         this.batchSize = batchSize;
+        this.progressEdge=0;
     }
 
     /**
@@ -136,6 +142,21 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             }
         } else {
             Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
+        }
+    }
+
+    /**
+     * An overridden implementation takes into account that the batch contains a limited number of records and shifts frame by a batch size within the list of
+     * iterations.
+     */
+    @Override
+    protected void normalizeIterations() {
+        int allowedProgress=this.progressEdge+this.batchSize;
+        int i=0;
+        for(;this.progressEdge<allowedProgress&&this.progressEdge<this.blastOutput.getBlastOutputIterations().getIteration().size();this.progressEdge++){
+            Iteration iteration = this.blastOutput.getBlastOutputIterations().getIteration().get(this.progressEdge);
+            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
+            i++;
         }
     }
 

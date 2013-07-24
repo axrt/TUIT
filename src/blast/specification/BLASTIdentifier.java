@@ -430,7 +430,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      */
     protected void normalizeIterations() {
         //Normalize each iteration
-        int i = 0;
+        int i=0;
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
             this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
             i++;
