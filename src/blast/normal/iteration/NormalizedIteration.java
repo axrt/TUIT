@@ -253,16 +253,17 @@ public class NormalizedIteration<I extends Iteration> {
         if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
-                if(this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(), this.pivotalHit.getAssignedTaxid())){
+                if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(), this.pivotalHit.getAssignedTaxid())){
                     Log.getInstance().getLogger().fine("Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
                             " it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
                     return false;
                 }
             }
         } else {
-            Log.getInstance().getLogger().fine("Hit with better E-value allow current pivotal hit");
+            Log.getInstance().getLogger().fine("Hits with better E-value allow current pivotal hit");
             return true;
         }
+        Log.getInstance().getLogger().fine("Hits with better E-value allow current pivotal hit");
         return true;
     }
 
@@ -322,6 +323,7 @@ public class NormalizedIteration<I extends Iteration> {
                 this.blastIdentifier.liftRankForNormalyzedHit(normalizedHit);
             }
         }
+        this.reduceNoRanks();
     }
 
     /**
