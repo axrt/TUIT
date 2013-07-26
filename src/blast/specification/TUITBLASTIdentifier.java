@@ -107,21 +107,28 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
-
+        //Todo remove stack traces
         } catch (IOException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (InterruptedException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (JAXBException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (SAXException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (SQLException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (BadFromatException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
             Log.getInstance().getLogger().severe(e.getMessage());
+            e.printStackTrace();
         }
     }
 

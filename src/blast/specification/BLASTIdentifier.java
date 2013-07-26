@@ -71,6 +71,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
         //Any other level-related
         DEFAULT_CUTOFFS.put(Ranks.subclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
+        DEFAULT_CUTOFFS.put(Ranks.infraclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
         DEFAULT_CUTOFFS.put(Ranks.c_lass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
         DEFAULT_CUTOFFS.put(Ranks.superclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
         DEFAULT_CUTOFFS.put(Ranks.subphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
