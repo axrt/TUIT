@@ -1,4 +1,4 @@
-package test;
+package tuit.main;
 
 import db.mysql.MySQL_Connector;
 import helper.nodes.NodesDBDeployer;
@@ -80,13 +80,13 @@ public class NodesDBDDeployerTest {
             System.out.println(e.getKey() + "\t>" + e.getValue());
         }
     }
-    //@Test
+    @Test
     public void filterNodesDmpFileTest() throws SQLException, ClassNotFoundException, IOException {
 
-        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "ocular", "ocular");
+        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "tuit", "tuit");
         mySQL_connector.connectToDatabase();
         Connection connection = mySQL_connector.getConnection();
-        NodesDBDeployer.filterNodesDmpFile(connection, new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp"));
+        NodesDBDeployer.filterNodesDmpFile(connection, new File("/home/alext/Downloads/tmp/taxdump/nodes.dmp"));
 
     }
 

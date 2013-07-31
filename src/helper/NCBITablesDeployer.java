@@ -123,6 +123,7 @@ public class NCBITablesDeployer {
         Log.getInstance().getLogger().info("Deploying GI_TAXID Database..");
         GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_deploy_dir, SystemUtil.GI_TAXID_NUCL)));
         Log.getInstance().getLogger().info("Deploying Nodes Database..");
+        NodesDBDeployer.deployRanksValidataionTable(connection);
         NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
         //Reporting
         Log.getInstance().getLogger().info("Database deployed successfully..");
