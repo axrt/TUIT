@@ -238,18 +238,22 @@ public class NodesDBDeployer {
             filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
             fileWriter = new FileWriter(filteredNodesDmpFile);
             String line;
-            String empty="";
+            String empty = "";
             while ((line = bufferedReader.readLine()) != null) {
                 String[] splitter = line.split("\t\\|\t");
-                if(!splitter[0].equals(empty)&&!splitter[1].equals(empty))
-                fileWriter.write(
-                        splitter[0] + '\t'
-                                + splitter[1] + '\t'
-                                + ranks_ids.get(splitter[2])
-                                + '\n'
-                );
+                if (!splitter[0].equals(empty) && !splitter[1].equals(empty)) {
+
+                    if (ranks_ids.containsKey(splitter[2])) {
+                        fileWriter.write(
+                                splitter[0] + '\t'
+                                        + splitter[1] + '\t'
+                                        + ranks_ids.get(splitter[2])
+                                        + '\n'
+                        );
+                        fileWriter.flush();
+                    }
+                }
             }
-            fileWriter.flush();
 
         } finally {
             if (bufferedReader != null) {
