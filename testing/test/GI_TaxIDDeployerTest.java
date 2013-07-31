@@ -1,6 +1,5 @@
-package test;
-
 import db.mysql.MySQL_Connector;
+import helper.NCBITablesDeployer;
 import helper.gitaxid.GI_TaxIDDeployer;
 import org.junit.Test;
 
@@ -27,6 +26,15 @@ public class GI_TaxIDDeployerTest {
 
         GI_TaxIDDeployer.deployGI_TaxIDTable(connection, new File("/home/alext/Downloads/NCBI/gi_taxid_nucl.dmp"));
 
+    }
+
+    @Test
+    public void testfastDeployNCBIDatabasesFromNCBI() throws SQLException, ClassNotFoundException, IOException {
+
+        MySQL_Connector mySQL_connector = MySQL_Connector.newDefaultInstance("jdbc:mysql://localhost/", "tuit", "tuit");
+        mySQL_connector.connectToDatabase();
+        Connection connection = mySQL_connector.getConnection();
+        NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, new File("/home/alext/Downloads/tmp"));
     }
 
     //@Test

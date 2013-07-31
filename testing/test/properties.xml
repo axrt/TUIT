@@ -2,7 +2,7 @@
 <!DOCTYPE TUITProperties PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
 <TUITProperties>
     <DBConnection url="localhost" login="tuit" password="tuit"/>
-    <BLASTNPath path="/usr/bin/blastn"/>
+    <BLASTNPath path="/bin/blastn"/>
     <TMPDir path="/home/alext/Downloads/tmp"/>
     <BLASTNParameters>
         <Database use="nt"/>
