@@ -20,6 +20,10 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Source;
 import javax.xml.transform.sax.SAXSource;
 import java.io.*;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,6 +135,63 @@ public class TUTFileOperatorHelper {
         return encodedFastas;
     }
 
+    public static File restrictToEntrez(File tmpDir, String entrez_query) throws IOException, NoSuchAlgorithmException {
+        String encodedEntrezQuery=URLEncoder.encode(entrez_query,"UTF-8");
+        URL eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&rettype=count&term="+encodedEntrezQuery);
+        BufferedReader bufferedReader = null;
+        BufferedWriter bufferedWriter = null;
+        byte[]entrezQueryByte=entrez_query.getBytes("UTF-8");
+        MessageDigest messageDigest=MessageDigest.getInstance("MD5");
+        byte[]entrezQueryByteMD5=messageDigest.digest(entrezQueryByte);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < entrezQueryByteMD5.length; i++){
+            sb.append(Integer.toString((entrezQueryByteMD5[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        File restrictedGIs=new File(tmpDir,sb.toString()+".gil");
+        if(restrictedGIs.exists()){
+            Log.getInstance().getLogger().info("The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
+            return restrictedGIs;
+        }
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
+            String line;
+            String countString = null;
+            Log.getInstance().getLogger().info("Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains("<Count>")) {
+                    countString = line.substring("<Count>".length()+1, line.indexOf("</Count>"));
+                    Log.getInstance().getLogger().info("Number of GIs in set: "+countString+", downloading from NCBI.");
+                }
+            }
+            bufferedReader.close();
+            if (countString == null) {
+                throw new IOException("Could not determine a count for the entrez_query '" + entrez_query + "'");
+            }
+            eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&retmax=" + countString + "&term=" + encodedEntrezQuery);
+            bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
+
+            bufferedWriter=new BufferedWriter(new FileWriter(restrictedGIs));
+            while ((line = bufferedReader.readLine()) != null) {
+                 if(line.contains("<Id>")){
+                     bufferedWriter.write(line.substring("<Id>".length()+1,line.indexOf("</Id>")));
+                     bufferedWriter.newLine();
+                 }
+            }
+            bufferedWriter.flush();
+            bufferedReader.close();
+            bufferedWriter.close();
+        } finally {
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }
+        }
+
+        return restrictedGIs;
+    }
+
     /**
      * As long as there is no efficient way to apply entrez query to a local BLAST, a file of the GIs, to which the search
      * shoul be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
@@ -168,7 +229,7 @@ public class TUTFileOperatorHelper {
         }
         //Prepare a sql part of the entrez
         stringBuilder = new StringBuilder();
-        String nameNotLike = "l1."+LookupNames.dbs.NCBI.names.columns.name.name() + " like ";
+        String nameNotLike = "l1." + LookupNames.dbs.NCBI.names.columns.name.name() + " like ";
         for (int i = 1; i < split.length; i++) {
             stringBuilder.append(nameNotLike);
             stringBuilder.append("\"%");
@@ -215,7 +276,7 @@ public class TUTFileOperatorHelper {
             while (resultSet.next()) {
                 taxids.add(resultSet.getInt(1));
             }
-            Log.getInstance().getLogger().info(String.valueOf(taxids.size())+" non-reliable nodes have been identified");
+            Log.getInstance().getLogger().info(String.valueOf(taxids.size()) + " non-reliable nodes have been identified");
             if (!taxids.isEmpty()) {
                 bufferedWriter = new BufferedWriter(new FileWriter(restrictedGIs, true));
                 for (Integer i : taxids) {
@@ -229,7 +290,7 @@ public class TUTFileOperatorHelper {
                                         + LookupNames.dbs.NCBI.gi_taxid.columns.taxid
                                         + "="
                                         + leaf);
-                        if(giSet.next()){
+                        if (giSet.next()) {
                             bufferedWriter.write(String.valueOf(giSet.getInt(1)));
                             bufferedWriter.newLine();
                             bufferedWriter.flush();
@@ -254,9 +315,10 @@ public class TUTFileOperatorHelper {
 
     /**
      * Returns a list of leaves for the given taxid
+     *
      * @param connection {@link Connection} to the database
-     * @param taxid which identifies the branch, which contains the leaves that need to be found
-     * @param leaves {@link List} that will append the taxids of the leaves
+     * @param taxid      which identifies the branch, which contains the leaves that need to be found
+     * @param leaves     {@link List} that will append the taxids of the leaves
      * @return {@link List} with appended leave's taxids
      * @throws SQLException in case a database communication error occurs
      */
