@@ -202,18 +202,18 @@ public class tuit {
                             "-db", stringBuilder.toString(),
                             "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                             "-negative_gilist", TUTFileOperatorHelper.restrictToEntrez(
-                            tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath().toUpperCase().replace("NOT","OR")
+                            tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT","OR")).getAbsolutePath()
                     };
                 }else{
                     parameters = new String[]{
                             "-db", stringBuilder.toString(),
                             "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                             "-gilist", TUTFileOperatorHelper.restrictToEntrez(
-                           tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
+                            tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
                     };
                 }
-
             }
+            System.out.println(stringBuilder);
             //Prepare a cutoff Map
             if (tuitProperties.getSpecificationParameters() != null && tuitProperties.getSpecificationParameters().size() > 0) {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>(tuitProperties.getSpecificationParameters().size());
