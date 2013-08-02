@@ -111,19 +111,19 @@ public class NCBITablesDeployer {
         Log.getInstance().getLogger().info("Downloading " + SystemUtil.TAXDUMP_ARCH);
         File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
         Log.getInstance().getLogger().info("Downloading "+SystemUtil.GI_TAXID_DMP_ARCH+" updates..");
-        File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_DMP_ARCH));
+       File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_DMP_ARCH));
         //Extracting files
         Log.getInstance().getLogger().info("Extracting "+SystemUtil.TAXDUMP_ARCH);
         File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
         Log.getInstance().getLogger().info("Extracting "+SystemUtil.GI_TAXID_DMP_ARCH);
-        File gi_taxid_deploy_dir=SystemUtil.unArchiveGZFile(gi_taxid_dmp,tmpDir);
+       File gi_taxid_deploy_dir=SystemUtil.unArchiveGZFile(gi_taxid_dmp,tmpDir);
         //Deploying the database
         Log.getInstance().getLogger().info("Deploying Names Database..");
-        NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(new File(taxdump_dir, SystemUtil.NAMES_FILE)));
+       NamesDeployer.injectProcessedNamesDmpFile(connection, NamesDeployer.filterNamesDmpFile(new File(taxdump_dir, SystemUtil.NAMES_FILE)));
         Log.getInstance().getLogger().info("Deploying GI_TAXID Database..");
-        GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_deploy_dir, SystemUtil.GI_TAXID_NUCL)));
+       GI_TaxIDDeployer.injectProcessedGI_TaxIDDmpFile(connection, GI_TaxIDDeployer.filterGI_TaxIDDmp(connection, new File(gi_taxid_deploy_dir, SystemUtil.GI_TAXID_NUCL)));
         Log.getInstance().getLogger().info("Deploying Nodes Database..");
-        NodesDBDeployer.deployRanksValidataionTable(connection);
+       NodesDBDeployer.deployRanksValidataionTable(connection);
         NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
         //Reporting
         Log.getInstance().getLogger().info("Database deployed successfully..");
