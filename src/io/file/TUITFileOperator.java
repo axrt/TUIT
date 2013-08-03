@@ -116,7 +116,7 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
                 return new ArrayList<T>(batch);
             }
         } finally{
-            batch=null;
+            //batch=null;
         }
     }
 

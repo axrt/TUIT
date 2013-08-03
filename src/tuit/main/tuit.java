@@ -213,7 +213,6 @@ public class tuit {
                     };
                 }
             }
-            System.out.println(stringBuilder);
             //Prepare a cutoff Map
             if (tuitProperties.getSpecificationParameters() != null && tuitProperties.getSpecificationParameters().size() > 0) {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>(tuitProperties.getSpecificationParameters().size());

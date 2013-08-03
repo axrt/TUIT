@@ -96,7 +96,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
                     } else {
                         Log.getInstance().getLogger().info("BLASTN finished");
                     }
-
+                    this.progressEdge=0;
                     this.specify();
 
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
@@ -107,7 +107,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
-        //Todo remove stack traces
+
         } catch (IOException e) {
             Log.getInstance().getLogger().severe(e.getMessage());
             e.printStackTrace();
