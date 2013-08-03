@@ -8,7 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-cli-1" level="project" />
-    <orderEntry type="library" name="JAVA_BIO_jar" level="project" />
+    <orderEntry type="library" name="javabio_jar" level="project" />
   </component>
 </module>
 

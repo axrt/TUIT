@@ -135,6 +135,14 @@ public class TUTFileOperatorHelper {
         return encodedFastas;
     }
 
+    /**
+     * Uploads a given entrez query to the NCBI serever in order to obtain a list of GI numbers in order to restrict the to a given entrez query.
+     * @param tmpDir {@link File} temporary directory that will be used to store the GI list
+     * @param entrez_query {@link String} that represents the entrez query
+     * @return {@link File} that points to the GI list file
+     * @throws IOException in case an error rw file occurs
+     * @throws NoSuchAlgorithmException may never happen, is caused by MessageDigest.getInstance("MD5"), that creates a md5 hash for the entrez query file name.
+     */
     public static File restrictToEntrez(File tmpDir, String entrez_query) throws IOException, NoSuchAlgorithmException {
         String encodedEntrezQuery=URLEncoder.encode(entrez_query,"UTF-8");
         URL eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&rettype=count&term="+encodedEntrezQuery);
@@ -205,6 +213,7 @@ public class TUTFileOperatorHelper {
      * @return {@link File} that points to the GI restrictions file, which gets created in the temporary folder
      * @throws java.sql.SQLException in case a database communication error occurs
      */
+    @Deprecated
     public static File restrictLocalBLASTDatabaseToEntrez(Connection connection, File tempDir, String entrez_query) throws SQLException, IOException {
         //Prepare a file name
         //Currently understands only "not" cases
