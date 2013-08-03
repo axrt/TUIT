@@ -42,6 +42,10 @@ public enum Log {
 
     }
 
+    /**
+     * Allows to set a name for the logger
+     * @param logName {@link String} name for the logger, presumably - input file name-derived
+     */
     public void setLogName(String logName){
         this.logger= Logger.getLogger(logName);
         this.logger.setUseParentHandlers(false);
