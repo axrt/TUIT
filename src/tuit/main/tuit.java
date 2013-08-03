@@ -68,7 +68,6 @@ public class tuit {
     public final static String TUIT_EXT = ".tuit";
 
     public static void main(String[] args) {
-        System.out.print("started");
         //Declare variables
         File inputFile = null;
         File outputFile;
