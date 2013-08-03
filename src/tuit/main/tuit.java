@@ -68,7 +68,7 @@ public class tuit {
     public final static String TUIT_EXT = ".tuit";
 
     public static void main(String[] args) {
-
+        System.out.print("started");
         //Declare variables
         File inputFile = null;
         File outputFile;
@@ -101,6 +101,9 @@ public class tuit {
         HelpFormatter formatter = new HelpFormatter();
 
         try {
+
+            //Setup logger
+            Log.getInstance().setLogName("tuit.log");
             //Read command line
             CommandLine commandLine = parser.parse(options, args, true);
             if (!commandLine.hasOption(tuit.P)) {
@@ -147,6 +150,7 @@ public class tuit {
                 throw new ParseException("No input file option found, exiting.");
             } else {
                 inputFile = new File(commandLine.getOptionValue(tuit.IN));
+                Log.getInstance().setLogName(inputFile.getName().split("\\.")[0]+".tuit.log");
             }
             //Correct the output file option if needed
             if (!commandLine.hasOption(tuit.OUT)) {

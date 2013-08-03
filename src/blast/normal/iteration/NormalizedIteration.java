@@ -358,6 +358,7 @@ public class NormalizedIteration<I extends Iteration> {
                     }
                 }
             }
+            Log.getInstance().getLogger().fine("Hits with worse E-value allow support current pivotal hit.");
             return true;
         } else {
             return false;

@@ -34,16 +34,19 @@ public enum Log {
      * Private constructor
      */
     private Log() {
-        this.logger= Logger.getLogger("tuit.log");
+
+    }
+
+    public void setLogName(String logName){
+        this.logger= Logger.getLogger(logName);
         try {
-            this.fileHandler =new FileHandler("tuit.log");
+            this.fileHandler =new FileHandler(logName);
             this.fileHandler.setFormatter(new SimpleFormatter());
         } catch (IOException e) {
-           this.logger.severe(e.getMessage());
+            this.logger.severe(e.getMessage());
         }
         this.logger.addHandler(this.fileHandler);
     }
-
     /**
      * A setter for the level of logging
      * @param level {@link Level} of output
@@ -57,6 +60,7 @@ public enum Log {
      * @return {@link Logger} logger
      */
     public Logger getLogger(){
+
         return this.logger;
     }
 }
