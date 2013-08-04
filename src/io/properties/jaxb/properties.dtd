@@ -13,7 +13,7 @@
         <!ELEMENT EntrezQuery ANY>
         <!ATTLIST EntrezQuery value CDATA #REQUIRED>
         <!ELEMENT Remote ANY>
-        <!ATTLIST Remote deligate (yes|no) #REQUIRED>
+        <!ATTLIST Remote delegate (yes|no) #REQUIRED>
         <!ELEMENT MaxFilesInBatch ANY>
         <!ATTLIST MaxFilesInBatch value CDATA #REQUIRED>
         <!ELEMENT SpecificationParameters (CutoffSet)>
