@@ -46,7 +46,7 @@ public class NodesDBDDeployerTest {
         File nodes_dmp_file = new File("/home/alext/Downloads/NCBI/taxdump/nodes.dmp");
         try {
 
-            Map<String, Integer> ranks_ids = NodesDBDeployer.assingIDsToRanks(NodesDBDeployer.calculateASetOfRanksFromFile(nodes_dmp_file));
+            Map<String, Integer> ranks_ids = NodesDBDeployer.assignIDsToRanks(NodesDBDeployer.calculateASetOfRanksFromFile(nodes_dmp_file));
             for (Map.Entry<String, Integer> e : ranks_ids.entrySet()) {
                 System.out.println(e.getKey() + "\t>" + e.getValue());
             }
@@ -64,7 +64,7 @@ public class NodesDBDDeployerTest {
         mySQL_connector.connectToDatabase();
         Connection connection = mySQL_connector.getConnection();
 
-        NodesDBDeployer.deployRanksValidataionTable(connection);
+        NodesDBDeployer.deployRanksValidationTable(connection);
 
     }
 

@@ -1,7 +1,5 @@
 package logger;
 
-import sun.net.www.protocol.http.logging.HttpLogFormatter;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -19,6 +17,7 @@ public enum Log {
      * Singleton instance accessor
      * @return {@link Log} singleton instance
      */
+    @SuppressWarnings("SameReturnValue")
     public static Log getInstance() {
         return Instance;
     }
@@ -30,16 +29,15 @@ public enum Log {
     /**
      * File handler for the logger
      */
-    private FileHandler fileHandler;
+    private Handler fileHandler;
     /**
      * Console handler for the logger
      */
-    private ConsoleHandler consoleHandler;
+    private Handler consoleHandler;
     /**
      * Private constructor
      */
     private Log() {
-
     }
 
     /**
@@ -62,17 +60,14 @@ public enum Log {
                             .append(formatMessage(record))
                             .append(System.getProperty("line.separator"));
 
+                    //noinspection ThrowableResultOfMethodCallIgnored
                     if (record.getThrown() != null) {
-                        try {
                             StringWriter sw = new StringWriter();
                             PrintWriter pw = new PrintWriter(sw);
-                            record.getThrown().printStackTrace(pw);
+                        //noinspection ThrowableResultOfMethodCallIgnored
+                        record.getThrown().printStackTrace(pw);
                             pw.close();
                             sb.append(sw.toString());
-                        }finally {
-
-                        }
-
                     }
                     return sb.toString();
                 }
@@ -84,7 +79,7 @@ public enum Log {
         } catch (IOException e) {
             this.logger.severe(e.getMessage());
         }
-        this.logger.addHandler(consoleHandler);
+        this.logger.addHandler(this.consoleHandler);
         this.logger.addHandler(this.fileHandler);
 
     }
@@ -93,15 +88,17 @@ public enum Log {
      * @param level {@link Level} of output
      */
     public void setLevel(Level level) {
+        this.logger.setLevel(level);
+        this.consoleHandler.setLevel(level);
         this.fileHandler.setLevel(level);
     }
 
     /**
-     * A getter for the logger
-     * @return {@link Logger} logger
+     * Logs a specific message to a file and console
+     * @param level  {@link Level} of logging
+     * @param message {@link String} message to log
      */
-    public Logger getLogger(){
-
-        return this.logger;
+    public void log(Level level, String message){
+        this.logger.log(level,message);
     }
 }

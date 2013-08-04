@@ -4,7 +4,7 @@ import format.fasta.nucleotide.*;
 
 
 /**
- * A representation of a sepcial case of a nucleotide fasta record that can also have a patient barcode for further
+ * A representation of a special case of a nucleotide fasta record that can also have a patient barcode for further
  * processing analysis
  */
 public class EncodedFasta extends NucleotideFasta {
@@ -12,6 +12,7 @@ public class EncodedFasta extends NucleotideFasta {
     /**
      * A barcode that is used to identify a patient in a uniform way
      */
+    @SuppressWarnings("WeakerAccess")
     protected final String barcode;
 
     /**
@@ -19,10 +20,9 @@ public class EncodedFasta extends NucleotideFasta {
      * @param AC {@link String} record AC (most likely to be the name of the file
      * @param barcode {@link String} barcode that is used to identify a patient in a uniform way
      * @param sequence  {@link String} of the record
-     * @throws NucleotideFasta_AC_BadFormatException in case the AC is formatted badly
-     * @throws NucleotideFasta_Sequence_BadFromatException in case it encounters an error within the nucleotide compound
      */
-    protected EncodedFasta(String AC, String barcode, String sequence) throws NucleotideFasta_AC_BadFormatException, NucleotideFasta_Sequence_BadFromatException {
+    @SuppressWarnings("WeakerAccess")
+    protected EncodedFasta(String AC, String barcode, String sequence) {
         super(AC, sequence);
         this.barcode = barcode;
     }
@@ -33,12 +33,8 @@ public class EncodedFasta extends NucleotideFasta {
      * @param recordAC {@link String} record AC (most likely to be the name of the file
      * @return a new {@link EncodedFasta} from the parameters given
      * @throws NucleotideFasta_BadFromat_Exception  in case of a single line format or none at all
-     * @throws NucleotideFasta_AC_BadFormatException in case the AC is formatted badly
-     * @throws NucleotideFasta_Sequence_BadFromatException in case it encounters an error within the nucleotide compound
      */
-    public static EncodedFasta newInstanceFromFromattedText(String recordAC, String fastaRecord) throws NucleotideFasta_BadFromat_Exception,
-            NucleotideFasta_AC_BadFormatException,
-            NucleotideFasta_Sequence_BadFromatException {
+    public static EncodedFasta newInstanceFromFormattedText(String recordAC, String fastaRecord) throws NucleotideFasta_BadFromat_Exception {
 
         // Get the first row and check whether it is good for an AC
         String[] splitter = fastaRecord.split("\n");

@@ -2,7 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNParameters.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNParameters.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNPath.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNPath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/CutoffSet.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/CutoffSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/DBConnection.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/DBConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Database.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Database.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/format/EncodedFasta.java" afterPath="$PROJECT_DIR$/src/format/EncodedFasta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/EntrezQuery.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/EntrezQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/EvalueRatioCutoff.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/EvalueRatioCutoff.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Expect.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Expect.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/exception/FastaInputFileException.java" afterPath="$PROJECT_DIR$/src/exception/FastaInputFileException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" afterPath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logger/Log.java" afterPath="$PROJECT_DIR$/src/logger/Log.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/tables/LookupNames.java" afterPath="$PROJECT_DIR$/src/db/tables/LookupNames.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/MaxFilesInBatch.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/MaxFilesInBatch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/test/NodesDBDDeployerTest.java" afterPath="$PROJECT_DIR$/testing/test/NodesDBDDeployerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" afterPath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java" afterPath="$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/ObjectFactory.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/ObjectFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/PIdentCutoff.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/PIdentCutoff.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/QueryCoverageCutoff.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/QueryCoverageCutoff.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Remote.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Remote.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" afterPath="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" afterPath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" afterPath="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" afterPath="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" afterPath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/sql/schema.sql" afterPath="$PROJECT_DIR$/src/db/sql/schema.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit/main/tuit.java" afterPath="$PROJECT_DIR$/src/tuit/main/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -13,7 +50,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373302534531" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373039418449" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375568888756" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375646959152" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -126,7 +163,7 @@
     <file path="/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375397013944" ignored="false" />
     <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371251218912" ignored="false" />
     <file path="/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371247613959" ignored="false" />
-    <file path="/TUTFileOperatorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375562008884" ignored="false" />
+    <file path="/TUTFileOperatorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375647613901" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457045601" ignored="false" />
     <file path="/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457028884" ignored="false" />
     <file path="/BLASTNParameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457293906" ignored="false" />
@@ -156,7 +193,7 @@
     <file path="/update.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151559610" ignored="false" />
     <file path="/deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372153715522" ignored="false" />
     <file path="/Logger.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372148956277" ignored="false" />
-    <file path="/Log.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375568959067" ignored="false" />
+    <file path="/Log.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375647541220" ignored="false" />
     <file path="/TUITBLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375557090450" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/AlnFile.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011835410" ignored="false" />
     <file path="/AlnFile.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011797038" ignored="false" />
@@ -477,7 +514,7 @@
     <file path="/TUITClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375552624866" ignored="false" />
     <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/test/TUITClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375538942698" ignored="false" />
     <file path="/TUITClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375538906450" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375568962474" ignored="false" />
+    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375647621397" ignored="false" />
     <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/test/TestComparison.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375557498376" ignored="false" />
     <file path="/TestComparison.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375552817180" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/.idea/artifacts/JAVA_BIO_jar.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375563147923" ignored="false" />
@@ -590,9 +627,9 @@
       <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="102" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0">
+            <state line="55" column="102" selection-start="1564" selection-end="1564" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1951#1990#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -601,19 +638,28 @@
       <file leaf-file-name="Log.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="48" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
+            <state line="78" column="50" selection-start="2537" selection-end="2537" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TUTFileOperatorHelper.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="322" column="49" selection-start="16036" selection-end="16036" vertical-scroll-proportion="0.33268481">
               <folding>
-                <element signature="e#1215#2265#0" expanded="true" />
-                <element signature="e#2250#2251#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#13825#13834#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NamesDeployer.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NamesDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="235" selection-end="235" vertical-scroll-proportion="0.20428015">
+            <state line="30" column="29" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -622,7 +668,7 @@
       <file leaf-file-name="TUITBLASTIdentifier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="39" selection-start="6938" selection-end="6938" vertical-scroll-proportion="0.0">
+            <state line="151" column="39" selection-start="7003" selection-end="7003" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -631,7 +677,7 @@
       <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="360" column="109" selection-start="18742" selection-end="18742" vertical-scroll-proportion="0.0">
+            <state line="375" column="109" selection-start="19243" selection-end="19243" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -666,11 +712,11 @@
         <option value="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
         <option value="$PROJECT_DIR$/testing/test/properties.xml" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" />
-        <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+        <option value="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
         <option value="$PROJECT_DIR$/src/tuit/main/tuit.java" />
         <option value="$PROJECT_DIR$/src/logger/Log.java" />
-        <option value="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
+        <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
       </list>
     </option>
   </component>
@@ -1026,9 +1072,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1741,16 +1787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="160" selection-start="6873" selection-end="6873" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14436#14445#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="110" column="135" selection-start="5299" selection-end="5299" vertical-scroll-proportion="0.0">
@@ -1774,41 +1810,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="39" selection-start="6938" selection-end="6938" vertical-scroll-proportion="0.0">
+        <state line="151" column="39" selection-start="7003" selection-end="7003" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="360" column="109" selection-start="18742" selection-end="18742" vertical-scroll-proportion="0.0">
+        <state line="30" column="29" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="102" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0">
+        <state line="55" column="102" selection-start="1564" selection-end="1564" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1951#1990#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="375" column="109" selection-start="19243" selection-end="19243" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="48" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1215#2265#0" expanded="true" />
-            <element signature="e#2250#2251#0" expanded="true" />
-          </folding>
+        <state line="78" column="50" selection-start="2537" selection-end="2537" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="235" selection-end="235" vertical-scroll-proportion="0.20428015">
-          <folding />
+        <state line="322" column="49" selection-start="16036" selection-end="16036" vertical-scroll-proportion="0.33268481">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

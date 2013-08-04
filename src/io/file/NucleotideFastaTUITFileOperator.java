@@ -18,6 +18,7 @@ import java.util.Set;
  */
 public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
 
+    @SuppressWarnings("WeakerAccess")
     public static final String NOT_IDENTIFIED="<-not identified->";
 
     @Override

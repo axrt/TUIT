@@ -3,9 +3,7 @@ package io.file;
 import db.tables.LookupNames;
 import format.EncodedFasta;
 import format.fasta.Fasta;
-import format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
-import format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException;
 import io.properties.jaxb.TUITProperties;
 import logger.Log;
 import org.xml.sax.EntityResolver;
@@ -30,6 +28,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * A helper class that allows to load TUIT io.properties from an XML formatted input
@@ -49,7 +48,6 @@ public class TUTFileOperatorHelper {
      *
      * @param in :{@link java.io.InputStream } from a URL or other type of connection
      * @return {@link TUITProperties}
-     * @throws javax.xml.bind.JAXBException
      * @throws SAXException                 upon SAX parsing error
      * @throws JAXBException                upon unmarshalling
      */
@@ -66,7 +64,7 @@ public class TUTFileOperatorHelper {
             @Override
             public InputSource resolveEntity(String publicId, String systemId)
                     throws SAXException, IOException {
-                String file = null;
+                String file;
                 if (systemId.contains("properties.dtd")) {
                     file = "properties.dtd";
                 } else {
@@ -83,26 +81,21 @@ public class TUTFileOperatorHelper {
     }
 
     /**
-     * @param file {@link java.io.File} a file that contains the a list of fasta records (may be reperesented by a single record
+     * @param file {@link java.io.File} a file that contains the a list of fasta records (may be represented by a single record
      * @return {@link java.util.List < format.EncodedFasta >} of fasta records
      * @throws IOException in case opening and reading the file fails
      * @throws format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception
      *                     in case of a single line format or none at all
-     * @throws format.fasta.nucleotide.NucleotideFasta_AC_BadFormatException
-     *                     in case the AC is formatted badly
-     * @throws format.fasta.nucleotide.NucleotideFasta_Sequence_BadFromatException
-     *                     in case it encounters an error within the nucleotide compound
      */
     public static List<EncodedFasta> loadOTURecords(File file) throws IOException,
-            NucleotideFasta_BadFromat_Exception, NucleotideFasta_AC_BadFormatException,
-            NucleotideFasta_Sequence_BadFromatException {
+            NucleotideFasta_BadFromat_Exception {
         //Open file and check whether it is even Fasta at all
         List<EncodedFasta> encodedFastas = null;
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(file));
             StringBuilder stringBuilder = new StringBuilder();
-            String recordAC = file.getName().split(".")[0];//Get the file name that is supposed to be the AC without ".fasta" extention or whatever the extention is bein used
+            String recordAC = file.getName().split(".")[0];//Get the file name that is supposed to be the AC without ".fasta" extension or whatever the extension is being used
             String line;
             //Read the first line to see if it is fromatted properly
             line = bufferedReader.readLine().trim();//trim() is needed in case there had been white traces
@@ -119,12 +112,11 @@ public class TUTFileOperatorHelper {
             }
             //Try splitting the file by > if it is possible
             String[] splitter = stringBuilder.toString().split(Fasta.fastaStart);
-            stringBuilder = null;
             //Prepare a list of a split size to store the records
             encodedFastas = new ArrayList<EncodedFasta>(splitter.length);
             //Parse every record and then store it in the list
             for (String s : splitter) {
-                encodedFastas.add(EncodedFasta.newInstanceFromFromattedText(recordAC, s));
+                encodedFastas.add(EncodedFasta.newInstanceFromFormattedText(recordAC, s));
             }
         } finally {
             //Finally return the prepared list of records
@@ -136,7 +128,7 @@ public class TUTFileOperatorHelper {
     }
 
     /**
-     * Uploads a given entrez query to the NCBI serever in order to obtain a list of GI numbers in order to restrict the to a given entrez query.
+     * Uploads a given entrez query to the NCBI server in order to obtain a list of GI numbers in order to restrict the to a given entrez query.
      * @param tmpDir {@link File} temporary directory that will be used to store the GI list
      * @param entrez_query {@link String} that represents the entrez query
      * @return {@link File} that points to the GI list file
@@ -151,24 +143,24 @@ public class TUTFileOperatorHelper {
         byte[]entrezQueryByte=entrez_query.getBytes("UTF-8");
         MessageDigest messageDigest=MessageDigest.getInstance("MD5");
         byte[]entrezQueryByteMD5=messageDigest.digest(entrezQueryByte);
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < entrezQueryByteMD5.length; i++){
-            sb.append(Integer.toString((entrezQueryByteMD5[i] & 0xff) + 0x100, 16).substring(1));
+        StringBuilder sb = new StringBuilder();
+        for (byte anEntrezQueryByteMD5 : entrezQueryByteMD5) {
+            sb.append(Integer.toString((anEntrezQueryByteMD5 & 0xff) + 0x100, 16).substring(1));
         }
         File restrictedGIs=new File(tmpDir,sb.toString()+".gil");
         if(restrictedGIs.exists()){
-            Log.getInstance().getLogger().info("The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
+            Log.getInstance().log(Level.INFO, "The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
             return restrictedGIs;
         }
         try {
             bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
             String line;
             String countString = null;
-            Log.getInstance().getLogger().info("Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
+            Log.getInstance().log(Level.INFO,"Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("<Count>")) {
                     countString = line.substring("<Count>".length()+1, line.indexOf("</Count>"));
-                    Log.getInstance().getLogger().info("Number of GIs in set: "+countString+", downloading from NCBI.");
+                    Log.getInstance().log(Level.INFO,"Number of GIs in set: "+countString+", downloading from NCBI.");
                 }
             }
             bufferedReader.close();
@@ -202,7 +194,7 @@ public class TUTFileOperatorHelper {
 
     /**
      * As long as there is no efficient way to apply entrez query to a local BLAST, a file of the GIs, to which the search
-     * shoul be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
+     * should be restricted has to be created and added to the BLASTN command line as "-l restricted_gis.gil".
      * In order to create such a file, the taxonomic database looks for all the entrez query clauses, links those to their GIs
      * and lists out the GIs which were not affected by the entrez query restrictions. The file has a unique name based on the
      * entrez query clauses and is created only once for each entrez query in order to ensure maximum performance.
@@ -233,7 +225,7 @@ public class TUTFileOperatorHelper {
         File restrictedGIs = new File(tempDir, stringBuilder.toString());
         //Check if the file already exists
         if (restrictedGIs.exists()) {
-            Log.getInstance().getLogger().info("The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
+            Log.getInstance().log(Level.INFO,"The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
             return restrictedGIs;
         }
         //Prepare a sql part of the entrez
@@ -253,7 +245,7 @@ public class TUTFileOperatorHelper {
         try {
             statement = connection.createStatement();
             //Notify that it's gonna take some time
-            Log.getInstance().getLogger().info("Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
+            Log.getInstance().log(Level.INFO,"Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
             //Process the file
             statement.execute("USE " + LookupNames.dbs.NCBI.name);
             statement.execute("SELECT "
@@ -285,7 +277,7 @@ public class TUTFileOperatorHelper {
             while (resultSet.next()) {
                 taxids.add(resultSet.getInt(1));
             }
-            Log.getInstance().getLogger().info(String.valueOf(taxids.size()) + " non-reliable nodes have been identified");
+            Log.getInstance().log(Level.INFO,String.valueOf(taxids.size()) + " non-reliable nodes have been identified");
             if (!taxids.isEmpty()) {
                 bufferedWriter = new BufferedWriter(new FileWriter(restrictedGIs, true));
                 for (Integer i : taxids) {
@@ -317,7 +309,7 @@ public class TUTFileOperatorHelper {
             }
         }
         //Report success
-        Log.getInstance().getLogger().info("Entrez query restrictions have been created successfully");
+        Log.getInstance().log(Level.INFO,"Entrez query restrictions have been created successfully");
         //Return the restricting file
         return restrictedGIs;
     }
@@ -331,9 +323,10 @@ public class TUTFileOperatorHelper {
      * @return {@link List} with appended leave's taxids
      * @throws SQLException in case a database communication error occurs
      */
+    @SuppressWarnings("WeakerAccess")
     public static List<Integer> leavesByTaxid(Connection connection, int taxid, List<Integer> leaves) throws SQLException {
         Statement statement = null;
-        List<Integer> taxids = null;
+        List<Integer> taxids;
         try {
             statement = connection.createStatement();
             statement.execute("USE " + LookupNames.dbs.NCBI.name);

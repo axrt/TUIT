@@ -25,6 +25,7 @@ import org.w3c.dom.Element;
 /**
  * 
  */
+@SuppressWarnings("WeakerAccess")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "content"
@@ -59,7 +60,8 @@ public class EntrezQuery {
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
+    @SuppressWarnings("SameParameterValue")
+    public void setValue(@SuppressWarnings("SameParameterValue") String value) {
         this.value = value;
     }
 

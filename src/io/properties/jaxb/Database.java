@@ -25,6 +25,7 @@ import org.w3c.dom.Element;
 /**
  * 
  */
+@SuppressWarnings("WeakerAccess")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "content"
@@ -53,14 +54,15 @@ public class Database {
 
     /**
      * Sets the value of the use property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
+    @SuppressWarnings("SameParameterValue")
     public void setUse(String value) {
-        this.use = value;
+        this.use = "nt";
     }
 
     /**

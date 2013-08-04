@@ -13,11 +13,6 @@ import java.util.*;
 public class NodesDBDeployer {
 
     /**
-     * A size for batch inserts
-     */
-    private static int BATCH_SIZE = 10000;
-
-    /**
      * Constructor grants non-instantiability
      */
     private NodesDBDeployer() {
@@ -26,7 +21,7 @@ public class NodesDBDeployer {
 
     /**
      * Creates a set of ranks from the nodes.dmp file. Used to create a validation table,
-     * (with the help of {@code NodesDBDeployerassingIDsToRanks(Set ranks)} otherwise the NCBI database contains too much redundancy.
+     * (with the help of {@code NodesDBDeployer assignIDsToRanks(Set ranks)} otherwise the NCBI database contains too much redundancy.
      *
      * @param nodesDmpFile an NCBI nodes.dmp {@link File} that contains the full set of ranks in a redundant format
      * @return a {@link Set} of all possible ranks within the file
@@ -57,7 +52,7 @@ public class NodesDBDeployer {
     }
 
     /**
-     * <b>Deprectaed due to that the database needs strongly a strongly ordered set of ranks.</b>
+     * <b>Deprecated due to that the database needs strongly a strongly ordered set of ranks.</b>
      * Generates a {@link Map} that helps create a validation table for the nodes NCBI taxonomic database.
      * <b>Deprecated due to redundancy</b>
      *
@@ -65,7 +60,7 @@ public class NodesDBDeployer {
      * @return a new {@link  Map} where each ranks has been assigned a unique ID
      */
     @Deprecated
-    public static Map<String, Integer> assingIDsToRanks(Set<String> ranks) {
+    public static Map<String, Integer> assignIDsToRanks(Set<String> ranks) {
         //Create a new HashMap<String, Integer>()
         Map<String, Integer> ranks_ids = new HashMap<String, Integer>();
         //Populate it from the set of ranks and assign an incremented id on the fly
@@ -84,7 +79,7 @@ public class NodesDBDeployer {
      * @param connection {@link Connection} to the database
      * @throws SQLException in case an error occurs during database communication
      */
-    public static void deployRanksValidataionTable(Connection connection) throws SQLException {
+    public static void deployRanksValidationTable(Connection connection) throws SQLException {
         //Switch to a correct table
         Statement statement = null;
         try {
@@ -144,8 +139,8 @@ public class NodesDBDeployer {
             if (statement != null) {
                 statement.close();
             }
-            return ranks_ids;
         }
+        return ranks_ids;
     }
 
     /**
@@ -198,14 +193,20 @@ public class NodesDBDeployer {
                 preparedStatement.setInt(3, ranks_ids.get(split[2]));
                 preparedStatement.addBatch();
                 counter++;
-                if (counter == NodesDBDeployer.BATCH_SIZE) {
+                /*
+      A size for batch inserts
+     */
+                int BATCH_SIZE = 10000;
+                if (counter == BATCH_SIZE) {
                     preparedStatement.executeBatch();
                     counter = 0;
                 }
 
             }
             //Flush the batch
-            preparedStatement.executeBatch();
+            if (preparedStatement != null) {
+                preparedStatement.executeBatch();
+            }
 
         } finally {
             //Close and cleanup
@@ -219,7 +220,7 @@ public class NodesDBDeployer {
     }
 
     /**
-     * Re-parses the nodes.dmp file. Extracts the taxid, parent_taxid fields as well as the rank, but upon extraction - goes throught the validation table and assigns the id
+     * Re-parses the nodes.dmp file. Extracts the taxid, parent_taxid fields as well as the rank, but upon extraction - goes through the validation table and assigns the id
      * instead of the redundant usage of character representation.
      *
      * @param connection   {@link Connection} to the database

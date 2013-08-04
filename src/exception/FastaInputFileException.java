@@ -1,11 +1,7 @@
 package exception;
 
 /**
- * Created with IntelliJ IDEA.
- * User: alext
- * Date: 6/24/13
- * Time: 4:32 PM
- * To change this template use File | Settings | File Templates.
+ * An instance that holds info about a specific error with the fasta formatted record
  */
 public class FastaInputFileException extends Exception {
     public FastaInputFileException() {

@@ -6,32 +6,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A class that represents a node of a taxonomic tree with its taxid, paren {@link TaxonomicNode}, children {@link TaxonomicNode}s and scientific name
+ * A class that represents a node of a taxonomic tree with its taxid, parent {@link TaxonomicNode}, children {@link TaxonomicNode}s and scientific name
  */
 public class TaxonomicNode {
     /**
      * The node's taxid
      */
+    @SuppressWarnings("WeakerAccess")
     protected final int taxid;
     /**
      * The nodes {@link taxonomy.Ranks}
      */
+    @SuppressWarnings("WeakerAccess")
     protected final Ranks rank;
     /**
      * A parent {@link TaxonomicNode}
      */
+    @SuppressWarnings("WeakerAccess")
     protected TaxonomicNode parent;
     /**
      * A {@link List} of children {@link TaxonomicNode}s
      */
+    @SuppressWarnings("WeakerAccess")
     protected final List<TaxonomicNode> children;
     /**
      * Shows if the node is root
      */
+    @SuppressWarnings("WeakerAccess")
     protected boolean isRoot;
     /**
      * The nodes scientific name (say, E.coli)
      */
+    @SuppressWarnings("WeakerAccess")
     protected final String scientificName;
 
     /**
@@ -41,6 +47,7 @@ public class TaxonomicNode {
      * @param rank           {@link Ranks} rank
      * @param scientificName {@link String} scientific name
      */
+    @SuppressWarnings("WeakerAccess")
     protected TaxonomicNode(final int taxid, final Ranks rank, final String scientificName) {
         this.taxid = taxid;
         this.rank = rank;
@@ -112,11 +119,7 @@ public class TaxonomicNode {
      */
     public void setParent(TaxonomicNode parent) {
         this.parent = parent;
-        if (this.parent.getTaxid() == this.taxid) {
-            this.isRoot = true;
-        } else {
-            this.isRoot = false;
-        }
+        this.isRoot = this.parent.getTaxid() == this.taxid;
     }
 
     /**
@@ -144,26 +147,19 @@ public class TaxonomicNode {
      * @return returns {@code true} if the node is root or if the node has a {@link TaxonomicNode} with the given taxid
      *         in its lineage, {@code false} otherwise.
      */
+    @SuppressWarnings("WeakerAccess")
     public boolean isChildOf(int taxid) {
         if (this.isRoot) {
-            if (this.taxid == taxid) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.taxid == taxid;
         } else {
-            if (this.parent.getTaxid() == taxid) {
-                return true;
-            } else {
-                return this.parent.isChildOf(taxid);
-            }
+            return this.parent.getTaxid() == taxid || this.parent.isChildOf(taxid);
         }
     }
 
     /**
      * Recursively appends all the parent scientific names and ranks until the root is reached
      *
-     * @return A full taxinomic lineage from the root for this node separated by " -> "
+     * @return A full taxonomic lineage from the root for this node separated by " -> "
      */
     public String getFormattedLineage() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -180,6 +176,7 @@ public class TaxonomicNode {
      *
      * @return {@link String} representation of the name and taxonomic rank
      */
+    @SuppressWarnings("WeakerAccess")
     public String getFormattedNameRank() {
         return this.scientificName + " (" + this.rank.getName() + ")";
     }

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * 
  */
+@SuppressWarnings("WeakerAccess")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "database",

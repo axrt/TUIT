@@ -3,7 +3,7 @@ package blast.specification.cutoff;
 import blast.normal.hit.NormalizedHit;
 
 /**
- * A representation of a set of cutoffs. As long as every {@link blast.normal.hit.NormalizedHit} has to meet some certain requirments to qualify
+ * A representation of a set of cutoffs. As long as every {@link blast.normal.hit.NormalizedHit} has to meet some certain requirements to qualify
  * as a pivotal hit for the taxonomic identification, this class helps to check the hits pIdent, query coverage and the E-value
  * ratio between a hit and any other hit within the specification list.
  */
@@ -12,26 +12,30 @@ public class TUITCutoffSet {
     /**
      * A cutoff for pIdent
      */
+    @SuppressWarnings("WeakerAccess")
     protected final double pIdentCutoff;
     /**
      * A cutoff for query coverage
      */
-    protected final double querryCoverageCutoff;
+    @SuppressWarnings("WeakerAccess")
+    protected final double queryCoverageCutoff;
     /**
      * A cutoff for the E-value ratio
      */
+    @SuppressWarnings("WeakerAccess")
     protected final double evalueDifferenceCutoff;
 
     /**
-     * A protected construcotor for the use via factories
+     * A protected constructor for the use via factories
      *
      * @param pIdentCutoff           {@code double} A cutoff for pIdent
-     * @param querryCoverageCutoff   {@code double} A cutoff for query coverage
+     * @param queryCoverageCutoff   {@code double} A cutoff for query coverage
      * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
      */
-    protected TUITCutoffSet(final double pIdentCutoff, final double querryCoverageCutoff, final double evalueDifferenceCutoff) {
+    @SuppressWarnings("WeakerAccess")
+    protected TUITCutoffSet(final double pIdentCutoff, final double queryCoverageCutoff, final double evalueDifferenceCutoff) {
         this.pIdentCutoff = pIdentCutoff;
-        this.querryCoverageCutoff = querryCoverageCutoff;
+        this.queryCoverageCutoff = queryCoverageCutoff;
         this.evalueDifferenceCutoff = evalueDifferenceCutoff;
     }
 
@@ -43,13 +47,9 @@ public class TUITCutoffSet {
      *         to {@code null} was given
      */
     public boolean normalizedHitPassesCheck(final NormalizedHit normalizedHit) {
-        if (normalizedHit == null
+        return !(normalizedHit == null
                 || normalizedHit.getpIdent() < this.pIdentCutoff
-                || normalizedHit.getHitQueryCoverage() < this.querryCoverageCutoff) {
-            return false;
-        } else {
-            return true;
-        }
+                || normalizedHit.getHitQueryCoverage() < this.queryCoverageCutoff);
     }
 
     /**
@@ -60,24 +60,18 @@ public class TUITCutoffSet {
      *         point to {@code null}
      */
     public boolean hitsAreFarEnoughByEvalue(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
-        if (oneNormalizedHit==null||anotherNormalizedHit==null) {
-            return false;
-        } else if(oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff){
-            return true;
-        } else {
-            return false;
-        }
+        return !(oneNormalizedHit == null || anotherNormalizedHit == null) && oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff;
     }
 
     /**
      * A static factory that returns a new instance of the {@link TUITCutoffSet}
      * @param pIdentCutoff           {@code double} A cutoff for pIdent
-     * @param querryCoverageCutoff   {@code double} A cutoff for query coverage
+     * @param queryCoverageCutoff   {@code double} A cutoff for query coverage
      * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
      * @return a new instance of {@link TUITCutoffSet} from the given parameters
      */
-    public static TUITCutoffSet newDefaultInstance(final double pIdentCutoff, final double querryCoverageCutoff, final double evalueDifferenceCutoff) {
-        return new TUITCutoffSet(pIdentCutoff, querryCoverageCutoff, evalueDifferenceCutoff);
+    public static TUITCutoffSet newDefaultInstance(final double pIdentCutoff, final double queryCoverageCutoff, final double evalueDifferenceCutoff) {
+        return new TUITCutoffSet(pIdentCutoff, queryCoverageCutoff, evalueDifferenceCutoff);
     }
 }
 

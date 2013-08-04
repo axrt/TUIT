@@ -1,6 +1,5 @@
 package blast.specification;
 
-import blast.ncbi.output.BlastOutput;
 import blast.ncbi.output.Iteration;
 import blast.ncbi.output.NCBI_BLAST_OutputHelper;
 import blast.specification.cutoff.TUITCutoffSet;
@@ -20,18 +19,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * A {@link BLASTIdentifier} that is specifically adapted for the TUIT algorithm: it
  */
-public class TUITBLASTIdentifier extends BLASTIdentifier {
+public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
     /**
      * A size of a batch
      */
-    protected int batchSize;
+    @SuppressWarnings("WeakerAccess")
+    protected final int batchSize;
     /**
      * The number of the last record specified
      */
+    @SuppressWarnings("WeakerAccess")
     protected int progressEdge;
     /**
      * A protected constructor.
@@ -48,14 +50,15 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               certain order. {"<-command>", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
-     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
+     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the necessary
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
      * @param batchSize              {@code int} number of fasta records in one batch
      */
+    @SuppressWarnings("WeakerAccess")
     protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
-        super(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
+        super(query, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
         this.batchSize = batchSize;
         this.progressEdge=0;
     }
@@ -66,6 +69,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      */
     @Override
     public void run() {
+        @SuppressWarnings("unchecked")
         TUITFileOperator<NucleotideFasta> tuitFileOperator = (TUITFileOperator<NucleotideFasta>) this.fileOperator;
         try {
             if (this.blastOutput == null) {
@@ -78,23 +82,23 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
                     }
                 }
                 if (remote) {
-                    Log.getInstance().getLogger().info("Starting job, using NCBI server BLAST");
+                    Log.getInstance().log(Level.INFO, "Starting job, using NCBI server BLAST");
                 } else {
-                    Log.getInstance().getLogger().info("Starting job, using local machine BLAST");
+                    Log.getInstance().log(Level.INFO,"Starting job, using local machine BLAST");
                 }
                 do {
                     if (remote) {
-                        Log.getInstance().getLogger().info("Sending BLASTN request..");
+                        Log.getInstance().log(Level.INFO,"Sending BLASTN request..");
                     } else {
-                        Log.getInstance().getLogger().info("BLASTN started..");
+                        Log.getInstance().log(Level.INFO,"BLASTN started..");
                     }
 
                     this.BLAST();
 
                     if (remote) {
-                        Log.getInstance().getLogger().info("BLASTN results received..");
+                        Log.getInstance().log(Level.INFO,"BLASTN results received..");
                     } else {
-                        Log.getInstance().getLogger().info("BLASTN finished");
+                        Log.getInstance().log(Level.INFO,"BLASTN finished");
                     }
                     this.progressEdge=0;
                     this.specify();
@@ -109,25 +113,25 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
             this.BLASTed = true;
 
         } catch (IOException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (InterruptedException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (JAXBException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (SAXException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (SQLException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (BadFromatException e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         }
     }
@@ -136,19 +140,19 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * Utility method that handles the process of taxonomic specification
      *
      * @throws SQLException       in case an error occurs during database communication
-     * @throws BadFromatException in case an erro in case formatting the {@link blast.ncbi.output.Hit} GI fails
+     * @throws BadFromatException in case an error in case formatting the {@link blast.ncbi.output.Hit} GI fails
      */
+    @SuppressWarnings("WeakerAccess")
     protected void specify() throws SQLException, BadFromatException {
-        Log.getInstance().getLogger().info("Specifying the BLAST output.");
+        Log.getInstance().log(Level.FINE,"Specifying the BLAST output.");
         if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
             this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
             this.normalizeIterations();
-            for (int i = 0; i < this.normalizedIterations.size(); i++) {
-                NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
+            for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
                 normalizedIteration.specify();
             }
         } else {
-            Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
+            Log.getInstance().log(Level.SEVERE,"No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
         }
     }
 
@@ -162,7 +166,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
         int i=0;
         for(;this.progressEdge<allowedProgress&&this.progressEdge<this.blastOutput.getBlastOutputIterations().getIteration().size();this.progressEdge++){
             Iteration iteration = this.blastOutput.getBlastOutputIterations().getIteration().get(this.progressEdge);
-            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
+            this.normalizedIterations.add(NormalizedIteration.<Iteration>newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
             i++;
         }
     }
@@ -181,21 +185,20 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      *                               certain order. {"<-command>", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
-     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
+     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the necessary
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
      * @param batchSize              a size of a batch that's being sent to BLASTN at a time
-     * @return {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
+     * @return {@link TUITBLASTIdentifier} ready  to perform the first iteration of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
     public static TUITBLASTIdentifier newInstanceFromFileOperator(
-            File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
+            File tempDir, File executive, String[] parameterList, TUITFileOperator<NucleotideFasta> identifierFileOperator,
             Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) throws Exception {
         List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
-            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
-            return tuitblastIdentifier;
+            return new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
         } else {
             throw new Exception("The batch is empty, please check the input file");
         }
@@ -205,20 +208,19 @@ public class TUITBLASTIdentifier extends BLASTIdentifier {
      * A static factory that returns a newly created {@link TUITBLASTIdentifier}, which has already been provided with an XML-formatted blast output
      *
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
-     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the nessessary
+     * @param connection             a connection to the SQL Database that contains a NCBI schema with all the necessary
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
      * @param blastOutput            {@link File} that contains an XML BLASTN output
      * @param batchSize              a size of a batch that's being specified at a time
-     * @return
-     * @return {@link TUITBLASTIdentifier} ready  to perform the first iteraton of BLASTN and specification
+     * @return TUITBLASTIdentifier ready  to perform the first iteration of BLASTN and specification
      * @throws Exception if the input file read error occurs
      */
-    public static TUITBLASTIdentifier newInstanceFromBLASTOutput(TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
+    public static TUITBLASTIdentifier newInstanceFromBLASTOutput(TUITFileOperator<NucleotideFasta> identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
                                                                  File blastOutput, int batchSize) throws Exception {
 
-        List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
+        List<NucleotideFasta> batch =identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
             TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, new File(""), null, null, identifierFileOperator, connection, cutoffSetMap, batchSize);
             tuitblastIdentifier.setBlastOutput(NCBI_BLAST_OutputHelper

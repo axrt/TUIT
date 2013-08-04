@@ -25,6 +25,7 @@ import org.w3c.dom.Element;
 /**
  * 
  */
+@SuppressWarnings("WeakerAccess")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "content"
@@ -32,35 +33,35 @@ import org.w3c.dom.Element;
 @XmlRootElement(name = "Remote")
 public class Remote {
 
-    @XmlAttribute(name = "deligate", required = true)
+    @XmlAttribute(name = "delegate", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String deligate;
+    protected String delegate;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the deligate property.
+     * Gets the value of the delegate property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDeligate() {
-        return deligate;
+    public String getDelegate() {
+        return delegate;
     }
 
     /**
-     * Sets the value of the deligate property.
+     * Sets the value of the delegate property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDeligate(String value) {
-        this.deligate = value;
+    public void setDelegate(String value) {
+        this.delegate = value;
     }
 
     /**

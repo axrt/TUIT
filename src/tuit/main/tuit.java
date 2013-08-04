@@ -23,10 +23,11 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.regex.Pattern;
 
 /**
  * A main class for the tuit module implementation
@@ -37,39 +38,40 @@ public class tuit {
     /**
      * The -in flag for the input file
      */
-    public final static String IN = "i";
+    private final static String IN = "i";
     /**
      * The -out flag for the output file
      */
-    public final static String OUT = "o";
+    private final static String OUT = "o";
     /**
      * The -p flag for the properties file
      */
-    public final static String P = "p";
+    private final static String P = "p";
     /**
      * The -b flag for the pre-blasted BLAST output file
      */
-    public final static String B = "b";
+    private final static String B = "b";
     /**
      * The -v flag for the verbose output file
      */
-    public final static String V = "v";
+    private final static String V = "v";
     /**
      * The -deploy flag for the verbose output file
      */
-    public final static String DEPLOY = "deploy";
+    private final static String DEPLOY = "deploy";
     /**
      * The -update flag for the verbose output file
      */
-    public final static String UPDATE = "update";
+    private final static String UPDATE = "update";
     /**
      * tuit output file extension
      */
-    public final static String TUIT_EXT = ".tuit";
+    private final static String TUIT_EXT = ".tuit";
 
+    @SuppressWarnings("ConstantConditions")
     public static void main(String[] args) {
         //Declare variables
-        File inputFile = null;
+        File inputFile;
         File outputFile;
         File tmpDir;
         File blastnExecutable;
@@ -86,7 +88,7 @@ public class tuit {
         //
         Map<Ranks, TUITCutoffSet> cutoffMap;
         //
-        BLASTIdentifier blastIdentifier;
+        BLASTIdentifier blastIdentifier=null;
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
@@ -127,13 +129,13 @@ public class tuit {
             //Check for deploy
             if (commandLine.hasOption(tuit.DEPLOY)) {
                 NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, tmpDir);
-                Log.getInstance().getLogger().severe("Exiting..");
+                Log.getInstance().log(Level.SEVERE,"Exiting..");
                 return;
             }
             //Check for update
             if (commandLine.hasOption(tuit.UPDATE)) {
                 NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
-                Log.getInstance().getLogger().severe("Exiting..");
+                Log.getInstance().log(Level.SEVERE,"Exiting..");
                 return;
             }
             if (commandLine.hasOption(tuit.B)) {
@@ -160,10 +162,10 @@ public class tuit {
 
             //Adjust the output level
             if (commandLine.hasOption(tuit.V)) {
-                Log.getInstance().getLogger().setLevel(Level.FINE);
-                Log.getInstance().getLogger().info("Using verbose output for the log");
+                Log.getInstance().setLevel(Level.FINE);
+                Log.getInstance().log(Level.INFO,"Using verbose output for the log");
             } else {
-                Log.getInstance().getLogger().setLevel(Level.INFO);
+                Log.getInstance().setLevel(Level.INFO);
             }
             //Try all files
             if (inputFile != null) {
@@ -190,7 +192,7 @@ public class tuit {
             //stringBuilder.append("\"");
             String remote;
             String entrez_query;
-            if (tuitProperties.getBLASTNParameters().getRemote().getDeligate().equals("yes")) {
+            if (tuitProperties.getBLASTNParameters().getRemote().getDelegate().equals("yes")) {
                 remote = "-remote";
                 entrez_query = "-entrez_query";
                 parameters = new String[]{
@@ -233,57 +235,58 @@ public class tuit {
             nucleotideFastaTUITFileOperator.setInputFile(inputFile);
             nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
             //Create blast identifier
+            ExecutorService executorService=Executors.newSingleThreadExecutor();
             if (blastOutputFile == null) {
                 blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                         tmpDir, blastnExecutable, parameters,
                         nucleotideFastaTUITFileOperator, connection,
                         cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
-                Future<?> runnableFuture = Executors.newSingleThreadExecutor().submit(blastIdentifier);
-                runnableFuture.get();
+
             } else {
                 try {
                     blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
                             cutoffMap, blastOutputFile, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
-                    Future<?> runnableFuture = Executors.newSingleThreadExecutor().submit(blastIdentifier);
-                    runnableFuture.get();
+
                 } catch (Exception e) {
-                    Log.getInstance().getLogger().severe("Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                    Log.getInstance().log(Level.SEVERE,"Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
                 }
             }
+            Future<?> runnableFuture = executorService.submit(blastIdentifier);
+            runnableFuture.get();
+            executorService.shutdown();
 
         } catch (ParseException pe) {
-            Log.getInstance().getLogger().severe(pe.getMessage());
+            Log.getInstance().log(Level.SEVERE,(pe.getMessage()));
             formatter.printHelp("tuit", options);
         } catch (SAXException saxe) {
-            Log.getInstance().getLogger().severe(saxe.getMessage());
+            Log.getInstance().log(Level.SEVERE,saxe.getMessage());
         } catch (FileNotFoundException fnfe) {
-            Log.getInstance().getLogger().severe(fnfe.getMessage());
+            Log.getInstance().log(Level.SEVERE,fnfe.getMessage());
         } catch (TUITPropertyBadFormatException tpbfe) {
-            Log.getInstance().getLogger().severe(tpbfe.getMessage());
+            Log.getInstance().log(Level.SEVERE,tpbfe.getMessage());
         } catch (JAXBException jaxbee) {
-            Log.getInstance().getLogger().severe("The properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
+            Log.getInstance().log(Level.SEVERE,"The properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
         } catch (ClassNotFoundException cnfe) {
             //Probably won't happen unless the library deleted from the .jar
-            Log.getInstance().getLogger().severe(cnfe.getMessage());
+            Log.getInstance().log(Level.SEVERE,cnfe.getMessage());
         } catch (SQLException sqle) {
-            Log.getInstance().getLogger().severe("A database communication error occurred with the following message:\n" +
+            Log.getInstance().log(Level.SEVERE,"A database communication error occurred with the following message:\n" +
                     sqle.getMessage());
             if (sqle.getMessage().contains("Access denied for user")) {
-                Log.getInstance().getLogger().severe("Please use standard database login: " + NCBITablesDeployer.login + " and password: " + NCBITablesDeployer.password);
+                Log.getInstance().log(Level.SEVERE,"Please use standard database login: " + NCBITablesDeployer.login + " and password: " + NCBITablesDeployer.password);
             }
         } catch (Exception e) {
-            Log.getInstance().getLogger().severe(e.getMessage());
+            Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException sqle) {
-                    Log.getInstance().getLogger().severe("Problem closing the database connection: " + sqle);
+                    Log.getInstance().log(Level.SEVERE,"Problem closing the database connection: " + sqle);
                 }
             }
-            Log.getInstance().getLogger().severe("Exiting..");
-            System.exit(1);
+            Log.getInstance().log(Level.SEVERE,"Exiting..");
         }
     }
 }

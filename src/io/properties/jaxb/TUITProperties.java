@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * 
  */
+@SuppressWarnings("WeakerAccess")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "dbConnection",
@@ -134,6 +135,7 @@ public class TUITProperties {
      *     {@link BLASTNParameters }
      *     
      */
+    @SuppressWarnings("SameParameterValue")
     public void setBLASTNParameters(BLASTNParameters value) {
         this.blastnParameters = value;
     }

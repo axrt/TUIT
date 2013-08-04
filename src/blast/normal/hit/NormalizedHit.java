@@ -19,34 +19,42 @@ public class NormalizedHit<H extends Hit> {
     /**
      * A minimal E-value at which the E-value is rounded to 0.0
      */
-    public static double MINIMAL_EVLAUE = 2.225074e-308;
+    @SuppressWarnings("WeakerAccess")
+    public static final double MINIMAL_EVLAUE = 2.225074e-308;
     /**
      * An ancestor hit that was normalized to have convenient parameters
      */
+    @SuppressWarnings("WeakerAccess")
     protected final H hit;
     /**
      * An int representation of the GI
      */
+    @SuppressWarnings("WeakerAccess")
     protected final int GI;
     /**
      * Double representation of the pIdent
      */
+    @SuppressWarnings("WeakerAccess")
     protected final double pIdent;
     /**
-     * Double representation of the Quer coverage
+     * Double representation of the Query coverage
      */
+    @SuppressWarnings("WeakerAccess")
     protected final double hitQueryCoverage;
     /**
      * Double representation of the E-value
      */
+    @SuppressWarnings("WeakerAccess")
     protected final double hitEvalue;
     /**
      * A taxonomic tree reassembled back form the gi_taxid pair
      */
+    @SuppressWarnings("WeakerAccess")
     protected TaxonomicNode taxonomy;
     /**
      * A node that is currently being in focus (refers to taxonomic rank)
      */
+    @SuppressWarnings("WeakerAccess")
     protected TaxonomicNode focusNode;
 
     /**
@@ -56,6 +64,7 @@ public class NormalizedHit<H extends Hit> {
      *                    the minimal value of 2.225074e-308 will be assigned
      * @param queryLength {@code int} of the initial query length (to derive Query coverage from)
      */
+    @SuppressWarnings("WeakerAccess")
     protected NormalizedHit(final H hit, final int queryLength) throws BadFromatException {
         super();
         this.hit = hit;
@@ -162,11 +171,7 @@ public class NormalizedHit<H extends Hit> {
      *         taxonomic group, {@code false} if this hit point to a parental node.
      */
     public boolean refusesParenthood(NormalizedHit candidate) {
-        if (this.taxonomy.isParentOf(candidate.getFocusNode().getTaxid())) {
-            return false;
-        } else {
-            return true;
-        }
+        return !this.taxonomy.isParentOf(candidate.getFocusNode().getTaxid());
     }
 
     /**
@@ -175,10 +180,11 @@ public class NormalizedHit<H extends Hit> {
      * @param hit         {@link Hit} that need normalization
      * @param queryLength {@code int} of the initial query length (to derive Query coverage from)
      * @return a new instance of {@link NormalizedHit} form a given set of parameters
-     * @throws {@link BadFromatException} in case formatting the {@link Hit} GI fails
+     * @throws BadFromatException in case formatting the {@link Hit} GI fails
      */
     public static NormalizedHit newDefaultInstanceFromHit(final Hit hit, final int queryLength) throws BadFromatException {
-        return new NormalizedHit(hit, queryLength);
+        return new NormalizedHit<Hit>(hit, queryLength);
+
     }
 
 

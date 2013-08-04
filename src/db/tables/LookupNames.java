@@ -6,7 +6,7 @@ package db.tables;
 public class LookupNames {
 
     /**
-     * Constructor grants non-instantiability
+     * Constructor grants non-insatiability
      */
     private LookupNames() {
         throw new AssertionError();
@@ -25,21 +25,21 @@ public class LookupNames {
 
                 public enum columns {
                     id_ranks,
-                    rank;
+                    rank
                 }
             }
             public static class gi_taxid {
                 public static final String name = "GI_TAXID";
                 public enum columns {
                     gi,
-                    taxid;
+                    taxid
                 }
             }
             public static class names {
                 public static final String name = "names";
                 public enum columns {
                     taxid,
-                    name;
+                    name
                 }
             }
             public static class nodes {
@@ -48,14 +48,14 @@ public class LookupNames {
                     id_nodes,
                     taxid,
                     parent_taxid,
-                    id_ranks;
+                    id_ranks
                 }
             }
             public enum views{
                 taxon_by_gi("taxon_by_gi"),
                 f_level_children_by_parent("f_level_children_by_parent");
 
-                private String name;
+                private final String name;
                 private views(String name){
                      this.name=name;
                 }

@@ -25,16 +25,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
  * given queries automatically.
  */
-public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN implements TaxonomicDatabaseOperator {
+public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN<T> implements TaxonomicDatabaseOperator {
 
     /**
      * A Map for default cutoff sets, which are used whenever a custom set was not given
      */
+    @SuppressWarnings("WeakerAccess")
     protected static final Map<Ranks, TUITCutoffSet> DEFAULT_CUTOFFS = new HashMap<Ranks, TUITCutoffSet>();
 
     /**
@@ -62,7 +64,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
         DEFAULT_CUTOFFS.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
         DEFAULT_CUTOFFS.put(Ranks.subtribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
 
-        //Oreder-level-related
+        //Order-level-related
         DEFAULT_CUTOFFS.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 100));
         DEFAULT_CUTOFFS.put(Ranks.parvorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
         DEFAULT_CUTOFFS.put(Ranks.infraorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
@@ -89,45 +91,47 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * A setter for a BLAST output to identify
      * @param blastOutput {@link BlastOutput} that will be used for taxonomic identification
      */
+    @SuppressWarnings("WeakerAccess")
     public void setBlastOutput(BlastOutput blastOutput){
         this.blastOutput=blastOutput;
     }
     /**
      * A connection to an SQL database, which contains a NCBI schema with taxonomic information
      */
+    @SuppressWarnings("WeakerAccess")
     protected final Connection connection;
     /**
      * A custom cutoff set map, provided by the user
      */
+    @SuppressWarnings("WeakerAccess")
     protected final Map<Ranks, TUITCutoffSet> cutoffSetMap;
     /**
      * A list of normalized hits that the algorithm will operate upon
      */
+    @SuppressWarnings("WeakerAccess")
     protected List<NormalizedIteration<Iteration>> normalizedIterations;
 
     /**
-     * @param query         {@link List} a list of query
+     * @param query         {@link java.util.List} a list of query
      *                      fasta-formatted records
-     * @param query_IDs     {@link List} a list of AC numbers of sequences in a
-     *                      database
-     * @param tempDir       {@link File} - A temporary directory that will be used to dump
+     * @param tempDir       {@link java.io.File} - A temporary directory that will be used to dump
      *                      the input and output files, that are used by the ncbi+
      *                      executable
-     * @param executive     {@link File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
-     *                      allow to create an input file as well as catch the blast
-     *                      output
+     * @param executive     {@link java.io.File} A {@link blast.ncbi.local.exec.NCBI_EX_BLAST_FileOperator} that will
+ *                      allow to create an input file as well as catch the blast
+ *                      output
      * @param parameterList {@link String}[] A list of parameters. Should maintain a
-     *                      certain order. {"<-command>", "[value]"}, just the way if in
-     *                      the blast+ executable input
-     * @param connection    a connection to the SQL Database that contains a NCBI schema with all the nessessary
-     *                      taxonomic information
-     * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
-     *                      default set
+*                      certain order. {"<-command>", "[value]"}, just the way if in
+*                      the blast+ executable input
+     * @param connection    a connection to the SQL Database that contains a NCBI schema with all the necessary
+*                      taxonomic information
+     * @param cutoffSetMap  a {@link java.util.Map}, provided by the user and that may differ from the
      */
-    protected BLASTIdentifier(List<T> query, List<String> query_IDs,
+    @SuppressWarnings("WeakerAccess")
+    protected BLASTIdentifier(List<T> query,
                               File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
                               Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        super(query, query_IDs, tempDir, executive, parameterList,
+        super(query, null, tempDir, executive, parameterList,
                 identifierFileOperator);
         this.connection = connection;
         this.cutoffSetMap = cutoffSetMap;
@@ -141,17 +145,14 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @return {@code true} if the {@link blast.normal.hit.NormalizedHit} checks, otherwise {@code false} is returned. Upon null instead of either normalizedHit or rank
      *         returns {@code false}.
      */
-    public boolean normalyzedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
+    public boolean normalisedHitChecksAgainstParametersForRank(final NormalizedHit normalizedHit, final Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
-        //Cecks if a cutoff set exists at a given ranks
+        //Checks if a cutoff set exists at a given ranks
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null) {
             //If not - substitutes it with a default cutoff set
             tuitCutoffSet = BLASTIdentifier.DEFAULT_CUTOFFS.get(rank);
         }
-        if (normalizedHit == null || rank == null) {
-            return false;
-        }
-        return tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
+        return !(normalizedHit == null || rank == null) && tuitCutoffSet.normalizedHitPassesCheck(normalizedHit);
     }
 
     /**
@@ -174,8 +175,8 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     }
 
     /**
-     * Based on the SQL database NCBI schema and the {@link Ranks} of the given {@link TaxonomicNode}, assignes the taxnomoy (taxid, scientific name)
-     * **does not assign children downt to the leaves, that is done by the {@code attachChildrenForTaxonomicNode(TaxonomicNode parentNode)}
+     * Based on the SQL database NCBI schema and the {@link Ranks} of the given {@link TaxonomicNode}, assigned the taxonomy (taxid, scientific name)
+     * **does not assign children down to the leaves, that is done by the {@code attachChildrenForTaxonomicNode(TaxonomicNode parentNode)}
      *
      * @param normalizedHit {@link NormalizedHit} which needs to know its taxonomy
      * @return {@link NormalizedHit} which points to the same object as the given {@link NormalizedHit} parameter, but with a newly attached
@@ -187,7 +188,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             //Try selecting the child nodes for the given hit
             preparedStatement = this.connection.prepareStatement(
@@ -226,7 +227,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
     /**
      * Based on the SQL database NCBI schema and the {@link Ranks} of the given {@link NormalizedHit}
-     * rises its rank one step higher (say, for subspecies rizes fot species)
+     * rises its rank one step higher (say, for subspecies raised for species)
      *
      * @param normalizedHit {@link NormalizedHit}
      * @return {@link NormalizedHit} which points to the same object as the given {@link NormalizedHit} parameter,
@@ -234,10 +235,10 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @throws SQLException in case a database communication error occurs
      */
     @Override
-    public NormalizedHit liftRankForNormalyzedHit(final NormalizedHit normalizedHit) throws SQLException {
+    public NormalizedHit liftRankForNormalizedHit(final NormalizedHit normalizedHit) throws SQLException {
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             //Try selecting the parent node for the given hit
             //Assuming the database is consistent - one taxid should have only one immediate parent
@@ -280,7 +281,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * save results in a form of a taxonomic branch.
      *
      * @param taxonomicNode {@link TaxonomicNode} that needs to get its full lineage structure
-     * @return a pointer to the same {@link TaxonomicNode} objcet, but with attached pointers to its taxonomic lineage
+     * @return a pointer to the same {@link TaxonomicNode} object, but with attached pointers to its taxonomic lineage
      * @throws SQLException in case an error in database communication occurs
      */
     @Override
@@ -288,8 +289,8 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
         //Get its taxid and reconstruct its child taxonomic nodes
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        TaxonomicNode parentTaxonomicNode = null;
+        ResultSet resultSet;
+        TaxonomicNode parentTaxonomicNode;
         try {
             preparedStatement = this.connection.prepareStatement(
                     "SELECT * FROM "
@@ -306,8 +307,8 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                             + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
             preparedStatement.setInt(1, taxonomicNode.getTaxid());
             resultSet = preparedStatement.executeQuery();
-            int parent_taxid = 0;
-            int taxid = 0;
+            int parent_taxid;
+            int taxid;
             String scientificName;
             Ranks rank;
             if (resultSet.next()) {
@@ -319,6 +320,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                 parentTaxonomicNode.addChild(taxonomicNode);
                 taxonomicNode.setParent(parentTaxonomicNode);
                 if (parent_taxid != taxid) {
+                    //noinspection UnusedAssignment
                     parentTaxonomicNode = this.attachFullDirectLineage(parentTaxonomicNode);
                 }
             } else {
@@ -336,7 +338,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
     /**
      * Based on the SQL database NCBI schema and the {@link Ranks} of the given {@link NormalizedHit} and its {@link Ranks}
-     * reassembles and assignes the full taxonomy for the  {@link NormalizedHit} for its current {@link Ranks} down to the leaves
+     * reassembles and assigned the full taxonomy for the  {@link NormalizedHit} for its current {@link Ranks} down to the leaves
      *
      * @param parentNode {@link NormalizedHit} that needs to know its children
      * @return {@link NormalizedHit} which points to the same object as the given {@link NormalizedHit} parameter, but with a newly attached
@@ -346,7 +348,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     @Override
     public TaxonomicNode attachChildrenForTaxonomicNode(TaxonomicNode parentNode) throws SQLException {
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             //try selecting all children for a given taxid
             preparedStatement = this.connection.prepareStatement(
@@ -381,7 +383,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
 
     /**
      * Checks whether a given parent taxid is indeed a parent taxid for the given one, as well as it checks
-     * whether the parant taxid may be a sibling taxid for the given. Used to check for if the normalized hits with
+     * whether the parent taxid may be a sibling taxid for the given. Used to check for if the normalized hits with
      * better E-value restrict the chosen pivotal hit.
      *
      * @param parentTaxid a taxid of a {@link TaxonomicNode} that should be a parent to the given taxid in order to
@@ -394,7 +396,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     @Override
     public boolean isParentOf(int parentTaxid, int taxid) throws SQLException {
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             //try selecting all children for a given taxid
             preparedStatement = this.connection.prepareStatement(
@@ -408,15 +410,8 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                             + "=?");
             preparedStatement.setInt(1, taxid);
             resultSet = preparedStatement.executeQuery();
-            TaxonomicNode taxonomicNode;
             if (resultSet.next()) {
-                if (parentTaxid == resultSet.getInt(1)) {
-                    return true;
-                } else if (resultSet.getInt(1) != 1) {
-                    return this.isParentOf(parentTaxid, resultSet.getInt(1));
-                } else {
-                    return false;
-                }
+                return parentTaxid == resultSet.getInt(1) || resultSet.getInt(1) != 1 && this.isParentOf(parentTaxid, resultSet.getInt(1));
             }
         } finally {
             if (preparedStatement != null) {
@@ -429,11 +424,12 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     /**
      * Normalizes the {@link Iteration}s returned by the BLASTN within the output
      */
+    @SuppressWarnings("WeakerAccess")
     protected void normalizeIterations() {
         //Normalize each iteration
         int i=0;
         for (Iteration iteration : this.blastOutput.getBlastOutputIterations().getIteration()) {
-            this.normalizedIterations.add(NormalizedIteration.newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
+            this.normalizedIterations.add(NormalizedIteration.<Iteration>newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
             i++;
         }
     }
@@ -446,12 +442,9 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param normalizedIteration {@link NormalizedIteration}
      * @return {@code true} if the file operator returns success, {@code false} otherwise
      */
+    @SuppressWarnings({"unchecked", "UnusedReturnValue"})
     public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
-        if (((TUITFileOperator) this.fileOperator).saveResults(query, normalizedIteration)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ((TUITFileOperator) this.fileOperator).saveResults(query, normalizedIteration);
     }
 
     /**
@@ -469,7 +462,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param parameterList {@link String}[] A list of parameters. Should maintain a
      *                      certain order. {"<-command>", "[value]"}, just the way if in
      *                      the blast+ executable input
-     * @param connection    a connection to the SQL Database that contains a NCBI schema with all the nessessary
+     * @param connection    a connection to the SQL Database that contains a NCBI schema with all the necessary
      *                      taxonomic information
      * @param cutoffSetMap  a {@link Map}, provided by the user and that may differ from the
      *                      default set
@@ -478,7 +471,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     public static BLASTIdentifier newDefaultInstance(List<NucleotideFasta> query,
                                                      File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
                                                      Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        return new BLASTIdentifier(query, null, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
+        return new BLASTIdentifier<NucleotideFasta>(query, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap) {
             /**
              * Overridden run() that calls BLAST(), normalizes the iterations and calls specify() on each iteration.
              */
@@ -491,26 +484,24 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                         this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
                         this.BLASTed = true;
                         this.normalizeIterations();
-                        for (int i = 0; i < this.normalizedIterations.size(); i++) {
-                            NormalizedIteration<Iteration> normalizedIteration = (NormalizedIteration<Iteration>) this.normalizedIterations.get(i);
+                        for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
                             normalizedIteration.specify();
                         }
                     } else {
-                        Log.getInstance().getLogger().severe("No Iterations were returned, an error might have occured during BLAST.");
-                        return;
+                        Log.getInstance().log(Level.SEVERE, "No Iterations were returned, an error might have occurred during BLAST.");
                     }
                 } catch (IOException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (InterruptedException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (JAXBException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (SAXException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (SQLException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (BadFromatException e) {
-                    Log.getInstance().getLogger().severe(e.getMessage());
+                    Log.getInstance().log(Level.SEVERE,e.getMessage());
                 }
             }
         };

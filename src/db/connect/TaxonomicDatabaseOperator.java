@@ -24,7 +24,7 @@ public interface TaxonomicDatabaseOperator extends DatabaseOperator {
      * @return a {@link NormalizedHit} with a focus node lifted one level higher
      * @throws Exception
      */
-    public NormalizedHit liftRankForNormalyzedHit(final NormalizedHit normalizedHit) throws Exception;
+    public NormalizedHit liftRankForNormalizedHit(final NormalizedHit normalizedHit) throws Exception;
 
     /**
      * For a given {@link TaxonomicNode} should be able to reconstruct from the database and assign a full taxonomic subtree of
@@ -38,7 +38,7 @@ public interface TaxonomicDatabaseOperator extends DatabaseOperator {
 
     /**
      * Should be able to check whether a given parent taxid is indeed a parent taxid for the given one, as well as it should check
-     * whether the parant taxid may be a sibling taxid for the given.
+     * whether the parent taxid may be a sibling taxid for the given.
      *
      * @param parentTaxid a taxid of a {@link TaxonomicNode} that should be a parent to the given taxid in order to
      *                    support the choice of the pivotal normalized hit
@@ -53,7 +53,7 @@ public interface TaxonomicDatabaseOperator extends DatabaseOperator {
      * For a given {@link TaxonomicNode} should be able to attach its parent and higher lineage structure.
      *
      * @param taxonomicNode {@link TaxonomicNode} that needs to get its full lineage structure
-     * @return a pointer to the same {@link TaxonomicNode} objcet, but with attached pointers to its taxonomic lineage
+     * @return a pointer to the same {@link TaxonomicNode} object, but with attached pointers to its taxonomic lineage
      * @throws Exception
      */
     public TaxonomicNode attachFullDirectLineage(final TaxonomicNode taxonomicNode) throws Exception;

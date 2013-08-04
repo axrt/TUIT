@@ -4,23 +4,19 @@ import db.tables.LookupNames;
 import logger.Log;
 
 import java.io.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
 
 /**
  * Contains utility methods for nodes database deployment from names.dmp file from NCBI
  */
 public class NamesDeployer {
-    /**
-     * A size for batch inserts
-     */
-    private static int BATCH_SIZE = 10000;
-    /**
-     * The "scientific name" that indicates that the taxid points to a valid name for a taxonomic group
-     */
-    private static String SCIENTIFIC_NAME = "scientific name";
 
     /**
-     * Constructor grants non-instantiability
+     * Constructor grants non-instatiability
      */
     private NamesDeployer() {
         throw new AssertionError();
@@ -31,8 +27,8 @@ public class NamesDeployer {
      * <b>Deprecated due to low efficiency, See injectProcessedNamesDmpFile(Connection connection, File nodesFilteredFile)
      * and filterNodesDmpFile(File namesDmpFile) as a faster way of implementation. </b>
      *
-     * @param connection
-     * @param namesFile
+     * @param connection {@link Connection} to the database
+     * @param namesFile  {@link File} that points to the file that contains the names part of the data
      * @throws SQLException in case something goes wrong upon database communication
      * @throws IOException  in case something goes wrong during file read
      */
@@ -74,9 +70,13 @@ public class NamesDeployer {
                     counter++;
                 }
                 //Execute batch every time the batch buffer gets full
-                if (counter == NamesDeployer.BATCH_SIZE) {
+                /*
+      A size for batch inserts
+     */
+                int BATCH_SIZE = 10000;
+                if (counter == BATCH_SIZE) {
                     preparedStatement.executeBatch();
-                    Log.getInstance().getLogger().info("Another batch inserted into names, the last gi was: " + split[0]);
+                    Log.getInstance().log(Level.INFO, "Another batch inserted into names, the last gi was: " + split[0]);
                     counter = 0;
                 }
             }
@@ -101,7 +101,6 @@ public class NamesDeployer {
      * @param namesDmpFile {@link File} names.dmp
      * @return a new {@link File} that points to the newly filtered file
      * @throws IOException
-     * @throws SQLException
      */
     public static File filterNamesDmpFile(File namesDmpFile) throws IOException {
         //Read the input file line by line
@@ -115,21 +114,26 @@ public class NamesDeployer {
             fileWriter = new FileWriter(filteredNamesDmpFile);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                String[] splitter = line.split("\t");
                 String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
-                if (split[6].equals(NamesDeployer.SCIENTIFIC_NAME)) {
+                /*
+      The "scientific name" that indicates that the taxid points to a valid name for a taxonomic group
+     */
+                String SCIENTIFIC_NAME = "scientific name";
+                if (split[6].equals(SCIENTIFIC_NAME)) {
                     fileWriter.write(split[0] + '\t' + split[2] + '\n');
                 }
             }
             fileWriter.flush();
 
         } finally {
-            bufferedReader.close();
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
             if (fileWriter != null) {
                 fileWriter.close();
             }
-            return filteredNamesDmpFile;
         }
+        return filteredNamesDmpFile;
     }
 
     /**

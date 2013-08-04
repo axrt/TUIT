@@ -15,7 +15,7 @@ CREATE  TABLE IF NOT EXISTS `NCBI`.`names` (
   PRIMARY KEY (`taxid`) ,
   UNIQUE INDEX `taxid_UNIQUE` (`taxid` ASC) )
 ENGINE = InnoDB
-COMMENT = 'This table contains pairs of TaxIDs with the normal taxonomic names of the organisms and their class (sinonym).';
+COMMENT = 'This table contains pairs of TaxIDs with the normal taxonomic names of the organisms and their class (synonym).';
 
 
 -- -----------------------------------------------------
@@ -80,7 +80,7 @@ CREATE  TABLE IF NOT EXISTS `NCBI`.`nodes` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-COMMENT = 'A table of taxonomic nodes that contains daughter-parent taxonomic relationship. Makes it usefull to reconstruct the full taxonomic tree breanch for a given taxid.';
+COMMENT = 'A table of taxonomic nodes that contains daughter-parent taxonomic relationship. Makes it useful to reconstruct the full taxonomic tree branch for a given taxid.';
 
 
 -- -----------------------------------------------------
