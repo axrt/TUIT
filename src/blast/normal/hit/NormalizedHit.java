@@ -1,7 +1,7 @@
 package blast.normal.hit;
 
 import blast.ncbi.output.Hit;
-import format.BadFromatException;
+import format.BadFormatException;
 import taxonomy.Ranks;
 import taxonomy.node.TaxonomicNode;
 import util.BlastOutputUtil;
@@ -65,7 +65,7 @@ public class NormalizedHit<H extends Hit> {
      * @param queryLength {@code int} of the initial query length (to derive Query coverage from)
      */
     @SuppressWarnings("WeakerAccess")
-    protected NormalizedHit(final H hit, final int queryLength) throws BadFromatException {
+    protected NormalizedHit(final H hit, final int queryLength) throws BadFormatException {
         super();
         this.hit = hit;
         this.pIdent = BlastOutputUtil.calculatePIdent(hit);
@@ -180,9 +180,9 @@ public class NormalizedHit<H extends Hit> {
      * @param hit         {@link Hit} that need normalization
      * @param queryLength {@code int} of the initial query length (to derive Query coverage from)
      * @return a new instance of {@link NormalizedHit} form a given set of parameters
-     * @throws BadFromatException in case formatting the {@link Hit} GI fails
+     * @throws BadFormatException in case formatting the {@link Hit} GI fails
      */
-    public static NormalizedHit newDefaultInstanceFromHit(final Hit hit, final int queryLength) throws BadFromatException {
+    public static NormalizedHit newDefaultInstanceFromHit(final Hit hit, final int queryLength) throws BadFormatException {
         return new NormalizedHit<Hit>(hit, queryLength);
 
     }

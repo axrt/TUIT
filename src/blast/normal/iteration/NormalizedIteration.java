@@ -5,7 +5,7 @@ import blast.ncbi.output.Hit;
 import blast.ncbi.output.Iteration;
 import blast.specification.BLASTIdentifier;
 import blast.normal.hit.NormalizedHit;
-import format.BadFromatException;
+import format.BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import logger.Log;
 import taxonomy.Ranks;
@@ -86,10 +86,10 @@ public class NormalizedIteration<I extends Iteration> {
      * Normalizes the {@link Hit}s from the I extends {@link Iteration} hit list
      *
      * @throws SQLException       in case a database communication error occurs
-     * @throws BadFromatException in case formatting the {@link Hit} GI fails
+     * @throws BadFormatException in case formatting the {@link Hit} GI fails
      */
     @SuppressWarnings("WeakerAccess")
-    protected void normaliseHits() throws SQLException, BadFromatException {
+    protected void normaliseHits() throws SQLException, BadFormatException {
         //Check if the costly procedure of Hits normalization has already been performed
         if (this.normalizedHits == null) {
             //If not yet - create a new list of the size of the list of hits
@@ -386,9 +386,9 @@ public class NormalizedIteration<I extends Iteration> {
      * the same rank, but worse E-values are less likely to affect the pivotal hit selection.
      *
      * @throws SQLException       in case an error occurs during the database communication
-     * @throws BadFromatException in case formatting the {@link Hit} GI fails
+     * @throws BadFormatException in case formatting the {@link Hit} GI fails
      */
-    public void specify() throws SQLException, BadFromatException {
+    public void specify() throws SQLException, BadFormatException {
         if (!this.iteration.getIterationHits().getHit().isEmpty()) {
             this.normaliseHits();
             Log.getInstance().log(Level.FINE,"Current number of normalized hits is: " + this.normalizedHits.size());

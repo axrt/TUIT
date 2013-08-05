@@ -4,7 +4,7 @@ import blast.ncbi.output.Iteration;
 import blast.ncbi.output.NCBI_BLAST_OutputHelper;
 import blast.specification.cutoff.TUITCutoffSet;
 import blast.normal.iteration.NormalizedIteration;
-import format.BadFromatException;
+import format.BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import logger.Log;
 import taxonomy.Ranks;
@@ -127,7 +127,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
         } catch (SQLException e) {
             Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
-        } catch (BadFromatException e) {
+        } catch (BadFormatException e) {
             Log.getInstance().log(Level.SEVERE,e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
@@ -140,10 +140,10 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
      * Utility method that handles the process of taxonomic specification
      *
      * @throws SQLException       in case an error occurs during database communication
-     * @throws BadFromatException in case an error in case formatting the {@link blast.ncbi.output.Hit} GI fails
+     * @throws BadFormatException in case an error in case formatting the {@link blast.ncbi.output.Hit} GI fails
      */
     @SuppressWarnings("WeakerAccess")
-    protected void specify() throws SQLException, BadFromatException {
+    protected void specify() throws SQLException, BadFormatException {
         Log.getInstance().log(Level.FINE,"Specifying the BLAST output.");
         if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
             this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());

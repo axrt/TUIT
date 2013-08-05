@@ -9,7 +9,7 @@ import blast.normal.hit.NormalizedHit;
 import blast.normal.iteration.NormalizedIteration;
 import db.connect.TaxonomicDatabaseOperator;
 import db.tables.LookupNames;
-import format.BadFromatException;
+import format.BadFormatException;
 import format.fasta.nucleotide.NucleotideFasta;
 import logger.Log;
 import taxonomy.Ranks;
@@ -500,7 +500,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                     Log.getInstance().log(Level.SEVERE,e.getMessage());
                 } catch (SQLException e) {
                     Log.getInstance().log(Level.SEVERE,e.getMessage());
-                } catch (BadFromatException e) {
+                } catch (BadFormatException e) {
                     Log.getInstance().log(Level.SEVERE,e.getMessage());
                 }
             }
