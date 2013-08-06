@@ -32,14 +32,14 @@ public class EncodedFasta extends NucleotideFasta {
      * @param fastaRecord  {@link String} that contains a fasta formatted record
      * @param recordAC {@link String} record AC (most likely to be the name of the file
      * @return a new {@link EncodedFasta} from the parameters given
-     * @throws NucleotideFasta_BadFromat_Exception  in case of a single line format or none at all
+     * @throws NucleotideFasta_BadFormat_Exception  in case of a single line format or none at all
      */
-    public static EncodedFasta newInstanceFromFormattedText(String recordAC, String fastaRecord) throws NucleotideFasta_BadFromat_Exception {
+    public static EncodedFasta newInstanceFromFormattedText(String recordAC, String fastaRecord) throws NucleotideFasta_BadFormat_Exception {
 
         // Get the first row and check whether it is good for an AC
         String[] splitter = fastaRecord.split("\n");
         if (splitter.length < 2) {
-            throw new NucleotideFasta_BadFromat_Exception(
+            throw new NucleotideFasta_BadFormat_Exception(
                     "Nucleotide Fasta record: bad format; represented by a single line.");
         } else {
             // Prepare a StringBuilder of a proper (at least close to proper)

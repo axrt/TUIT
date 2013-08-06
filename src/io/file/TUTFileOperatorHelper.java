@@ -3,7 +3,7 @@ package io.file;
 import db.tables.LookupNames;
 import format.EncodedFasta;
 import format.fasta.Fasta;
-import format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception;
+import format.fasta.nucleotide.NucleotideFasta_BadFormat_Exception;
 import io.properties.jaxb.TUITProperties;
 import logger.Log;
 import org.xml.sax.EntityResolver;
@@ -84,11 +84,11 @@ public class TUTFileOperatorHelper {
      * @param file {@link java.io.File} a file that contains the a list of fasta records (may be represented by a single record
      * @return {@link java.util.List < format.EncodedFasta >} of fasta records
      * @throws IOException in case opening and reading the file fails
-     * @throws format.fasta.nucleotide.NucleotideFasta_BadFromat_Exception
+     * @throws format.fasta.nucleotide.NucleotideFasta_BadFormat_Exception
      *                     in case of a single line format or none at all
      */
     public static List<EncodedFasta> loadOTURecords(File file) throws IOException,
-            NucleotideFasta_BadFromat_Exception {
+            NucleotideFasta_BadFormat_Exception {
         //Open file and check whether it is even Fasta at all
         List<EncodedFasta> encodedFastas = null;
         BufferedReader bufferedReader = null;
@@ -104,7 +104,7 @@ public class TUTFileOperatorHelper {
                 stringBuilder.append('\n');
             } else {
                 bufferedReader.close();
-                throw new NucleotideFasta_BadFromat_Exception("Nucleotide Fasta record: bad format; record does not start with " + Fasta.fastaStart + " identifier ");
+                throw new NucleotideFasta_BadFormat_Exception("Nucleotide Fasta record: bad format; record does not start with " + Fasta.fastaStart + " identifier ");
             }
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);

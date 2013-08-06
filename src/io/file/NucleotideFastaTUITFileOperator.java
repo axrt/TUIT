@@ -41,7 +41,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
 
     @Override
     protected NucleotideFasta newFastaFromRecord(String record) throws Exception {
-        return NucleotideFasta.newInstanceFromFromattedText(record);
+        return NucleotideFasta.newInstanceFromFormattedText(record);
     }
 
     @Override
