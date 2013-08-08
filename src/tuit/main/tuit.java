@@ -249,8 +249,11 @@ public class tuit {
                     blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
                             cutoffMap, blastOutputFile, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
 
-                } catch (Exception e) {
+                }catch (JAXBException e){
                     Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
             Future<?> runnableFuture = executorService.submit(blastIdentifier);

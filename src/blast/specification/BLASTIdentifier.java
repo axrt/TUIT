@@ -277,6 +277,52 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     }
 
     /**
+     * Allows to reduce those hits, which have a no_rank parent (such as unclassified Bacteria)
+     * @param normalizedHit {@link NormalizedHit}
+     * @return {@code true} if a given Hit has a no_rank parent, {@code false} otherwise
+     * @throws SQLException in case a database communication error occurs
+     */
+    public boolean hitHasANoRankParent(final NormalizedHit normalizedHit) throws SQLException {
+        //Get its taxid and reconstruct its child taxonomic nodes
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        try {
+            //Try selecting the parent node for the given hit
+            //Assuming the database is consistent - one taxid should have only one immediate parent
+            preparedStatement = this.connection.prepareStatement(
+                    "SELECT * FROM "
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name()
+                            + "=(SELECT "
+                            + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
+                            + " FROM "
+                            + LookupNames.dbs.NCBI.name + "."
+                            + LookupNames.dbs.NCBI.nodes.name
+                            + " WHERE "
+                            + LookupNames.dbs.NCBI.names.columns.taxid.name() + "=?)");
+            preparedStatement.setInt(1, normalizedHit.getAssignedTaxid());
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                if(Ranks.values()[resultSet.getInt(5) - 1].equals(Ranks.no_rank)){
+                    preparedStatement.close();
+                    return true;
+                }
+            } else {
+                preparedStatement.close();
+                return true;
+            }
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+        return false;
+    }
+
+
+    /**
      * For a given {@link TaxonomicNode} attaches its parent and higher lineage structure. Originally used to
      * save results in a form of a taxonomic branch.
      *

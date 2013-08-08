@@ -319,6 +319,11 @@ public class NormalizedIteration<I extends Iteration> {
     @SuppressWarnings("WeakerAccess")
     protected void reduceNoRanks() throws SQLException {
         for (NormalizedHit normalizedHit : this.normalizedHits) {
+            if(this.blastIdentifier.hitHasANoRankParent(normalizedHit)){
+                this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
+            }
+        }
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
             while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1) {
                 this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
             }
