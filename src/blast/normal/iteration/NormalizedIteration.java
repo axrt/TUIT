@@ -124,6 +124,11 @@ public class NormalizedIteration<I extends Iteration> {
     protected void findLowestRank() throws SQLException {
         //Go down starting with the root of life
         //The algorithm is only interested in real ranks, so the "no rank" is of no interest
+        for (NormalizedHit normalizedHit : this.normalizedHits) {
+            if(this.blastIdentifier.hitHasANoRankParent(normalizedHit)){
+                this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
+            }
+        }
         this.reduceNoRanks();
         Ranks lowestRank = Ranks.root_of_life;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
@@ -319,11 +324,6 @@ public class NormalizedIteration<I extends Iteration> {
     @SuppressWarnings("WeakerAccess")
     protected void reduceNoRanks() throws SQLException {
         for (NormalizedHit normalizedHit : this.normalizedHits) {
-            if(this.blastIdentifier.hitHasANoRankParent(normalizedHit)){
-                this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
-            }
-        }
-        for (NormalizedHit normalizedHit : this.normalizedHits) {
             while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1) {
                 this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
             }
@@ -401,7 +401,7 @@ public class NormalizedIteration<I extends Iteration> {
             this.findLowestRank();
             Log.getInstance().log(Level.FINE,"The lowest rank is: " + this.currentRank);
             //Moving up the taxonomic ranks
-            while (couldSetPivotalHitAtCurrentRank()) {
+            while (this.couldSetPivotalHitAtCurrentRank()) {
                 //Try finding such a hit that is supported as a pivotal one for the taxonomic specification by both
                 //hits with better and worse E-values (belongs to the same taxon as those with better E-value, but allows
                 //deeper specification, and has no competitors among those that have worse E-values

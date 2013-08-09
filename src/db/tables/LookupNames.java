@@ -53,7 +53,8 @@ public class LookupNames {
             }
             public enum views{
                 taxon_by_gi("taxon_by_gi"),
-                f_level_children_by_parent("f_level_children_by_parent");
+                f_level_children_by_parent("f_level_children_by_parent"),
+                rank_by_taxid("rank_by_taxid");
 
                 private final String name;
                 private views(String name){

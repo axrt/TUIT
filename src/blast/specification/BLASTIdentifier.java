@@ -292,7 +292,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
             preparedStatement = this.connection.prepareStatement(
                     "SELECT * FROM "
                             + LookupNames.dbs.NCBI.name + "."
-                            + LookupNames.dbs.NCBI.views.f_level_children_by_parent.getName()
+                            + LookupNames.dbs.NCBI.views.rank_by_taxid.getName()
                             + " WHERE "
                             + LookupNames.dbs.NCBI.names.columns.taxid.name()
                             + "=(SELECT "
@@ -305,7 +305,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
             preparedStatement.setInt(1, normalizedHit.getAssignedTaxid());
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                if(Ranks.values()[resultSet.getInt(5) - 1].equals(Ranks.no_rank)){
+                if(Ranks.values()[resultSet.getInt(4) - 1].equals(Ranks.no_rank)){
                     preparedStatement.close();
                     return true;
                 }
