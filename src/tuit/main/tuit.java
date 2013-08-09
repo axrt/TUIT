@@ -129,13 +129,13 @@ public class tuit {
             //Check for deploy
             if (commandLine.hasOption(tuit.DEPLOY)) {
                 NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, tmpDir);
-                Log.getInstance().log(Level.SEVERE, "Exiting..");
+                Log.getInstance().log(Level.FINE, "Task done, exiting...");
                 return;
             }
             //Check for update
             if (commandLine.hasOption(tuit.UPDATE)) {
                 NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
-                Log.getInstance().log(Level.SEVERE, "Exiting..");
+                Log.getInstance().log(Level.FINE, "Task done, exiting...");
                 return;
             }
             if (commandLine.hasOption(tuit.B)) {

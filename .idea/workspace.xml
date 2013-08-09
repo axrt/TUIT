@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java" afterPath="$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit/main/tuit.java" afterPath="$PROJECT_DIR$/src/tuit/main/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -15,7 +13,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376061386697" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376062576795" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -665,8 +663,10 @@
       <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="293" column="66" selection-start="14308" selection-end="14308" vertical-scroll-proportion="0.79746836">
-              <folding />
+            <state line="137" column="73" selection-start="5208" selection-end="5208" vertical-scroll-proportion="-5.164557">
+              <folding>
+                <element signature="e#1945#1984#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1790,7 +1790,11 @@
       <created>1376061076703</created>
       <updated>1376061076703</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Logs improved">
+      <created>1376062580765</created>
+      <updated>1376062580765</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1881,7 +1885,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="A slightly more efficient rank_by_taxid view added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logs improved" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1895,7 +1899,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Full tree search for restricted names, pre-release working set" />
     <MESSAGE value="Corrected to the refactored JAVA_BIO" />
     <MESSAGE value="Started to implement a way to analyze a pre-blasted file" />
     <MESSAGE value="Ability to specify a preblasted output added" />
@@ -1920,6 +1923,7 @@
     <MESSAGE value="Preblasted input corrected (previously went through the process of quering NCBI for restricted GIs" />
     <MESSAGE value="hitHasANoRankParent(..) has been added" />
     <MESSAGE value="A slightly more efficient rank_by_taxid view added" />
+    <MESSAGE value="Logs improved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2073,8 +2077,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="293" column="66" selection-start="14308" selection-end="14308" vertical-scroll-proportion="0.79746836">
-          <folding />
+        <state line="137" column="73" selection-start="5208" selection-end="5208" vertical-scroll-proportion="-5.164557">
+          <folding>
+            <element signature="e#1945#1984#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
