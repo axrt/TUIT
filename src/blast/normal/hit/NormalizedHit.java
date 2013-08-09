@@ -161,6 +161,14 @@ public class NormalizedHit<H extends Hit> {
     }
 
     /**
+     * Getter for {@code H}
+     * @return {@code H}
+     */
+    public H getHit() {
+        return hit;
+    }
+
+    /**
      * This method is needed to check whether this hit may point to a taxid,
      * that is parent to the {@link NormalizedHit} candidate's in test taxid.
      * If it does point to a parental taxid, then the {@link NormalizedHit} candidate

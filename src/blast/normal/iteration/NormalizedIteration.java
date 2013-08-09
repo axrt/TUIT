@@ -150,7 +150,7 @@ public class NormalizedIteration<I extends Iteration> {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
-            Log.getInstance().log(Level.INFO, "Was not able to set the rank any higher");
+            Log.getInstance().log(Level.INFO, "Was not able to set current rank any higher");
             return false;
         }
     }
@@ -163,7 +163,7 @@ public class NormalizedIteration<I extends Iteration> {
     @SuppressWarnings("WeakerAccess")
     protected List<NormalizedHit> gatherHitsAtCurrentRank() {
         //First - count how many hits with this rank exist
-        Log.getInstance().log(Level.FINE,"Attempting to gather hits at current rank of " + this.currentRank);
+        Log.getInstance().log(Level.FINE,"Attempting to gather hits at current rank of '" + this.currentRank+"'");
         int numberOfHitsThatQualify = 0;
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank().equals(this.currentRank)) {
@@ -173,7 +173,7 @@ public class NormalizedIteration<I extends Iteration> {
         //Knowing the exact number - create a list of exactly the needed size
         if (numberOfHitsThatQualify > 0) {
             List<NormalizedHit> normalizedHitsAtCurrentRank = new ArrayList<NormalizedHit>(numberOfHitsThatQualify);
-            Log.getInstance().log(Level.FINE,"At current rank of " + this.currentRank + " " + numberOfHitsThatQualify + " hits were found.");
+            Log.getInstance().log(Level.FINE,"At current rank of '" + this.currentRank + " " + numberOfHitsThatQualify + "' hits were found.");
             for (NormalizedHit normalizedHit : this.normalizedHits) {
                 //and then put all matching normalized hits into the list
                 if (normalizedHit.getAssignedRank() == this.currentRank) {
@@ -243,7 +243,7 @@ public class NormalizedIteration<I extends Iteration> {
             }
             //If the potential pivotal hit was the first one on the list - just return null
             if (normalizedHitsWithBetterEvalue.size() > 0) {
-                Log.getInstance().log(Level.FINE,"Have found " + normalizedHitsWithBetterEvalue.size() + " hits with better E-value.");
+                Log.getInstance().log(Level.FINE,"Found: " + normalizedHitsWithBetterEvalue.size() + " hits with better E-value.");
                 return normalizedHitsWithBetterEvalue;
             } else {
                 Log.getInstance().log(Level.FINE,"There are no hits with better E-value.");
@@ -269,22 +269,22 @@ public class NormalizedIteration<I extends Iteration> {
     @SuppressWarnings("WeakerAccess")
     protected boolean normalizedHitsWithBetterEvalueAllowPivotal() throws SQLException {
         //Prepare a list of hits with better E-value than the current potential pivotal hit
-        Log.getInstance().log(Level.FINE,"Looking for hits with better E-value..");
+        Log.getInstance().log(Level.FINE,"Looking for hits with better E-value...");
         List<NormalizedHit> normalizedHitsWithBetterEvalue = this.getNormalisedHitsWithBetterEvalue();
         if (normalizedHitsWithBetterEvalue != null) {
             for (NormalizedHit normalizedHit : normalizedHitsWithBetterEvalue) {
                 //Assign taxonomy down to the leaves for each hit on the list
                 if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(), this.pivotalHit.getAssignedTaxid())){
-                    Log.getInstance().log(Level.FINE,"Hit with " + normalizedHit.getGI() + " and taxid " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because \n" +
-                            " it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
+                    Log.getInstance().log(Level.FINE,"Hit with GI:" + normalizedHit.getGI() + " and taxid: " + normalizedHit.getAssignedTaxid() + " did not allow the current potential pivotal because ");
+                            Log.getInstance().log(Level.FINE," it points to a taxid, which is not a parent to the current potential pivotal taxid of " + this.pivotalHit.getAssignedTaxid() + ".");
                     return false;
                 }
             }
         } else {
-            Log.getInstance().log(Level.FINE,"Hits with better E-value allow current pivotal hit");
+            Log.getInstance().log(Level.FINE,"Hits with better E-value allow current pivotal hit.");
             return true;
         }
-        Log.getInstance().log(Level.FINE,"Hits with better E-value allow current pivotal hit");
+        Log.getInstance().log(Level.FINE,"Hits with better E-value allow current pivotal hit.");
         return true;
     }
 
@@ -298,18 +298,18 @@ public class NormalizedIteration<I extends Iteration> {
     @SuppressWarnings("WeakerAccess")
     protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
         //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
-        Log.getInstance().log(Level.FINE,"Attempting to set current potential pivotal hit");
+        Log.getInstance().log(Level.FINE,"Attempting to set current potential pivotal hit...");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalizedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
-            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs)");
+            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of: " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs).");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
-            Log.getInstance().log(Level.FINE,"Current pivotal hit was set to: " + this.pivotalHit.getGI());
+            Log.getInstance().log(Level.FINE,"Current pivotal hit was set to GI: " + this.pivotalHit.getGI()+" described as: \""+this.pivotalHit.getHit().getHitDef()+"\"");
             return true;
         } else {
             //Try lifting one step the current rank
             this.liftCurrentRankOfSpecificationForHits();
-            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of " + this.currentRank + " is empty, lifting current rank and attempting once again.");
+            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of: " + this.currentRank + " is empty, lifting current rank and attempting once again...");
             return this.couldLiftCurrentRank() && this.couldSetPivotalHitAtCurrentRank();
         }
     }
@@ -363,12 +363,12 @@ public class NormalizedIteration<I extends Iteration> {
                 NormalizedHit normalizedHit = this.normalizedHits.get(i);
                 //If the next hit has current rank and points to a different taxonomic node
                 if (normalizedHit.getAssignedRank() == this.currentRank && normalizedHit.getAssignedTaxid() != this.pivotalHit.getAssignedTaxid()) {
-                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from the same rank of \'" + this.currentRank +
-                            "\", but from different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
-                            + " (while the current pivotal hit has: " + this.pivotalHit.getAssignedTaxid() + ").");
+                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from the same rank of: \"" + this.currentRank +
+                            "\", but from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
+                            + " (while the current pivotal hit has a taxid of: \"" + this.pivotalHit.getAssignedTaxid() + "\").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
-                    Log.getInstance().log(Level.FINE,"Checking whether the hits are far enough by the E-value in folds..");
+                    Log.getInstance().log(Level.FINE,"Checking whether the hits are far enough by the E-value (in folds )...");
                     if (this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
                         Log.getInstance().log(Level.FINE,"The hits are far enough.");
                         return true;
@@ -378,7 +378,7 @@ public class NormalizedIteration<I extends Iteration> {
                     }
                 }
             }
-            Log.getInstance().log(Level.FINE,"Hits with worse E-value allow support current pivotal hit.");
+            Log.getInstance().log(Level.FINE,"Hits with worse E-value allow current pivotal hit.");
             return true;
         } else {
             return false;
@@ -397,7 +397,7 @@ public class NormalizedIteration<I extends Iteration> {
         if (!this.iteration.getIterationHits().getHit().isEmpty()) {
             this.normaliseHits();
             Log.getInstance().log(Level.FINE,"Current number of normalized hits is: " + this.normalizedHits.size());
-            Log.getInstance().log(Level.FINE,"Attempting to find the lowest rank..");
+            Log.getInstance().log(Level.FINE,"Attempting to find the lowest rank...");
             this.findLowestRank();
             Log.getInstance().log(Level.FINE,"The lowest rank is: " + this.currentRank);
             //Moving up the taxonomic ranks
@@ -407,7 +407,7 @@ public class NormalizedIteration<I extends Iteration> {
                 //deeper specification, and has no competitors among those that have worse E-values
                 if (this.normalizedHitsWithBetterEvalueAllowPivotal() && this.normalisedHitsWithWorseEvalueAllowPivotal()) {
                     //success
-                    Log.getInstance().log(Level.FINEST,"Success");
+                    Log.getInstance().log(Level.FINE,"Successfully classified down to \""+this.currentRank+"\" rank.");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
@@ -424,7 +424,7 @@ public class NormalizedIteration<I extends Iteration> {
             try {
                 this.blastIdentifier.acceptResults(this.query, this);
             } catch (Exception e) {
-                Log.getInstance().log(Level.SEVERE,"Unable to save results! The error was:");
+                Log.getInstance().log(Level.SEVERE,"Unable to save results! The error was: ");
                 e.printStackTrace();
             }
         } else {

@@ -291,7 +291,7 @@ public class tuit {
                     Log.getInstance().log(Level.SEVERE, "Problem closing the database connection: " + sqle);
                 }
             }
-            Log.getInstance().log(Level.SEVERE, "Exiting..");
+            Log.getInstance().log(Level.FINE, "Task done, exiting...");
         }
     }
 }
