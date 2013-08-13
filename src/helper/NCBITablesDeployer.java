@@ -77,9 +77,9 @@ public class NCBITablesDeployer {
         //Downloading files
         Log.getInstance().log(Level.INFO,"Downloading files..");
         Log.getInstance().log(Level.INFO,"Downloading " + SystemUtil.TAXDUMP_ARCH);
-        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
+        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.TAXDUMP_ARCH);
         Log.getInstance().log(Level.INFO,"Downloading "+SystemUtil.GI_TAXID_DMP_ARCH+" updates..");
-       File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_DMP_ARCH));
+       File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.GI_TAXID_DMP_ARCH);
         //Extracting files
         Log.getInstance().log(Level.INFO,"Extracting "+SystemUtil.TAXDUMP_ARCH);
         File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
@@ -108,9 +108,9 @@ public class NCBITablesDeployer {
         //Downloading files
         Log.getInstance().log(Level.INFO,"Downloading updates..");
         Log.getInstance().log(Level.INFO,"Downloading "+SystemUtil.TAXDUMP_ARCH);
-        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.TAXDUMP_ARCH));
+        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.TAXDUMP_ARCH);
         Log.getInstance().log(Level.INFO,"Downloading "+SystemUtil.GI_TAXID_UPD_FILE_ARCH+" updates..");
-        File gi_taxid_update= SystemUtil.downloadFileFromNCBIFTP(tmpDir, new File(SystemUtil.NCBI_TAXONOMY),new File(SystemUtil.GI_TAXID_UPD_FILE_ARCH));
+        File gi_taxid_update= SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.GI_TAXID_UPD_FILE_ARCH);
         //Extracting files
         Log.getInstance().log(Level.INFO,"Extracting "+SystemUtil.TAXDUMP_ARCH);
         File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
