@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/test/properties.xml" afterPath="$PROJECT_DIR$/testing/test/properties.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/sql/schema.sql" afterPath="$PROJECT_DIR$/src/db/sql/schema.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -14,7 +14,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433484659" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433610668" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -131,7 +131,7 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457045601" ignored="false" />
     <file path="/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715837585" ignored="false" />
     <file path="/BLASTNParameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457293906" ignored="false" />
-    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375653457069" ignored="false" />
+    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376507085462" ignored="false" />
     <file path="/TUTFileOperatorHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371459824457" ignored="false" />
     <file path="/TUITPropertyBadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706857258" ignored="false" />
     <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706818544" ignored="false" />
@@ -667,7 +667,7 @@
       <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="14" selection-start="9270" selection-end="9273" vertical-scroll-proportion="0.0">
+            <state line="119" column="56" selection-start="4180" selection-end="4180" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#1945#1984#0" expanded="true" />
               </folding>
@@ -675,10 +675,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schema.sql" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="schema.sql" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/db/sql/schema.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="41" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
+            <state line="144" column="58" selection-start="6316" selection-end="6316" vertical-scroll-proportion="0.85882354">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="28" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -711,10 +720,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="131" selection-start="6135" selection-end="6135" vertical-scroll-proportion="1.0492505">
+            <state line="112" column="131" selection-start="6135" selection-end="6135" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -769,7 +778,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/logger/Log.java" />
-        <option value="$PROJECT_DIR$/testing/test/properties.xml" />
         <option value="$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" />
         <option value="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
@@ -779,11 +787,12 @@
         <option value="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
         <option value="$PROJECT_DIR$/src/db/tables/LookupNames.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
-        <option value="$PROJECT_DIR$/src/db/sql/schema.sql" />
         <option value="$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java" />
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/tuit/main/tuit.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
+        <option value="$PROJECT_DIR$/testing/test/properties.xml" />
+        <option value="$PROJECT_DIR$/src/db/sql/schema.sql" />
       </list>
     </option>
   </component>
@@ -1895,7 +1904,11 @@
       <created>1376062858331</created>
       <updated>1376062858331</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Windows compatability enchanced with the latest JavaBio">
+      <created>1376433612704</created>
+      <updated>1376433612704</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1931,7 +1944,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42087913" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42087913" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32637364" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.47692308" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1986,7 +1999,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logs improved 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Windows compatability enchanced with the latest JavaBio" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2000,7 +2013,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Started to implement a way to analyze a pre-blasted file" />
     <MESSAGE value="Ability to specify a preblasted output added" />
     <MESSAGE value="Debugged and exceptional conditions tracked down" />
     <MESSAGE value="Debugged" />
@@ -2025,6 +2037,7 @@
     <MESSAGE value="A slightly more efficient rank_by_taxid view added" />
     <MESSAGE value="Logs improved" />
     <MESSAGE value="Logs improved 2" />
+    <MESSAGE value="Windows compatability enchanced with the latest JavaBio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2041,13 +2054,6 @@
     <entry file="jar:///usr/java/default/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="25" selection-start="4336" selection-end="4336" vertical-scroll-proportion="0.33194155">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="171" selection-start="377" selection-end="520" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -2124,22 +2130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="14" selection-start="9270" selection-end="9273" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1945#1984#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/sql/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="41" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="230" column="18" selection-start="11883" selection-end="11883" vertical-scroll-proportion="0.0">
@@ -2179,7 +2169,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="131" selection-start="6135" selection-end="6135" vertical-scroll-proportion="1.0492505">
+        <state line="112" column="131" selection-start="6135" selection-end="6135" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="28" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit/main/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="56" selection-start="4180" selection-end="4180" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1945#1984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/sql/schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="58" selection-start="6316" selection-end="6316" vertical-scroll-proportion="0.85882354">
           <folding />
         </state>
       </provider>

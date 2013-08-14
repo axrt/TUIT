@@ -116,7 +116,6 @@ FROM GI_TAXID
 	JOIN names on GI_TAXID.taxid = names.taxid
 	JOIN nodes on names.taxid=nodes.taxid
 	JOIN ranks on nodes.id_ranks=ranks.id_ranks;
-;
 
 -- -----------------------------------------------------
 -- View `NCBI`.`f_level_children_by_parent`
@@ -128,7 +127,6 @@ CREATE  OR REPLACE VIEW `NCBI`.`f_level_children_by_parent` AS
 	FROM nodes
 	JOIN ranks ON nodes.id_ranks=ranks.id_ranks
 	JOIN names ON nodes.taxid=names.taxid;
-;
 
 -- -----------------------------------------------------
 -- View `NCBI`.`rank_by_taxid`
@@ -138,12 +136,11 @@ USE `NCBI`;
 CREATE  OR REPLACE VIEW `NCBI`.`rank_by_taxid` AS SELECT nodes.taxid, nodes.parent_taxid, ranks.rank, ranks.id_ranks
 	FROM nodes
 	JOIN ranks ON nodes.id_ranks=ranks.id_ranks;
-;
 
+CREATE USER 'tuit'@'localhost' IDENTIFIED BY 'tuit';
+GRANT ALL ON NCBI to 'tuit'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-CREATE USER 'tuit'@'localhost' IDENTIFIED BY 'tuit';
-GRANT ALL ON NCBI to tuit'@'localhost';
