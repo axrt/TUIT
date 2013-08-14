@@ -213,7 +213,7 @@ public class GI_TaxIDDeployer {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute(
                     "LOAD DATA INFILE '"
-                            + gi_taxidFilteredFile.toString()
+                            + gi_taxidFilteredFile.getPath()
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.gi_taxid.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");
