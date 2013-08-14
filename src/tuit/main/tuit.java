@@ -277,6 +277,7 @@ public class tuit {
         } catch (SQLException sqle) {
             Log.getInstance().log(Level.SEVERE, "A database communication error occurred with the following message:\n" +
                     sqle.getMessage());
+            sqle.printStackTrace();
             if (sqle.getMessage().contains("Access denied for user")) {
                 Log.getInstance().log(Level.SEVERE, "Please use standard database login: " + NCBITablesDeployer.login + " and password: " + NCBITablesDeployer.password);
             }

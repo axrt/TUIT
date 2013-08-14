@@ -139,6 +139,7 @@ CREATE  OR REPLACE VIEW `NCBI`.`rank_by_taxid` AS SELECT nodes.taxid, nodes.pare
 
 CREATE USER 'tuit'@'localhost' IDENTIFIED BY 'tuit';
 GRANT ALL PRIVILEGES ON `NCBI`.* to 'tuit'@'localhost';
+GRANT FILE ON *.* TO 'tuit'@'localhost' IDENTIFIED BY 'tuit';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
