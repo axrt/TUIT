@@ -282,7 +282,7 @@ public class tuit {
             }
         } catch (Exception e) {
             Log.getInstance().log(Level.SEVERE, e.getMessage());
-            //e.printStackTrace();
+            e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {

@@ -119,8 +119,10 @@ public class NamesDeployer {
       The "scientific name" that indicates that the taxid points to a valid name for a taxonomic group
      */
                 String SCIENTIFIC_NAME = "scientific name";
-                if (split[6].equals(SCIENTIFIC_NAME)) {
-                    fileWriter.write(split[0] + '\t' + split[2] + '\n');
+                if (split.length >= 7) {
+                    if (split[6].equals(SCIENTIFIC_NAME)) {
+                        fileWriter.write(split[0] + '\t' + split[2] + '\n');
+                    }
                 }
             }
             fileWriter.flush();
