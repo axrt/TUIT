@@ -283,9 +283,9 @@ public class NodesDBDeployer {
             //Switch to a correct schema
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute("SET foreign_key_checks = 0;");
-            statement.execute(
+            final boolean execute = statement.execute(
                     "LOAD DATA INFILE '"
-                            + nodesFilteredFile.getPath()
+                            + nodesFilteredFile.getPath().replaceAll("\\", "/")
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.nodes.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +

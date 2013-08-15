@@ -211,9 +211,9 @@ public class GI_TaxIDDeployer {
             statement = connection.createStatement();
             //Switch to a correct schema
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-            statement.execute(
+            final boolean execute=statement.execute(
                     "LOAD DATA INFILE '"
-                            + gi_taxidFilteredFile.getPath()
+                            + gi_taxidFilteredFile.getPath().replaceAll("\\", "/")
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.gi_taxid.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'");

@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" afterPath="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" afterPath="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" afterPath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -12,7 +15,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376524160935" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376524171005" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -49,9 +52,9 @@
     <file path="/NodesDBDDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370862294666" ignored="false" />
     <file path="/LookupNames.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370939779320" ignored="false" />
     <file path="/LookupNamesTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369992396722" ignored="false" />
-    <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376522013570" ignored="false" />
+    <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376578908197" ignored="false" />
     <file path="/deployGI_TaxIDTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370355861656" ignored="false" />
-    <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376521943439" ignored="false" />
+    <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376578671286" ignored="false" />
     <file path="/NamesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370614281578" ignored="false" />
     <file path="/*.regexp" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370211084548" ignored="false" />
     <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375477936565" ignored="false" />
@@ -702,10 +705,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GI_TaxIDDeployer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GI_TaxIDDeployer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="60" selection-start="8932" selection-end="8932" vertical-scroll-proportion="0.0">
+            <state line="213" column="34" selection-start="8834" selection-end="8834" vertical-scroll-proportion="0.65625">
               <folding />
             </state>
           </provider>
@@ -714,7 +717,7 @@
       <file leaf-file-name="NamesDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="158" column="57" selection-start="6158" selection-end="6158" vertical-scroll-proportion="0.0">
+            <state line="156" column="12" selection-start="6041" selection-end="6041" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -723,16 +726,16 @@
       <file leaf-file-name="NodesDBDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="39" selection-start="9621" selection-end="9621" vertical-scroll-proportion="0.0">
+            <state line="294" column="46" selection-start="11735" selection-end="11735" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="8" selection-start="4116" selection-end="4116" vertical-scroll-proportion="0.64668095">
+            <state line="89" column="32" selection-start="4327" selection-end="4327" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -779,10 +782,10 @@
         <option value="$PROJECT_DIR$/testing/test/properties.xml" />
         <option value="$PROJECT_DIR$/src/tuit/main/tuit.java" />
         <option value="$PROJECT_DIR$/src/db/sql/schema.sql" />
-        <option value="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
-        <option value="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
-        <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/names/NamesDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
+        <option value="$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java" />
       </list>
     </option>
   </component>
@@ -1922,7 +1925,11 @@
       <created>1376524164134</created>
       <updated>1376524164134</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Nodes database bug from NCBI fixed">
+      <created>1376524172644</created>
+      <updated>1376524172644</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2183,30 +2190,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="60" selection-start="8932" selection-end="8932" vertical-scroll-proportion="0.0">
+        <state line="89" column="32" selection-start="4327" selection-end="4327" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="57" selection-start="6158" selection-end="6158" vertical-scroll-proportion="0.0">
+        <state line="156" column="12" selection-start="6041" selection-end="6041" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="39" selection-start="9621" selection-end="9621" vertical-scroll-proportion="0.0">
+        <state line="294" column="46" selection-start="11735" selection-end="11735" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="8" selection-start="4116" selection-end="4116" vertical-scroll-proportion="0.64668095">
+        <state line="213" column="34" selection-start="8834" selection-end="8834" vertical-scroll-proportion="0.65625">
           <folding />
         </state>
       </provider>
