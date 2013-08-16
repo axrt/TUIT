@@ -156,7 +156,7 @@ public class NamesDeployer {
             statement.execute("SET foreign_key_checks = 0;");
             statement.execute(
                     "LOAD DATA INFILE '"
-                            + nodesFilteredFile.getPath().replaceAll(String.valueOf('\\'),"/")
+                            + nodesFilteredFile.getPath().replaceAll("\\\\","/")
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.names.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +
