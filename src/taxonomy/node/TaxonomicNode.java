@@ -178,7 +178,7 @@ public class TaxonomicNode {
      */
     @SuppressWarnings("WeakerAccess")
     public String getFormattedNameRank() {
-        return this.scientificName + " (" + this.rank.getName() + ")";
+        return this.scientificName + " {" + this.rank.getName() + "}";
     }
 
     /**

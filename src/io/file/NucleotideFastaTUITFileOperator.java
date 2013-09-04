@@ -47,7 +47,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
     @Override
     public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
         if(normalizedIteration.getPivotalHit()!=null){
-            this.bufferedWriter.write(query.getAC()+": "+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
+            this.bufferedWriter.write(query.getAC()+":\t"+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
         }else {
             this.bufferedWriter.write(query.getAC()+": "+NucleotideFastaTUITFileOperator.NOT_IDENTIFIED);
         }

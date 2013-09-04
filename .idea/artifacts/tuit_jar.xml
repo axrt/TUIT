@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="tuit:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tuit_jar</output-path>
+    <root id="root">
+      <element id="archive" name="tuit.jar">
+        <element id="module-output" name="tuit" />
+      </element>
+      <element id="library" level="project" name="commons-cli-1" />
+      <element id="library" level="project" name="javabio_jar" />
+    </root>
+  </artifact>
+</component>
