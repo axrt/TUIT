@@ -1,12 +1,19 @@
 <component name="ArtifactManager">
   <artifact build-on-make="true" name="tuit:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/tuit_jar</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/tuit</output-path>
     <root id="root">
       <element id="archive" name="tuit.jar">
         <element id="module-output" name="tuit" />
       </element>
-      <element id="library" level="project" name="commons-cli-1" />
-      <element id="library" level="project" name="javabio_jar" />
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="commons-cli:commons-cli:1.2" />
+        <element id="library" level="project" name="commons-io:commons-io:2.4" />
+        <element id="library" level="project" name="commons-net:commons-net:3.3" />
+        <element id="library" level="project" name="javabio" />
+        <element id="library" level="project" name="javatar:javatar:2.5" />
+        <element id="library" level="project" name="mysql:mysql-connector-java:5.1.25" />
+        <element id="library" level="project" name="org.apache.commons:commons-compress:1.5" />
+      </element>
     </root>
   </artifact>
 </component>

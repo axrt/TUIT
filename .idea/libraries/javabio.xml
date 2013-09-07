@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javabio">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

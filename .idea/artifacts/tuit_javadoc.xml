@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="tuit_javadoc">
+  <artifact type="jar" build-on-make="true" name="tuit:javadoc">
     <output-path>$PROJECT_DIR$/out/artifacts/tuit_javadoc</output-path>
     <root id="archive" name="tuit_javadoc.jar">
       <element id="dir-copy" path="$PROJECT_DIR$/javadoc" />

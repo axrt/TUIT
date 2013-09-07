@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="tuit_src">
+  <artifact type="jar" build-on-make="true" name="tuit:src">
     <output-path>$PROJECT_DIR$/out/artifacts/tuit_src</output-path>
     <root id="archive" name="tuit_src.jar">
       <element id="dir-copy" path="$PROJECT_DIR$/src" />

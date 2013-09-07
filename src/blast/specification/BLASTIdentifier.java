@@ -197,7 +197,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                             + LookupNames.dbs.NCBI.views.taxon_by_gi.getName()
                             + " where "
                             + LookupNames.dbs.NCBI.gi_taxid.columns.gi.name()
-                            + "=?");
+                            + "=? ");
             preparedStatement.setInt(1, normalizedHit.getGI());
             resultSet = preparedStatement.executeQuery();
 

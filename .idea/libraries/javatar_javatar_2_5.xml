@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javatar:javatar:2.5" type="repository">
+    <properties maven-id="javatar:javatar:2.5" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javatar-2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

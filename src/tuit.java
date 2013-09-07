@@ -1,5 +1,3 @@
-package tuit.main;
-
 import blast.specification.BLASTIdentifier;
 import blast.specification.TUITBLASTIdentifier;
 import blast.specification.cutoff.TUITCutoffSet;
@@ -274,16 +272,17 @@ public class tuit {
         } catch (ClassNotFoundException cnfe) {
             //Probably won't happen unless the library deleted from the .jar
             Log.getInstance().log(Level.SEVERE, cnfe.getMessage());
+            //cnfe.printStackTrace();
         } catch (SQLException sqle) {
             Log.getInstance().log(Level.SEVERE, "A database communication error occurred with the following message:\n" +
                     sqle.getMessage());
-            sqle.printStackTrace();
+            //sqle.printStackTrace();
             if (sqle.getMessage().contains("Access denied for user")) {
                 Log.getInstance().log(Level.SEVERE, "Please use standard database login: " + NCBITablesDeployer.login + " and password: " + NCBITablesDeployer.password);
             }
         } catch (Exception e) {
             Log.getInstance().log(Level.SEVERE, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {

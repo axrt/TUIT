@@ -7,8 +7,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="commons-cli-1" level="project" />
-    <orderEntry type="library" name="javabio_jar" level="project" />
+    <orderEntry type="library" name="commons-cli:commons-cli:1.2" level="project" />
+    <orderEntry type="library" name="javabio" level="project" />
+    <orderEntry type="library" name="org.apache.commons:commons-compress:1.5" level="project" />
+    <orderEntry type="library" name="javatar:javatar:2.5" level="project" />
+    <orderEntry type="library" name="commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.25" level="project" />
+    <orderEntry type="library" name="commons-net:commons-net:3.3" level="project" />
   </component>
 </module>
 
