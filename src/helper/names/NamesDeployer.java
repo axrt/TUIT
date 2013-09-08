@@ -63,9 +63,9 @@ public class NamesDeployer {
             while ((line = bufferedReader.readLine()) != null) {
 
                 String[] split = line.split("\t");//The dmp file has a broken format, can't use "\t\\|\t"
-                if (split[6].equals("scientific name")) {
-                    preparedStatement.setInt(1, Integer.valueOf(split[0]));
-                    preparedStatement.setString(2, split[2]);
+                if (split[6].trim().equals("scientific name")) {
+                    preparedStatement.setInt(1, Integer.valueOf(split[0].trim()));
+                    preparedStatement.setString(2, split[2].trim());
                     preparedStatement.addBatch();
                     counter++;
                 }
@@ -120,8 +120,8 @@ public class NamesDeployer {
      */
                 String SCIENTIFIC_NAME = "scientific name";
                 if (split.length >= 7) {
-                    if (split[6].equals(SCIENTIFIC_NAME)) {
-                        fileWriter.write(split[0] + '\t' + split[2] + '\n');
+                    if (split[6].trim().equals(SCIENTIFIC_NAME)) {
+                        fileWriter.write(split[0].trim() + '\t' + split[2].trim() + '\n');
                     }
                 }
             }

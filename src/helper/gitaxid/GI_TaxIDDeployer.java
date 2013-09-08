@@ -89,9 +89,9 @@ public class GI_TaxIDDeployer {
 
                 String[] split = line.split("\t");
 
-                Integer taxid = Integer.valueOf(split[1]);
+                Integer taxid = Integer.valueOf(split[1].trim());
                 if (existingTaxIDs.contains(taxid)) {
-                    Integer gi = Integer.valueOf(split[0]);
+                    Integer gi = Integer.valueOf(split[0].trim());
                     preparedStatement.setInt(1, gi);
                     preparedStatement.setInt(2, taxid);
                     preparedStatement.addBatch();
@@ -181,7 +181,7 @@ public class GI_TaxIDDeployer {
             fileWriter = new FileWriter(outFile);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (existingTaxIDs != null && existingTaxIDs.contains(Integer.parseInt(line.split("\t")[1]))) {
+                if (existingTaxIDs != null && existingTaxIDs.contains(Integer.parseInt(line.split("\t")[1].trim()))) {
                     fileWriter.write(line + '\n');
                 }
             }

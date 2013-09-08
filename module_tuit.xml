@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_tuit" default="compile.module.tuit">
+  <dirname property="module.tuit.basedir" file="${ant.file.module_tuit}"/>
+  
+  <property name="module.jdk.home.tuit" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.tuit" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.tuit" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.tuit" value="${compiler.args}"/>
+  
+  <property name="tuit.output.dir" value="${module.tuit.basedir}/out/production/tuit"/>
+  <property name="tuit.testoutput.dir" value="${module.tuit.basedir}/out/test/tuit"/>
+  
+  <path id="tuit.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tuit.module.production.classpath">
+    <path refid="${module.jdk.classpath.tuit}"/>
+    <path refid="library.commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.javabio.classpath"/>
+    <path refid="library.org.apache.commons:commons-compress:1.5.classpath"/>
+    <path refid="library.javatar:javatar:2.5.classpath"/>
+    <path refid="library.commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.commons-net:commons-net:3.3.classpath"/>
+  </path>
+  
+  <path id="tuit.runtime.production.module.classpath">
+    <pathelement location="${tuit.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.javabio.classpath"/>
+    <path refid="library.org.apache.commons:commons-compress:1.5.classpath"/>
+    <path refid="library.javatar:javatar:2.5.classpath"/>
+    <path refid="library.commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.commons-net:commons-net:3.3.classpath"/>
+  </path>
+  
+  <path id="tuit.module.classpath">
+    <path refid="${module.jdk.classpath.tuit}"/>
+    <pathelement location="${tuit.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.javabio.classpath"/>
+    <path refid="library.org.apache.commons:commons-compress:1.5.classpath"/>
+    <path refid="library.javatar:javatar:2.5.classpath"/>
+    <path refid="library.commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.commons-net:commons-net:3.3.classpath"/>
+  </path>
+  
+  <path id="tuit.runtime.module.classpath">
+    <pathelement location="${tuit.testoutput.dir}"/>
+    <pathelement location="${tuit.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.javabio.classpath"/>
+    <path refid="library.org.apache.commons:commons-compress:1.5.classpath"/>
+    <path refid="library.javatar:javatar:2.5.classpath"/>
+    <path refid="library.commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.commons-net:commons-net:3.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tuit">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tuit">
+    <patternset refid="excluded.from.module.tuit"/>
+  </patternset>
+  
+  <path id="tuit.module.sourcepath">
+    <dirset dir="${module.tuit.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.tuit" depends="compile.module.tuit.production,compile.module.tuit.tests" description="Compile module tuit"/>
+  
+  <target name="compile.module.tuit.production" depends="register.custom.compilers" description="Compile module tuit; production classes">
+    <mkdir dir="${tuit.output.dir}"/>
+    <javac2 destdir="${tuit.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.tuit}/javac">
+      <compilerarg line="${compiler.args.tuit}"/>
+      <bootclasspath refid="tuit.module.bootclasspath"/>
+      <classpath refid="tuit.module.production.classpath"/>
+      <src refid="tuit.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.tuit"/>
+    </javac2>
+    
+    <copy todir="${tuit.output.dir}">
+      <fileset dir="${module.tuit.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.tuit.tests" depends="register.custom.compilers,compile.module.tuit.production" description="compile module tuit; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.tuit" description="cleanup module">
+    <delete dir="${tuit.output.dir}"/>
+    <delete dir="${tuit.testoutput.dir}"/>
+  </target>
+</project>
