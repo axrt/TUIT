@@ -1,21 +1,58 @@
 <?xml version="1.0"?>
 <!DOCTYPE TUITProperties PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
+<!--General properties section-->
 <TUITProperties>
+    <!--The MySQL database connection parameters:
+    login, password and url for the "tuit@localhost" user.
+    Normally should not be changed-->
     <DBConnection url="localhost" login="tuit" password="tuit"/>
-    <BLASTNPath path="/bin/blastn"/>
-    <TMPDir path="/home/alext/Downloads/tmp"/>
+    <!--A full system path to blastn executable.
+    Change this to a correct path on your system.-->
+    <BLASTNPath path="blastn"/>
+    <!--A full system path to a writable temporary directory.
+    TUIT module relies on this directory to download database dumps
+    from the NCBI as well as for temporary BLAST output storage.
+    Change this to a correct path on your system.-->
+    <TMPDir path="/tmp"/>
+    <!--BLASTN parameters section.-->
     <BLASTNParameters>
+        <!--Choose a database to search against.
+        In case you are using a local blast option,
+        refer to http://www.ncbi.nlm.nih.gov/books/NBK1762/
+        in order to provide correct database alias-->
         <Database use="nt"/>
+        <!--An E-value threshold for the output.-->
         <Expect value="1.0"/>
+        <!--A specific entrez query that allows to get rid
+        of the "junk" hits that provide little or no taxonomic
+        information. Note that with the local BLAST option
+        the task of database restriction with an entrez query
+        may be tricky if the selected entrez qurey provides an excessive gi list.
+        Refer to the official documentation http://www.ncbi.nlm.nih.gov/books/NBK1762/
+        Upon first run tuit will fetch the GI list for the given
+        entrez query and refer to it as to restrictions list-->
         <EntrezQuery value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
-        <Remote delegate="no"/>
-        <MaxFilesInBatch value="1"/>
+        <!--If "no" selected, the BLASTN search
+        will be performed locally, "yes" will
+        send the query to the NCBI BLAST server.-->
+        <Remote delegate="yes"/>
+        <!--As long as the query file may contain multiple
+        fasta formatted records, this field allows to specify
+        how many of those are taken for a single round
+        of BLAST search.-->
+        <MaxFilesInBatch value="10"/>
     </BLASTNParameters>
+    <!--Each set represents a specific set of cutoffs
+    that will be applied to a certain taxonomic rank.-->
     <!--Higher Level-->
     <SpecificationParameters>
+        <!--Names the rank-->
         <CutoffSet rank="superkingdom">
+            <!--Sets pIdent cutoff at the given rank-->
             <pIdentCutoff value="60"/>
+            <!--Sets Query coverage cutoff at the given rank-->
             <QueryCoverageCutoff value="80"/>
+            <!--Sets E-value ratio cutoff at the given rank-->
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
@@ -205,5 +242,5 @@
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
-    <!-- -->
+    <!--END-->
 </TUITProperties>
