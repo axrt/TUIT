@@ -110,7 +110,9 @@ public class NamesDeployer {
 
         try {
             bufferedReader = new BufferedReader(new FileReader(namesDmpFile));
+
             filteredNamesDmpFile = new File(namesDmpFile.getAbsoluteFile().toString() + ".mod");
+
             fileWriter = new FileWriter(filteredNamesDmpFile);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
