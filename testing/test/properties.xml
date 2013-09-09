@@ -24,12 +24,12 @@
     <DBConnection url="localhost" login="tuit" password="tuit"/>
     <!--A full system path to blastn executable.
     Change this to a correct path on your system.-->
-    <BLASTNPath path="blastn"/>
+    <BLASTNPath path="/bin/blastn"/>
     <!--A full system path to a writable temporary directory.
     TUIT module relies on this directory to download database dumps
     from the NCBI as well as for temporary BLAST output storage.
     Change this to a correct path on your system.-->
-    <TMPDir path="/tmp"/>
+    <TMPDir path="/home/alext/Downloads/tmp"/>
     <!--BLASTN parameters section.-->
     <BLASTNParameters>
         <!--Choose a database to search against.
@@ -51,7 +51,7 @@
         <!--If "no" selected, the BLASTN search
         will be performed locally, "yes" will
         send the query to the NCBI BLAST server.-->
-        <Remote delegate="yes"/>
+        <Remote delegate="no"/>
         <!--As long as the query file may contain multiple
         fasta formatted records, this field allows to specify
         how many of those are taken for a single round

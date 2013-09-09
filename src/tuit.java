@@ -88,6 +88,7 @@ public class tuit {
 
     @SuppressWarnings("ConstantConditions")
     public static void main(String[] args) {
+        System.out.println(licence);
         //Declare variables
         File inputFile;
         File outputFile;
