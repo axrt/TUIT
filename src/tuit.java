@@ -26,12 +26,32 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
+/**
+ * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
+ * software for accurate taxonomic classification of nucleotide sequences.
+ * Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * A main class for the tuit module implementation
  */
 
 public class tuit {
+
+    private static String licence="Taxonomic Unit Identification Tool  Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov\n" +
+            "    This program comes with ABSOLUTELY NO WARRANTY; for details see LICENCE.\n" +
+            "    This is free software, and you are welcome to redistribute it\n" +
+            "    under certain conditions; see LICENCE for details.";
 
     /**
      * The -in flag for the input file
