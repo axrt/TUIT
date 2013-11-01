@@ -47,7 +47,8 @@
         Refer to the official documentation http://www.ncbi.nlm.nih.gov/books/NBK1762/
         Upon first run tuit will fetch the GI list for the given
         entrez query and refer to it as to restrictions list-->
-        <EntrezQuery value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
+        <EntrezQuery
+                value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
         <!--If "no" selected, the BLASTN search
         will be performed locally, "yes" will
         send the query to the NCBI BLAST server.-->
@@ -56,7 +57,7 @@
         fasta formatted records, this field allows to specify
         how many of those are taken for a single round
         of BLAST search.-->
-        <MaxFilesInBatch value="10"/>
+        <MaxFilesInBatch value="100"/>
     </BLASTNParameters>
     <!--Each set represents a specific set of cutoffs
     that will be applied to a certain taxonomic rank.-->
@@ -175,28 +176,28 @@
     <SpecificationParameters>
         <CutoffSet rank="family">
             <pIdentCutoff value="80"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subfamily">
             <pIdentCutoff value="80"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="tribe">
             <pIdentCutoff value="80"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subtribe">
             <pIdentCutoff value="80"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
@@ -204,14 +205,14 @@
     <SpecificationParameters>
         <CutoffSet rank="genus">
             <pIdentCutoff value="95"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subgenus">
             <pIdentCutoff value="95"/>
-            <QueryCoverageCutoff value="90"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
@@ -219,42 +220,42 @@
     <SpecificationParameters>
         <CutoffSet rank="species_group">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species_subgroup">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subspecies">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="varietas">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="forma">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="95"/>
+            <QueryCoverageCutoff value="100"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
