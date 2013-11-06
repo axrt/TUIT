@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Prints out license">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSetTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_1_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/tuit_jar2.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_2.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/test/properties.xml" afterPath="$PROJECT_DIR$/testing/test/properties.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tuit.iml" afterPath="$PROJECT_DIR$/tuit.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/tuit_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/tuit_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -15,7 +23,7 @@
     <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
     <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383331743572" ignored="false" />
+    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383584273513" ignored="false" />
     <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
@@ -115,7 +123,7 @@
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
     <file path="/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793817965" ignored="false" />
     <file path="/TUTICutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199836815" ignored="false" />
-    <file path="/TUITCutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372063315510" ignored="false" />
+    <file path="/TUITCutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383339447015" ignored="false" />
     <file path="/BLAST_IdentifierFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371217426186" ignored="false" />
     <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371537398916" ignored="false" />
     <file path="/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373273029820" ignored="false" />
@@ -154,7 +162,7 @@
     <file path="/user.sql" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372075906341" ignored="false" />
     <file path="/FastaInputFileException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372077141564" ignored="false" />
     <file path="/tuit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378763154654" ignored="false" />
-    <file path="/BLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378587592134" ignored="false" />
+    <file path="/BLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383337328720" ignored="false" />
     <file path="/update.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151559610" ignored="false" />
     <file path="/deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372153715522" ignored="false" />
     <file path="/Logger.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372148956277" ignored="false" />
@@ -648,13 +656,19 @@
     <file path="$PROJECT_DIR$/javadoc/tuit/main/tuit.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378584095841" ignored="false" />
     <file path="$PROJECT_DIR$/javadoc/constant-values.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378584095841" ignored="false" />
     <file path="/MANIFEST.MF" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378589058824" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/artifacts/tuit_jar.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378591522854" ignored="false" />
     <file path="$PROJECT_DIR$/../AmoebaProject/src/ms/AttachTaxonomyToGIs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378902062299" ignored="false" />
     <file path="/AttachTaxonomyToGIs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378849552697" ignored="false" />
     <file path="/FisherExact.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383325199561" ignored="false" />
     <file path="/FischerExactTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383327740600" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/compare/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383330377951" ignored="false" />
-    <file path="/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383330377951" ignored="false" />
+    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/compare/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383754599598" ignored="false" />
+    <file path="/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383602670702" ignored="false" />
+    <file path="/TUITCutoffSetTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383338316977" ignored="false" />
+    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/restrict/GetAllowedACs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383762805660" ignored="false" />
+    <file path="/GetAllowedACs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383762652423" ignored="false" />
+    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/TUITClassificationOfPreclassified.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383751984248" ignored="false" />
+    <file path="/TUITClassificationOfPreclassified.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383751982811" ignored="false" />
+    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/gaps/GapAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383767787405" ignored="false" />
+    <file path="/GapAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383767707476" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -674,6 +688,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -711,7 +726,6 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -721,15 +735,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="3" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -751,41 +756,14 @@
       <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="386" column="64" selection-start="20014" selection-end="20014" vertical-scroll-proportion="0.0">
+            <state line="390" column="94" selection-start="20341" selection-end="20341" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BLASTIdentifier.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="19" selection-start="9524" selection-end="9524" vertical-scroll-proportion="0.33295193">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITPropertiesLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="1277" selection-end="1277" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Log.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <file leaf-file-name="org_apache_commons_commons_math3_3_1_1.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_1_1.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -793,19 +771,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxonomicNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <file leaf-file-name="BLASTIdentifier.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0">
+            <state line="188" column="47" selection-start="9949" selection-end="9949" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ranks.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
+      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0">
+            <state line="84" column="123" selection-start="4221" selection-end="4221" vertical-scroll-proportion="0.6224256">
               <folding />
             </state>
           </provider>
@@ -834,10 +812,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/io/properties/jaxb/PIdentCutoff.java" />
-        <option value="$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd" />
-        <option value="$PROJECT_DIR$/src/io/properties/jaxb/QueryCoverageCutoff.java" />
-        <option value="$PROJECT_DIR$/src/io/properties/jaxb/Remote.java" />
         <option value="$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java" />
         <option value="$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java" />
         <option value="$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java" />
@@ -850,6 +824,10 @@
         <option value="$PROJECT_DIR$/src/stat/FischerExactTest.java" />
         <option value="$PROJECT_DIR$/src/stat/FisherExact.java" />
         <option value="$PROJECT_DIR$/src/stat/GTest.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSetTest.java" />
+        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
       </list>
     </option>
   </component>
@@ -885,7 +863,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1342,12 +1319,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="256" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="258" />
     <property name="OverrideImplement.combined" value="true" />
@@ -1359,7 +1369,7 @@
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="256" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TUITArticleResponse" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="261" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1056" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1056" />
@@ -1398,35 +1408,7 @@
       <recent name="$PROJECT_DIR$/deploy/src/META-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Wintest">
-    <configuration default="false" name="GI_TaxIDDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="tuit" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="GI_TaxIDDeployerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TUITCutoffSetTest">
     <configuration default="false" name="NodesDBDDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="tuit" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1533,6 +1515,34 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="TUITCutoffSetTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="tuit" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="blast.specification.cutoff" />
+      <option name="MAIN_CLASS_NAME" value="blast.specification.cutoff.TUITCutoffSetTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -1569,19 +1579,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.Wintest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Wintest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.Wintest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.GI_TaxIDDeployerTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.Wintest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -2011,13 +2021,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1045" extended-state="2" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16444445" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16373627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2025,12 +2035,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.47692308" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19103523" sideWeight="0.8611111" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52111113" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19103523" sideWeight="0.86263734" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52087915" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1388889" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13736264" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2129,62 +2139,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/Remote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1795" selection-end="1795" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1277" selection-end="1277" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logger/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0">
@@ -2213,6 +2167,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testing/test/BLAST_IdentifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/commons_cli_commons_cli_1_2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_compress_1_5.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_5_1_25.xml">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
@@ -2225,16 +2198,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="386" column="64" selection-start="20014" selection-end="20014" vertical-scroll-proportion="0.0">
+        <state line="188" column="47" selection-start="9949" selection-end="9949" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="19" selection-start="9524" selection-end="9524" vertical-scroll-proportion="0.33295193">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="390" column="94" selection-start="20341" selection-end="20341" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_1_1.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/commons-math3-3.1.1.jar!/org/apache/commons/math3/stat/inference/TestUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="25" selection-start="7591" selection-end="7591" vertical-scroll-proportion="0.39140812">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSetTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="53" selection-start="454" selection-end="458" vertical-scroll-proportion="0.29176202">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="123" selection-start="4221" selection-end="4221" vertical-scroll-proportion="0.6224256">
           <folding />
         </state>
       </provider>
@@ -2307,7 +2315,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.apache.commons:commons-math3:3.2</last-edited>
+          <last-edited>org.apache.commons:commons-math3:3.1.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

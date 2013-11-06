@@ -385,10 +385,10 @@ public class NormalizedIteration<I extends Iteration> {
                     //is less then the threshold cutoff - do not allow the pivotal hit
                     Log.getInstance().log(Level.FINE,"Checking whether the hits are far enough by the E-value (in folds )...");
                     if (this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
-                        Log.getInstance().log(Level.FINE,"The hits are far enough.");
+                        Log.getInstance().log(Level.FINE,"The hits are far enough (alpha <= 0.05).");
                         return true;
                     } else {
-                        Log.getInstance().log(Level.FINE,"The hits are not far enough.");
+                        Log.getInstance().log(Level.FINE,"The hits are not far enough (alpha > 0.05).");
                         return false;
                     }
                 }
@@ -426,7 +426,7 @@ public class NormalizedIteration<I extends Iteration> {
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
-                    Log.getInstance().log(Level.FINE,"Lifting up current rank of specification for those hits that has " + this.currentRank);
+                    Log.getInstance().log(Level.FINE,"Lifting up current rank of specification for those hits that have " + this.currentRank);
                     this.liftCurrentRankOfSpecificationForHits();
                     if (this.couldLiftCurrentRank()) {
                         Log.getInstance().log(Level.FINE,"Trying a higher rank of rank \"" + this.currentRank + "\"");

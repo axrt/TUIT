@@ -205,14 +205,14 @@
     <SpecificationParameters>
         <CutoffSet rank="genus">
             <pIdentCutoff value="95"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subgenus">
             <pIdentCutoff value="95"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
@@ -220,42 +220,42 @@
     <SpecificationParameters>
         <CutoffSet rank="species_group">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species_subgroup">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subspecies">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="varietas">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="forma">
             <pIdentCutoff value="97.5"/>
-            <QueryCoverageCutoff value="100"/>
+            <QueryCoverageCutoff value="95"/>
             <EvalueRatioCutoff value="100"/>
         </CutoffSet>
     </SpecificationParameters>

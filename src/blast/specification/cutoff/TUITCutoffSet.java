@@ -1,6 +1,9 @@
 package blast.specification.cutoff;
 
 import blast.normal.hit.NormalizedHit;
+import org.apache.commons.math3.stat.inference.TestUtils;
+
+
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
  * software for accurate taxonomic classification of nucleotide sequences.
@@ -75,7 +78,14 @@ public class TUITCutoffSet {
      *         point to {@code null}
      */
     public boolean hitsAreFarEnoughByEvalue(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
-        return !(oneNormalizedHit == null || anotherNormalizedHit == null) && oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff;
+
+        int oneAlignLen=Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
+        int anotherAlignLen=Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
+        int oneNumIdents=Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
+        int anotherNumIdents=Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
+
+        return TestUtils.chiSquareTest(new long[][]{{oneNumIdents, anotherNumIdents}, {oneAlignLen - oneNumIdents, anotherAlignLen - anotherNumIdents}}, 0.05);
+        //return !(oneNormalizedHit == null || anotherNormalizedHit == null) && oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff;
     }
 
     /**
