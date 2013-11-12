@@ -28,6 +28,10 @@ import org.apache.commons.math3.stat.inference.TestUtils;
 
 public class TUITCutoffSet {
     /**
+     * A symbol that BLAST uses to mark a gap
+     */
+    private static final char gap = '-';
+    /**
      * A cutoff for pIdent
      */
     @SuppressWarnings("WeakerAccess")
@@ -47,7 +51,7 @@ public class TUITCutoffSet {
      * A protected constructor for the use via factories
      *
      * @param pIdentCutoff           {@code double} A cutoff for pIdent
-     * @param queryCoverageCutoff   {@code double} A cutoff for query coverage
+     * @param queryCoverageCutoff    {@code double} A cutoff for query coverage
      * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
      */
     @SuppressWarnings("WeakerAccess")
@@ -55,6 +59,38 @@ public class TUITCutoffSet {
         this.pIdentCutoff = pIdentCutoff;
         this.queryCoverageCutoff = queryCoverageCutoff;
         this.evalueDifferenceCutoff = evalueDifferenceCutoff;
+    }
+
+    /**
+     * As long as BLAST outputs treats every gap as an independent event, this method allows to correct for this by calculating gapopen.
+     * A standard BLAST XMP output reports only gaps, but not gapopens. Note: gaps>=gapopens
+     *
+     * @param seq {@link String} Nucleotide sequence with gaps, marked as '-'
+     * @return {@code int} number of gapopens
+     */
+    public static int calculateNumberOfGapOpens(final String seq) {
+
+        int numGapOpen = 0;
+        for (int i = 1; i < seq.length(); i++) {
+            if (seq.charAt(i) == gap) {
+                if (seq.charAt(i - 1) != gap) {
+                    numGapOpen++;
+                }
+            }
+        }
+        return numGapOpen;
+    }
+
+    /**
+     * A static factory that returns a new instance of the {@link TUITCutoffSet}
+     *
+     * @param pIdentCutoff           {@code double} A cutoff for pIdent
+     * @param queryCoverageCutoff    {@code double} A cutoff for query coverage
+     * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
+     * @return a new instance of {@link TUITCutoffSet} from the given parameters
+     */
+    public static TUITCutoffSet newDefaultInstance(final double pIdentCutoff, final double queryCoverageCutoff, final double evalueDifferenceCutoff) {
+        return new TUITCutoffSet(pIdentCutoff, queryCoverageCutoff, evalueDifferenceCutoff);
     }
 
     /**
@@ -72,31 +108,59 @@ public class TUITCutoffSet {
 
     /**
      * Checks whether the given {@link NormalizedHit}s E-value ratio is higher than the cutoff value
-     * @param oneNormalizedHit {@link NormalizedHit} (assuming the hit with a worse (higher) e-value)
+     *
+     * @param oneNormalizedHit     {@link NormalizedHit} (assuming the hit with a worse (higher) e-value)
      * @param anotherNormalizedHit {@link NormalizedHit} (assuming the hit with a better (lower) e-value)
-     * @return {@code true} if the E-value ratio is high enough, {@code false} otherwise or if either of the pointers
+     * @return {@code true} Performs a Chi Squared test on a contingency table <br>
+     *         <table class="tg-table-plain">
+     *         <tr>
+     *         <th></th>
+     *         <th>Better hit</th>
+     *         <th>Other hit</th>
+     *         <th>Sum</th>
+     *         </tr>
+     *         <tr class="tg-even">
+     *         <td>Corrected Match</td>
+     *         <td>Number of identities</td>
+     *         <td>Number of identities</td>
+     *         <td></td>
+     *         </tr>
+     *         <tr>
+     *         <td>Corrected Mismatch</td>
+     *         <td>Align.length-(Total Gaps - Gapopen)</td>
+     *         <td>Align.length-(Total Gaps - Gapopen)</td>
+     *         <td></td>
+     *         </tr>
+     *         <tr class="tg-even">
+     *         <td>Sum</td>
+     *         <td></td>
+     *         <td></td>
+     *         <td></td>
+     *         </tr>
+     *         </table>
+     *         , returns true if the test has shown the statistical significant prevalence of one alignment over another
+     *         , {@code false} otherwise or if either of the pointers
      *         point to {@code null}
      */
-    public boolean hitsAreFarEnoughByEvalue(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
+    public boolean hitsAreStatisticallyDifferent(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
 
-        int oneAlignLen=Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
-        int anotherAlignLen=Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
-        int oneNumIdents=Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
-        int anotherNumIdents=Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
+        final int oneAlignLen = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
+        final int anotherAlignLen = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
 
-        return TestUtils.chiSquareTest(new long[][]{{oneNumIdents, anotherNumIdents}, {oneAlignLen - oneNumIdents, anotherAlignLen - anotherNumIdents}}, 0.05);
-        //return !(oneNormalizedHit == null || anotherNormalizedHit == null) && oneNormalizedHit.getHitEvalue() / anotherNormalizedHit.getHitEvalue() >= this.evalueDifferenceCutoff;
-    }
+        final int oneNumIdents = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
+        final int anotherNumIdents = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
 
-    /**
-     * A static factory that returns a new instance of the {@link TUITCutoffSet}
-     * @param pIdentCutoff           {@code double} A cutoff for pIdent
-     * @param queryCoverageCutoff   {@code double} A cutoff for query coverage
-     * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
-     * @return a new instance of {@link TUITCutoffSet} from the given parameters
-     */
-    public static TUITCutoffSet newDefaultInstance(final double pIdentCutoff, final double queryCoverageCutoff, final double evalueDifferenceCutoff) {
-        return new TUITCutoffSet(pIdentCutoff, queryCoverageCutoff, evalueDifferenceCutoff);
+        final int oneNumGaps = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspGaps());
+        final int anotherNumGaps = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspGaps());
+
+        final int oneNumGapOpens = calculateNumberOfGapOpens(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspQseq())
+                + calculateNumberOfGapOpens(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspHseq());
+        final int anotherNumGapOpens = calculateNumberOfGapOpens(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspQseq())
+                + calculateNumberOfGapOpens(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspHseq());
+
+        return TestUtils.chiSquareTest(new long[][]{{oneNumIdents, anotherNumIdents},
+                {(oneAlignLen - (oneNumGaps - oneNumGapOpens)) - oneNumIdents,
+                        (anotherAlignLen - (anotherNumGaps - anotherNumGapOpens)) - anotherNumIdents}}, 0.05);
     }
 }
 

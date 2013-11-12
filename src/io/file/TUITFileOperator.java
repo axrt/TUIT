@@ -112,32 +112,32 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
      * @throws Exception
      */
     public List<T> nextBatch(int size) throws Exception {
-        List<T> batch;
-        batch = new ArrayList<T>(size);
-        StringBuilder stringBuilder = new StringBuilder();
+        final StringBuilder stringBuilder = new StringBuilder();
         int fastaCounter = 0;
         if (this.line != null) {
             stringBuilder.append(line);
-            stringBuilder.append("\n");
+            stringBuilder.append('\n');
+            fastaCounter++;
         }
         while ((this.line = this.bufferedReader.readLine()) != null) {
-            if (line.contains(Fasta.fastaStart)) {
+            if (line.startsWith(Fasta.fastaStart)) {
                 if (fastaCounter >= size) {
                     break;
                 }
                 fastaCounter++;
             }
             stringBuilder.append(line);
-            stringBuilder.append("\n");
+            stringBuilder.append('\n');
         }
-        String[] split = stringBuilder.toString().split(Fasta.fastaStart);
+        final List<T> batch=new ArrayList<T>(size);
+        final String[] split = stringBuilder.toString().split(Fasta.fastaStart);
         for (int i = 1; i < split.length; i++) {
             batch.add(this.newFastaFromRecord(Fasta.fastaStart + split[i]));
         }
         if (batch.isEmpty()) {
             return null;
         } else {
-            return new ArrayList<T>(batch);
+            return batch;
         }
     }
 

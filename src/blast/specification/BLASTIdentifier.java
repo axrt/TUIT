@@ -181,12 +181,12 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      *         is returned. Upon null instead of either normalizedHit or rank
      *         returns {@code false}.
      */
-    public boolean hitsAreFarEnoughByEvalueAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, final Ranks rank) {
+    public boolean hitsAreStatisticallyDifferentAtRank(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit, final Ranks rank) {
         TUITCutoffSet tuitCutoffSet;
         if ((tuitCutoffSet = this.cutoffSetMap.get(rank)) == null || oneNormalizedHit == null || anotherNormalizedHit == null) {
             tuitCutoffSet = BLASTIdentifier.DEFAULT_CUTOFFS.get(rank);
         }
-        return tuitCutoffSet.hitsAreFarEnoughByEvalue(oneNormalizedHit, anotherNormalizedHit);
+        return tuitCutoffSet.hitsAreStatisticallyDifferent(oneNormalizedHit, anotherNormalizedHit);
     }
 
     /**

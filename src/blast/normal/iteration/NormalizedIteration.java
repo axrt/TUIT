@@ -165,7 +165,7 @@ public class NormalizedIteration<I extends Iteration> {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
-            Log.getInstance().log(Level.INFO, "Was not able to set current rank any higher");
+            Log.getInstance().log(Level.FINE, "Was not able to set current rank any higher");
             return false;
         }
     }
@@ -316,7 +316,7 @@ public class NormalizedIteration<I extends Iteration> {
         Log.getInstance().log(Level.FINE,"Attempting to set current potential pivotal hit...");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalizedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
         if (normalizedHitsAtCurrentRank != null) {
-            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of: " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy cutoffs).");
+            Log.getInstance().log(Level.FINE,"A subset of hits at current rank of: " + this.currentRank + " contains " + normalizedHitsAtCurrentRank.size() + " hits (that satisfy the cutoffs).");
             //If any normalized hits exist on the list - set the firs one as pivotal
             this.pivotalHit = normalizedHitsAtCurrentRank.get(0);
             Log.getInstance().log(Level.FINE,"Current pivotal hit was set to GI: " + this.pivotalHit.getGI()+" described as: \""+this.pivotalHit.getHit().getHitDef()+"\"");
@@ -378,13 +378,13 @@ public class NormalizedIteration<I extends Iteration> {
                 NormalizedHit normalizedHit = this.normalizedHits.get(i);
                 //If the next hit has current rank and points to a different taxonomic node
                 if (normalizedHit.getAssignedRank() == this.currentRank && normalizedHit.getAssignedTaxid() != this.pivotalHit.getAssignedTaxid()) {
-                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from the same rank of: \"" + this.currentRank +
-                            "\", but from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
+                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from the same rank of: \'" + this.currentRank +
+                            "\', but from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
                             + " (while the current pivotal hit has a taxid of: \"" + this.pivotalHit.getAssignedTaxid() + "\").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
-                    Log.getInstance().log(Level.FINE,"Checking whether the hits are far enough by the E-value (in folds )...");
-                    if (this.blastIdentifier.hitsAreFarEnoughByEvalueAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
+                    Log.getInstance().log(Level.FINE,"Checking whether the hits are statistically different...");
+                    if (this.blastIdentifier.hitsAreStatisticallyDifferentAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
                         Log.getInstance().log(Level.FINE,"The hits are far enough (alpha <= 0.05).");
                         return true;
                     } else {
@@ -426,7 +426,7 @@ public class NormalizedIteration<I extends Iteration> {
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
-                    Log.getInstance().log(Level.FINE,"Lifting up current rank of specification for those hits that have " + this.currentRank);
+                    Log.getInstance().log(Level.FINE,"Lifting up current rank of specification for those hits that have \"" + this.currentRank+"\"");
                     this.liftCurrentRankOfSpecificationForHits();
                     if (this.couldLiftCurrentRank()) {
                         Log.getInstance().log(Level.FINE,"Trying a higher rank of rank \"" + this.currentRank + "\"");

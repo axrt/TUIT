@@ -151,14 +151,14 @@ public class TUTFileOperatorHelper {
      * @throws NoSuchAlgorithmException may never happen, is caused by MessageDigest.getInstance("MD5"), that creates a md5 hash for the entrez query file name.
      */
     public static File restrictToEntrez(File tmpDir, String entrez_query) throws IOException, NoSuchAlgorithmException {
-        String encodedEntrezQuery=URLEncoder.encode(entrez_query,"UTF-8");
+        final String encodedEntrezQuery=URLEncoder.encode(entrez_query,"UTF-8");
         URL eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&rettype=count&term="+encodedEntrezQuery);
         BufferedReader bufferedReader = null;
         BufferedWriter bufferedWriter = null;
         byte[]entrezQueryByte=entrez_query.getBytes("UTF-8");
-        MessageDigest messageDigest=MessageDigest.getInstance("MD5");
+        final MessageDigest messageDigest=MessageDigest.getInstance("MD5");
         byte[]entrezQueryByteMD5=messageDigest.digest(entrezQueryByte);
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         for (byte anEntrezQueryByteMD5 : entrezQueryByteMD5) {
             sb.append(Integer.toString((anEntrezQueryByteMD5 & 0xff) + 0x100, 16).substring(1));
         }

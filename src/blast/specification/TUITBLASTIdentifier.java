@@ -177,12 +177,10 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
      */
     @Override
     protected void normalizeIterations() {
-        int allowedProgress=this.progressEdge+this.batchSize;
-        int i=0;
-        for(;this.progressEdge<allowedProgress&&this.progressEdge<this.blastOutput.getBlastOutputIterations().getIteration().size();this.progressEdge++){
-            Iteration iteration = this.blastOutput.getBlastOutputIterations().getIteration().get(this.progressEdge);
+        final int allowedProgress=this.progressEdge+this.batchSize-1;
+        for(int i=0;this.progressEdge<=allowedProgress&&this.progressEdge<this.blastOutput.getBlastOutputIterations().getIteration().size();this.progressEdge++,i++){
+            final Iteration iteration = this.blastOutput.getBlastOutputIterations().getIteration().get(this.progressEdge);
             this.normalizedIterations.add(NormalizedIteration.<Iteration>newDefaultInstanceFromIteration((NucleotideFasta) this.query.get(i), iteration, this));
-            i++;
         }
     }
 
