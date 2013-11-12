@@ -45,20 +45,44 @@ public class TUITCutoffSet {
      * A cutoff for the E-value ratio
      */
     @SuppressWarnings("WeakerAccess")
-    protected final double evalueDifferenceCutoff;
+    protected final double alpha;
 
     /**
      * A protected constructor for the use via factories
      *
      * @param pIdentCutoff           {@code double} A cutoff for pIdent
      * @param queryCoverageCutoff    {@code double} A cutoff for query coverage
-     * @param evalueDifferenceCutoff {@code double} A cutoff for E-value ratio
+     * @param alpha {@code double} alpha cutoff for the p-value
      */
     @SuppressWarnings("WeakerAccess")
-    protected TUITCutoffSet(final double pIdentCutoff, final double queryCoverageCutoff, final double evalueDifferenceCutoff) {
+    protected TUITCutoffSet(final double pIdentCutoff, final double queryCoverageCutoff, final double alpha) {
         this.pIdentCutoff = pIdentCutoff;
         this.queryCoverageCutoff = queryCoverageCutoff;
-        this.evalueDifferenceCutoff = evalueDifferenceCutoff;
+        this.alpha = alpha;
+    }
+
+    /**
+     * A getter for the percent Identity cutoff
+     * @return {@code double} percent identity cutoff
+     */
+    public double getpIdentCutoff() {
+        return pIdentCutoff;
+    }
+
+    /**
+     * A getter for the query coverage cutoff
+     * @return {@code double} query coverage cutoff
+     */
+    public double getQueryCoverageCutoff() {
+        return queryCoverageCutoff;
+    }
+
+    /**
+     * A getter for the alpha level cutoff
+     * @return {@code double} alpha level of the p-value cutoff
+     */
+    public double getAlpha() {
+        return alpha;
     }
 
     /**
@@ -160,7 +184,7 @@ public class TUITCutoffSet {
 
         return TestUtils.chiSquareTest(new long[][]{{oneNumIdents, anotherNumIdents},
                 {(oneAlignLen - (oneNumGaps - oneNumGapOpens)) - oneNumIdents,
-                        (anotherAlignLen - (anotherNumGaps - anotherNumGapOpens)) - anotherNumIdents}}, 0.05);
+                        (anotherAlignLen - (anotherNumGaps - anotherNumGapOpens)) - anotherNumIdents}},this.alpha);
     }
 }
 

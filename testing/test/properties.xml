@@ -53,11 +53,15 @@
         will be performed locally, "yes" will
         send the query to the NCBI BLAST server.-->
         <Remote delegate="no"/>
+        <!--A number of threads  that current blast will use-->
+        <NumThreads value="10"/>
         <!--As long as the query file may contain multiple
         fasta formatted records, this field allows to specify
         how many of those are taken for a single round
         of BLAST search.-->
         <MaxFilesInBatch value="100"/>
+        <!--Indicates whether TUIT should keep the intermediate temporary blast outputs-->
+        <KeepBLASTOuts keep="no"/>
     </BLASTNParameters>
     <!--Each set represents a specific set of cutoffs
     that will be applied to a certain taxonomic rank.-->
@@ -70,63 +74,63 @@
             <!--Sets Query coverage cutoff at the given rank-->
             <QueryCoverageCutoff value="80"/>
             <!--Sets E-value ratio cutoff at the given rank-->
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="kingdom">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="superphylum">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="phylum">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subphylum">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="superclass">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="infraclass">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="c_lass">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subclass">
             <pIdentCutoff value="60"/>
             <QueryCoverageCutoff value="80"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <!--Order Level-->
@@ -134,35 +138,35 @@
         <CutoffSet rank="infraorder">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="parvorder">
             <pIdentCutoff value="70"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="superorder">
             <pIdentCutoff value="70"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="order">
             <pIdentCutoff value="70"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="suborder">
             <pIdentCutoff value="70"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <!--Family Level-->
@@ -170,35 +174,35 @@
         <CutoffSet rank="superfamily">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="90"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="family">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subfamily">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="tribe">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subtribe">
             <pIdentCutoff value="80"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <!--Genus Level-->
@@ -206,14 +210,14 @@
         <CutoffSet rank="genus">
             <pIdentCutoff value="95"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subgenus">
             <pIdentCutoff value="95"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <!--Species Level-->
@@ -221,42 +225,42 @@
         <CutoffSet rank="species_group">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species_subgroup">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="species">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="subspecies">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="varietas">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <SpecificationParameters>
         <CutoffSet rank="forma">
             <pIdentCutoff value="97.5"/>
             <QueryCoverageCutoff value="95"/>
-            <EvalueRatioCutoff value="100"/>
+            <Alpha value="0.05"/>
         </CutoffSet>
     </SpecificationParameters>
     <!--END-->

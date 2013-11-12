@@ -48,7 +48,9 @@ import java.util.logging.Level;
 
 public class tuit {
 
-    private static String licence="Taxonomic Unit Identification Tool  Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov\n" +
+    private static String licence="\n" +
+            "\nTHANK YOU FOR USING THE TAXONOMIC UNIT IDENTIFICATION TOOL\n\n" +
+            "Taxonomic Unit Identification Tool  Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov\n" +
             "    This program comes with ABSOLUTELY NO WARRANTY; for details see LICENCE.\n" +
             "    This is free software, and you are welcome to redistribute it\n" +
             "    under certain conditions; see LICENCE for details.";
@@ -227,14 +229,16 @@ public class tuit {
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                                 "-negative_gilist", TUTFileOperatorHelper.restrictToEntrez(
-                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT", "OR")).getAbsolutePath()
+                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT", "OR")).getAbsolutePath(),
+                                "-num_threads",tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     } else {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                                 "-gilist", TUTFileOperatorHelper.restrictToEntrez(
-                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath()
+                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),
+                                "-num_threads",tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     }
                 }
@@ -247,7 +251,7 @@ public class tuit {
                             TUITCutoffSet.newDefaultInstance(
                                     Double.parseDouble(specificationParameters.getCutoffSet().getPIdentCutoff().getValue()),
                                     Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue()),
-                                    Double.parseDouble(specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue())));
+                                    Double.parseDouble(specificationParameters.getCutoffSet().getAlpha().getValue())));
                 }
             } else {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>();
@@ -255,18 +259,28 @@ public class tuit {
             NucleotideFastaTUITFileOperator nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance();
             nucleotideFastaTUITFileOperator.setInputFile(inputFile);
             nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
+            final String cleanupString=tuitProperties.getBLASTNParameters().getNumThreads().getValue();
+            final boolean cleanup;
+            if(cleanupString.equals("no")){
+               cleanup=true;
+            }else {
+               cleanup=false;
+            }
             //Create blast identifier
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             if (blastOutputFile == null) {
                 blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
                         tmpDir, blastnExecutable, parameters,
                         nucleotideFastaTUITFileOperator, connection,
-                        cutoffMap, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
+                        cutoffMap,
+                        Integer.parseInt(tuitProperties.getBLASTNParameters().getNumThreads().getValue())
+                ,cleanup);
 
             } else {
                 try {
                     blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
-                            cutoffMap, blastOutputFile, Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()));
+                            cutoffMap, blastOutputFile,
+                            Integer.parseInt(tuitProperties.getBLASTNParameters().getNumThreads().getValue()),cleanup);
 
                 }catch (JAXBException e){
                     Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");

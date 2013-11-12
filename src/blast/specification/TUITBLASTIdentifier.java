@@ -46,6 +46,11 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
     @SuppressWarnings("WeakerAccess")
     protected final int batchSize;
     /**
+     * Indicates whether the module should cleanup temp files (such as BLAST output)
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected final boolean cleanup;
+    /**
      * The number of the last record specified
      */
     @SuppressWarnings("WeakerAccess")
@@ -72,9 +77,12 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
      * @param batchSize              {@code int} number of fasta records in one batch
      */
     @SuppressWarnings("WeakerAccess")
-    protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) {
+    protected TUITBLASTIdentifier(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
+                                  TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
+                                  final int batchSize, final boolean cleanup) {
         super(query, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
         this.batchSize = batchSize;
+        this.cleanup=cleanup;
         this.progressEdge=0;
     }
 
@@ -123,6 +131,14 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
                 do {
                     this.specify();
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
+            }
+            if(this.cleanup){
+                if(this.inputFile.exists()){
+                    this.cleanup(this.inputFile);
+                }
+                if(this.outputFile.exists()){
+                    this.cleanup(this.inputFile);
+                }
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
@@ -208,10 +224,10 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
      */
     public static TUITBLASTIdentifier newInstanceFromFileOperator(
             File tempDir, File executive, String[] parameterList, TUITFileOperator<NucleotideFasta> identifierFileOperator,
-            Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize) throws Exception {
+            Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap, final int batchSize, final boolean cleanup) throws Exception {
         List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
-            return new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            return new TUITBLASTIdentifier(batch, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap, batchSize,cleanup);
         } else {
             throw new Exception("The batch is empty, please check the input file");
         }
@@ -231,11 +247,11 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
      * @throws Exception if the input file read error occurs
      */
     public static TUITBLASTIdentifier newInstanceFromBLASTOutput(TUITFileOperator<NucleotideFasta> identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
-                                                                 File blastOutput, int batchSize) throws Exception {
+                                                                 File blastOutput, final int batchSize, final boolean cleanup) throws Exception {
 
         List<NucleotideFasta> batch =identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
-            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, new File(""), null, null, identifierFileOperator, connection, cutoffSetMap, batchSize);
+            TUITBLASTIdentifier tuitblastIdentifier = new TUITBLASTIdentifier(batch, new File(""), null, null, identifierFileOperator, connection, cutoffSetMap, batchSize,cleanup);
             tuitblastIdentifier.setBlastOutput(NCBI_BLAST_OutputHelper
                     .catchBLASTOutput(identifierFileOperator
                             .readOutputXML(blastOutput)));

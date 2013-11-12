@@ -21,7 +21,7 @@
         <!ATTLIST BLASTNPath path CDATA #REQUIRED>
         <!ELEMENT TMPDir ANY>
         <!ATTLIST TMPDir path CDATA #REQUIRED>
-        <!ELEMENT BLASTNParameters (Database*, Expect, EntrezQuery, Remote, MaxFilesInBatch)>
+        <!ELEMENT BLASTNParameters (Database*, Expect, EntrezQuery, Remote,NumThreads, MaxFilesInBatch,KeepBLASTOuts)>
         <!ELEMENT Database ANY>
         <!ATTLIST Database use (nt|est) #REQUIRED>
         <!ELEMENT Expect ANY>
@@ -30,14 +30,18 @@
         <!ATTLIST EntrezQuery value CDATA #REQUIRED>
         <!ELEMENT Remote ANY>
         <!ATTLIST Remote delegate (yes|no) #REQUIRED>
+        <!ELEMENT NumThreads ANY>
+        <!ATTLIST NumThreads value CDATA #REQUIRED>
         <!ELEMENT MaxFilesInBatch ANY>
         <!ATTLIST MaxFilesInBatch value CDATA #REQUIRED>
+        <!ELEMENT KeepBLASTOuts ANY>
+        <!ATTLIST KeepBLASTOuts keep (yes|no) #REQUIRED>
         <!ELEMENT SpecificationParameters (CutoffSet)>
-        <!ELEMENT CutoffSet (pIdentCutoff,QueryCoverageCutoff,EvalueRatioCutoff)>
+        <!ELEMENT CutoffSet (pIdentCutoff,QueryCoverageCutoff,Alpha)>
         <!ATTLIST CutoffSet rank (root_of_life | no_rank | superkingdom | kingdom | subkingdom | superphylum | phylum | subphylum | superclass | c_lass | subclass |infraclass | superorder | order | suborder | infraorder | parvorder | superfamily | family | subfamily | tribe | subtribe | genus | subgenus | species_group | species_subgroup | species | subspecies | varietas | forma ) #REQUIRED>
         <!ELEMENT pIdentCutoff ANY>
         <!ATTLIST pIdentCutoff value CDATA #REQUIRED>
         <!ELEMENT QueryCoverageCutoff ANY>
         <!ATTLIST QueryCoverageCutoff value CDATA #REQUIRED>
-        <!ELEMENT EvalueRatioCutoff ANY>
-        <!ATTLIST EvalueRatioCutoff value CDATA #REQUIRED>
+        <!ELEMENT Alpha ANY>
+        <!ATTLIST Alpha value CDATA #REQUIRED>

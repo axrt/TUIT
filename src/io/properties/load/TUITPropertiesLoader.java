@@ -39,25 +39,33 @@ public class TUITPropertiesLoader {
 
     static {
         //Expect
-        Expect defaultExpect = new Expect();
+        final Expect defaultExpect = new Expect();
         defaultExpect.setValue("10");
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setExpect(defaultExpect);
         //EntrezQuery
-        EntrezQuery defaultEntrezQuery = new EntrezQuery();
+        final EntrezQuery defaultEntrezQuery = new EntrezQuery();
         defaultEntrezQuery.setValue("");
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setEntrezQuery(defaultEntrezQuery);
         //Remote?
-        Remote defaultRemote = new Remote();
+        final Remote defaultRemote = new Remote();
         defaultRemote.setDelegate(String.valueOf(false));
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setRemote(defaultRemote);
+        //Number of threads to use with local blast
+        final NumThreads defaultNumThreads=new NumThreads();
+        defaultNumThreads.setValue("1");
+        TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setNumThreads(defaultNumThreads);
         //Maximum files in a batch
-        MaxFilesInBatch defaultMaxFilesInBatch = new MaxFilesInBatch();
+        final MaxFilesInBatch defaultMaxFilesInBatch = new MaxFilesInBatch();
         defaultMaxFilesInBatch.setValue("100");
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setMaxFilesInBatch(defaultMaxFilesInBatch);
         //Database
-        Database defaultDatabase = new Database();
+        final Database defaultDatabase = new Database();
         defaultDatabase.setUse("nt");
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getDatabase().add(defaultDatabase);
+        //Keep BLAST outputs?
+        final KeepBLASTOuts defaultKeepBLASTOuts = new KeepBLASTOuts();
+        defaultKeepBLASTOuts.setKeep(String.valueOf(false));
+        TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setKeepBLASTOuts(defaultKeepBLASTOuts);
     }
 
     /**
@@ -175,7 +183,8 @@ public class TUITPropertiesLoader {
                 /*
       Is printed out as an example of BLASTNPath formatting
      */
-                String CORRECT_TO_UNSIGNED_DOUBLE = ", please correct to a unsigned double value in [1.0,100.0]";
+                String CORRECT_TO_UNSIGNED_DOUBLE= ", please correct to a unsigned double value in [1.0,100.0]";
+                String CORRECT_TO_UNSIGNED_DOUBLE_AL = ", please correct to a unsigned double value in [0,0.5]";
                 if (specificationParameters.getCutoffSet().getPIdentCutoff() == null || specificationParameters.getCutoffSet().getPIdentCutoff().getValue() == null) {
                     throw new TUITPropertyBadFormatException("No pIdent cutoff specified at cutoff set number " + i + ", " + CUTOFFSET_EXAMPLE);
                 } else {
@@ -200,16 +209,16 @@ public class TUITPropertiesLoader {
                         throw new TUITPropertyBadFormatException("Bad Query coverage cutoff at cutoff set number " + i + CORRECT_TO_UNSIGNED_DOUBLE);
                     }
                 }
-                if (specificationParameters.getCutoffSet().getEvalueRatioCutoff() == null || specificationParameters.getCutoffSet().getEvalueRatioCutoff().getValue() == null) {
-                    throw new TUITPropertyBadFormatException("No E-value ratio cutoff specified at cutoff set number " + i + ", " + CUTOFFSET_EXAMPLE);
+                if (specificationParameters.getCutoffSet().getAlpha() == null || specificationParameters.getCutoffSet().getAlpha().getValue() == null) {
+                    throw new TUITPropertyBadFormatException("No alpha cutoff specified at cutoff set number " + i + ", " + CUTOFFSET_EXAMPLE);
                 } else {
                     try {
-                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getQueryCoverageCutoff().getValue());
-                        if (d < 1 || d > 100) {
-                            throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + CORRECT_TO_UNSIGNED_DOUBLE);
+                        Double d = Double.parseDouble(specificationParameters.getCutoffSet().getAlpha().getValue());
+                        if (d < 0 || d > 0.5) {
+                            throw new TUITPropertyBadFormatException("Bad alpha cutoff at cutoff set number " + i + CORRECT_TO_UNSIGNED_DOUBLE_AL);
                         }
                     } catch (NumberFormatException ne) {
-                        throw new TUITPropertyBadFormatException("Bad E-value ratio cutoff at cutoff set number " + i + CORRECT_TO_UNSIGNED_DOUBLE);
+                        throw new TUITPropertyBadFormatException("Bad alpha cutoff at cutoff set number " + i + CORRECT_TO_UNSIGNED_DOUBLE_AL);
                     }
                 }
             }
@@ -333,6 +342,31 @@ public class TUITPropertiesLoader {
             //noinspection ConstantConditions
             tuitProperties.getBLASTNParameters().setMaxFilesInBatch(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch());
             Log.getInstance().log(Level.WARNING,"No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getMaxFilesInBatch().getValue() + ".");
+        }
+        if (blastnParameters.getNumThreads() != null && blastnParameters.getNumThreads().getValue() != null) {
+            try {
+                Integer i = Integer.parseInt(blastnParameters.getNumThreads().getValue());
+                if (i < 0) {
+                    throw new TUITPropertyBadFormatException("Erroneous \"number of threads\" property, "
+                            + "please use reasonable unsigned integer values.");
+                }
+            } catch (NumberFormatException ne) {
+                throw new TUITPropertyBadFormatException("Erroneous \"number of threads\" property, please provide an unsigned integer value.");
+            }
+        } else {
+            //noinspection ConstantConditions
+            tuitProperties.getBLASTNParameters().setNumThreads(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getNumThreads());
+            Log.getInstance().log(Level.WARNING,"No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getNumThreads().getValue() + ".");
+        }
+        if (blastnParameters.getKeepBLASTOuts() == null || blastnParameters.getKeepBLASTOuts()== null) {
+            //noinspection ConstantConditions
+            tuitProperties.getBLASTNParameters().setKeepBLASTOuts(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts());
+            Log.getInstance().log(Level.WARNING,"No keep BLAST output property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts() + ".");
+            tuitProperties.getBLASTNParameters().setKeepBLASTOuts(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts());
+        } else {
+            if (!blastnParameters.getKeepBLASTOuts().getKeep().equals("yes") && !blastnParameters.getKeepBLASTOuts().getKeep().equals("no")) {
+                throw new TUITPropertyBadFormatException("Erroneous keep BLAST outputs value, please provide \"yes\" or \"no\"");
+            }
         }
 
         return tuitProperties;

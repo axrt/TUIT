@@ -60,48 +60,56 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     static {
 
         //Species-level-related
-        DEFAULT_CUTOFFS.put(Ranks.subspecies, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        DEFAULT_CUTOFFS.put(Ranks.species, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        DEFAULT_CUTOFFS.put(Ranks.species_subgroup, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        DEFAULT_CUTOFFS.put(Ranks.species_group, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        DEFAULT_CUTOFFS.put(Ranks.varietas, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
-        DEFAULT_CUTOFFS.put(Ranks.forma, TUITCutoffSet.newDefaultInstance(97.5, 95, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subspecies, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.species, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.species_subgroup, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.species_group, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.varietas, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.forma, TUITCutoffSet.newDefaultInstance(97.5, 95, 0.05));
 
 
         //Genus-level-related
-        DEFAULT_CUTOFFS.put(Ranks.subgenus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.genus, TUITCutoffSet.newDefaultInstance(95, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subgenus, TUITCutoffSet.newDefaultInstance(95, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.genus, TUITCutoffSet.newDefaultInstance(95, 90, 0.05));
 
         //Family-level-related
-        DEFAULT_CUTOFFS.put(Ranks.subfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.family, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.superfamily, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.subtribe, TUITCutoffSet.newDefaultInstance(80, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.subfamily, TUITCutoffSet.newDefaultInstance(80, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.family, TUITCutoffSet.newDefaultInstance(80, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.superfamily, TUITCutoffSet.newDefaultInstance(80, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.tribe, TUITCutoffSet.newDefaultInstance(80, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.subtribe, TUITCutoffSet.newDefaultInstance(80, 90, 0.05));
 
         //Order-level-related
-        DEFAULT_CUTOFFS.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.parvorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.infraorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.suborder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
-        DEFAULT_CUTOFFS.put(Ranks.superorder, TUITCutoffSet.newDefaultInstance(70, 90, 100));
+        DEFAULT_CUTOFFS.put(Ranks.order, TUITCutoffSet.newDefaultInstance(70, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.parvorder, TUITCutoffSet.newDefaultInstance(70, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.infraorder, TUITCutoffSet.newDefaultInstance(70, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.suborder, TUITCutoffSet.newDefaultInstance(70, 90, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.superorder, TUITCutoffSet.newDefaultInstance(70, 90, 0.05));
 
         //Any other level-related
-        DEFAULT_CUTOFFS.put(Ranks.subclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.infraclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.c_lass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.superclass, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.subphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.phylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.superphylum, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.subkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.kingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.superkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.no_rank, TUITCutoffSet.newDefaultInstance(60, 80, 100));
-        DEFAULT_CUTOFFS.put(Ranks.root_of_life, TUITCutoffSet.newDefaultInstance(0, 0, 1));
+        DEFAULT_CUTOFFS.put(Ranks.subclass, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.infraclass, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.c_lass, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.superclass, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.subphylum, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.phylum, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.superphylum, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.subkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.kingdom, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.superkingdom, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.no_rank, TUITCutoffSet.newDefaultInstance(60, 80, 0.05));
+        DEFAULT_CUTOFFS.put(Ranks.root_of_life, TUITCutoffSet.newDefaultInstance(0, 0, 0.05));
 
     }
 
+    /**
+     * Returns a cutoff set for a given taxonomic rank
+     * @param rank {@link Ranks} taxonomic rank
+     * @return {@link TUITCutoffSet} cutoff set
+     */
+    public TUITCutoffSet getCufoffsetByRank(Ranks rank){
+        return this.cutoffSetMap.get(rank);
+    }
     /**
      * A setter for a BLAST output to identify
      * @param blastOutput {@link BlastOutput} that will be used for taxonomic identification

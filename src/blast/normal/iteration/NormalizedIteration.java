@@ -385,10 +385,10 @@ public class NormalizedIteration<I extends Iteration> {
                     //is less then the threshold cutoff - do not allow the pivotal hit
                     Log.getInstance().log(Level.FINE,"Checking whether the hits are statistically different...");
                     if (this.blastIdentifier.hitsAreStatisticallyDifferentAtRank(normalizedHit, this.pivotalHit, this.currentRank)) {
-                        Log.getInstance().log(Level.FINE,"The hits are far enough (alpha <= 0.05).");
+                        Log.getInstance().log(Level.FINE,"The hits are far enough (alpha <= "+this.blastIdentifier.getCufoffsetByRank(this.currentRank).getAlpha()+" ).");
                         return true;
                     } else {
-                        Log.getInstance().log(Level.FINE,"The hits are not far enough (alpha > 0.05).");
+                        Log.getInstance().log(Level.FINE,"The hits are not far enough (alpha > "+this.blastIdentifier.getCufoffsetByRank(this.currentRank).getAlpha()+").");
                         return false;
                     }
                 }

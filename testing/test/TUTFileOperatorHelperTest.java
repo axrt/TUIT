@@ -1,7 +1,6 @@
 package test;
 
 import io.file.TUTFileOperatorHelper;
-import io.properties.jaxb.TUITProperties;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
