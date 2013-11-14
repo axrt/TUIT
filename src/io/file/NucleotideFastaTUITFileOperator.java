@@ -68,7 +68,7 @@ public class NucleotideFastaTUITFileOperator extends TUITFileOperator<Nucleotide
         }
         this.bufferedWriter.newLine();
         this.bufferedWriter.flush();
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return true;
     }
 
     /**

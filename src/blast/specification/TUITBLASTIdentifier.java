@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Level;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
@@ -115,7 +116,10 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
                     } else {
                         Log.getInstance().log(Level.INFO,"BLASTN started..");
                     }
-
+                    this.inputFile = new File(this.tempDir.getPath(),
+                            "in_" + String.valueOf(this.hashCode() + UUID.randomUUID().toString()));
+                    this.outputFile = new File(this.tempDir.getPath(),
+                            "out_" + String.valueOf(this.hashCode() + UUID.randomUUID().toString()));
                     this.BLAST();
 
                     if (remote) {

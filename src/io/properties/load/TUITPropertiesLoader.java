@@ -56,7 +56,7 @@ public class TUITPropertiesLoader {
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setNumThreads(defaultNumThreads);
         //Maximum files in a batch
         final MaxFilesInBatch defaultMaxFilesInBatch = new MaxFilesInBatch();
-        defaultMaxFilesInBatch.setValue("100");
+        defaultMaxFilesInBatch.setValue("5");
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setMaxFilesInBatch(defaultMaxFilesInBatch);
         //Database
         final Database defaultDatabase = new Database();
@@ -320,7 +320,6 @@ public class TUITPropertiesLoader {
 
         if (blastnParameters.getRemote() == null || blastnParameters.getRemote().getDelegate() == null) {
             //noinspection ConstantConditions
-            tuitProperties.getBLASTNParameters().setRemote(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote());
             Log.getInstance().log(Level.WARNING,"No BLASTN Remote property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote().getDelegate() + ".");
             tuitProperties.getBLASTNParameters().setRemote(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getRemote());
         } else {
@@ -331,7 +330,7 @@ public class TUITPropertiesLoader {
         if (blastnParameters.getMaxFilesInBatch() != null && blastnParameters.getMaxFilesInBatch().getValue() != null) {
             try {
                 Integer i = Integer.parseInt(blastnParameters.getMaxFilesInBatch().getValue());
-                if (i < 0) {
+                if (i <= 0) {
                     throw new TUITPropertyBadFormatException("Erroneous \"maximum files in a batch\" property, "
                             + "please use reasonable unsigned integer values.");
                 }
@@ -346,7 +345,7 @@ public class TUITPropertiesLoader {
         if (blastnParameters.getNumThreads() != null && blastnParameters.getNumThreads().getValue() != null) {
             try {
                 Integer i = Integer.parseInt(blastnParameters.getNumThreads().getValue());
-                if (i < 0) {
+                if (i <= 0) {
                     throw new TUITPropertyBadFormatException("Erroneous \"number of threads\" property, "
                             + "please use reasonable unsigned integer values.");
                 }

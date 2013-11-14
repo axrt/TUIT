@@ -54,7 +54,7 @@
         send the query to the NCBI BLAST server.-->
         <Remote delegate="no"/>
         <!--A number of threads  that current blast will use-->
-        <NumThreads value="10"/>
+        <NumThreads value="12"/>
         <!--As long as the query file may contain multiple
         fasta formatted records, this field allows to specify
         how many of those are taken for a single round

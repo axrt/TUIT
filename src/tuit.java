@@ -259,7 +259,7 @@ public class tuit {
             NucleotideFastaTUITFileOperator nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance();
             nucleotideFastaTUITFileOperator.setInputFile(inputFile);
             nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
-            final String cleanupString=tuitProperties.getBLASTNParameters().getNumThreads().getValue();
+            final String cleanupString=tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
             final boolean cleanup;
             if(cleanupString.equals("no")){
                cleanup=true;
@@ -273,14 +273,14 @@ public class tuit {
                         tmpDir, blastnExecutable, parameters,
                         nucleotideFastaTUITFileOperator, connection,
                         cutoffMap,
-                        Integer.parseInt(tuitProperties.getBLASTNParameters().getNumThreads().getValue())
+                        Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
                 ,cleanup);
 
             } else {
                 try {
                     blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
                             cutoffMap, blastOutputFile,
-                            Integer.parseInt(tuitProperties.getBLASTNParameters().getNumThreads().getValue()),cleanup);
+                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()),cleanup);
 
                 }catch (JAXBException e){
                     Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
