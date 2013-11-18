@@ -389,6 +389,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
                 parentTaxonomicNode.addChild(taxonomicNode);
                 taxonomicNode.setParent(parentTaxonomicNode);
                 if (parent_taxid != taxid) {
+                    preparedStatement.close();
                     //noinspection UnusedAssignment
                     parentTaxonomicNode = this.attachFullDirectLineage(parentTaxonomicNode);
                 }
