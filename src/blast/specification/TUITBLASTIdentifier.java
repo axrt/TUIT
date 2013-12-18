@@ -141,7 +141,7 @@ public class TUITBLASTIdentifier extends BLASTIdentifier<NucleotideFasta> {
                     this.cleanup(this.inputFile);
                 }
                 if(this.outputFile.exists()){
-                    this.cleanup(this.inputFile);
+                    this.cleanup(this.outputFile);
                 }
             }
             tuitFileOperator.reset();
