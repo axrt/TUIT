@@ -55,11 +55,15 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
         if(nodesRow==null){
             return null;
         }
-        final String scientificName=this.ramDb.getNameByTaxId(nodesRow.getV());
+        final NodesRow parentNodesRow=this.ramDb.getNodeByTaxId(nodesRow.getV());
+        if(parentNodesRow==null){
+            return null;
+        }
+        final String scientificName=this.ramDb.getNameByTaxId(parentNodesRow.getK());
         if(scientificName==null){
             return null;
         }
-        final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(nodesRow.getV(),nodesRow.getRank(),scientificName);
+        final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(parentNodesRow.getK(),parentNodesRow.getRank(),scientificName);
         taxonomicNode.addChild(normalizedHit.getFocusNode());
         normalizedHit.setTaxonomy(taxonomicNode);
         normalizedHit.setFocusNode(taxonomicNode);
@@ -86,17 +90,18 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
     @Override
     public TaxonomicNode attachFullDirectLineage(TaxonomicNode taxonomicNode) throws Exception {
         final NodesRow nodesRow=this.ramDb.getNodeByTaxId(taxonomicNode.getTaxid());
-        if(nodesRow==null){
+        final NodesRow parentNodesRow=this.ramDb.getNodeByTaxId(nodesRow.getV());
+        if(parentNodesRow==null){
             return null;
         }
-        final String scientificName=this.ramDb.getNameByTaxId(nodesRow.getV());
+        final String scientificName=this.ramDb.getNameByTaxId(parentNodesRow.getK());
         if(scientificName==null){
             return null;
         }
-        TaxonomicNode parentTaxonomicNode = TaxonomicNode.newDefaultInstance(nodesRow.getV(),nodesRow.getRank(), scientificName);
+        TaxonomicNode parentTaxonomicNode = TaxonomicNode.newDefaultInstance(parentNodesRow.getK(),parentNodesRow.getRank(), scientificName);
         parentTaxonomicNode.addChild(taxonomicNode);
         taxonomicNode.setParent(parentTaxonomicNode);
-        if (taxonomicNode.getTaxid() != parentTaxonomicNode.getTaxid()) {
+        if (parentNodesRow.getK()!=parentNodesRow.getV()) {
             parentTaxonomicNode = this.attachFullDirectLineage(parentTaxonomicNode);
         }
         return taxonomicNode;

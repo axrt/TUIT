@@ -6,9 +6,7 @@ import logger.Log;
 import taxonomy.Ranks;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -28,7 +26,7 @@ public class RamDb implements Serializable {
     }
 
     public Integer getTaxIdByGi(final Integer gi) {
-        return this.giByTaxIdMap[gi];
+        return this.giByTaxIdMap[gi.intValue()];
     }
 
     public String getNameByTaxId(final Integer taxid) {
@@ -124,7 +122,7 @@ public class RamDb implements Serializable {
             Log.getInstance().log(Level.INFO, "Mapping Nodes...");
             final Map<Integer, Ranks> ranks_ids = new HashMap<>();
             for (Ranks r : Ranks.values()) {
-                ranks_ids.put(r.ordinal() + 1, r);
+                ranks_ids.put(r.ordinal(), r);
             }
             while ((line = nodesReader.readLine()) != null) {
                 final String[] split = line.split("\t");
