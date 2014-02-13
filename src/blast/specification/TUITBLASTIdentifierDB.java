@@ -41,21 +41,7 @@ import java.util.logging.Level;
  * A {@link BLASTIdentifier} that is specifically adapted for the TUIT algorithm: it
  */
 public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
-    /**
-     * A size of a batch
-     */
-    @SuppressWarnings("WeakerAccess")
-    protected final int batchSize;
-    /**
-     * Indicates whether the module should cleanup temp files (such as BLAST output)
-     */
-    @SuppressWarnings("WeakerAccess")
-    protected final boolean cleanup;
-    /**
-     * The number of the last record specified
-     */
-    @SuppressWarnings("WeakerAccess")
-    protected int progressEdge;
+
     /**
      * A protected constructor.
      *
@@ -75,16 +61,12 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
      *                               taxonomic information
      * @param cutoffSetMap           a {@link Map}, provided by the user and that may differ from the
      *                               default set
-     * @param batchSize              {@code int} number of fasta records in one batch
      */
     @SuppressWarnings("WeakerAccess")
     protected TUITBLASTIdentifierDB(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
                                     TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,
                                     final int batchSize, final boolean cleanup) {
-        super(query, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap);
-        this.batchSize = batchSize;
-        this.cleanup=cleanup;
-        this.progressEdge=0;
+        super(query, tempDir, executive, parameterList, identifierFileOperator, connection, cutoffSetMap,batchSize,cleanup);
     }
 
     /**
@@ -171,25 +153,6 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
         }
     }
 
-    /**
-     * Utility method that handles the process of taxonomic specification
-     *
-     * @throws SQLException       in case an error occurs during database communication
-     * @throws BadFormatException in case an error in case formatting the {@link blast.ncbi.output.Hit} GI fails
-     */
-    @SuppressWarnings("WeakerAccess")
-    protected void specify() throws Exception {
-        Log.getInstance().log(Level.FINE,"Specifying the BLAST output.");
-        if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
-            this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
-            this.normalizeIterations();
-            for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
-                normalizedIteration.specify();
-            }
-        } else {
-            Log.getInstance().log(Level.SEVERE,"No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
-        }
-    }
 
     /**
      * An overridden implementation takes into account that the batch contains a limited number of records and shifts frame by a batch size within the list of

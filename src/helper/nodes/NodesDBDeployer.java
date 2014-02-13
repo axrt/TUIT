@@ -5,7 +5,10 @@ import taxonomy.Ranks;
 
 import java.io.*;
 import java.sql.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
  * software for accurate taxonomic classification of nucleotide sequences.
@@ -257,7 +260,7 @@ public class NodesDBDeployer {
             String empty = "";
             while ((line = bufferedReader.readLine()) != null) {
                 String[] splitter = line.split("\t\\|\t");
-                if (splitter.length>3&&!splitter[0].equals(empty) && !splitter[1].equals(empty)) {
+                if (splitter.length > 3 && !splitter[0].equals(empty) && !splitter[1].equals(empty)) {
 
                     if (ranks_ids.containsKey(splitter[2])) {
                         fileWriter.write(
@@ -282,6 +285,44 @@ public class NodesDBDeployer {
         return filteredNodesDmpFile;
     }
 
+    public static File filterNodesDmpFileRam(File nodesDmpFile) throws IOException, SQLException {
+        //Read the input file line by line
+        BufferedReader bufferedReader = null;
+        FileWriter fileWriter = null;
+        File filteredNodesDmpFile = null;
+        try {
+            //Prepare a validation lookup
+            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+            filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
+            fileWriter = new FileWriter(filteredNodesDmpFile);
+            String line;
+            String empty = "";
+            while ((line = bufferedReader.readLine()) != null) {
+
+                String[] splitter = line.split("\t\\|\t");
+
+                    if (splitter.length > 3 && !splitter[0].equals(empty)&&!splitter[0].startsWith("|") && !splitter[1].equals(empty)) {
+                        fileWriter.write(
+                                splitter[0] + '\t'
+                                        + splitter[1] + '\t'
+                                        + Ranks.convertValue(splitter[2]).ordinal()
+                                        + '\n'
+                        );
+                        fileWriter.flush();
+                    }
+                }
+        } finally {
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+        }
+        return filteredNodesDmpFile;
+    }
+    //TODO document
+
     /**
      * Injects the nodes.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
      *
@@ -300,7 +341,7 @@ public class NodesDBDeployer {
             statement.execute("SET foreign_key_checks = 0;");
             final boolean execute = statement.execute(
                     "LOAD DATA INFILE '"
-                            + nodesFilteredFile.getPath().replaceAll("\\\\","/")
+                            + nodesFilteredFile.getPath().replaceAll("\\\\", "/")
                             + "' REPLACE INTO TABLE "
                             + LookupNames.dbs.NCBI.nodes.name
                             + " FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'" +

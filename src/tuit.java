@@ -1,7 +1,9 @@
 import blast.specification.BLASTIdentifier;
 import blast.specification.TUITBLASTIdentifierDB;
+import blast.specification.TUITBLASTIdentifierRAM;
 import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
+import db.ram.RamDb;
 import exception.TUITPropertyBadFormatException;
 import helper.NCBITablesDeployer;
 import io.file.NucleotideFastaTUITFileOperator;
@@ -48,7 +50,7 @@ import java.util.logging.Level;
 
 public class tuit {
 
-    private static String licence="\n" +
+    private static String licence = "\n" +
             "\nTHANK YOU FOR USING THE TAXONOMIC UNIT IDENTIFICATION TOOL\n\n" +
             "Taxonomic Unit Identification Tool  Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov\n" +
             "    This program comes with ABSOLUTELY NO WARRANTY; for details see LICENCE.\n" +
@@ -88,6 +90,11 @@ public class tuit {
      */
     private final static String TUIT_EXT = ".tuit";
 
+    //TODO document
+    private final static String USE_DB = "usedb";
+
+    private final static String RAM_DB = "ramdb.obj";
+
     @SuppressWarnings("ConstantConditions")
     public static void main(String[] args) {
         System.out.println(licence);
@@ -102,7 +109,7 @@ public class tuit {
         TUITPropertiesLoader tuitPropertiesLoader;
         TUITProperties tuitProperties;
         //
-        String[] parameters=null;
+        String[] parameters = null;
         //
         Connection connection = null;
         MySQL_Connector mySQL_connector;
@@ -110,6 +117,8 @@ public class tuit {
         Map<Ranks, TUITCutoffSet> cutoffMap;
         //
         BLASTIdentifier blastIdentifier = null;
+        //
+        RamDb ramDb = null;
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
@@ -120,10 +129,13 @@ public class tuit {
         options.addOption(tuit.B, "blast_output<file>", true, "Perform on a pre-BLASTed output");
         options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
         options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
+        options.addOption(tuit.USE_DB, "usedb", false, "Use RDBMS instead of RAM-based taxonomy");
         HelpFormatter formatter = new HelpFormatter();
 
         try {
-
+            //Get TUIT directory
+            final File tuitDir = new File(new File(tuit.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent());
+            final File ramDbFile = new File(tuitDir, tuit.RAM_DB);
             //Setup logger
             Log.getInstance().setLogName("tuit.log");
             //Read command line
@@ -136,29 +148,57 @@ public class tuit {
             //Load properties
             tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
             tuitProperties = tuitPropertiesLoader.getTuitProperties();
-            //Connect to the database
-            mySQL_connector = MySQL_Connector.newDefaultInstance(
-                    "jdbc:mysql://" + tuitProperties.getDBConnection().getUrl().trim() + "/",
-                    tuitProperties.getDBConnection().getLogin().trim(),
-                    tuitProperties.getDBConnection().getPassword().trim());
-            mySQL_connector.connectToDatabase();
-            connection = mySQL_connector.getConnection();
+
+
             //Create tmp directory and blastn executable
             tmpDir = new File(tuitProperties.getTMPDir().getPath());
             blastnExecutable = new File(tuitProperties.getBLASTNPath().getPath());
 
             //Check for deploy
             if (commandLine.hasOption(tuit.DEPLOY)) {
-                NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, tmpDir);
+                if (commandLine.hasOption(tuit.USE_DB)) {
+                    NCBITablesDeployer.fastDeployNCBIDatabasesFromNCBI(connection, tmpDir);
+                } else {
+                    NCBITablesDeployer.fastDeployNCBIRamDatabaseFromNCBI(tmpDir, ramDbFile);
+                }
+
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
                 return;
             }
             //Check for update
             if (commandLine.hasOption(tuit.UPDATE)) {
-                NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
+                if (commandLine.hasOption(tuit.USE_DB)) {
+                    NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
+                } else {
+                    //TODO: implemet an update for the ram version and substitute below
+                    NCBITablesDeployer.fastDeployNCBIRamDatabaseFromNCBI(tmpDir, ramDbFile);
+                }
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
                 return;
             }
+
+            //Connect to the database
+            if (commandLine.hasOption(tuit.USE_DB)) {
+                mySQL_connector = MySQL_Connector.newDefaultInstance(
+                        "jdbc:mysql://" + tuitProperties.getDBConnection().getUrl().trim() + "/",
+                        tuitProperties.getDBConnection().getLogin().trim(),
+                        tuitProperties.getDBConnection().getPassword().trim());
+                mySQL_connector.connectToDatabase();
+                connection = mySQL_connector.getConnection();
+            } else {
+                //Probe for ram database
+
+                if (ramDbFile.exists() && ramDbFile.canRead()) {
+                    Log.getInstance().log(Level.INFO, "Loading RAM taxonomic map...");
+                    ramDb = RamDb.loadSelfFromFile(ramDbFile);
+                } else {
+                    Log.getInstance().log(Level.SEVERE, "The RAM database either has not been deployed, or is not accessible." +
+                            "Please use the --deploy option and check permissions on the TUIT directory. " +
+                            "If you were looking to use the RDBMS as a taxonomic reference, plese use the -usedb option.");
+                    return;
+                }
+            }
+
             if (commandLine.hasOption(tuit.B)) {
                 blastOutputFile = new File(commandLine.getOptionValue(tuit.B));
                 if (!blastOutputFile.exists() || !blastOutputFile.canRead()) {
@@ -204,13 +244,11 @@ public class tuit {
             }
 
             //Create blast parameters
-            StringBuilder stringBuilder = new StringBuilder();
-            //stringBuilder.append("\"");
+            final StringBuilder stringBuilder = new StringBuilder();
             for (Database database : tuitProperties.getBLASTNParameters().getDatabase()) {
                 stringBuilder.append(database.getUse());
                 stringBuilder.append(" ");//Gonna insert an extra space for the last database
             }
-            //stringBuilder.append("\"");
             String remote;
             String entrez_query;
             if (tuitProperties.getBLASTNParameters().getRemote().getDelegate().equals("yes")) {
@@ -230,7 +268,7 @@ public class tuit {
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                                 "-negative_gilist", TUTFileOperatorHelper.restrictToEntrez(
                                 tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT", "OR")).getAbsolutePath(),
-                                "-num_threads",tuitProperties.getBLASTNParameters().getNumThreads().getValue()
+                                "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     } else {
                         parameters = new String[]{
@@ -238,7 +276,7 @@ public class tuit {
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                                 "-gilist", TUTFileOperatorHelper.restrictToEntrez(
                                 tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),
-                                "-num_threads",tuitProperties.getBLASTNParameters().getNumThreads().getValue()
+                                "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     }
                 }
@@ -259,34 +297,60 @@ public class tuit {
             NucleotideFastaTUITFileOperator nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance();
             nucleotideFastaTUITFileOperator.setInputFile(inputFile);
             nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
-            final String cleanupString=tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
+            final String cleanupString = tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
             final boolean cleanup;
-            if(cleanupString.equals("no")){
-               cleanup=true;
-            }else {
-               cleanup=false;
+            if (cleanupString.equals("no")) {
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be deleted");
+                cleanup = true;
+            } else {
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be kept");
+                cleanup = false;
             }
             //Create blast identifier
             ExecutorService executorService = Executors.newSingleThreadExecutor();
-            if (blastOutputFile == null) {
-                blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromFileOperator(
-                        tmpDir, blastnExecutable, parameters,
-                        nucleotideFastaTUITFileOperator, connection,
-                        cutoffMap,
-                        Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
-                        , cleanup);
+            if (commandLine.hasOption(tuit.USE_DB)) {
 
-            } else {
-                try {
-                    blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
-                            cutoffMap, blastOutputFile,
-                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup);
+                if (blastOutputFile == null) {
+                    blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromFileOperator(
+                            tmpDir, blastnExecutable, parameters,
+                            nucleotideFastaTUITFileOperator, connection,
+                            cutoffMap,
+                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
+                            , cleanup);
 
-                }catch (JAXBException e){
-                    Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                } else {
+                    try {
+                        blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
+                                cutoffMap, blastOutputFile,
+                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup);
+
+                    } catch (JAXBException e) {
+                        Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                catch (Exception e) {
-                    e.printStackTrace();
+
+            }else{    //TODO: change the executive to executable everywhere
+                if (blastOutputFile == null) {
+                    blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromFileOperator(
+                            tmpDir, blastnExecutable, parameters,
+                            nucleotideFastaTUITFileOperator,
+                            cutoffMap,
+                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
+                            , cleanup,ramDb);
+
+                } else {
+                    try {
+                        blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator,
+                                cutoffMap, blastOutputFile,
+                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup,ramDb);
+
+                    } catch (JAXBException e) {
+                        Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             Future<?> runnableFuture = executorService.submit(blastIdentifier);

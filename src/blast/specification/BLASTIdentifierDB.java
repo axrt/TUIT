@@ -27,8 +27,9 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
     @SuppressWarnings("WeakerAccess")
     protected final Connection connection;
 
-    public BLASTIdentifierDB(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap) {
-        super(query, tempDir, executive, parameterList, identifierFileOperator, cutoffSetMap);
+    protected BLASTIdentifierDB(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
+                             TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,final int batchSize, final boolean cleanup) {
+        super(query, tempDir, executive, parameterList, identifierFileOperator, cutoffSetMap,batchSize,cleanup);
         this.connection = connection;
     }
 
@@ -67,7 +68,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
                 taxid = resultSet.getInt(2);
                 scientificName = resultSet.getString(3);
                 rank = Ranks.values()[resultSet.getInt(5) - 1];
-                TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
+                final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
                 normalizedHit.setTaxonomy(taxonomicNode);
                 normalizedHit.setFocusNode(taxonomicNode);
             } else {
@@ -116,7 +117,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
             preparedStatement.setInt(1, normalizedHit.getAssignedTaxid());
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(resultSet.getInt(2),
+                final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(resultSet.getInt(2),
                         Ranks.values()[resultSet.getInt(5) - 1],
                         resultSet.getString(3));
                 taxonomicNode.addChild(normalizedHit.getFocusNode());

@@ -1,6 +1,7 @@
 package helper;
 
 
+import db.ram.RamDb;
 import helper.gitaxid.GI_TaxIDDeployer;
 import helper.names.NamesDeployer;
 import helper.nodes.NodesDBDeployer;
@@ -108,6 +109,33 @@ public class NCBITablesDeployer {
         Log.getInstance().log(Level.INFO,"Deploying Nodes Database..");
         NodesDBDeployer.deployRanksValidationTable(connection);
         NodesDBDeployer.injectProcessedNodesDmpFile(connection, NodesDBDeployer.filterNodesDmpFile(connection, new File(taxdump_dir,SystemUtil.NODES_FILE)));
+        //Reporting
+        Log.getInstance().log(Level.INFO,"Database deployed successfully..");
+
+    }
+
+    //TODO: document
+    public static void fastDeployNCBIRamDatabaseFromNCBI(final File tmpDir, final File ramDbObject)throws Exception{
+        //Downloading files
+        Log.getInstance().log(Level.INFO,"Downloading files..");
+        Log.getInstance().log(Level.INFO,"Downloading " + SystemUtil.TAXDUMP_ARCH);
+        File taxdump_tar_gz=SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.TAXDUMP_ARCH);
+        Log.getInstance().log(Level.INFO,"Downloading "+SystemUtil.GI_TAXID_DMP_ARCH+" updates..");
+        File gi_taxid_dmp= SystemUtil.downloadFileFromNCBIFTP(tmpDir, SystemUtil.NCBI_TAXONOMY,SystemUtil.GI_TAXID_DMP_ARCH);
+        //Extracting files
+        Log.getInstance().log(Level.INFO,"Extracting "+SystemUtil.TAXDUMP_ARCH);
+        File taxdump_dir=SystemUtil.unArchiveTarGZFile(taxdump_tar_gz,tmpDir);
+        Log.getInstance().log(Level.INFO,"Extracting "+SystemUtil.GI_TAXID_DMP_ARCH);
+        File gi_taxid_deploy_dir=SystemUtil.unArchiveGZFile(gi_taxid_dmp,tmpDir);
+        //Deploying the database
+        Log.getInstance().log(Level.INFO,"Deploying Names Database..");
+        final File names_dmp=NamesDeployer.filterNamesDmpFile(new File(taxdump_dir, SystemUtil.NAMES_FILE));
+        Log.getInstance().log(Level.INFO,"Deploying Nodes Database..");
+        final File nodes_dmp=NodesDBDeployer.filterNodesDmpFileRam(new File(taxdump_dir, SystemUtil.NODES_FILE));
+        Log.getInstance().log(Level.INFO,"Assembling RAM database object..");
+        final RamDb ramDb=RamDb.loadSelfFromFilteredNcbiFiles(new File(gi_taxid_deploy_dir,SystemUtil.GI_TAXID_NUCL),names_dmp,nodes_dmp);
+        Log.getInstance().log(Level.INFO,"Serializing the database for future use..");
+        RamDb.serialize(ramDb,ramDbObject);
         //Reporting
         Log.getInstance().log(Level.INFO,"Database deployed successfully..");
 

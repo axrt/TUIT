@@ -1,13 +1,16 @@
 package db.ram;
 
-import db.ram.row.GiTaxIdRow;
 import db.ram.row.NamesRow;
 import db.ram.row.NodesRow;
+import logger.Log;
 import taxonomy.Ranks;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * Created by alext on 2/12/14.
@@ -15,14 +18,48 @@ import java.util.Map;
 //TODO: document
 public class RamDb implements Serializable {
 
-    protected final Map<Integer, GiTaxIdRow> giByTaxIdMap;
+    protected int[] giByTaxIdMap;
     protected final Map<Integer, NamesRow> nameByTaxIdMap;
     protected final Map<Integer, NodesRow> nodeByTaxidMap;
 
     protected RamDb() {
-        this.giByTaxIdMap = new HashMap<>();
         this.nameByTaxIdMap = new HashMap<>();
         this.nodeByTaxidMap = new HashMap<>();
+    }
+
+    public Integer getTaxIdByGi(final Integer gi) {
+        return this.giByTaxIdMap[gi];
+    }
+
+    public String getNameByTaxId(final Integer taxid) {
+        final NamesRow nr=this.nameByTaxIdMap.get(taxid);
+        if(nr!=null){
+            return nr.getV();
+        }else{
+            return null;
+        }
+    }
+
+    public Ranks getRankByTaxId(final Integer taxid) {
+        final NodesRow nodesRow=this.nodeByTaxidMap.get(taxid);
+        if(nodesRow.getRank()!=null){
+           return nodesRow.getRank();
+        }else{
+            return null;
+        }
+    }
+
+    public Integer getParetTaxIdByTaxId(final Integer taxid) {
+        final NodesRow nodesRow=this.getNodeByTaxId(taxid);
+        if(nodesRow!=null){
+            return nodesRow.getV();
+        }else{
+            return null;
+        }
+    }
+
+    public NodesRow getNodeByTaxId(final Integer taxid) {
+        return this.nodeByTaxidMap.get(taxid);
     }
 
     public static RamDb loadSelfFromFile(File objDb) throws IOException, ClassNotFoundException {
@@ -36,7 +73,7 @@ public class RamDb implements Serializable {
         }
     }
 
-    public static RamDb loadSelfFromFilteredNcbiFiles(File gi_taxid_dmp, File names_dmp, File nodes_dmp) throws IOException {
+    public static RamDb loadSelfFromFilteredNcbiFiles(File gi_taxid_dmp, File names_dmp, File nodes_dmp) throws Exception {
 
         try (
                 final BufferedReader giTaxidReader = new BufferedReader(new FileReader(gi_taxid_dmp));
@@ -47,28 +84,52 @@ public class RamDb implements Serializable {
             final RamDb ramDb = new RamDb();
 
             //Read in the files
+            Log.getInstance().log(Level.INFO, "Mapping names...");
             String line;
             while ((line = namesReader.readLine()) != null) {
                 final String[] split = line.split("\t");
-                final NamesRow namesRow = NamesRow.newInstance(Integer.parseInt(split[0]), split[1]);
+                final NamesRow namesRow = NamesRow.newInstance(Integer.valueOf(split[0]), split[1]);
                 ramDb.nameByTaxIdMap.put(namesRow.getK(), namesRow);
             }
-            while ((line = giTaxidReader.readLine()) != null) {
-                final String[] split = line.split("\t");
-                final Integer taxid = Integer.parseInt(split[1].trim());
-                if (ramDb.nameByTaxIdMap.containsKey(taxid)) {
-                    final GiTaxIdRow giTaxIdRow = GiTaxIdRow.newInstance(Integer.parseInt(split[0]), taxid);
-                    ramDb.giByTaxIdMap.put(giTaxIdRow.getK(), giTaxIdRow);
+            Log.getInstance().log(Level.INFO, "Deploying GIs...");
+            //Performance
+            int max=0;
+            try (final BufferedReader giCount = new BufferedReader(new FileReader(gi_taxid_dmp));) {
+                while ((line = giCount.readLine()) != null) {
+                    final String[]split=line.split("\t");
+                    final int gi=Integer.parseInt(split[0].trim());
+                    //TODO: rethink this
+                    if(max<gi){
+                       max=gi;
+                    }else{
+                        throw new Exception("Inconsistency in gi_taxid.dmp!");
+                    }
                 }
             }
+            Log.getInstance().log(Level.INFO, "Maximum GI: "+max);
+            ramDb.giByTaxIdMap = new int[max+1];
+            //End Performance
+            int count = 0;
+            while ((line = giTaxidReader.readLine()) != null) {
+                final String[] split = line.split("\t");
+                final int gi=Integer.parseInt(split[0].trim());
+                final Integer taxid = Integer.parseInt(split[1].trim());
+                while(gi!=count&&count<ramDb.giByTaxIdMap.length){
+                    ramDb.giByTaxIdMap[count]=0;
+                    count++;
+                }
+                ramDb.giByTaxIdMap[count]=taxid;
+                count++;
+            }
+            Log.getInstance().log(Level.INFO, "Mapping Nodes...");
             final Map<Integer, Ranks> ranks_ids = new HashMap<>();
             for (Ranks r : Ranks.values()) {
                 ranks_ids.put(r.ordinal() + 1, r);
             }
             while ((line = nodesReader.readLine()) != null) {
                 final String[] split = line.split("\t");
-                final Integer taxid = Integer.parseInt(split[0]);
-                final NodesRow nodesRow = NodesRow.newInstance(taxid, Integer.parseInt(split[1]), ranks_ids.get(Integer.parseInt(split[2])));
+                final Integer taxid = Integer.valueOf(split[0]);
+                final NodesRow nodesRow = NodesRow.newInstance(taxid, Integer.valueOf(split[1]), ranks_ids.get(Integer.valueOf(split[2])));
                 ramDb.nodeByTaxidMap.put(nodesRow.getK(), nodesRow);
             }
 

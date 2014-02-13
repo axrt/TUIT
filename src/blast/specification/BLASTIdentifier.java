@@ -101,6 +101,22 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     }
 
     /**
+     * A size of a batch
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected final int batchSize;
+    /**
+     * Indicates whether the module should cleanup temp files (such as BLAST output)
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected final boolean cleanup;
+    /**
+     * The number of the last record specified
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected int progressEdge;
+
+    /**
      * Returns a cutoff set for a given taxonomic rank
      *
      * @param rank {@link Ranks} taxonomic rank
@@ -148,10 +164,13 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     @SuppressWarnings("WeakerAccess")
     protected BLASTIdentifier(List<T> query,
                               File tempDir, File executive, String[] parameterList, TUITFileOperator identifierFileOperator,
-                              Map<Ranks, TUITCutoffSet> cutoffSetMap) {
+                              Map<Ranks, TUITCutoffSet> cutoffSetMap,final int batchSize, final boolean cleanup) {
         super(query, null, tempDir, executive, parameterList,
                 identifierFileOperator);
         this.cutoffSetMap = cutoffSetMap;
+        this.batchSize=batchSize;
+        this.cleanup=cleanup;
+        this.progressEdge=0;
     }
 
     /**
@@ -215,5 +234,25 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
     @SuppressWarnings({"unchecked", "UnusedReturnValue"})
     public boolean acceptResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
         return ((TUITFileOperator) this.fileOperator).saveResults(query, normalizedIteration);
+    }
+
+    /**
+     * Utility method that handles the process of taxonomic specification
+     *
+     * @throws SQLException       in case an error occurs during database communication
+     * @throws BadFormatException in case an error in case formatting the {@link blast.ncbi.output.Hit} GI fails
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected void specify() throws Exception {
+        Log.getInstance().log(Level.FINE,"Specifying the BLAST output.");
+        if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
+            this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
+            this.normalizeIterations();
+            for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
+                normalizedIteration.specify();
+            }
+        } else {
+            Log.getInstance().log(Level.SEVERE,"No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
+        }
     }
 }

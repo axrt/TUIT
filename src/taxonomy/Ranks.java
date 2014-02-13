@@ -80,7 +80,18 @@ public enum Ranks {
     public String getName() {
         return name;
     }
+    //TODO: document
 
+    public static Ranks convertValue(final String strValue){
+        switch (strValue){
+            case "class":return c_lass;
+            case "no rank":return no_rank;
+            case "species group":return species_group;
+            case "species subgroup":return species_subgroup;
+            case "root of life":return root_of_life;
+            default:return Ranks.valueOf(strValue);
+        }
+    }
     /**
      * Returns a previous {@link Ranks} for a given {@link Ranks}
      * @param rank {@link Ranks}
