@@ -72,4 +72,13 @@ public interface TaxonomicDatabaseOperator extends DatabaseOperator {
      * @throws Exception
      */
     public TaxonomicNode attachFullDirectLineage(final TaxonomicNode taxonomicNode) throws Exception;
+
+    /**
+     * Allows to reduce those hits, which have a no_rank parent (such as unclassified Bacteria)
+     *
+     * @param normalizedHit {@link NormalizedHit}
+     * @return {@code true} if a given Hit has a no_rank parent, {@code false} otherwise
+     * @throws java.sql.SQLException in case a database communication error occurs
+     */
+    public boolean hitHasANoRankParent(final NormalizedHit normalizedHit) throws Exception;
 }

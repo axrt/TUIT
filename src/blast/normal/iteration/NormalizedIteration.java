@@ -104,7 +104,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws BadFormatException in case formatting the {@link Hit} GI fails
      */
     @SuppressWarnings("WeakerAccess")
-    protected void normaliseHits() throws SQLException, BadFormatException {
+    protected void normaliseHits() throws Exception {
         //Check if the costly procedure of Hits normalization has already been performed
         if (this.normalizedHits == null) {
             //If not yet - create a new list of the size of the list of hits
@@ -136,7 +136,7 @@ public class NormalizedIteration<I extends Iteration> {
      * Looks for the lowest {@link Ranks} amount ghe {@link Ranks} of the {@link NormalizedHit}s and sets currentHit field to the lowest that was found
      */
     @SuppressWarnings("WeakerAccess")
-    protected void findLowestRank() throws SQLException {
+    protected void findLowestRank() throws Exception {
         //Go down starting with the root of life
         //The algorithm is only interested in real ranks, so the "no rank" is of no interest
         for (NormalizedHit normalizedHit : this.normalizedHits) {
@@ -210,7 +210,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case a communication error occurs during the database interaction
      */
     @SuppressWarnings("WeakerAccess")
-    protected List<NormalizedHit> ensureNormalizedHitsPassCutoffsAtCurrentRank(List<NormalizedHit> normalizedHitsUnderTest) throws SQLException {
+    protected List<NormalizedHit> ensureNormalizedHitsPassCutoffsAtCurrentRank(List<NormalizedHit> normalizedHitsUnderTest) throws Exception {
         //First check the incoming list for null and for that at least one normalized hit exists there
         if (normalizedHitsUnderTest != null && normalizedHitsUnderTest.size() > 0) {
             //Create a new list to hold those hits that have passed the cutoffs assuming in an optimistic way that all of the
@@ -282,7 +282,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case something goes wrong during the database communication
      */
     @SuppressWarnings("WeakerAccess")
-    protected boolean normalizedHitsWithBetterEvalueAllowPivotal() throws SQLException {
+    protected boolean normalizedHitsWithBetterEvalueAllowPivotal() throws Exception {
         //Prepare a list of hits with better E-value than the current potential pivotal hit
         Log.getInstance().log(Level.FINE,"Looking for hits with better E-value...");
         List<NormalizedHit> normalizedHitsWithBetterEvalue = this.getNormalisedHitsWithBetterEvalue();
@@ -311,7 +311,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case something goes wrong during the database communication
      */
     @SuppressWarnings("WeakerAccess")
-    protected boolean couldSetPivotalHitAtCurrentRank() throws SQLException {
+    protected boolean couldSetPivotalHitAtCurrentRank() throws Exception {
         //Prepare a list of normalized hits that have been checked against the cutoffs at current rank
         Log.getInstance().log(Level.FINE,"Attempting to set current potential pivotal hit...");
         List<NormalizedHit> normalizedHitsAtCurrentRank = this.ensureNormalizedHitsPassCutoffsAtCurrentRank(this.gatherHitsAtCurrentRank());
@@ -337,7 +337,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case an error occurs during the database communication
      */
     @SuppressWarnings("WeakerAccess")
-    protected void reduceNoRanks() throws SQLException {
+    protected void reduceNoRanks() throws Exception {
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1) {
                 this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
@@ -352,7 +352,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException in case an error occurs during the database communication
      */
     @SuppressWarnings("WeakerAccess")
-    protected void liftCurrentRankOfSpecificationForHits() throws SQLException {
+    protected void liftCurrentRankOfSpecificationForHits() throws Exception {
         for (NormalizedHit normalizedHit : this.normalizedHits) {
             if (normalizedHit.getAssignedRank() == this.currentRank) {
                 this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
@@ -408,7 +408,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @throws SQLException       in case an error occurs during the database communication
      * @throws BadFormatException in case formatting the {@link Hit} GI fails
      */
-    public void specify() throws SQLException, BadFormatException {
+    public void specify() throws Exception {
         if (!this.iteration.getIterationHits().getHit().isEmpty()) {
             this.normaliseHits();
             Log.getInstance().log(Level.FINE,"Current number of normalized hits is: " + this.normalizedHits.size());

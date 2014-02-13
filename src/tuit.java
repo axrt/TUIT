@@ -1,5 +1,5 @@
 import blast.specification.BLASTIdentifier;
-import blast.specification.TUITBLASTIdentifier;
+import blast.specification.TUITBLASTIdentifierDB;
 import blast.specification.cutoff.TUITCutoffSet;
 import db.mysql.MySQL_Connector;
 import exception.TUITPropertyBadFormatException;
@@ -269,18 +269,18 @@ public class tuit {
             //Create blast identifier
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             if (blastOutputFile == null) {
-                blastIdentifier = TUITBLASTIdentifier.newInstanceFromFileOperator(
+                blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromFileOperator(
                         tmpDir, blastnExecutable, parameters,
                         nucleotideFastaTUITFileOperator, connection,
                         cutoffMap,
                         Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
-                ,cleanup);
+                        , cleanup);
 
             } else {
                 try {
-                    blastIdentifier = TUITBLASTIdentifier.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
+                    blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
                             cutoffMap, blastOutputFile,
-                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()),cleanup);
+                            Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup);
 
                 }catch (JAXBException e){
                     Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");

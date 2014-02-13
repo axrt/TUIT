@@ -1,704 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Fixed a bug that prevented the output file from deletion">
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/row/NamesRow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/row/NodesRow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/RamDb.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/db/ram/row/RamRow.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" afterPath="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371218648665" ignored="false" />
-    <file path="/EncodedFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375794116123" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110848075" ignored="false" />
-    <file path="/NculeotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371110846846" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Fasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793599882" ignored="false" />
-    <file path="/Dummy.txt" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1387402100282" ignored="false" />
-    <file path="/general.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369924444988" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936024770" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936126229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936047774" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/remote/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936047774" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB/derby/remote/derby/remote/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936047774" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936212018" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936212018" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936212018" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936283693" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936283693" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936283693" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936314160" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936314160" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936314160" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/remote/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369947946095" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/remote/ResultSaver.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375714344295" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/remote/DB_Connector_helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369936340286" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715815074" ignored="false" />
-    <file path="/Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715813814" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954070803" ignored="false" />
-    <file path="/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954021560" ignored="false" />
-    <file path="/Derby_RemoteDB_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369939784947" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/mysql/MySQL_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369953682297" ignored="false" />
-    <file path="/MySQL_Connector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369950023952" ignored="false" />
-    <file path="/fragment.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377725832052" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/MySQL_ConnectorTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369986994855" ignored="false" />
-    <file path="/MySQL_ConnectorTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369986965182" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/mysql/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954021560" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/db/derby/ConnectorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369954048641" ignored="false" />
-    <file path="/NodesDBDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376581428514" ignored="false" />
-    <file path="/NodesDBDDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370862294666" ignored="false" />
-    <file path="/LookupNames.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370939779320" ignored="false" />
-    <file path="/LookupNamesTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1369992396722" ignored="false" />
-    <file path="/GI_TaxIDDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378659090907" ignored="false" />
-    <file path="/deployGI_TaxIDTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370355861656" ignored="false" />
-    <file path="/NamesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378664853347" ignored="false" />
-    <file path="/NamesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370614281578" ignored="false" />
-    <file path="/*.regexp" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370211084548" ignored="false" />
-    <file path="/NCBITablesDeployer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378664537748" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371542405363" ignored="false" />
-    <file path="/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375713387704" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372354200556" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/remote/NCBI_Q_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370522649733" ignored="false" />
-    <file path="/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384467487693" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370362092305" ignored="false" />
-    <file path="/NCBI_Q_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582108068" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/remote/NCBI_Q_TBLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370364270084" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/remote/NCBI_Q_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370364259617" ignored="false" />
-    <file path="/NCBI_Q_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375716070931" ignored="false" />
-    <file path="/GI_TaxIDDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375288031445" ignored="false" />
-    <file path="/NCBITablesDeployerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370896040344" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/SystemUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433410491" ignored="false" />
-    <file path="/SystemUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433409662" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/SystemUtilTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433446514" ignored="false" />
-    <file path="/SystemUtilTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433437013" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371542455357" ignored="false" />
-    <file path="/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715394432" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="/BlastOutputUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582398975" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370630174850" ignored="false" />
-    <file path="/BLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372070722484" ignored="false" />
-    <file path="/NormalizedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376062073016" ignored="false" />
-    <file path="/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375536813340" ignored="false" />
-    <file path="/DatabaseOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372070892948" ignored="false" />
-    <file path="/NormalyzedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371204452382" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="/AbstractTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582364189" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/taxonomy/NCBITaxonomicTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370860179644" ignored="false" />
-    <file path="/NCBITaxonomicTree.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370864367284" ignored="false" />
-    <file path="/NCBITaxonomicTreeTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370864152867" ignored="false" />
-    <file path="/TaxonomicNode.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1374663060376" ignored="false" />
-    <file path="/NormalyzedHit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1370872925506" ignored="false" />
-    <file path="/BLAST_IdentifierTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624131181" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/xslt-schema.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329212" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xslt-1_0.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329212" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/relaxng.rng" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329212" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/catalog.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329212" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/XMLSchema.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329212" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/html5/xhtml5.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/XMLSchema-instance.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-transitional.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xml.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xslt-2_0.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xinclude.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/settings-1.0.0.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-strict.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/documentation.xsl" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-frameset.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/profiles-1.0.0.xsd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/documentation.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371109329213" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375919053110" ignored="false" />
-    <file path="/NucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793754989" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="/ProteinFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793817965" ignored="false" />
-    <file path="/TUTICutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371199836815" ignored="false" />
-    <file path="/TUITCutoffSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384284319466" ignored="false" />
-    <file path="/BLAST_IdentifierFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371217426186" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/local/exec/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371537398916" ignored="false" />
-    <file path="/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373273029820" ignored="false" />
-    <file path="/properties.dtd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384293175485" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePair.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371246301358" ignored="false" />
-    <file path="/ActionValuePair.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371246300557" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairList.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371234952274" ignored="false" />
-    <file path="/ActionValuePairList.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371234069785" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371247565413" ignored="false" />
-    <file path="/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376663539663" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReverseMeme/src/com/company/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371251218912" ignored="false" />
-    <file path="/ActionValuePairFrequency.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371247613959" ignored="false" />
-    <file path="/TUTFileOperatorHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384293421630" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457045601" ignored="false" />
-    <file path="/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715837585" ignored="false" />
-    <file path="/BLASTNParameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371457293906" ignored="false" />
-    <file path="/properties.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384293278671" ignored="false" />
-    <file path="/TUTFileOperatorHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371459824457" ignored="false" />
-    <file path="/TUITPropertyBadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706857258" ignored="false" />
-    <file path="/TUITPropertiesLoader.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384293731139" ignored="false" />
-    <file path="/QueryCoveragCutoff.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371472038682" ignored="false" />
-    <file path="/TUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384462716022" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/multithread/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371541868485" ignored="false" />
-    <file path="/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582010886" ignored="false" />
-    <file path="/TUITBlASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371544201402" ignored="false" />
-    <file path="/BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715196280" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/multithread/BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371544083178" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/BLAST/NCBI/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
-    <file path="/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371561523290" ignored="false" />
-    <file path="/TUITBLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371543896870" ignored="false" />
-    <file path="/NucleotideFastaTUITFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384468056932" ignored="false" />
-    <file path="/TUITBLAST_Identifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372068172049" ignored="false" />
-    <file path="/NormalizedIteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384285859380" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/JAVA_BIO_jar/JAVA_BIO.jar!/BLAST/NCBI/local/exec/NCBI_EX_BLAST.class" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1371624129084" ignored="false" />
-    <file path="/a.dummy" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582273638" ignored="false" />
-    <file path="/user.sql" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372075906341" ignored="false" />
-    <file path="/FastaInputFileException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372077141564" ignored="false" />
-    <file path="/tuit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384467243390" ignored="false" />
-    <file path="/BLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384540220658" ignored="false" />
-    <file path="/update.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372151559610" ignored="false" />
-    <file path="/deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372153715522" ignored="false" />
-    <file path="/Logger.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1372148956277" ignored="false" />
-    <file path="/Log.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375647541220" ignored="false" />
-    <file path="/TUITBLASTIdentifier.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1387402047648" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/AlnFile.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011835410" ignored="false" />
-    <file path="/AlnFile.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011797038" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/AlignmentException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011548231" ignored="false" />
-    <file path="/AlignmentException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373011533864" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/ClustalW2Aln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="/ClustalW2Aln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373400251829" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/Aln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373035044577" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/clustal/ClustalAln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373035967275" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/ClustalW2AlnTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375707655984" ignored="false" />
-    <file path="/ClustalW2AlnTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373022398510" ignored="false" />
-    <file path="/Aln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373035044577" ignored="false" />
-    <file path="/ClustalAln.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373035965824" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/OTU/OTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373039522229" ignored="false" />
-    <file path="/OTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373284708013" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/OTU/EncodedNucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373039474715" ignored="false" />
-    <file path="/EncodedNucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373303608427" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/OTU/EncodedNucleotideFastaFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373038997296" ignored="false" />
-    <file path="/EncodedNucleotideFastaFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373038972366" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/nucleotide/NucleotideFasta_AC_BadFormatException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/HitHsps.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/BlastOutputIterations.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/Hsp.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/BlastOutputParam.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363228" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/Statistics.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/BLAST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/BlastOutput.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/Parameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/NCBI_BLAST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/Bad_Q_BLAST_Parameter_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_TBLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLAST_Helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/Bad_Q_BLAST_RequestException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363228" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363228" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLAST_ParameterSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363228" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/JNI/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/JNI/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/NCBI_Q_BLAST_EscapeSymbols.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/JNI/NCBI_JNI_BLAST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/remote/test/NCBI_Q_BLASTP_TEST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/JNI/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/multithread/NCBI_EX_BLASTer_FinishedEvent.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/multithread/NCBI_EX_BLASTer_TaskFinished_listener.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/multithread/NCBI_EX_BLASTer_P.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/multithread/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/NCBI_EX_BLAST_FileOperator.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/event/BLAST_FinishedEvent.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/event/BLAST_TaskFinished_listener.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/NCBI_EX_BLASTP.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/multithread/BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715333955" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/NCBI_EX_BLAST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/local/exec/NCBI_EX_BLASTN.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/NCBI_BLAST_OutputHelper.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/IterationStat.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/BlastOutputMbstat.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/Iteration.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/IterationHits.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/HitHsps.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/Statistics.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta_AC_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717834806" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/BlastOutput.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/BlastOutputIterations.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/Hit.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta_AC_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717725994" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/BlastOutputParam.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/Hsp.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/BLASTOutputFactory.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/output/Parameters.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.COMPOSITION_BASED_STATISTICS_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLASTP.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.MATRIX_NAME_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/Bad_Q_BLAST_Parameter_Exception.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_ParameterSet.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_TBLASTN.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.FORMAT_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.FORMAT_OBJECT_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.CMD_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.TEMPLATE_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.BLAST_PROGRAM_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/Q_BLAST_Parameter.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.ALIGNMENT_VIEW_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.MASK_CHAR_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.FILTER_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.DATABASE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_EscapeSymbols.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.TEMPLATE_LENGTH_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.MASK_COLOR_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.GENETIC_CODE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Helper.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/Bad_Q_BLAST_RequestException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.PROGRAM_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/NCBI_Q_BLAST_Parameter.PAGE_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/test/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486725" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/test/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/test/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/remote/test/NCBI_Q_BLASTP_TEST.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/NCBI_EX_BLASTer.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/NCBI_EX_BLASTer_FinishedEvent.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/NCBI_EX_BLASTer_P.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/NCBI/multithread/NCBI_EX_BLASTer_TaskFinished_listener.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/event/BLAST_TaskFinished_listener.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/event/BLAST_FinishedEvent.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/event/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/event/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/event/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/multithread/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/multithread/BLASTer.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/multithread/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/multithread/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363229" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-5.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-19.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-13.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-6.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-20.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-14.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-7.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-1.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-9.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-8.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-2.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-22.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-16.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-3.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-23.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-17.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-11.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-4.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-15.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-18.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/index-files/index-12.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/util/UtilFileOperator.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/util/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/util/BlastOutputUtil.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/RemoteBLASTerCore.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363230" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/NCBI/Remote_NCBI_EX_BLAST_Sprite.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/NCBI/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/NCBI/Remote_NCBI_EX_BLAST_P_Sprite.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/overview-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/serialized-form.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793793460" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/constant-values.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269494999" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/overview-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/overview-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720609522" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/RemoteBLASTSprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375712158119" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/RemoteBLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717857324" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/RemoteBLASTerCore.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/NCBI/Remote_NCBI_EX_BLAST_P_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338733" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/allclasses-noframe.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486727" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/NCBI/Remote_NCBI_EX_BLAST_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338733" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384040974836" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/protein/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/allclasses-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/JNI/NCBI_JNI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/exec/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338733" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/exec/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338733" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/exec/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/exec/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/protein/ProteinFasta_AC_BadFormatException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/IterationStat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338734" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/nucleotide/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/BlastOutputMbstat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338734" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/IterationHits.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338734" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/BLASTOutputFactory.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430289" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/Iteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338734" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/Hit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269338734" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363227" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/BLAST/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363228" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363230" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/RemoteBLASTSprite.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430282" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/RemoteBLASTer.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430282" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/db/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363230" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/db/package-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269363230" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/NCBI_BlastOutput.mod.dtd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430284" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/otu/OTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373284708575" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/otu/EncodedNucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373303612578" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/otu/EncodedNucleotideFastaFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269396536" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/ncbi/Remote_NCBI_EX_BLAST_P_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375714268197" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/NCBI/package-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430282" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/ncbi/Remote_NCBI_EX_BLAST_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375713559538" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/rmi/NCBI/package-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/output/NCBI_Entity.mod.dtd" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269430283" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/NCBI/local/jni/NCBI_JNI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269459907" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/HitHsps.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375707431833" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/BlastOutputIterations.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375707425650" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/Hsp.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/BlastOutputParam.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/Statistics.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/NCBI_BLAST_OutputHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375715838660" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/BlastOutput.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/Parameters.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/Bad_Q_BLAST_Parameter_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_TBLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLAST_Helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384467684760" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/Bad_Q_BLAST_RequestException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375714674310" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLAST_ParameterSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375716899920" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375716287841" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/NCBI_Q_BLAST_EscapeSymbols.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/remote/test/NCBI_Q_BLASTP_TEST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/multithread/NCBI_EX_BLASTer_FinishedEvent.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/multithread/NCBI_EX_BLASTer_TaskFinished_listener.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486724" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/multithread/NCBI_EX_BLASTer_P.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375712068994" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/multithread/NCBI_EX_BLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/NCBI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/local/jni/NCBI_JNI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375710162108" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/local/exec/NCBI_EX_BLAST_FileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373273203011" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/local/exec/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/local/exec/NCBI_EX_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384467615844" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/local/exec/NCBI_EX_BLASTP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/IterationStat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/BlastOutputMbstat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/IterationHits.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375707435140" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/BLASTOutputFactory.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/Iteration.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/blast/ncbi/output/Hit.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373269486729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/align/Aligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373283894680" ignored="false" />
-    <file path="/Aligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373283885095" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/align/local/ExecutableAligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373283526463" ignored="false" />
-    <file path="/ExecutableAligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373271569337" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/align/local/clustal/ClustalAligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375709473512" ignored="false" />
-    <file path="/ClustalAligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375709473512" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/align/local/clustal/ClustalW2Aligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375709741673" ignored="false" />
-    <file path="/ClustalW2Aligner.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375709733314" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/ExecutableUtilFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384468204407" ignored="false" />
-    <file path="/ExecutableUtilFileOperator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373275384660" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/ClustalW2AlignerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="/ClustalW2AlignerTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373283685166" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/otu/AlignableOTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373400314525" ignored="false" />
-    <file path="/AlignableOTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373400313694" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/otu/EncodedOTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="/EncodedOTU.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375709641868" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/EncodedOTUTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="/EncodedOTUTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373303473980" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/OTUConsensusConversionTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="/OTUConsensusConversionTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373375923886" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/test/OTUReducedRedundancyTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="/OTUReducedRedundancyTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1373404503327" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/TUIT_RDP_Comparison/src/com/company/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1374826556509" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/TUIT_RDP_Comparison/src/com/company/OTUSpecification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1374670203345" ignored="false" />
-    <file path="/OTUSpecification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1374669529930" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/TUIT_RDP_Comparison/src/com/company/TaxonomicNode.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1374663083717" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/Deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375367048594" ignored="false" />
-    <file path="/Deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376607717907" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376663564589" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/Sample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375367330137" ignored="false" />
-    <file path="/Sample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377622752487" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/Patient.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375311235050" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/deploy/Deploy.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376607951496" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/patient/Patient.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376597939364" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/sample/Sample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375372250824" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/sample/SampleRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375372187527" ignored="false" />
-    <file path="/SampleRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375371006128" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/patient/PatientRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376600021235" ignored="false" />
-    <file path="/PatientRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376600009701" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/ClinicalParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375379667504" ignored="false" />
-    <file path="/ClinicalParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375379614335" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameters/ClinicalParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375379684377" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/ClinicalParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376595059480" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/OSDI.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376595061676" ignored="false" />
-    <file path="/OSDI.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376595030659" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/ClinicalParameterRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375379862279" ignored="false" />
-    <file path="/ClinicalParameterRecord.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375379846967" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/TBUT.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375389358526" ignored="false" />
-    <file path="/TBUT.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375389271443" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377729654109" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/Stain.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375392176606" ignored="false" />
-    <file path="/Stain.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375392165311" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/clinicalparameter/Schrim.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375392632373" ignored="false" />
-    <file path="/Schrim.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375392619279" ignored="false" />
-    <file path="/RestrictToEntrezTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375467113993" ignored="false" />
-    <file path="/GetResourceTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375478623427" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/connect/DBConnector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375483675772" ignored="false" />
-    <file path="/DBConnector.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375483675772" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/gui/PatientsTable.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375487121040" ignored="false" />
-    <file path="/PatientsTable.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375487036213" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/gui/SamplesTable.form" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375484576419" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/gui/SamplesTable.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375484576419" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/gui/PatientsTable.form" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375485688766" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/test/PatientTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375486675982" ignored="false" />
-    <file path="/PatientTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375486673413" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/test/PatientsTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375487066730" ignored="false" />
-    <file path="/PatientsTableTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375487064739" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/TaxonomyClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720328744" ignored="false" />
-    <file path="/TaxonomyClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720247261" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/Ranks.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375536833265" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/RDP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375535384104" ignored="false" />
-    <file path="/RDP.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375537999951" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375535386585" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/RDPClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720463051" ignored="false" />
-    <file path="/RDPClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720460279" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/test/RDPClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720587085" ignored="false" />
-    <file path="/RDPClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720585784" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/TUITClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720575880" ignored="false" />
-    <file path="/TUITClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720519549" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/test/TUITClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720598962" ignored="false" />
-    <file path="/TUITClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720597949" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376412866738" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/test/TestComparison.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375911745588" ignored="false" />
-    <file path="/TestComparison.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375911736548" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/.idea/artifacts/JAVA_BIO_jar.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375563147923" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/util/UtilFileOperator_Helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375718097486" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta_Sequence_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/protein/ProteinFasta_Sequence_BadFromatException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta_Sequence_BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706331254" ignored="false" />
-    <file path="/NucleotideFasta_Sequence_BadFromatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706343796" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/nucleotide/NucleotideFasta_Sequence_BadFromatException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta_Sequence_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta_BadFromat_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/BadFromatException.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta_BadFromat_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/nucleotide/NucleotideFasta_BadFromat_Exception.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375706348747" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/format/fasta/protein/ProteinFasta_BadFromat_Exception.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793793460" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/rmi/RemoteBLASTer_Helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375707633861" ignored="false" />
-    <file path="/NCBI_EX_BLASTer_P.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375712068344" ignored="false" />
-    <file path="/NCBI_JNI_BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375710162108" ignored="false" />
-    <file path="/RemoteBLASTer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717857324" ignored="false" />
-    <file path="/RemoteBLASTSprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375712158119" ignored="false" />
-    <file path="/Remote_NCBI_EX_BLAST_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375713559538" ignored="false" />
-    <file path="/NCBI_Q_TBLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582327851" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/blast/ncbi/local/exec/NCBI_EX_BLASTN.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375713057846" ignored="false" />
-    <file path="/RemoteBLASTerCore.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717933314" ignored="false" />
-    <file path="/Remote_NCBI_EX_BLAST_P_Sprite.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375714268197" ignored="false" />
-    <file path="/Bad_Q_BLAST_RequestException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375714642389" ignored="false" />
-    <file path="/BLAST.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384040885651" ignored="false" />
-    <file path="/BLAST_FinishedEvent.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582067752" ignored="false" />
-    <file path="/NCBI_EX_BLASTer_FinishedEvent.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582059936" ignored="false" />
-    <file path="/NCBI_Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582159789" ignored="false" />
-    <file path="/Q_BLAST_Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375716286781" ignored="false" />
-    <file path="/UtilFileOperator_Helper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375718097486" ignored="false" />
-    <file path="/NCBI_Q_BLAST_ParameterSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375716881045" ignored="false" />
-    <file path="/NucleotideFasta_AC_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717709971" ignored="false" />
-    <file path="/ProteinFasta_AC_BadFormatException.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375717830398" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/docs/package-list" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375720609522" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/trainingset/TrainingSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375820720762" ignored="false" />
-    <file path="/TrainingSet.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375820702259" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/trainingset/TrainingSetTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376239270291" ignored="false" />
-    <file path="/TrainingSetTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375820351594" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/trainingset/LooseNucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375820651980" ignored="false" />
-    <file path="/LooseNucleotideFasta.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375820647337" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/nucleotide/NucleotideFasta_BadFormat_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793691352" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/src/format/fasta/protein/ProteinFasta_BadFormat_Exception.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375793793460" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/format/RDPTrainingSetClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375998831542" ignored="false" />
-    <file path="/RDPTrainingSetClassification.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375998830801" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/trainingset/RDPTrainingSetClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378844951154" ignored="false" />
-    <file path="/RDPTrainingSetClassificationTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378828235109" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/evaluation/RecoveryEvaluation.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375828181836" ignored="false" />
-    <file path="/RecoveryEvaluation.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375828161346" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/com/company/otu/OTUAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375909374567" ignored="false" />
-    <file path="/OTUAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375909356100" ignored="false" />
-    <file path="$PROJECT_DIR$/../ScalaStudy/src/FirstStep.scala" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1375918232135" ignored="false" />
-    <file path="$PROJECT_DIR$/../ScalaStudy/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376061331836" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUIT_RDP_Comparison/src/err/ErrorHandler.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376413131771" ignored="false" />
-    <file path="/ErrorHandler.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376413127583" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/util/SystemUtil.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376433545049" ignored="false" />
-    <file path="/schema.sql" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376511847581" ignored="false" />
-    <file path="$PROJECT_DIR$/../WindowsFileTest/src/Main.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376522619076" ignored="false" />
-    <file path="/Patient.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377725281551" ignored="false" />
-    <file path="/Wintest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376660138280" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddDESGroups.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376668679535" ignored="false" />
-    <file path="/AddDESGroups.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376668677821" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddExtendedCodes.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376671366244" ignored="false" />
-    <file path="/AddExtendedCodes.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376671365434" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/addCytokines.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376693426904" ignored="false" />
-    <file path="/addCytokines.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1376692791610" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/preparation/TaxIDForNameFinder.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377289636471" ignored="false" />
-    <file path="/TaxIDForNameFinder.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377289635643" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddBarcodes.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377532536542" ignored="false" />
-    <file path="/AddBarcodes.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377531494887" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddReads.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377626002031" ignored="false" />
-    <file path="/AddReads.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377547868272" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddPrimers.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377611005309" ignored="false" />
-    <file path="/AddPrimers.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377610999832" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/LinkPrimersToRNAProcessings.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377616200940" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AddCytokines.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377611367571" ignored="false" />
-    <file path="/LinkPrimersToRNAProcessings.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377616200940" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/sql/queries" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377612823488" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/addons/AttachSequencings.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377617310454" ignored="false" />
-    <file path="/AttachSequencings.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377617299181" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/Main.scala" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377620331499" ignored="false" />
-    <file path="/Main.scala" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377620195904" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/eval/Sample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377620786237" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/.idea/misc.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377620749755" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378318712855" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/data/Sample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377624588370" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/eval/CalculateAmplificationDifference.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377624716852" ignored="false" />
-    <file path="/CalculateAmplificationDifference.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377624405054" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/data/ExtendedBarcodeMap.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377626676160" ignored="false" />
-    <file path="/ExtendedBarcodeMap.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377626672624" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmplificationEvaluation/src/eval/ReEvaluateChineeseData.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377634986664" ignored="false" />
-    <file path="/ReEvaluateChineeseData.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377634985274" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/correlation.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377723935784" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/correl/ClinicalParametersHeatMap.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377791355734" ignored="false" />
-    <file path="/ClinicalParametersHeatMap.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377791282315" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/ClinicalParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724103563" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724471734" ignored="false" />
-    <file path="/Parameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724292166" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/SubSample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724762070" ignored="false" />
-    <file path="/SubSample.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724758064" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/DatabaseParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724704675" ignored="false" />
-    <file path="/DatabaseParameter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377724663721" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/Patient.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377725686959" ignored="false" />
-    <file path="$PROJECT_DIR$/../OcularDatabase/src/com/alext/model/ClinicalParameterRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377725741461" ignored="false" />
-    <file path="/ClinicalParameterRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377725730281" ignored="false" />
-    <file path="$PROJECT_DIR$/../16SBrisk/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1380118717555" ignored="false" />
-    <file path="$PROJECT_DIR$/../16SBrisk/src/AddBriskTo16S.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377895749823" ignored="false" />
-    <file path="/AddBriskTo16S.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377895598010" ignored="false" />
-    <file path="$PROJECT_DIR$/../16SBrisk/.idea/misc.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1377889903478" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/.idea/misc.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582062892" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/.idea/workspace.xml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1380118717555" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/JAVA_BIO.iml" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378581247729" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/overview-summary.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/overview-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/allclasses-frame.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/overview-tree.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/allclasses-noframe.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/constant-values.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/help-doc.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/serialized-form.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/deprecated-list.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582771916" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-6.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.ALIGNMENT_VIEW_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.PROGRAM_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-13.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-19.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-14.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-4.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-7.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.FORMAT_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.FORMAT_OBJECT_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-23.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.GENETIC_CODE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-1.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.DATABASE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-20.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Helper.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-17.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.MATRIX_NAME_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLASTP.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582212861" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.PAGE_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-18.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-16.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.TEMPLATE_LENGTH_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582212861" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.COMPOSITION_BASED_STATISTICS_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582212862" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-5.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/util/BlastOutputUtil.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.MASK_CHAR_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-15.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/output/BlastOutput.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-8.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-9.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-3.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.MASK_COLOR_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.BLAST_PROGRAM_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.CMD_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/index-files/index-12.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582284153" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/blast/ncbi/remote/NCBI_Q_BLAST_Parameter.TEMPLATE_TYPE_PARAM.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/rmi/RemoteBLASTerCore.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/doc/taxonomy/AbstractTree.Node.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378582429840" ignored="false" />
-    <file path="$PROJECT_DIR$/javadoc/tuit/main/tuit.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378584095841" ignored="false" />
-    <file path="$PROJECT_DIR$/javadoc/constant-values.html" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378584095841" ignored="false" />
-    <file path="/MANIFEST.MF" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383770512508" ignored="false" />
-    <file path="$PROJECT_DIR$/../AmoebaProject/src/ms/AttachTaxonomyToGIs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378902062299" ignored="false" />
-    <file path="/AttachTaxonomyToGIs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1378849552697" ignored="false" />
-    <file path="/FisherExact.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383325199561" ignored="false" />
-    <file path="/FischerExactTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383327740600" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/compare/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384790743352" ignored="false" />
-    <file path="/TUITClassificatinsComparativeAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384787201336" ignored="false" />
-    <file path="/TUITCutoffSetTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383338316977" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/restrict/GetAllowedACs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384456594080" ignored="false" />
-    <file path="/GetAllowedACs.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384456584824" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/TUITClassificationOfPreclassified.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383961621510" ignored="false" />
-    <file path="/TUITClassificationOfPreclassified.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383961000004" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/gaps/GapAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383767787405" ignored="false" />
-    <file path="/GapAnalysis.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383767707476" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/format/DecomposeMultiRDPOutput.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384021468059" ignored="false" />
-    <file path="/DecomposeMultiRDPOutput.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383960016030" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/format/ConvertRDPToTUITFromat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383947813261" ignored="false" />
-    <file path="/ConvertRDPToTUITFromat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383943426451" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/format/ConcatinateFileNamesForMegan.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383955705483" ignored="false" />
-    <file path="/ConcatinateFileNamesForMegan.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383955704445" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/format/ConvertMeganToTUITFromat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383947994078" ignored="false" />
-    <file path="/ConvertMeganToTUITFromat.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383947986287" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/format/BlasOutputConcatinator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383965782919" ignored="false" />
-    <file path="/BlasOutputConcatinator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1383965782297" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/HCE/FastaDeredunder.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384214162294" ignored="false" />
-    <file path="/FastaDeredunder.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384214154575" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/HCE/NonClassifiedByRDPExtract.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384458721964" ignored="false" />
-    <file path="/NonClassifiedByRDPExtract.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384458351318" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/analisis/HCE/FinalTUITAnalyzer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384296209733" ignored="false" />
-    <file path="/FinalTUITAnalyzer.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384296208331" ignored="false" />
-    <file path="$PROJECT_DIR$/../HCE/src/correction/RDPOutputReformatter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384389490536" ignored="false" />
-    <file path="$PROJECT_DIR$/../HCE/src/correction/PeelOutRank.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384390264188" ignored="false" />
-    <file path="$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/blast/ncbi/local/exec/NCBI_EX_BLAST.class" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384468393150" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/BRiSKRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384545298740" ignored="false" />
-    <file path="/BRiSKRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384545296957" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/BRiSKCase.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384557402490" ignored="false" />
-    <file path="/BRiSKCase.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384550054699" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/BRiSKGrout.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384538115850" ignored="false" />
-    <file path="/BRiSKGrout.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384538570998" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/BRiSKGroup.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384550313867" ignored="false" />
-    <file path="/BRiSKGroup.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384546197848" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/taxonomy/TaxonomyHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384556875310" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/TaxonomizedBRiSKCase.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384543758895" ignored="false" />
-    <file path="/TaxonomizedBRiSKCase.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384543755229" ignored="false" />
-    <file path="/TaxonomyHelper.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384556069830" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/TaxonomizedBRiSKRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384550115477" ignored="false" />
-    <file path="/TaxonomizedBRiSKRead.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384549505146" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/TaxonomizedBRiSKReadTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384543517066" ignored="false" />
-    <file path="/TaxonomizedBRiSKReadTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384543515075" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/run.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384544091280" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/run/ToRDPConverter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384557453780" ignored="false" />
-    <file path="/ToRDPConverter.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384557452979" ignored="false" />
-    <file path="$PROJECT_DIR$/../BRiSK/src/com/taxonomy/TaxonomyHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384557560284" ignored="false" />
-    <file path="/TaxonomyHelperTest.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384556240357" ignored="false" />
-    <file path="$PROJECT_DIR$/../TUITArticleResponse/src/dataset/DataSetCreator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384791965036" ignored="false" />
-    <file path="/DataSetCreator.java" changelist="5a8d8838-9a7d-495d-8bbd-257e97c294d8" time="1384791964710" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -765,78 +84,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <file leaf-file-name="TUITBLASTIdentifierDB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="261" column="104" selection-start="12886" selection-end="12886" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITBLASTIdentifier.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="52" selection-start="6692" selection-end="6720" vertical-scroll-proportion="0.60390764">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="20" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="19" selection-start="5846" selection-end="5846" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="properties.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="63" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0">
+            <state line="180" column="45" selection-start="8316" selection-end="8316" vertical-scroll-proportion="0.0" vertical-offset="2649" max-vertical-offset="4301">
               <folding>
-                <marker date="1384458798477" expanded="true" signature="3108:3296" placeholder="..." />
-                <marker date="1384458798477" expanded="true" signature="4141:4281" placeholder="..." />
-                <marker date="1384458798477" expanded="true" signature="4381:4521" placeholder="..." />
-                <marker date="1384458798477" expanded="true" signature="4616:4756" placeholder="..." />
+                <element signature="e#9693#9704#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TUITPropertiesLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
+      <file leaf-file-name="BLASTIdentifierDB.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="17" selection-start="18292" selection-end="18292" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="9" column="68" selection-start="288" selection-end="288" vertical-scroll-proportion="0.16612378" vertical-offset="0" max-vertical-offset="5729">
+              <folding>
+                <element signature="e#730#763#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="properties.dtd" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
+      <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="28" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUTFileOperatorHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0">
+            <state line="410" column="42" selection-start="21254" selection-end="21254" vertical-scroll-proportion="0.0" vertical-offset="6865" max-vertical-offset="7786">
               <folding />
             </state>
           </provider>
@@ -845,18 +118,24 @@
       <file leaf-file-name="BLASTIdentifier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0">
+            <state line="46" column="108" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3417">
               <folding>
-                <element signature="e#2238#2260#0" expanded="true" />
+                <element signature="e#2067#2100#0" expanded="true" />
+                <element signature="e#5718#5751#0" expanded="true" />
+                <element signature="e#5930#5963#0" expanded="true" />
+                <element signature="e#6114#6147#0" expanded="true" />
+                <element signature="e#7153#7186#0" expanded="true" />
+                <element signature="e#9970#10003#0" expanded="true" />
+                <element signature="e#10858#10911#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxonomicNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <file leaf-file-name="TaxonomicDatabaseOperator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0">
+            <state line="75" column="3" selection-start="3802" selection-end="3802" vertical-scroll-proportion="0.0" vertical-offset="896" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
@@ -873,7 +152,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="ChiSqrDifference" />
       </map>
     </option>
   </component>
@@ -891,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSetTest.java" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
-        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd" />
         <option value="$PROJECT_DIR$/testing/test/properties.xml" />
         <option value="$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java" />
@@ -899,8 +177,24 @@
         <option value="$PROJECT_DIR$/src/tuit.java" />
         <option value="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
         <option value="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/NamesMap.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/GiTaxIdMap.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/GiTaxIdRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/RamRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/RanksRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/RamRowFactory.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/NodesRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/NamesRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/RamDb.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/row/RamRow.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" />
+        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
       </list>
     </option>
   </component>
@@ -935,8 +229,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -969,61 +261,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="testing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taxonomy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1059,7 +297,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
+              <option name="myItemId" value="helper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1077,11 +315,99 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
+              <option name="myItemId" value="helper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="file" />
+              <option name="myItemId" value="names" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gitaxid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="row" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1124,43 +450,70 @@
               <option name="myItemId" value="blast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="normal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="iteration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="blast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="normal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="specification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1201,6 +554,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1215,35 +569,7 @@
       <recent name="$PROJECT_DIR$/deploy/src/META-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TUITCutoffSetTest">
-    <configuration default="false" name="NodesDBDDeployerTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="tuit" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tuit.main" />
-      <option name="MAIN_CLASS_NAME" value="tuit.main.NodesDBDDeployerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.RamDBTest">
     <configuration default="false" name="RestrictToEntrezTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="tuit" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1350,6 +676,75 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="RamDBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tuit" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="db.ram" />
+      <option name="MAIN_CLASS_NAME" value="db.ram.RamDBTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -1385,20 +780,39 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.Wintest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Wintest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.RamDBTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.Wintest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.NodesDBDDeployerTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.RamDBTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TUITCutoffSetTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.Wintest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GetResourceTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.RestrictToEntrezTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1827,7 +1241,11 @@
       <created>1387402076649</created>
       <updated>1387402076649</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Fixed a bug that prevented the output file from deletion">
+      <created>1387402311491</created>
+      <updated>1387402311491</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1854,84 +1272,44 @@
     <frame x="1920" y="0" width="1920" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16373627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41868132" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41831425" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32555556" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5813187" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19103523" sideWeight="0.6703297" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52087915" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.190625" sideWeight="0.6703297" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11238293" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <value>
-        <are-packages-shown value="false" />
-        <are-modules-shown value="false" />
-        <flatten-packages value="false" />
-        <is-autoscroll-to-source value="false" />
-      </value>
+      <TodoPanelSettings />
     </option>
-    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
-    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
-    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
-    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
-    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
-    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
-    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
-    <option name="UPDATE_FILTER_SCOPE_NAME" />
-    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
-    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
-    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug that prevented the output file from deletion" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ACTIVE_VCS_NAME" />
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
-    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
-    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Slightly changed to match the latest javabio" />
     <MESSAGE value="Slightly changed again to match the latest javabio" />
     <MESSAGE value="Preblasted input corrected (previously went through the process of quering NCBI for restricted GIs" />
@@ -1957,6 +1335,7 @@
     <MESSAGE value="A crucial bug about the multiple files in batch corrected" />
     <MESSAGE value="Minor fix in BLASTIdentifier" />
     <MESSAGE value="Fixed a bug that prevented the output file from deletion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug that prevented the output file from deletion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1970,147 +1349,381 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#2238#2260#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/sql/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="63" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1567#1600#0" expanded="true" />
-            <element signature="e#1697#1730#0" expanded="true" />
-            <element signature="e#1837#1870#0" expanded="true" />
-            <element signature="e#2206#2239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="390" column="118" selection-start="20429" selection-end="20429" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1637#1670#0" expanded="true" />
-            <element signature="e#1779#1812#0" expanded="true" />
-            <element signature="e#1968#2001#0" expanded="true" />
-            <element signature="e#2140#2173#0" expanded="true" />
-            <element signature="e#2270#2303#0" expanded="true" />
-            <element signature="e#2430#2463#0" expanded="true" />
-            <element signature="e#2596#2629#0" expanded="true" />
-            <element signature="e#3125#3158#0" expanded="true" />
-            <element signature="e#3930#3963#0" expanded="true" />
-            <element signature="e#5800#5833#0" expanded="true" />
-            <element signature="e#6875#6908#0" expanded="true" />
-            <element signature="e#7442#7475#0" expanded="true" />
-            <element signature="e#9333#9366#0" expanded="true" />
-            <element signature="e#11178#11211#0" expanded="true" />
-            <element signature="e#13173#13206#0" expanded="true" />
-            <element signature="e#15010#15043#0" expanded="true" />
-            <element signature="e#16953#16986#0" expanded="true" />
-            <element signature="e#17610#17643#0" expanded="true" />
-            <element signature="e#18608#18641#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="28" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="63" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1384458798477" expanded="true" signature="3108:3296" placeholder="..." />
-            <marker date="1384458798477" expanded="true" signature="4141:4281" placeholder="..." />
-            <marker date="1384458798477" expanded="true" signature="4381:4521" placeholder="..." />
-            <marker date="1384458798477" expanded="true" signature="4616:4756" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="17" selection-start="18292" selection-end="18292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="104" selection-start="12886" selection-end="12886" vertical-scroll-proportion="0.0">
+        <state line="128" column="42" selection-start="6289" selection-end="6289" vertical-scroll-proportion="0.0" vertical-offset="2176" max-vertical-offset="4301">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="20" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
+        <state line="70" column="20" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="1479">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="19" selection-start="5846" selection-end="5846" vertical-scroll-proportion="0.0">
+        <state line="139" column="19" selection-start="5846" selection-end="5846" vertical-scroll-proportion="0.0" vertical-offset="2363" max-vertical-offset="3060">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/blast/ncbi/local/exec/NCBI_EX_BLAST.class">
+    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="16" selection-start="825" selection-end="825" vertical-scroll-proportion="0.27272728">
+        <state line="55" column="63" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="4624">
+          <folding>
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="335" column="17" selection-start="18292" selection-end="18292" vertical-scroll-proportion="0.0" vertical-offset="5695" max-vertical-offset="6817">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0">
+        <state line="33" column="28" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0">
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0">
+        <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="6647" max-vertical-offset="9945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0" vertical-offset="3213" max-vertical-offset="3655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="261" column="104" selection-start="12886" selection-end="12886" vertical-scroll-proportion="0.0" vertical-offset="4437" max-vertical-offset="5746">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="58" selection-start="6190" selection-end="6190" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="4301">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="19" selection-start="5846" selection-end="5846" vertical-scroll-proportion="0.0" vertical-offset="2363" max-vertical-offset="3060">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="63" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="4624">
           <folding>
-            <element signature="e#2238#2260#0" expanded="true" />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifier.java">
+    <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="52" selection-start="6692" selection-end="6720" vertical-scroll-proportion="0.60390764">
+        <state line="335" column="17" selection-start="18292" selection-end="18292" vertical-scroll-proportion="0.0" vertical-offset="5695" max-vertical-offset="6817">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="28" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="6647" max-vertical-offset="9945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0" vertical-offset="3213" max-vertical-offset="3655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/sql/schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="63" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="28" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/test/properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="63" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding>
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1384458798477" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="335" column="17" selection-start="18292" selection-end="18292" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="19" selection-start="5846" selection-end="5846" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="56" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/blast/ncbi/local/exec/NCBI_EX_BLAST.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="16" selection-start="989" selection-end="989" vertical-scroll-proportion="0.33066362" vertical-offset="0" max-vertical-offset="874" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/row/NodesRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <folding>
+            <marker date="1392243327035" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1392243327035" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/row/NamesRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/default/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.6286408" vertical-offset="438" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/util/SystemUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="31" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.657754" vertical-offset="417" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="83" selection-start="10039" selection-end="10039" vertical-scroll-proportion="0.0" vertical-offset="3766" max-vertical-offset="5440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="23" selection-start="4838" selection-end="4838" vertical-scroll-proportion="0.0" vertical-offset="1729" max-vertical-offset="3213">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="18" selection-start="8369" selection-end="9009" vertical-scroll-proportion="0.0" vertical-offset="3052" max-vertical-offset="4097">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="93" selection-start="5502" selection-end="5502" vertical-scroll-proportion="0.0" vertical-offset="1308" max-vertical-offset="2397">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/row/RamRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="57" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510">
+          <folding>
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="20" selection-start="3530" selection-end="3530" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1717">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/RamDBTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="87" selection-start="832" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="680">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="280" column="53" selection-start="13708" selection-end="13708" vertical-scroll-proportion="0.07585335" vertical-offset="4241" max-vertical-offset="5287">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="45" selection-start="8316" selection-end="8316" vertical-scroll-proportion="0.0" vertical-offset="2649" max-vertical-offset="4301">
+          <folding>
+            <element signature="e#9693#9704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="3" selection-start="3802" selection-end="3802" vertical-scroll-proportion="0.0" vertical-offset="896" max-vertical-offset="1513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="108" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3417">
+          <folding>
+            <element signature="e#2067#2100#0" expanded="true" />
+            <element signature="e#5718#5751#0" expanded="true" />
+            <element signature="e#5930#5963#0" expanded="true" />
+            <element signature="e#6114#6147#0" expanded="true" />
+            <element signature="e#7153#7186#0" expanded="true" />
+            <element signature="e#9970#10003#0" expanded="true" />
+            <element signature="e#10858#10911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="410" column="42" selection-start="21254" selection-end="21254" vertical-scroll-proportion="0.0" vertical-offset="6865" max-vertical-offset="7786">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="68" selection-start="288" selection-end="288" vertical-scroll-proportion="0.16612378" vertical-offset="0" max-vertical-offset="5729">
+          <folding>
+            <element signature="e#730#763#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
