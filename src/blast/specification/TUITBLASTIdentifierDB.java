@@ -113,20 +113,13 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
                     }
                     this.progressEdge=0;
                     this.specify();
-
+                    this.cleanup();
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             } else {
                 do {
                     this.specify();
+                    this.cleanup();
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
-            }
-            if(this.cleanup){
-                if(this.inputFile.exists()){
-                    this.cleanup(this.inputFile);
-                }
-                if(this.outputFile.exists()){
-                    this.cleanup(this.outputFile);
-                }
             }
             tuitFileOperator.reset();
             this.BLASTed = true;
@@ -154,7 +147,18 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
             e.printStackTrace();
         }
     }
-
+    //Todo: document
+    protected void cleanup(){
+        if (this.cleanup) {
+            Log.getInstance().log(Level.INFO, "Cleaning up temporary files...");
+            if (this.inputFile.exists()) {
+                this.cleanup(this.inputFile);
+            }
+            if (this.outputFile.exists()) {
+                this.cleanup(this.outputFile);
+            }
+        }
+    }
 
     /**
      * An overridden implementation takes into account that the batch contains a limited number of records and shifts frame by a batch size within the list of

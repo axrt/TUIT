@@ -88,21 +88,15 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
                     }
                     this.progressEdge = 0;
                     this.specify();
-
+                    this.cleanup();
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             } else {
                 do {
                     this.specify();
+                    this.cleanup();
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             }
-            if (this.cleanup) {
-                if (this.inputFile.exists()) {
-                    this.cleanup(this.inputFile);
-                }
-                if (this.outputFile.exists()) {
-                    this.cleanup(this.outputFile);
-                }
-            }
+
             tuitFileOperator.reset();
             this.BLASTed = true;
 
@@ -127,6 +121,18 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
         } catch (Exception e) {
             Log.getInstance().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    protected void cleanup(){
+        if (this.cleanup) {
+            Log.getInstance().log(Level.INFO, "Cleaning up temporary files...");
+            if (this.inputFile.exists()) {
+                this.cleanup(this.inputFile);
+            }
+            if (this.outputFile.exists()) {
+                this.cleanup(this.outputFile);
+            }
         }
     }
 
