@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -88,7 +87,7 @@
       <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="168" column="51" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.709012" vertical-offset="1710" max-vertical-offset="6341">
+            <state line="177" column="104" selection-start="7290" selection-end="7290" vertical-scroll-proportion="0.8751357" vertical-offset="1710" max-vertical-offset="6341">
               <folding />
             </state>
           </provider>
@@ -1350,7 +1349,11 @@
       <created>1392402549284</created>
       <updated>1392402549284</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Windows path bug corrected">
+      <created>1392409565773</created>
+      <updated>1392409565773</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1415,7 +1418,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Logs improved" />
     <MESSAGE value="Logs improved 2" />
     <MESSAGE value="Windows compatability enchanced with the latest JavaBio" />
     <MESSAGE value="sql script corrected and tested" />
@@ -1440,7 +1442,8 @@
     <MESSAGE value="Working prototype" />
     <MESSAGE value="A crucial bug fixed about the stackoverflow" />
     <MESSAGE value="Cleanup corrected to a state when the temp files are deleted after every single batch, not just when all batches are done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup corrected to a state when the temp files are deleted after every single batch, not just when all batches are done." />
+    <MESSAGE value="Windows path bug corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Windows path bug corrected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1861,7 +1864,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="51" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.709012" vertical-offset="1710" max-vertical-offset="6341">
+        <state line="177" column="104" selection-start="7290" selection-end="7290" vertical-scroll-proportion="0.8751357" vertical-offset="1710" max-vertical-offset="6341">
           <folding />
         </state>
       </provider>
