@@ -60,7 +60,7 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
                 boolean remote = false;
                 for (String s : this.parameterList) {
                     if (s.equals("-remote")) {
-                        remote = true;
+                        remote = true;        //TODO: correct
                         break;
                     }
                 }

@@ -84,14 +84,16 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
                 for (String s : this.parameterList) {
                     if (s.equals("-remote")) {
                         remote = true;
-                        break;
+                        break;            //TODO: create a better solution to search for remote
                     }
                 }
+                //Log how blast is performed
                 if (remote) {
                     Log.getInstance().log(Level.INFO, "Starting job, using NCBI server BLAST");
                 } else {
                     Log.getInstance().log(Level.INFO,"Starting job, using local machine BLAST");
                 }
+
                 do {
                     if (remote) {
                         Log.getInstance().log(Level.INFO,"Sending BLASTN request..");

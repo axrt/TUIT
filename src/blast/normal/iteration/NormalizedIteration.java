@@ -161,7 +161,7 @@ public class NormalizedIteration<I extends Iteration> {
      */
     @SuppressWarnings("WeakerAccess")
     protected boolean couldLiftCurrentRank() {
-        if (this.currentRank != Ranks.superkingdom) {
+        if (this.currentRank != Ranks.root_of_life) {
             this.currentRank = Ranks.previous(this.currentRank);
             return true;
         } else {
@@ -338,9 +338,12 @@ public class NormalizedIteration<I extends Iteration> {
      */
     @SuppressWarnings("WeakerAccess")
     protected void reduceNoRanks() throws Exception {
+
         for (NormalizedHit normalizedHit : this.normalizedHits) {
-            while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1) {
-                this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
+            int count=0;
+            while (normalizedHit.getAssignedRank() == Ranks.no_rank&&normalizedHit.getAssignedTaxid()!=1&&count<25) {
+                normalizedHit= this.blastIdentifier.liftRankForNormalizedHit(normalizedHit);
+                count++;
             }
         }
     }

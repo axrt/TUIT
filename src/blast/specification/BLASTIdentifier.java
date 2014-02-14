@@ -251,6 +251,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
             for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
                 normalizedIteration.specify();
             }
+            this.normalizedIterations=null;
         } else {
             Log.getInstance().log(Level.SEVERE,"No Iterations were returned, an error might have occurred during BLAST, proceeding with the next query.");
         }
