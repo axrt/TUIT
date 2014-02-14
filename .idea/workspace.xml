@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -74,10 +73,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TUITBLASTIdentifierDB.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TUITBLASTIdentifierDB.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="35" selection-start="6128" selection-end="6128" vertical-scroll-proportion="0.46145493" vertical-offset="1275" max-vertical-offset="3774">
+            <state line="135" column="16" selection-start="6728" selection-end="6728" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3774">
               <folding>
                 <element signature="e#3129#3162#0" expanded="true" />
                 <element signature="e#3957#3987#1" expanded="true" />
@@ -86,10 +85,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tuit.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="56" selection-start="16594" selection-end="16594" vertical-scroll-proportion="0.0" vertical-offset="4811" max-vertical-offset="6341">
+            <state line="168" column="51" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.709012" vertical-offset="1710" max-vertical-offset="6341">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="133" column="52" selection-start="7360" selection-end="7360" vertical-scroll-proportion="0.0" vertical-offset="1578" max-vertical-offset="2856">
               <folding />
             </state>
           </provider>
@@ -110,7 +118,16 @@
         <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="148" column="16" selection-start="6030" selection-end="6030" vertical-scroll-proportion="0.0" vertical-offset="1840" max-vertical-offset="2924">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1472#1505#0" expanded="false" />
+                <element signature="e#1615#1648#0" expanded="false" />
+                <element signature="e#1733#1766#0" expanded="false" />
+                <element signature="e#1836#1869#0" expanded="false" />
+                <element signature="e#1969#2002#0" expanded="false" />
+                <element signature="e#4393#4429#0" expanded="false" />
+                <element signature="e#6840#6876#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
         <option value="$PROJECT_DIR$/src/taxonomy/Ranks.java" />
-        <option value="$PROJECT_DIR$/src/tuit.java" />
         <option value="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
         <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
@@ -174,6 +190,7 @@
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+        <option value="$PROJECT_DIR$/src/tuit.java" />
       </list>
     </option>
   </component>
@@ -1329,7 +1346,11 @@
       <created>1392401906260</created>
       <updated>1392401906260</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Cleanup corrected to a state when the temp files are deleted after every single batch, not just when all batches are done.">
+      <created>1392402549284</created>
+      <updated>1392402549284</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1394,7 +1415,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="A slightly more efficient rank_by_taxid view added" />
     <MESSAGE value="Logs improved" />
     <MESSAGE value="Logs improved 2" />
     <MESSAGE value="Windows compatability enchanced with the latest JavaBio" />
@@ -1419,7 +1439,8 @@
     <MESSAGE value="First megafast implementation release" />
     <MESSAGE value="Working prototype" />
     <MESSAGE value="A crucial bug fixed about the stackoverflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="A crucial bug fixed about the stackoverflow" />
+    <MESSAGE value="Cleanup corrected to a state when the temp files are deleted after every single batch, not just when all batches are done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup corrected to a state when the temp files are deleted after every single batch, not just when all batches are done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1690,13 +1711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="52" selection-start="7360" selection-end="7360" vertical-scroll-proportion="0.0" vertical-offset="1578" max-vertical-offset="2856">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="307" column="56" selection-start="12466" selection-end="12466" vertical-scroll-proportion="0.0" vertical-offset="4432" max-vertical-offset="6086">
@@ -1758,26 +1772,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="163" column="50" selection-start="6980" selection-end="6980" vertical-scroll-proportion="0.012113055" vertical-offset="2524" max-vertical-offset="7837">
           <folding>
-            <element signature="e#1637#1670#0" expanded="true" />
-            <element signature="e#1779#1812#0" expanded="true" />
-            <element signature="e#1968#2001#0" expanded="true" />
-            <element signature="e#2140#2173#0" expanded="true" />
-            <element signature="e#2270#2303#0" expanded="true" />
-            <element signature="e#2430#2463#0" expanded="true" />
-            <element signature="e#2596#2629#0" expanded="true" />
-            <element signature="e#3125#3158#0" expanded="true" />
-            <element signature="e#3930#3963#0" expanded="true" />
-            <element signature="e#5777#5810#0" expanded="true" />
-            <element signature="e#6849#6882#0" expanded="true" />
-            <element signature="e#7416#7449#0" expanded="true" />
-            <element signature="e#8132#8147#0" expanded="true" />
-            <element signature="e#9307#9340#0" expanded="true" />
-            <element signature="e#11149#11182#0" expanded="true" />
-            <element signature="e#13144#13177#0" expanded="true" />
-            <element signature="e#14978#15011#0" expanded="true" />
-            <element signature="e#16918#16951#0" expanded="true" />
-            <element signature="e#17648#17681#0" expanded="true" />
-            <element signature="e#18643#18676#0" expanded="true" />
+            <element signature="e#1637#1670#0" expanded="false" />
+            <element signature="e#1779#1812#0" expanded="false" />
+            <element signature="e#1968#2001#0" expanded="false" />
+            <element signature="e#2140#2173#0" expanded="false" />
+            <element signature="e#2270#2303#0" expanded="false" />
+            <element signature="e#2430#2463#0" expanded="false" />
+            <element signature="e#2596#2629#0" expanded="false" />
+            <element signature="e#3125#3158#0" expanded="false" />
+            <element signature="e#3930#3963#0" expanded="false" />
+            <element signature="e#5777#5810#0" expanded="false" />
+            <element signature="e#6849#6882#0" expanded="false" />
+            <element signature="e#7416#7449#0" expanded="false" />
+            <element signature="e#8132#8147#0" expanded="false" />
+            <element signature="e#9307#9340#0" expanded="false" />
+            <element signature="e#11149#11182#0" expanded="false" />
+            <element signature="e#13144#13177#0" expanded="false" />
+            <element signature="e#14978#15011#0" expanded="false" />
+            <element signature="e#16918#16951#0" expanded="false" />
+            <element signature="e#17648#17681#0" expanded="false" />
+            <element signature="e#18643#18676#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1803,17 +1817,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="56" selection-start="16594" selection-end="16594" vertical-scroll-proportion="0.0" vertical-offset="4811" max-vertical-offset="6341">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="148" column="16" selection-start="6030" selection-end="6030" vertical-scroll-proportion="0.0" vertical-offset="1840" max-vertical-offset="2924">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1472#1505#0" expanded="false" />
+            <element signature="e#1615#1648#0" expanded="false" />
+            <element signature="e#1733#1766#0" expanded="false" />
+            <element signature="e#1836#1869#0" expanded="false" />
+            <element signature="e#1969#2002#0" expanded="false" />
+            <element signature="e#4393#4429#0" expanded="false" />
+            <element signature="e#6840#6876#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1828,11 +1844,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="35" selection-start="6128" selection-end="6128" vertical-scroll-proportion="0.46145493" vertical-offset="1275" max-vertical-offset="3774">
+        <state line="135" column="16" selection-start="6728" selection-end="6728" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3774">
           <folding>
             <element signature="e#3129#3162#0" expanded="true" />
             <element signature="e#3957#3987#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="52" selection-start="7360" selection-end="7360" vertical-scroll-proportion="0.0" vertical-offset="1578" max-vertical-offset="2856">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="51" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.709012" vertical-offset="1710" max-vertical-offset="6341">
+          <folding />
         </state>
       </provider>
     </entry>

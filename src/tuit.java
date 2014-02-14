@@ -134,7 +134,7 @@ public class tuit {
 
         try {
             //Get TUIT directory
-            final File tuitDir = new File(new File(tuit.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent());
+            final File tuitDir = new File(new File(tuit.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent());
             final File ramDbFile = new File(tuitDir, tuit.RAM_DB);
             //Setup logger
             Log.getInstance().setLogName("tuit.log");
