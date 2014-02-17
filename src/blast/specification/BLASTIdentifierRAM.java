@@ -79,12 +79,12 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
     }
 
     @Override
-    public boolean isParentOf(int parentTaxid, int taxid) throws Exception {
+    public boolean isParentOf(int parentTaxid, int taxid) {
         final NodesRow nodesRow=this.ramDb.getNodeByTaxId(taxid);
         if(nodesRow==null){
             return false;
         }
-        return parentTaxid == nodesRow.getV()|| nodesRow.getV()!= 1 && this.isParentOf(parentTaxid, nodesRow.getV());
+        return parentTaxid == nodesRow.getV() || nodesRow.getV()!= 1 && this.isParentOf(parentTaxid, nodesRow.getV());
     }
 
     @Override

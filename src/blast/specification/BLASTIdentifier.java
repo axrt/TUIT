@@ -123,6 +123,9 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @return {@link TUITCutoffSet} cutoff set
      */
     public TUITCutoffSet getCufoffsetByRank(Ranks rank) {
+        if(this.cutoffSetMap.get(rank)==null){
+            return DEFAULT_CUTOFFS.get(rank);
+        }
         return this.cutoffSetMap.get(rank);
     }
 

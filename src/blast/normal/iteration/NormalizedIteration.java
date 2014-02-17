@@ -373,16 +373,18 @@ public class NormalizedIteration<I extends Iteration> {
      *         otherwise - returns true
      */
     @SuppressWarnings("WeakerAccess")
-    protected boolean normalisedHitsWithWorseEvalueAllowPivotal() {
+    protected boolean normalisedHitsWithWorseEvalueAllowPivotal() throws Exception {
 
         //Go through the hits that have worse E-value than the pivotal hit
         if (this.pivotalHit != null) {
             for (int i = this.normalizedHits.indexOf(this.pivotalHit) + 1; i < this.normalizedHits.size(); i++) {
                 NormalizedHit normalizedHit = this.normalizedHits.get(i);
                 //If the next hit has current rank and points to a different taxonomic node
-                if (normalizedHit.getAssignedRank() == this.currentRank && normalizedHit.getAssignedTaxid() != this.pivotalHit.getAssignedTaxid()) {
-                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from the same rank of: \'" + this.currentRank +
-                            "\', but from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
+                if (normalizedHit.getAssignedTaxid() == this.pivotalHit.getAssignedTaxid()){
+                    continue;
+                }
+                if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())) {   //TODO: correct
+                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
                             + " (while the current pivotal hit has a taxid of: \"" + this.pivotalHit.getAssignedTaxid() + "\").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
