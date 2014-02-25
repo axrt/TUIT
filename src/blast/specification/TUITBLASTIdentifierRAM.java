@@ -54,6 +54,7 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
     public void run() {
         @SuppressWarnings("unchecked")
         TUITFileOperator<NucleotideFasta> tuitFileOperator = (TUITFileOperator<NucleotideFasta>) this.fileOperator;
+        Log.getInstance().log(Level.INFO, "Using "+this.batchSize+" sequences per batch.");
         try {
             if (this.blastOutput == null) {
                 //See if the remote option is on. If so - do the BLASTN with the NCBI server, otherwise - BLASTN locally

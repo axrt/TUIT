@@ -384,7 +384,7 @@ public class NormalizedIteration<I extends Iteration> {
                     continue;
                 }
                 if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())) {   //TODO: correct
-                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
+                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from a different taxonomic group (GI: "+normalizedHit.getGI()+") with taxid: " + normalizedHit.getAssignedTaxid()
                             + " (while the current pivotal hit has a taxid of: \"" + this.pivotalHit.getAssignedTaxid() + "\").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit

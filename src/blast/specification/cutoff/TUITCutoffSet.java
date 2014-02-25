@@ -1,7 +1,10 @@
 package blast.specification.cutoff;
 
 import blast.normal.hit.NormalizedHit;
+import logger.Log;
 import org.apache.commons.math3.stat.inference.TestUtils;
+
+import java.util.logging.Level;
 
 
 /**

@@ -15,6 +15,7 @@ import java.util.logging.Level;
  */
 //TODO: document
 public class RamDb implements Serializable {
+    static final long serialVersionUID = 1L;
 
     protected int[] giByTaxIdMap;
     protected final Map<Integer, NamesRow> nameByTaxIdMap;
