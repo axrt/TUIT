@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Crucial bug about the missing cutoffs fixed&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/ram/RamDb.java" afterPath="$PROJECT_DIR$/src/db/ram/RamDb.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" afterPath="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -76,19 +73,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="5" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.0" vertical-offset="1343" max-vertical-offset="1479">
-              <folding />
+            <state line="133" column="56" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0" vertical-offset="1722" max-vertical-offset="2856">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <file leaf-file-name="NodesDBDeployer.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="52" selection-start="7360" selection-end="7360" vertical-scroll-proportion="0.0" vertical-offset="2261" max-vertical-offset="3043">
+            <state line="300" column="105" selection-start="12045" selection-end="12045" vertical-scroll-proportion="0.3783784" vertical-offset="4633" max-vertical-offset="6205">
               <folding />
             </state>
           </provider>
@@ -97,8 +96,12 @@
       <file leaf-file-name="TUITBLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="33" selection-start="4018" selection-end="4018" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="2873">
-              <folding />
+            <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2550">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1874#1885#0" expanded="false" />
+                <element signature="e#2311#2341#1" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,10 +109,8 @@
       <file leaf-file-name="BLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="71" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.0" vertical-offset="992" max-vertical-offset="1904">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state line="86" column="71" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="2108">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,24 +124,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="28" selection-start="6905" selection-end="6905" vertical-scroll-proportion="0.0" vertical-offset="2907" max-vertical-offset="3060">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="80" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.7642544" vertical-offset="1326" max-vertical-offset="3213">
+            <state line="129" column="80" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3213">
               <folding>
-                <element signature="e#1619#1652#0" expanded="true" />
-                <element signature="e#1749#1782#0" expanded="true" />
-                <element signature="e#1889#1922#0" expanded="true" />
-                <element signature="e#2258#2291#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1619#1652#0" expanded="false" />
+                <element signature="e#1749#1782#0" expanded="false" />
+                <element signature="e#1889#1922#0" expanded="false" />
+                <element signature="e#2258#2291#0" expanded="false" />
+                <element signature="e#2690#2691#0" expanded="false" />
+                <element signature="e#2725#2726#0" expanded="false" />
+                <element signature="e#2885#2886#0" expanded="false" />
+                <element signature="e#2927#2928#0" expanded="false" />
+                <element signature="e#3082#3083#0" expanded="false" />
+                <element signature="e#3110#3111#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -157,10 +156,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Ranks.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1921">
+              <folding>
+                <element signature="e#2511#2512#0" expanded="false" />
+                <element signature="e#2538#2539#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="298" column="45" selection-start="14376" selection-end="14409" vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="7871">
+            <state line="298" column="45" selection-start="14376" selection-end="14409" vertical-scroll-proportion="0.0" vertical-offset="5066" max-vertical-offset="8109">
               <folding />
             </state>
           </provider>
@@ -169,35 +180,8 @@
       <file leaf-file-name="NormalizedHit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="48" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.0" vertical-offset="1043" max-vertical-offset="3383">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1517#1550#0" expanded="false" />
-                <element signature="e#1707#1740#0" expanded="false" />
-                <element signature="e#1827#1860#0" expanded="false" />
-                <element signature="e#1952#1985#0" expanded="false" />
-                <element signature="e#2092#2125#0" expanded="false" />
-                <element signature="e#2235#2268#0" expanded="false" />
-                <element signature="e#2391#2424#0" expanded="false" />
-                <element signature="e#2557#2590#0" expanded="false" />
-                <element signature="e#3007#3040#0" expanded="false" />
-                <element signature="e#4405#4406#0" expanded="false" />
-                <element signature="e#4445#4446#0" expanded="false" />
-                <element signature="e#4602#4603#0" expanded="false" />
-                <element signature="e#4634#4635#0" expanded="false" />
-                <element signature="e#4732#4733#0" expanded="false" />
-                <element signature="e#4774#4775#0" expanded="false" />
-                <element signature="e#4901#4902#0" expanded="false" />
-                <element signature="e#4926#4927#0" expanded="false" />
-                <element signature="e#5050#5051#0" expanded="false" />
-                <element signature="e#5079#5080#0" expanded="false" />
-                <element signature="e#5228#5229#0" expanded="false" />
-                <element signature="e#5267#5268#0" expanded="false" />
-                <element signature="e#5396#5397#0" expanded="false" />
-                <element signature="e#5428#5429#0" expanded="false" />
-                <element signature="e#5522#5523#0" expanded="false" />
-                <element signature="e#5548#5549#0" expanded="false" />
-              </folding>
+            <state line="84" column="48" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3723">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -251,7 +235,6 @@
         <option value="$PROJECT_DIR$/src/taxonomy/Ranks.java" />
         <option value="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
-        <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
         <option value="$PROJECT_DIR$/src/tuit.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
@@ -261,13 +244,14 @@
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/db/ram/RamDb.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
+        <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1920" />
     <option name="width" value="1920" />
-    <option name="height" value="1055" />
+    <option name="height" value="1035" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -295,6 +279,67 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="specification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -328,6 +373,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonomy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonomy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -607,67 +692,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="specification" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -683,7 +707,7 @@
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="259" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JAVA_BIO" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BrainStudy" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="265" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1059" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1059" />
@@ -1433,7 +1457,11 @@
       <created>1392654458238</created>
       <updated>1392654458238</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="New JAVA_BIO support">
+      <created>1393360591912</created>
+      <updated>1393360591912</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1457,8 +1485,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1055" extended-state="0" />
-    <editor active="true" />
+    <frame x="1920" y="0" width="1920" height="1035" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1470,7 +1498,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16233091" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16153029" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32555556" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947916" sideWeight="0.5813187" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1482,8 +1510,8 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1498,7 +1526,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="sql script corrected and tested" />
     <MESSAGE value="sql script corrected 2 and tested" />
     <MESSAGE value="sql script corrected 3 and tested" />
     <MESSAGE value="debugged in accordance with the latest NCBI dmp bugs" />
@@ -1523,7 +1550,8 @@
     <MESSAGE value="Windows path bug corrected" />
     <MESSAGE value="Windows path bug corrected&#10;" />
     <MESSAGE value="Crucial bug about the missing cutoffs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crucial bug about the missing cutoffs fixed" />
+    <MESSAGE value="New JAVA_BIO support" />
+    <option name="LAST_COMMIT_MESSAGE" value="New JAVA_BIO support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1539,9 +1567,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494">
-          <folding />
-        </state>
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
@@ -1565,9 +1591,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="58" selection-start="6190" selection-end="6190" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="4301">
-          <folding />
-        </state>
+        <state line="126" column="58" selection-start="6190" selection-end="6190" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="4301" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
@@ -1605,9 +1629,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494">
-          <folding />
-        </state>
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
@@ -1658,9 +1680,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
+        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/row/NodesRow.java">
@@ -1672,16 +1692,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/row/NamesRow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
+        <state line="11" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
+        <state line="10" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
       </provider>
     </entry>
     <entry file="jar:///usr/java/default/src.zip!/java/lang/NumberFormatException.java">
@@ -1696,12 +1712,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/row/RamRow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="57" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510">
-          <folding>
-            <element signature="e#320#321#0" expanded="false" />
-            <element signature="e#344#345#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="8" column="57" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="jar:///usr/java/default/src.zip!/java/lang/Override.java">
@@ -1711,9 +1722,7 @@
     </entry>
     <entry file="jar:///usr/java/default/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995">
-          <folding />
-        </state>
+        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/tables/LookupNames.java">
@@ -1723,47 +1732,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/names/NamesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="23" selection-start="4838" selection-end="4838" vertical-scroll-proportion="0.0" vertical-offset="1729" max-vertical-offset="3213">
-          <folding />
-        </state>
+        <state line="119" column="23" selection-start="4838" selection-end="4838" vertical-scroll-proportion="0.0" vertical-offset="1729" max-vertical-offset="3213" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/gitaxid/GI_TaxIDDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="23" selection-start="6653" selection-end="6670" vertical-scroll-proportion="-0.15845825" vertical-offset="2579" max-vertical-offset="4097">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="307" column="56" selection-start="12466" selection-end="12466" vertical-scroll-proportion="0.0" vertical-offset="4432" max-vertical-offset="6086" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="24" selection-start="2586" selection-end="2586" vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="1921" />
+        <state line="150" column="23" selection-start="6653" selection-end="6670" vertical-scroll-proportion="-0.15845825" vertical-offset="2579" max-vertical-offset="4097" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/RamDBTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="88" selection-start="436" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1037">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="17" column="88" selection-start="436" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1037" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/blast/ncbi/local/exec/NCBI_EX_BLAST.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="16" selection-start="825" selection-end="825" vertical-scroll-proportion="0.3445946" vertical-offset="0" max-vertical-offset="740" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="52" selection-start="7360" selection-end="7360" vertical-scroll-proportion="0.0" vertical-offset="1578" max-vertical-offset="2856">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperator.java">
@@ -1780,9 +1764,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="16" selection-start="6728" selection-end="6728" vertical-scroll-proportion="-0.04576043" vertical-offset="1989" max-vertical-offset="3774">
-          <folding />
-        </state>
+        <state line="135" column="16" selection-start="6728" selection-end="6728" vertical-scroll-proportion="-0.04576043" vertical-offset="1989" max-vertical-offset="3774" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
@@ -1813,19 +1795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="33" selection-start="4018" selection-end="4018" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2550">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="71" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="1904">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1838,42 +1811,13 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/util/BlastOutputUtil.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="25" selection-start="473" selection-end="473" vertical-scroll-proportion="0.22998872" vertical-offset="0" max-vertical-offset="887">
-          <folding />
-        </state>
+        <state line="13" column="25" selection-start="473" selection-end="473" vertical-scroll-proportion="0.22998872" vertical-offset="0" max-vertical-offset="887" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="48" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.0" vertical-offset="1043" max-vertical-offset="3383">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1517#1550#0" expanded="false" />
-            <element signature="e#1707#1740#0" expanded="false" />
-            <element signature="e#1827#1860#0" expanded="false" />
-            <element signature="e#1952#1985#0" expanded="false" />
-            <element signature="e#2092#2125#0" expanded="false" />
-            <element signature="e#2235#2268#0" expanded="false" />
-            <element signature="e#2391#2424#0" expanded="false" />
-            <element signature="e#2557#2590#0" expanded="false" />
-            <element signature="e#3007#3040#0" expanded="false" />
-            <element signature="e#4405#4406#0" expanded="false" />
-            <element signature="e#4445#4446#0" expanded="false" />
-            <element signature="e#4602#4603#0" expanded="false" />
-            <element signature="e#4634#4635#0" expanded="false" />
-            <element signature="e#4732#4733#0" expanded="false" />
-            <element signature="e#4774#4775#0" expanded="false" />
-            <element signature="e#4901#4902#0" expanded="false" />
-            <element signature="e#4926#4927#0" expanded="false" />
-            <element signature="e#5050#5051#0" expanded="false" />
-            <element signature="e#5079#5080#0" expanded="false" />
-            <element signature="e#5228#5229#0" expanded="false" />
-            <element signature="e#5267#5268#0" expanded="false" />
-            <element signature="e#5396#5397#0" expanded="false" />
-            <element signature="e#5428#5429#0" expanded="false" />
-            <element signature="e#5522#5523#0" expanded="false" />
-            <element signature="e#5548#5549#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1881,6 +1825,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="298" column="45" selection-start="14376" selection-end="14409" vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="7871">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="80" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3213">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1619#1652#0" expanded="false" />
+            <element signature="e#1749#1782#0" expanded="false" />
+            <element signature="e#1889#1922#0" expanded="false" />
+            <element signature="e#2258#2291#0" expanded="false" />
+            <element signature="e#2690#2691#0" expanded="false" />
+            <element signature="e#2725#2726#0" expanded="false" />
+            <element signature="e#2885#2886#0" expanded="false" />
+            <element signature="e#2927#2928#0" expanded="false" />
+            <element signature="e#3082#3083#0" expanded="false" />
+            <element signature="e#3110#3111#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1893,15 +1856,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="80" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.7642544" vertical-offset="1326" max-vertical-offset="3213">
+        <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1921">
           <folding>
-            <element signature="e#1619#1652#0" expanded="true" />
-            <element signature="e#1749#1782#0" expanded="true" />
-            <element signature="e#1889#1922#0" expanded="true" />
-            <element signature="e#2258#2291#0" expanded="true" />
+            <element signature="e#2511#2512#0" expanded="false" />
+            <element signature="e#2538#2539#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="56" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0" vertical-offset="1722" max-vertical-offset="2856">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2550">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1874#1885#0" expanded="false" />
+            <element signature="e#2311#2341#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="300" column="105" selection-start="12045" selection-end="12045" vertical-scroll-proportion="0.3783784" vertical-offset="4633" max-vertical-offset="6205">
+          <folding />
         </state>
       </provider>
     </entry>

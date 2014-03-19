@@ -1,6 +1,7 @@
 package helper.nodes;
 
 import db.tables.LookupNames;
+import logger.Log;
 import taxonomy.Ranks;
 
 import java.io.*;
@@ -9,6 +10,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
  * software for accurate taxonomic classification of nucleotide sequences.
@@ -297,20 +300,27 @@ public class NodesDBDeployer {
             fileWriter = new FileWriter(filteredNodesDmpFile);
             String line;
             String empty = "";
+            int count = 0;
             while ((line = bufferedReader.readLine()) != null) {
 
                 String[] splitter = line.split("\t\\|\t");
-
-                    if (splitter.length > 3 && !splitter[0].equals(empty)&&!splitter[0].startsWith("|") && !splitter[1].equals(empty)) {
-                        fileWriter.write(
-                                splitter[0] + '\t'
-                                        + splitter[1] + '\t'
-                                        + Ranks.convertValue(splitter[2]).ordinal()
-                                        + '\n'
-                        );
-                        fileWriter.flush();
-                    }
+                if (splitter.length != 13) {
+                    Log.getInstance().log(Level.WARNING, "Row number "+count+" in "+nodesDmpFile.getName()+" is inconsistent:");
+                    Log.getInstance().log(Level.WARNING, nodesDmpFile.getName()+count+": "+line);
+                    Log.getInstance().log(Level.WARNING, "Skipping inconsistent line.");
+                    continue;
                 }
+                if (!splitter[0].equals(empty) && !splitter[0].startsWith("|") && !splitter[1].equals(empty)) {
+                    fileWriter.write(
+                            splitter[0] + '\t'
+                                    + splitter[1] + '\t'
+                                    + Ranks.convertValue(splitter[2]).ordinal()
+                                    + '\n'
+                    );
+                    count++;
+                    fileWriter.flush();
+                }
+            }
         } finally {
             if (bufferedReader != null) {
                 bufferedReader.close();
