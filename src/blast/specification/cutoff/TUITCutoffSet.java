@@ -1,5 +1,6 @@
 package blast.specification.cutoff;
 
+import blast.ncbi.output.Hsp;
 import blast.normal.hit.NormalizedHit;
 import logger.Log;
 import org.apache.commons.math3.stat.inference.TestUtils;
@@ -171,19 +172,47 @@ public class TUITCutoffSet {
      */
     public boolean hitsAreStatisticallyDifferent(final NormalizedHit oneNormalizedHit, final NormalizedHit anotherNormalizedHit) {
 
-        final int oneAlignLen = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
-        final int anotherAlignLen = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspAlignLen());
+        int oneAlignLen=0;
+        for(Hsp hsp:oneNormalizedHit.getHit().getHitHsps().getHsp()){
+            oneAlignLen+=Integer.valueOf(hsp.getHspAlignLen());
+        }
 
-        final int oneNumIdents = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
-        final int anotherNumIdents = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspIdentity());
+        int anotherAlignLen =0;
+        for(Hsp hsp:anotherNormalizedHit.getHit().getHitHsps().getHsp()){
+            anotherAlignLen+=Integer.valueOf(hsp.getHspAlignLen());
+        }
 
-        final int oneNumGaps = Integer.valueOf(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspGaps());
-        final int anotherNumGaps = Integer.valueOf(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspGaps());
+        int oneNumIdents = 0;
+        for(Hsp hsp:oneNormalizedHit.getHit().getHitHsps().getHsp()){
+            oneNumIdents+=Integer.valueOf(hsp.getHspIdentity());
+        }
 
-        final int oneNumGapOpens = calculateNumberOfGapOpens(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspQseq())
-                + calculateNumberOfGapOpens(oneNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspHseq());
-        final int anotherNumGapOpens = calculateNumberOfGapOpens(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspQseq())
-                + calculateNumberOfGapOpens(anotherNormalizedHit.getHit().getHitHsps().getHsp().get(0).getHspHseq());
+        int anotherNumIdents = 0;
+        for(Hsp hsp:anotherNormalizedHit.getHit().getHitHsps().getHsp()){
+            anotherNumIdents+=Integer.valueOf(hsp.getHspIdentity());
+        }
+
+        int oneNumGaps = 0;
+        for(Hsp hsp:oneNormalizedHit.getHit().getHitHsps().getHsp()){
+            oneNumGaps+=Integer.valueOf(hsp.getHspGaps());
+        }
+
+        int anotherNumGaps = 0;
+        for(Hsp hsp:anotherNormalizedHit.getHit().getHitHsps().getHsp()){
+            anotherNumGaps+=Integer.valueOf(hsp.getHspGaps());
+        }
+
+        int oneNumGapOpens = 0;
+        for(Hsp hsp:oneNormalizedHit.getHit().getHitHsps().getHsp()){
+            oneNumGapOpens+=calculateNumberOfGapOpens(hsp.getHspQseq())
+                    + calculateNumberOfGapOpens(hsp.getHspHseq());
+        }
+
+        int anotherNumGapOpens = 0;
+        for(Hsp hsp:anotherNormalizedHit.getHit().getHitHsps().getHsp()){
+            anotherNumGapOpens+=calculateNumberOfGapOpens(hsp.getHspQseq())
+                    + calculateNumberOfGapOpens(hsp.getHspHseq());
+        }
 
         return TestUtils.chiSquareTest(new long[][]{{oneNumIdents, anotherNumIdents},
                 {(oneAlignLen - (oneNumGaps - oneNumGapOpens)) - oneNumIdents,
