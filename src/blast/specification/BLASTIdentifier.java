@@ -247,12 +247,17 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      */
     @SuppressWarnings("WeakerAccess")
     protected void specify() throws Exception {
-        Log.getInstance().log(Level.FINE,"Specifying the BLAST output.");
+        Log.getInstance().log(Level.FINE,"Classifying the BLAST output..");
         if (this.blastOutput.getBlastOutputIterations().getIteration().size() > 0) {
             this.normalizedIterations = new ArrayList<NormalizedIteration<Iteration>>(this.blastOutput.getBlastOutputIterations().getIteration().size());
             this.normalizeIterations();
+            int count=0;
             for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
+                Log.getInstance().log(Level.FINE,"<------------------"+normalizedIteration.getIterationQueryName()+"----------------->");
+                Log.getInstance().log(Level.FINE,"Classification process for iteration: "+count+", query: "+normalizedIteration.getIterationQueryName()+".");
                 normalizedIteration.specify();
+                Log.getInstance().log(Level.FINE,"Finished classifying iteration: "+count+", query: "+normalizedIteration.getIterationQueryName()+".");
+                count++;
             }
             this.normalizedIterations=null;
         } else {

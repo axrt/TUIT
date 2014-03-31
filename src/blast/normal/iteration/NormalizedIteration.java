@@ -386,8 +386,10 @@ public class NormalizedIteration<I extends Iteration> {
                 if (normalizedHit.getAssignedTaxid() == this.pivotalHit.getAssignedTaxid()){
                     continue;
                 }
-                if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())) {   //TODO: correct
-                    Log.getInstance().log(Level.FINE,"A hit with worse E-value was from a different taxonomic group (GI: "+normalizedHit.getGI()+") with taxid: " + normalizedHit.getAssignedTaxid()
+                if(!this.blastIdentifier.isParentOf(normalizedHit.getAssignedTaxid(),this.pivotalHit.getAssignedTaxid())) {
+                    Log.getInstance().log(
+                            Level.FINE,"A hit with worse E-value (GI: "+normalizedHit.getGI()+", \""+normalizedHit.getHit().getHitDef()+"\") " +
+                            "was from a different taxonomic group with taxid: " + normalizedHit.getAssignedTaxid()
                             + " (while the current pivotal hit has a taxid of: \"" + this.pivotalHit.getAssignedTaxid() + "\").");
                     //if the E-value difference (in folds) between the next hit and the current pivotal
                     //is less then the threshold cutoff - do not allow the pivotal hit
@@ -459,6 +461,14 @@ public class NormalizedIteration<I extends Iteration> {
             Log.getInstance().log(Level.SEVERE,"No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
         }
         //fail
+    }
+
+    /**
+     * Returns a string representation of the query record name.
+     * @return {@link String} the name of the query record that was used to get this iteration hit list.
+     */
+    public String getIterationQueryName(){
+        return this.iteration.getIterationQueryID();
     }
 
     /**

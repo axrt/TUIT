@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="A multi-hsp formatting bug corrected&#10;">
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSetTest.java" afterPath="$PROJECT_DIR$/testing/test/TUITCutoffSetTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/ram/RamDb.java" afterPath="$PROJECT_DIR$/src/db/ram/RamDb.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -96,8 +99,29 @@
       <file leaf-file-name="TUITBLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
+            <state line="26" column="2" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BLASTIdentifier.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="255" column="134" selection-start="12801" selection-end="12801" vertical-scroll-proportion="0.704" vertical-offset="3399" max-vertical-offset="4233">
+              <folding>
+                <element signature="e#2067#2100#0" expanded="true" />
+                <element signature="e#5313#5346#0" expanded="true" />
+                <element signature="e#5487#5520#0" expanded="true" />
+                <element signature="e#5625#5658#0" expanded="true" />
+                <element signature="e#6245#6278#0" expanded="true" />
+                <element signature="e#6457#6490#0" expanded="true" />
+                <element signature="e#6641#6674#0" expanded="true" />
+                <element signature="e#7680#7713#0" expanded="true" />
+                <element signature="e#10633#10666#0" expanded="true" />
+                <element signature="e#11521#11574#0" expanded="true" />
+                <element signature="e#12106#12139#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +129,7 @@
       <file leaf-file-name="BLASTIdentifierDB.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="321" column="82" selection-start="15507" selection-end="15507" vertical-scroll-proportion="0.0" vertical-offset="5457" max-vertical-offset="5746">
+            <state line="144" column="8" selection-start="6351" selection-end="6678" vertical-scroll-proportion="0.0" vertical-offset="1782" max-vertical-offset="5508">
               <folding />
             </state>
           </provider>
@@ -123,19 +147,8 @@
       <file leaf-file-name="RamDb.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="51" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0" vertical-offset="762" max-vertical-offset="2652">
+            <state line="72" column="51" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2652">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="315" column="86" selection-start="15487" selection-end="15487" vertical-scroll-proportion="2.9550056" vertical-offset="2218" max-vertical-offset="6528">
-              <folding>
-                <element signature="e#3736#3775#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +156,7 @@
       <file leaf-file-name="BLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="36" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1904">
+            <state line="173" column="88" selection-start="8102" selection-end="8102" vertical-scroll-proportion="0.0" vertical-offset="2411" max-vertical-offset="3026">
               <folding />
             </state>
           </provider>
@@ -161,8 +174,28 @@
       <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="114" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="7922">
-              <folding />
+            <state line="466" column="64" selection-start="24399" selection-end="24399" vertical-scroll-proportion="0.0" vertical-offset="7377" max-vertical-offset="8092">
+              <folding>
+                <element signature="e#1637#1670#0" expanded="true" />
+                <element signature="e#1779#1812#0" expanded="true" />
+                <element signature="e#1968#2001#0" expanded="true" />
+                <element signature="e#2140#2173#0" expanded="true" />
+                <element signature="e#2270#2303#0" expanded="true" />
+                <element signature="e#2430#2463#0" expanded="true" />
+                <element signature="e#2596#2629#0" expanded="true" />
+                <element signature="e#3125#3158#0" expanded="true" />
+                <element signature="e#3930#3963#0" expanded="true" />
+                <element signature="e#6073#6106#0" expanded="true" />
+                <element signature="e#7145#7178#0" expanded="true" />
+                <element signature="e#7712#7745#0" expanded="true" />
+                <element signature="e#9603#9636#0" expanded="true" />
+                <element signature="e#11445#11478#0" expanded="true" />
+                <element signature="e#13440#13473#0" expanded="true" />
+                <element signature="e#15274#15307#0" expanded="true" />
+                <element signature="e#17214#17247#0" expanded="true" />
+                <element signature="e#17944#17977#0" expanded="true" />
+                <element signature="e#18939#18972#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -216,16 +249,16 @@
         <option value="$PROJECT_DIR$/src/taxonomy/Ranks.java" />
         <option value="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
         <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
-        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/db/ram/RamDb.java" />
         <option value="$PROJECT_DIR$/src/tuit.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
       </list>
     </option>
   </component>
@@ -281,6 +314,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -561,6 +612,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="specification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="specification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cutoff" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1451,7 +1528,11 @@
       <created>1395422349736</created>
       <updated>1395422349736</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="A bug fixed for an &quot;unknown GI&quot;, which happened due to an outdated database.">
+      <created>1396298965945</created>
+      <updated>1396298965945</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1483,14 +1564,14 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32624868" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32597265" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16373627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15983176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32555556" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15983176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947916" sideWeight="0.5813187" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1516,7 +1597,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="debugged in accordance with the latest NCBI dmp bugs" />
     <MESSAGE value="FILE granted to tuit@localhost" />
     <MESSAGE value="Nodes database bug from NCBI fixed" />
     <MESSAGE value="Windows compatability enforced" />
@@ -1541,7 +1621,8 @@
     <MESSAGE value="New JAVA_BIO support" />
     <MESSAGE value="A crucial bug for NodesDB deployment fixed" />
     <MESSAGE value="A multi-hsp formatting bug corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="A multi-hsp formatting bug corrected" />
+    <MESSAGE value="A bug fixed for an &quot;unknown GI&quot;, which happened due to an outdated database." />
+    <option name="LAST_COMMIT_MESSAGE" value="A bug fixed for an &quot;unknown GI&quot;, which happened due to an outdated database." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1555,17 +1636,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/io/file/TUTFileOperatorHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="6494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="6647" max-vertical-offset="9945">
-          <folding />
+          <folding>
+            <element signature="e#2067#2100#0" expanded="true" />
+            <element signature="e#5313#5346#0" expanded="true" />
+            <element signature="e#5487#5520#0" expanded="true" />
+            <element signature="e#5625#5658#0" expanded="true" />
+            <element signature="e#6245#6278#0" expanded="true" />
+            <element signature="e#6457#6490#0" expanded="true" />
+            <element signature="e#6641#6674#0" expanded="true" />
+            <element signature="e#7680#7713#0" expanded="true" />
+            <element signature="e#10633#10666#0" expanded="true" />
+            <element signature="e#11521#11574#0" expanded="true" />
+            <element signature="e#12106#12139#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1633,7 +1719,19 @@
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="6647" max-vertical-offset="9945">
-          <folding />
+          <folding>
+            <element signature="e#2067#2100#0" expanded="true" />
+            <element signature="e#5313#5346#0" expanded="true" />
+            <element signature="e#5487#5520#0" expanded="true" />
+            <element signature="e#5625#5658#0" expanded="true" />
+            <element signature="e#6245#6278#0" expanded="true" />
+            <element signature="e#6457#6490#0" expanded="true" />
+            <element signature="e#6641#6674#0" expanded="true" />
+            <element signature="e#7680#7713#0" expanded="true" />
+            <element signature="e#10633#10666#0" expanded="true" />
+            <element signature="e#11521#11574#0" expanded="true" />
+            <element signature="e#12106#12139#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1645,7 +1743,19 @@
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="391" column="46" selection-start="19823" selection-end="19823" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
+          <folding>
+            <element signature="e#2067#2100#0" expanded="true" />
+            <element signature="e#5313#5346#0" expanded="true" />
+            <element signature="e#5487#5520#0" expanded="true" />
+            <element signature="e#5625#5658#0" expanded="true" />
+            <element signature="e#6245#6278#0" expanded="true" />
+            <element signature="e#6457#6490#0" expanded="true" />
+            <element signature="e#6641#6674#0" expanded="true" />
+            <element signature="e#7680#7713#0" expanded="true" />
+            <element signature="e#10633#10666#0" expanded="true" />
+            <element signature="e#11521#11574#0" expanded="true" />
+            <element signature="e#12106#12139#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1731,7 +1841,9 @@
     </entry>
     <entry file="jar:///usr/java/default/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995" />
+        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/tables/LookupNames.java">
@@ -1807,30 +1919,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="321" column="82" selection-start="15507" selection-end="15507" vertical-scroll-proportion="0.0" vertical-offset="4596" max-vertical-offset="5508">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="51" selection-start="10475" selection-end="10475" vertical-scroll-proportion="0.0" vertical-offset="2756" max-vertical-offset="4148">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="212" column="30" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3689">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="13" selection-start="1682" selection-end="1682" vertical-scroll-proportion="-1.3492606" vertical-offset="1560" max-vertical-offset="3774">
           <folding />
         </state>
       </provider>
@@ -1842,30 +1933,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2550">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="307" column="10" selection-start="12284" selection-end="12284" vertical-scroll-proportion="0.0" vertical-offset="5363" max-vertical-offset="6205">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="36" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="114" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="7922">
           <folding />
         </state>
       </provider>
@@ -1877,6 +1947,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="86" selection-start="15487" selection-end="15487" vertical-scroll-proportion="0.0" vertical-offset="2218" max-vertical-offset="6528">
+          <folding>
+            <element signature="e#3736#3775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/test/TUITCutoffSetTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="6" selection-start="311" selection-end="311" vertical-scroll-proportion="0.34401348" vertical-offset="0" max-vertical-offset="593">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="8" selection-start="6351" selection-end="6678" vertical-scroll-proportion="0.0" vertical-offset="1782" max-vertical-offset="5508">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="88" selection-start="8102" selection-end="8102" vertical-scroll-proportion="0.0" vertical-offset="2411" max-vertical-offset="3026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="51" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0" vertical-offset="762" max-vertical-offset="2652">
@@ -1884,11 +1984,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="315" column="86" selection-start="15487" selection-end="15487" vertical-scroll-proportion="2.9550056" vertical-offset="2218" max-vertical-offset="6528">
+        <state line="26" column="2" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="124" selection-start="7392" selection-end="7392" vertical-scroll-proportion="0.0" vertical-offset="1388" max-vertical-offset="3825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="466" column="64" selection-start="24399" selection-end="24399" vertical-scroll-proportion="0.0" vertical-offset="7377" max-vertical-offset="8092">
           <folding>
-            <element signature="e#3736#3775#0" expanded="true" />
+            <element signature="e#1637#1670#0" expanded="true" />
+            <element signature="e#1779#1812#0" expanded="true" />
+            <element signature="e#1968#2001#0" expanded="true" />
+            <element signature="e#2140#2173#0" expanded="true" />
+            <element signature="e#2270#2303#0" expanded="true" />
+            <element signature="e#2430#2463#0" expanded="true" />
+            <element signature="e#2596#2629#0" expanded="true" />
+            <element signature="e#3125#3158#0" expanded="true" />
+            <element signature="e#3930#3963#0" expanded="true" />
+            <element signature="e#6073#6106#0" expanded="true" />
+            <element signature="e#7145#7178#0" expanded="true" />
+            <element signature="e#7712#7745#0" expanded="true" />
+            <element signature="e#9603#9636#0" expanded="true" />
+            <element signature="e#11445#11478#0" expanded="true" />
+            <element signature="e#13440#13473#0" expanded="true" />
+            <element signature="e#15274#15307#0" expanded="true" />
+            <element signature="e#17214#17247#0" expanded="true" />
+            <element signature="e#17944#17977#0" expanded="true" />
+            <element signature="e#18939#18972#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="255" column="134" selection-start="12801" selection-end="12801" vertical-scroll-proportion="0.704" vertical-offset="3399" max-vertical-offset="4233">
+          <folding>
+            <element signature="e#2067#2100#0" expanded="true" />
+            <element signature="e#5313#5346#0" expanded="true" />
+            <element signature="e#5487#5520#0" expanded="true" />
+            <element signature="e#5625#5658#0" expanded="true" />
+            <element signature="e#6245#6278#0" expanded="true" />
+            <element signature="e#6457#6490#0" expanded="true" />
+            <element signature="e#6641#6674#0" expanded="true" />
+            <element signature="e#7680#7713#0" expanded="true" />
+            <element signature="e#10633#10666#0" expanded="true" />
+            <element signature="e#11521#11574#0" expanded="true" />
+            <element signature="e#12106#12139#0" expanded="true" />
           </folding>
         </state>
       </provider>

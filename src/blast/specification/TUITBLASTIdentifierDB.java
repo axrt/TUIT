@@ -147,7 +147,10 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
             e.printStackTrace();
         }
     }
-    //Todo: document
+
+    /**
+     * Is used to cleanup the temporary files, created by TUIT upoun processing the query and receiving results from BLASTN.
+     */
     protected void cleanup(){
         if (this.cleanup) {
             Log.getInstance().log(Level.INFO, "Cleaning up temporary files...");

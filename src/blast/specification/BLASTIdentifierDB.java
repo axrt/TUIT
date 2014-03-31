@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by alext on 2/13/14.TODO: document
+ * An abstraciton of an indentifier, that uses a RDBMS-based taxonomic database
  */
 public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta> {
 
@@ -26,6 +26,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
      */
     @SuppressWarnings("WeakerAccess")
     protected final Connection connection;
+
 
     protected BLASTIdentifierDB(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
                              TUITFileOperator identifierFileOperator, Connection connection, Map<Ranks, TUITCutoffSet> cutoffSetMap,final int batchSize, final boolean cleanup) {
@@ -181,7 +182,6 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
         }
         return false;
     }
-
 
     /**
      * For a given {@link TaxonomicNode} attaches its parent and higher lineage structure. Originally used to
