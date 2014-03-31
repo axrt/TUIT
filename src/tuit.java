@@ -20,6 +20,7 @@ import taxonomy.Ranks;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -89,10 +90,13 @@ public class tuit {
      * tuit output file extension
      */
     private final static String TUIT_EXT = ".tuit";
-
-    //TODO document
+    /**
+     * Determines whether tuit should use the ram-mapped taxonomic database, or connect to a slower mysql version
+     */
     private final static String USE_DB = "usedb";
-
+    /**
+     * A serialized object for the taxonomic database
+     */
     private final static String RAM_DB = "ramdb.obj";
 
     @SuppressWarnings("ConstantConditions")
@@ -190,7 +194,13 @@ public class tuit {
 
                 if (ramDbFile.exists() && ramDbFile.canRead()) {
                     Log.getInstance().log(Level.INFO, "Loading RAM taxonomic map...");
-                    ramDb = RamDb.loadSelfFromFile(ramDbFile);
+                    try{
+                        ramDb = RamDb.loadSelfFromFile(ramDbFile);
+                    }catch (IOException ie){
+                        if(ie instanceof java.io.InvalidClassException )
+                        throw new IOException("The RAM-based taxonomic database needs to be updated.");
+                    }
+
                 } else {
                     Log.getInstance().log(Level.SEVERE, "The RAM database either has not been deployed, or is not accessible." +
                             "Please use the --deploy option and check permissions on the TUIT directory. " +
@@ -300,10 +310,10 @@ public class tuit {
             final String cleanupString = tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
             final boolean cleanup;
             if (cleanupString.equals("no")) {
-                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be deleted");
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be deleted.");
                 cleanup = true;
             } else {
-                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be kept");
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be kept.");
                 cleanup = false;
             }
             //Create blast identifier
@@ -331,20 +341,20 @@ public class tuit {
                     }
                 }
 
-            }else{    //TODO: change the executive to executable everywhere
+            } else {    //TODO: change the executive to executable everywhere
                 if (blastOutputFile == null) {
                     blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromFileOperator(
                             tmpDir, blastnExecutable, parameters,
                             nucleotideFastaTUITFileOperator,
                             cutoffMap,
                             Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
-                            , cleanup,ramDb);
+                            , cleanup, ramDb);
 
                 } else {
                     try {
                         blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator,
                                 cutoffMap, blastOutputFile,
-                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup,ramDb);
+                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup, ramDb);
 
                     } catch (JAXBException e) {
                         Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
@@ -366,6 +376,8 @@ public class tuit {
             Log.getInstance().log(Level.SEVERE, fnfe.getMessage());
         } catch (TUITPropertyBadFormatException tpbfe) {
             Log.getInstance().log(Level.SEVERE, tpbfe.getMessage());
+        } catch (ClassCastException cce) {
+            Log.getInstance().log(Level.SEVERE, cce.getMessage());
         } catch (JAXBException jaxbee) {
             Log.getInstance().log(Level.SEVERE, "The properties file is not well formatted. Please ensure that the XML is consistent with the io.properties.dtd schema.");
         } catch (ClassNotFoundException cnfe) {

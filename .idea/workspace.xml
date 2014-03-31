@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" afterPath="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="A multi-hsp formatting bug corrected&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/ram/RamDb.java" afterPath="$PROJECT_DIR$/src/db/ram/RamDb.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -76,10 +78,8 @@
       <file leaf-file-name="NCBITablesDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="56" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0" vertical-offset="1722" max-vertical-offset="2856">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state line="133" column="56" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0" vertical-offset="2261" max-vertical-offset="3043">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,7 +87,7 @@
       <file leaf-file-name="NodesDBDeployer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="307" column="10" selection-start="12284" selection-end="12284" vertical-scroll-proportion="0.0" vertical-offset="5363" max-vertical-offset="6205">
+            <state line="307" column="10" selection-start="12284" selection-end="12284" vertical-scroll-proportion="0.0" vertical-offset="5219" max-vertical-offset="6205">
               <folding />
             </state>
           </provider>
@@ -96,16 +96,7 @@
       <file leaf-file-name="TUITBLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1823" max-vertical-offset="2550">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BLASTIdentifier.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="51" selection-start="10475" selection-end="10475" vertical-scroll-proportion="0.0" vertical-offset="2756" max-vertical-offset="4148">
+            <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
               <folding />
             </state>
           </provider>
@@ -114,25 +105,17 @@
       <file leaf-file-name="BLASTIdentifierDB.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="321" column="82" selection-start="15507" selection-end="15507" vertical-scroll-proportion="0.0" vertical-offset="4768" max-vertical-offset="5508">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#730#763#0" expanded="false" />
-              </folding>
+            <state line="321" column="82" selection-start="15507" selection-end="15507" vertical-scroll-proportion="0.0" vertical-offset="5457" max-vertical-offset="5746">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TUITCutoffSet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="30" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.63243246" vertical-offset="2949" max-vertical-offset="3689">
-              <folding>
-                <element signature="e#1649#1682#0" expanded="true" />
-                <element signature="e#1779#1812#0" expanded="true" />
-                <element signature="e#1919#1952#0" expanded="true" />
-                <element signature="e#2288#2321#0" expanded="true" />
-              </folding>
+            <state line="212" column="30" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3689">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -140,10 +123,28 @@
       <file leaf-file-name="RamDb.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="51" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2601">
+            <state line="72" column="51" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0" vertical-offset="762" max-vertical-offset="2652">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tuit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="315" column="86" selection-start="15487" selection-end="15487" vertical-scroll-proportion="2.9550056" vertical-offset="2218" max-vertical-offset="6528">
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="e#3736#3775#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="36" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1904">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,11 +152,8 @@
       <file leaf-file-name="Ranks.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1921">
-              <folding>
-                <element signature="e#2511#2512#0" expanded="false" />
-                <element signature="e#2538#2539#0" expanded="false" />
-              </folding>
+            <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1921">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,16 +161,7 @@
       <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="298" column="45" selection-start="14376" selection-end="14409" vertical-scroll-proportion="0.0" vertical-offset="5066" max-vertical-offset="8109">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NormalizedHit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="48" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3723">
+            <state line="120" column="114" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="7922">
               <folding />
             </state>
           </provider>
@@ -228,22 +217,23 @@
         <option value="$PROJECT_DIR$/src/db/ram/RamDBTest.java" />
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
-        <option value="$PROJECT_DIR$/src/tuit.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
-        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-        <option value="$PROJECT_DIR$/src/db/ram/RamDb.java" />
         <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
+        <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
+        <option value="$PROJECT_DIR$/src/db/ram/RamDb.java" />
+        <option value="$PROJECT_DIR$/src/tuit.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1920" />
+    <option name="y" value="-10" />
     <option name="width" value="1920" />
-    <option name="height" value="1035" />
+    <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -271,66 +261,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="specification" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TUIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -680,6 +610,66 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="normal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="specification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TUIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tuit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1457,7 +1447,11 @@
       <created>1395248697605</created>
       <updated>1395248697605</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="A multi-hsp formatting bug corrected">
+      <created>1395422349736</created>
+      <updated>1395422349736</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1481,31 +1475,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1035" extended-state="0" />
-    <editor active="false" />
+    <frame x="1920" y="-10" width="1920" height="1045" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32624868" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16373627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.2868217" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16153029" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15983176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32555556" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947916" sideWeight="0.5813187" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.190625" sideWeight="0.6703297" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18958333" sideWeight="0.6703297" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20707597" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1522,7 +1516,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="sql script corrected 3 and tested" />
     <MESSAGE value="debugged in accordance with the latest NCBI dmp bugs" />
     <MESSAGE value="FILE granted to tuit@localhost" />
     <MESSAGE value="Nodes database bug from NCBI fixed" />
@@ -1547,7 +1540,8 @@
     <MESSAGE value="Crucial bug about the missing cutoffs fixed" />
     <MESSAGE value="New JAVA_BIO support" />
     <MESSAGE value="A crucial bug for NodesDB deployment fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="A crucial bug for NodesDB deployment fixed" />
+    <MESSAGE value="A multi-hsp formatting bug corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="A multi-hsp formatting bug corrected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1583,7 +1577,9 @@
     <entry file="file://$PROJECT_DIR$/src/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="261" column="104" selection-start="12886" selection-end="12886" vertical-scroll-proportion="0.0" vertical-offset="4437" max-vertical-offset="5746">
-          <folding />
+          <folding>
+            <element signature="e#3736#3775#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1735,9 +1731,7 @@
     </entry>
     <entry file="jar:///usr/java/default/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995">
-          <folding />
-        </state>
+        <state line="75" column="24" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.33270678" vertical-offset="639" max-vertical-offset="3995" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/tables/LookupNames.java">
@@ -1780,18 +1774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="19" selection-start="3269" selection-end="3269" vertical-scroll-proportion="0.4153439" vertical-offset="757" max-vertical-offset="1513" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="16" selection-start="6728" selection-end="6728" vertical-scroll-proportion="-0.04576043" vertical-offset="1989" max-vertical-offset="3774">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="79" column="5" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.0" vertical-offset="329" max-vertical-offset="1292">
@@ -1802,13 +1784,6 @@
     <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="224" column="9" selection-start="12054" selection-end="12054" vertical-scroll-proportion="0.0" vertical-offset="2695" max-vertical-offset="6630">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="71" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="1904">
           <folding />
         </state>
       </provider>
@@ -1825,44 +1800,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="298" column="45" selection-start="14376" selection-end="14409" vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="7871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="51" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2601">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1921">
-          <folding>
-            <element signature="e#2511#2512#0" expanded="false" />
-            <element signature="e#2538#2539#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/NCBITablesDeployer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="133" column="56" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0" vertical-offset="1722" max-vertical-offset="2856">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="307" column="10" selection-start="12284" selection-end="12284" vertical-scroll-proportion="0.0" vertical-offset="5363" max-vertical-offset="6205">
           <folding />
         </state>
       </provider>
@@ -1870,23 +1810,6 @@
     <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="321" column="82" selection-start="15507" selection-end="15507" vertical-scroll-proportion="0.0" vertical-offset="4596" max-vertical-offset="5508">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#730#763#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="18" selection-start="11508" selection-end="11508" vertical-scroll-proportion="0.0" vertical-offset="3880" max-vertical-offset="6341">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2550">
           <folding />
         </state>
       </provider>
@@ -1900,12 +1823,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="30" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.63243246" vertical-offset="2949" max-vertical-offset="3689">
+        <state line="212" column="30" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="13" selection-start="1682" selection-end="1682" vertical-scroll-proportion="-1.3492606" vertical-offset="1560" max-vertical-offset="3774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/connect/TaxonomicDatabaseOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="25" selection-start="1491" selection-end="1491" vertical-scroll-proportion="0.33295965" vertical-offset="230" max-vertical-offset="1513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="84" selection-start="5767" selection-end="5835" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="307" column="10" selection-start="12284" selection-end="12284" vertical-scroll-proportion="0.0" vertical-offset="5363" max-vertical-offset="6205">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="36" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="114" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="7922">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="4" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="51" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0" vertical-offset="762" max-vertical-offset="2652">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="86" selection-start="15487" selection-end="15487" vertical-scroll-proportion="2.9550056" vertical-offset="2218" max-vertical-offset="6528">
           <folding>
-            <element signature="e#1649#1682#0" expanded="true" />
-            <element signature="e#1779#1812#0" expanded="true" />
-            <element signature="e#1919#1952#0" expanded="true" />
-            <element signature="e#2288#2321#0" expanded="true" />
+            <element signature="e#3736#3775#0" expanded="true" />
           </folding>
         </state>
       </provider>
