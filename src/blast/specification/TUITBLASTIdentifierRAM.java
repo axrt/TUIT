@@ -98,7 +98,6 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
                 } while ((this.query = tuitFileOperator.nextBatch(this.batchSize)) != null);
             }
 
-            tuitFileOperator.reset();
             this.BLASTed = true;
 
         } catch (IOException e) {

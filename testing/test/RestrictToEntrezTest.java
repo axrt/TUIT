@@ -1,6 +1,6 @@
 package tuit.main;
 
-import io.file.TUTFileOperatorHelper;
+import io.file.TUITFileOperatorHelper;
 import org.junit.Test;
 
 import java.io.File;
@@ -20,7 +20,7 @@ public class RestrictToEntrezTest {
 
         File tmpDir=new File("/home/alext/Downloads/tmp");
         try {
-            TUTFileOperatorHelper.restrictToEntrez(tmpDir,"not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes");
+            TUITFileOperatorHelper.restrictToEntrez(tmpDir, "not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (NoSuchAlgorithmException e) {

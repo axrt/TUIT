@@ -1,10 +1,10 @@
 package io.properties.load;
 
 import exception.TUITPropertyBadFormatException;
+import io.file.TUITFileOperatorHelper;
 import io.properties.jaxb.*;
 import logger.Log;
 import taxonomy.Ranks;
-import io.file.TUTFileOperatorHelper;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -380,7 +380,7 @@ public class TUITPropertiesLoader {
      * @throws SAXException
      */
     private TUITProperties loadProperties() throws FileNotFoundException, JAXBException, SAXException {
-        return TUTFileOperatorHelper.catchProperties(new FileInputStream(this.propertiesFile));
+        return TUITFileOperatorHelper.catchProperties(new FileInputStream(this.propertiesFile));
     }
 
     /**

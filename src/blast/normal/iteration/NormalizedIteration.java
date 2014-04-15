@@ -468,7 +468,7 @@ public class NormalizedIteration<I extends Iteration> {
      * @return {@link String} the name of the query record that was used to get this iteration hit list.
      */
     public String getIterationQueryName(){
-        return this.iteration.getIterationQueryID();
+        return this.iteration.getIterationQueryDef();
     }
 
     /**

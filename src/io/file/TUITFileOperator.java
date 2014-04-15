@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * This class handles file opening for the {@link blast.specification.BLASTIdentifier}
  */
-public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator<T> {
+public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_EX_BLAST_FileOperator<T> implements AutoCloseable {
     /**
      * A BufferedReader to read the input file
      */
@@ -154,6 +154,16 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
         this.bufferedWriter = null;
         this.bufferedReader.close();
         this.bufferedReader = null;
+    }
+
+    /**
+     * Overridden close that makes the code work with try-with-resources
+     * @throws Exception in case smth goes wrong during close();
+     */
+    @Override
+    public void close() throws Exception {
+        this.bufferedWriter.close();
+        this.bufferedReader.close();
     }
 
     /**

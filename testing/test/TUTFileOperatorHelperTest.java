@@ -1,6 +1,6 @@
 package test;
 
-import io.file.TUTFileOperatorHelper;
+import io.file.TUITFileOperatorHelper;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -25,7 +25,7 @@ public class TUTFileOperatorHelperTest {
 
         try {
            InputStream inputStream=new FileInputStream(new File("/home/alext/Developer/IdeaProjects/TUIT/src/test/io.properties.xml"));
-           TUITProperties tuitProperties= TUTFileOperatorHelper.catchProperties(inputStream);
+           TUITProperties tuitProperties= TUITFileOperatorHelper.catchProperties(inputStream);
             System.out.println("hit");
         } catch (SAXException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

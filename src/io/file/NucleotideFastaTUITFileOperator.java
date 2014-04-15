@@ -2,15 +2,17 @@ package io.file;
 
 import blast.ncbi.output.Iteration;
 import blast.normal.iteration.NormalizedIteration;
+import blast.specification.cutoff.TUITCutoffSet;
 import exception.FastaInputFileException;
 import format.fasta.Fasta;
 import format.fasta.nucleotide.NucleotideFasta;
+import taxonomy.Ranks;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
@@ -31,51 +33,72 @@ import java.util.Set;
 /**
  * A {@link TUITFileOperator} for the {@link NucleotideFasta}s.
  */
-public class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
+public abstract class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
 
     @SuppressWarnings("WeakerAccess")
-    public static final String NOT_IDENTIFIED="<-not identified->";
+    public static final String NOT_IDENTIFIED = "<-not identified->";
 
     @Override
     protected boolean inputFileFormattingIsFine() throws FastaInputFileException, IOException {
 
-        BufferedReader bf=new BufferedReader(new FileReader(this.inputFile));
-        Set<String> fastaACs=new HashSet<String>();
-        String nextLine;
-        int fastaNumber=0;
-        while ((nextLine=bf.readLine())!=null){
-             if(line.startsWith(Fasta.fastaStart)){
-                 fastaNumber++;
-                 if(!fastaACs.add(nextLine)){
-                      throw new FastaInputFileException("A non-unique name at "+fastaNumber+" record.");
-                 }
-             }
+        try (BufferedReader bf = new BufferedReader(new FileReader(this.inputFile));) {
+            final Set<String> fastaACs = new HashSet<String>();
+            String nextLine;
+            int fastaNumber = 0;
+            while ((nextLine = bf.readLine()) != null) {
+                if (line.startsWith(Fasta.fastaStart)) {
+                    fastaNumber++;
+                    if (!fastaACs.add(nextLine)) {
+                        throw new FastaInputFileException("A non-unique name at " + fastaNumber + " record.");
+                    }
+                }
+            }
         }
         return true;
     }
 
-    @Override
+    @Override    //TODO comment
     protected NucleotideFasta newFastaFromRecord(String record) throws Exception {
         return NucleotideFasta.newInstanceFromFormattedText(record);
-    }
-
-    @Override
-    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
-        if(normalizedIteration.getPivotalHit()!=null){
-            this.bufferedWriter.write(query.getAC()+":\t"+normalizedIteration.getPivotalHit().getFocusNode().getFormattedLineage());
-        }else {
-            this.bufferedWriter.write(query.getAC()+": "+NucleotideFastaTUITFileOperator.NOT_IDENTIFIED);
-        }
-        this.bufferedWriter.newLine();
-        this.bufferedWriter.flush();
-        return true;
     }
 
     /**
      * A static factory to create a new instance of a {@link NucleotideFastaTUITFileOperator}
      * @return new {@link NucleotideFastaTUITFileOperator}
      */
-    public static NucleotideFastaTUITFileOperator newInstance(){
-        return new NucleotideFastaTUITFileOperator();
+    public static NucleotideFastaTUITFileOperator newInstance() {
+        return new NucleotideFastaTUITFileOperator(){
+            @Override      //TODO comment
+            public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
+                this.bufferedWriter.write(
+                        TUITFileOperatorHelper.OutputFormat.defaultTUITFormatter.format(query.getAC().split("\t")[0], normalizedIteration));
+                this.bufferedWriter.newLine();
+                this.bufferedWriter.flush();
+                return true;
+            }
+        };
+    }
+
+    //TODO document
+    public static NucleotideFastaTUITFileOperator newInstance(final TUITFileOperatorHelper.OutputFormat format, final Map<Ranks, TUITCutoffSet> cutoffMap){
+        switch (format){
+            case TUIT:{
+                return newInstance();
+            }
+            case RDP_FIXRANK:{
+                return new NucleotideFastaTUITFileOperator() {
+                    @Override
+                    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
+                        this.bufferedWriter.write(
+                                TUITFileOperatorHelper.OutputFormat.defaultFixRankRDPFormatter(cutoffMap).format(query.getAC().split("\t")[0], normalizedIteration)
+                        );
+                        this.bufferedWriter.newLine();
+                        this.bufferedWriter.flush();
+                        return true;
+                    }
+                };
+            }
+        }
+        throw new IllegalArgumentException("Wrong unknown format selected!");
     }
 }

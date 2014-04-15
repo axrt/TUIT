@@ -90,6 +90,11 @@ public class TaxonomicNode {
     }
 
     /**
+     *
+     * @return
+     */
+    public String getScientificName(){return this.scientificName;}
+    /**
      * A getter for {@code boolean} isRoot
      *
      * @return {@code boolean} isRoot
@@ -176,6 +181,7 @@ public class TaxonomicNode {
      *
      * @return A full taxonomic lineage from the root for this node separated by " -> "
      */
+    @Deprecated
     public String getFormattedLineage() {
         StringBuilder stringBuilder = new StringBuilder();
         if (this.parent != null) {
@@ -191,6 +197,7 @@ public class TaxonomicNode {
      *
      * @return {@link String} representation of the name and taxonomic rank
      */
+    @Deprecated
     @SuppressWarnings("WeakerAccess")
     public String getFormattedNameRank() {
         return this.scientificName + " {" + this.rank.getName() + "}";
