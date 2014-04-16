@@ -93,20 +93,21 @@ public class TUITFileOperatorHelper {
 
         /**
          * An output formatter that helps format an {@link blast.ncbi.output.Iteration}
+         *
          * @param <I> extends {@link blast.ncbi.output.Iteration} that will be formatted
          */
         public interface OutputFormatter<I extends Iteration> {
             /**
              * Performs full format.
-             * @param ac {@link java.lang.String} that will be appended to the line (presumably AC)
+             *
+             * @param ac                  {@link java.lang.String} that will be appended to the line (presumably AC)
              * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} to format
              * @return {@link java.lang.String} representation of the lineage in full formatted line(s)
              */
             public String format(final String ac, final NormalizedIteration<I> normalizedIteration);
 
             /**
-             *
-             * @param ac {@link java.lang.String} that will be appended to the line (presumably AC)
+             * @param ac                  {@link java.lang.String} that will be appended to the line (presumably AC)
              * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} to format
              * @return {@link String} representation of the query or/and AC
              */
@@ -114,6 +115,7 @@ public class TUITFileOperatorHelper {
 
             /**
              * Formats (presumably in a recursive manner) the lineage going by taxonomic nodes
+             *
              * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that is presumably the deppes node that TUIT was able to classify
              * @return {@link String} representaion of the lineage
              */
@@ -197,16 +199,34 @@ public class TUITFileOperatorHelper {
 
         /**
          * Not Thread-safe!
-         * @param cutoffMap
-         * @return
+         * A default {@link io.file.TUITFileOperatorHelper.OutputFormat.OutputFormatter} that allows for RDP fixrank formatting. In case of "unclassified", a relevant field gets added
+         * with an "unclassified" mark and 0 confidence. For those classified, the confidence is 1-alpha, which comes form the {@link blast.specification.cutoff.TUITCutoffSet}.
+         *
+         * @param cutoffMap {@link java.util.Map} of cutoffsets, that forms once upon program initiation
+         * @return {@link io.file.TUITFileOperatorHelper.OutputFormat.OutputFormatter} that allows for RPD fixrank format of the output
          */
         public static OutputFormatter<Iteration> defaultFixRankRDPFormatter(final Map<Ranks, TUITCutoffSet> cutoffMap) {
             return new OutputFormatter<Iteration>() {
-
-                private final Ranks[] rdpFixRankRanks= {Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus, Ranks.species};
-                private Deque<Ranks> orderOfRankAppearence=new ArrayDeque<>(Arrays.asList(rdpFixRankRanks));
+                /**
+                 * A list of taxonomic ranks that are commonly used by the RDP fixrank formatting
+                 */
+                private final Ranks[] rdpFixRankRanks = {Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus, Ranks.species};
+                /**
+                 * A queue that allows for tracking of which of the mandatory fixrank ranks had already appeared, and which not. Helps greatly in cases, when a hit had less
+                 * ranks in its lineage that assumed by the fixrank format
+                 */
+                private Deque<Ranks> orderOfRankAppearence = new ArrayDeque<>(Arrays.asList(rdpFixRankRanks));
+                /**
+                 * A set of fixranks for faster search "if-rank-present/allowed-by-the-fixrank-format"
+                 */
                 private final Set<Ranks> rdpFixRankRanksSet = new HashSet<>(orderOfRankAppearence);
 
+                /**
+                 * A helper method, that searches for the rank of the given {@link taxonomy.node.TaxonomicNode} within the {@code rdpFixRankRanks}. The one found retains a corresponding
+                 * position within the fixrank ouput.
+                 * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that will be used a the lower-ranked node, within a taxonomy that must be searched
+                 * @return -1 in case the rank was not found, {@code int} position in the {@code rdpFixRankRanks} when found.
+                 */
                 private final int findRank(final TaxonomicNode taxonomicNode) {
                     int count = 0;
                     for (Ranks r : rdpFixRankRanks) {
@@ -221,6 +241,12 @@ public class TUITFileOperatorHelper {
                     return -1;
                 }
 
+                /**
+                 * Formats a given {@link blast.normal.iteration.NormalizedIteration} with a given {@link java.lang.String} AC as row identifier.
+                 * @param ac {@link String} that identifies the row (AC of the query, presumably)
+                 * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} that contains the result
+                 * @return {@link String} representation of the full lineage in RDP fixrank format
+                 */
                 @Override
                 public String format(String ac, NormalizedIteration<Iteration> normalizedIteration) {
                     final StringBuilder stringBuilder = new StringBuilder();
@@ -250,15 +276,30 @@ public class TUITFileOperatorHelper {
                         stringBuilder.append(0);
                         stringBuilder.append('\t');
                     }
-                    orderOfRankAppearence=new ArrayDeque<>(Arrays.asList(rdpFixRankRanks));
+                    orderOfRankAppearence = new ArrayDeque<>(Arrays.asList(rdpFixRankRanks));
                     return stringBuilder.toString().trim();
                 }
 
+                /**
+                 * Formats query sequence by adding a given {@link java.lang.String} ac to the RDP query delimiter ("\t\t")
+                 * @param ac {@link String} that identifies the row (AC of the query, presumably)
+                 * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} that contains the result (not used by this implementation)
+                 * @return {@link java.lang.String} representation of the AC and RDP-specific delimiter
+                 */
                 @Override
                 public String formatQuery(String ac, NormalizedIteration<Iteration> normalizedIteration) {
                     return ac.concat("\t\t");
                 }
 
+                /**
+                 * Recursively adds {@link taxonomy.node.TaxonomicNode}s from the lineage to a {@link java.lang.String} representation, substitutes the
+                 * missing rank with underscore-connected {@link taxonomy.node.TaxonomicNode} rank and name, and substitutes unclassified with "unclassified".
+                 * Confidence scores, common for the RDP output are substituted by a logical "confidence" approximation: 1-alpha.
+                 * Exmple: say, we have an alpha of 0.05 for a given taxonomic rank. Then we are confident that the classification is a true 95%. Thereby, we put
+                 * 0.95 confidence on the RDP fixrank output.
+                 * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that is presumably the deepest node, that TUIT was able to calssify
+                 * @return {@link java.lang.String} representation of a given {@link taxonomy.node.TaxonomicNode} lineage
+                 */
                 @Override
                 public String formatFullLineage(TaxonomicNode taxonomicNode) {
                     final StringBuilder stringBuilder = new StringBuilder();
@@ -266,15 +307,15 @@ public class TUITFileOperatorHelper {
                         stringBuilder.append(formatFullLineage(taxonomicNode.getParent()));
                     }
                     if (rdpFixRankRanksSet.contains(taxonomicNode.getRank())) {
-                        if(taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())){
+                        if (taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
                             stringBuilder.append(taxonomicNode.getScientificName());
                             stringBuilder.append('\t');
                             stringBuilder.append(translateToRDPConventions(taxonomicNode.getRank()));
                             stringBuilder.append('\t');
                             stringBuilder.append(1 - cutoffMap.get(taxonomicNode.getRank()).getAlpha());
                             stringBuilder.append('\t');
-                        }else{
-                            while(orderOfRankAppearence.size()>1&!taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())){
+                        } else {
+                            while (orderOfRankAppearence.size() > 1 & !taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
                                 stringBuilder.append(taxonomicNode.getScientificName().concat("_").concat(orderOfRankAppearence.getFirst().toString()));
                                 stringBuilder.append('\t');
                                 stringBuilder.append(translateToRDPConventions(orderOfRankAppearence.getFirst()));
@@ -365,23 +406,19 @@ public class TUITFileOperatorHelper {
      * @throws IOException                                                 in case opening and reading the file fails
      * @throws format.fasta.nucleotide.NucleotideFasta_BadFormat_Exception in case of a single line format or none at all
      */
-    public static List<EncodedFasta> loadOTURecords(File file) throws IOException,   //TODO change for try-with-resources
+    public static List<EncodedFasta> loadOTURecords(File file) throws IOException,
             NucleotideFasta_BadFormat_Exception {
         //Open file and check whether it is even Fasta at all
-        List<EncodedFasta> encodedFastas = null;
-        BufferedReader bufferedReader = null;
-        try {
-            bufferedReader = new BufferedReader(new FileReader(file));
-            StringBuilder stringBuilder = new StringBuilder();
-            String recordAC = file.getName().split(".")[0];//Get the file name that is supposed to be the AC without ".fasta" extension or whatever the extension is being used
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            final StringBuilder stringBuilder = new StringBuilder();
+            final String recordAC = file.getName().split(".")[0];//Get the file name that is supposed to be the AC without ".fasta" extension or whatever the extension is being used
             String line;
-            //Read the first line to see if it is fromatted properly
+            //Read the first line to see if it is formatted properly
             line = bufferedReader.readLine().trim();//trim() is needed in case there had been white traces
             if (line.startsWith(Fasta.fastaStart)) {
                 stringBuilder.append(line);
                 stringBuilder.append('\n');
             } else {
-                bufferedReader.close();
                 throw new NucleotideFasta_BadFormat_Exception("Nucleotide Fasta record: bad format; record does not start with " + Fasta.fastaStart + " identifier ");
             }
             while ((line = bufferedReader.readLine()) != null) {
@@ -389,20 +426,15 @@ public class TUITFileOperatorHelper {
                 stringBuilder.append('\n');
             }
             //Try splitting the file by > if it is possible
-            String[] splitter = stringBuilder.toString().split(Fasta.fastaStart);
+            final String[] splitter = stringBuilder.toString().split(Fasta.fastaStart);
             //Prepare a list of a split size to store the records
-            encodedFastas = new ArrayList<EncodedFasta>(splitter.length);
+            final List<EncodedFasta> encodedFastas = new ArrayList<EncodedFasta>(splitter.length);
             //Parse every record and then store it in the list
             for (String s : splitter) {
                 encodedFastas.add(EncodedFasta.newInstanceFromFormattedText(recordAC, s));
             }
-        } finally {
-            //Finally return the prepared list of records
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
+            return encodedFastas;
         }
-        return encodedFastas;
     }
 
     /**
@@ -414,60 +446,51 @@ public class TUITFileOperatorHelper {
      * @throws IOException              in case an error rw file occurs
      * @throws NoSuchAlgorithmException may never happen, is caused by MessageDigest.getInstance("MD5"), that creates a md5 hash for the entrez query file name.
      */
-    public static File restrictToEntrez(File tmpDir, String entrez_query) throws IOException, NoSuchAlgorithmException {       //TODO change for try-with-resources
+    public static File restrictToEntrez(File tmpDir, String entrez_query) throws IOException, NoSuchAlgorithmException {
+        //Connect to NCBI eutils esearch
         final String encodedEntrezQuery = URLEncoder.encode(entrez_query, "UTF-8");
-        URL eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&rettype=count&term=" + encodedEntrezQuery);
-        BufferedReader bufferedReader = null;
-        BufferedWriter bufferedWriter = null;
+        URL eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&rettype=count&term=" + encodedEntrezQuery);//Non-final cuz will be repointed
+        //Check md5 to see if the file has already been created from the same entrez query.
         byte[] entrezQueryByte = entrez_query.getBytes("UTF-8");
         final MessageDigest messageDigest = MessageDigest.getInstance("MD5");
         byte[] entrezQueryByteMD5 = messageDigest.digest(entrezQueryByte);
         final StringBuilder sb = new StringBuilder();
         for (byte anEntrezQueryByteMD5 : entrezQueryByteMD5) {
-            sb.append(Integer.toString((anEntrezQueryByteMD5 & 0xff) + 0x100, 16).substring(1));
+            sb.append(Integer.toString((anEntrezQueryByteMD5 & 0xff) + 0x100, 16).substring(1));//Reformat md5
         }
-        File restrictedGIs = new File(tmpDir, sb.toString() + ".gil");
+        final File restrictedGIs = new File(tmpDir, sb.toString() + ".gil");
         if (restrictedGIs.exists()) {
             Log.getInstance().log(Level.INFO, "The GI restrictions file " + restrictedGIs.getAbsolutePath() + " already exists, proceeding.");
             return restrictedGIs;
         }
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
+        String countString = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));) {
             String line;
-            String countString = null;
             Log.getInstance().log(Level.INFO, "Entrez query restrictions have not been created yet. Preparing a restricting GI file. This may take some 5-10 minutes, please wait.");
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("<Count>")) {
-                    countString = line.substring("<Count>".length() + 1, line.indexOf("</Count>"));
+                    countString = line.substring("<Count>".length() + 1, line.indexOf("</Count>"));//Process the ouptut html for counts
                     Log.getInstance().log(Level.INFO, "Number of GIs in set: " + countString + ", downloading from NCBI.");
                 }
             }
-            bufferedReader.close();
-            if (countString == null) {
-                throw new IOException("Could not determine a count for the entrez_query '" + entrez_query + "'");
-            }
-            eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&retmax=" + countString + "&term=" + encodedEntrezQuery);
-            bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
+        }
+        //In case no count have been found, that means that the output is empty and an exception should be thorwn at this point
+        if (countString == null) {
+            throw new IOException("Could not determine a count for the entrez_query '" + entrez_query + "'");
+        }
 
-            bufferedWriter = new BufferedWriter(new FileWriter(restrictedGIs));
+        eutilsCount = new URL("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&retmax=" + countString + "&term=" + encodedEntrezQuery);
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(eutilsCount.openConnection().getInputStream()));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(restrictedGIs));) {
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("<Id>")) {
                     bufferedWriter.write(line.substring("<Id>".length() + 1, line.indexOf("</Id>")));
                     bufferedWriter.newLine();
                 }
             }
-            bufferedWriter.flush();
-            bufferedReader.close();
-            bufferedWriter.close();
-        } finally {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-            if (bufferedWriter != null) {
-                bufferedWriter.close();
-            }
         }
-
+        //Finally return a pointer to the file
         return restrictedGIs;
     }
 
@@ -594,7 +617,7 @@ public class TUITFileOperatorHelper {
     }
 
     /**
-     * Returns a list of leaves for the given taxid
+     * Returns a list of leaves for the given taxid.
      *
      * @param connection {@link Connection} to the database
      * @param taxid      which identifies the branch, which contains the leaves that need to be found
@@ -604,12 +627,10 @@ public class TUITFileOperatorHelper {
      */
     @SuppressWarnings("WeakerAccess")
     public static List<Integer> leavesByTaxid(Connection connection, int taxid, List<Integer> leaves) throws SQLException {
-        Statement statement = null;
         List<Integer> taxids;
-        try {
-            statement = connection.createStatement();
+        try (Statement statement = connection.createStatement();){
             statement.execute("USE " + LookupNames.dbs.NCBI.name);
-            ResultSet resultSet = statement.executeQuery(
+            final ResultSet resultSet = statement.executeQuery(
                     "SELECT "
                             + LookupNames.dbs.NCBI.nodes.columns.taxid.name()
                             + " FROM "
@@ -618,7 +639,7 @@ public class TUITFileOperatorHelper {
                             + LookupNames.dbs.NCBI.nodes.columns.parent_taxid.name()
                             + "=" + String.valueOf(taxid)
             );
-            taxids = new ArrayList<Integer>();
+            taxids = new ArrayList<>();
             while (resultSet.next()) {
                 taxids.add(resultSet.getInt(1));
             }
@@ -628,11 +649,6 @@ public class TUITFileOperatorHelper {
                 for (Integer i : taxids) {
                     leaves = TUITFileOperatorHelper.leavesByTaxid(connection, i, leaves);
                 }
-            }
-
-        } finally {
-            if (statement != null) {
-                statement.close();
             }
         }
         return leaves;
