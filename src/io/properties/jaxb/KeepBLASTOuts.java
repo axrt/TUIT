@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3c.dom.Element;
 
@@ -29,38 +29,38 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "content"
 })
-@XmlRootElement(name = "BLASTNPath")
-public class BLASTNPath {
+@XmlRootElement(name = "KeepBLASTOuts")
+public class KeepBLASTOuts {
 
-    @XmlAttribute(name = "path", required = true)
-    @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
-    protected String path;
+    @XmlAttribute(name = "keep", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String keep;
     @XmlMixed
     @XmlAnyElement
     protected List<Object> content;
 
     /**
-     * Gets the value of the path property.
+     * Gets the value of the keep property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPath() {
-        return path;
+    public String getKeep() {
+        return keep;
     }
 
     /**
-     * Sets the value of the path property.
+     * Sets the value of the keep property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPath(String value) {
-        this.path = value;
+    public void setKeep(String value) {
+        this.keep = value;
     }
 
     /**

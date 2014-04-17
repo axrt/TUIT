@@ -35,7 +35,7 @@
         <!--Choose a database to search against.
         In case you are using a local blast option,
         refer to http://www.ncbi.nlm.nih.gov/books/NBK1762/
-        in order to provide correct database alias-->
+        in order to provide correct database alias (nt/est/16SMicrobial.. etc)-->
         <Database use="nt"/>
         <!--An E-value threshold for the output.-->
         <Expect value="1.0"/>
@@ -43,7 +43,7 @@
         of the "junk" hits that provide little or no taxonomic
         information. Note that with the local BLAST option
         the task of database restriction with an entrez query
-        may be tricky if the selected entrez qurey provides an excessive gi list.
+        may be tricky if the selected entrez query provides an excessive gi list.
         Refer to the official documentation http://www.ncbi.nlm.nih.gov/books/NBK1762/
         Upon first run tuit will fetch the GI list for the given
         entrez query and refer to it as to restrictions list-->
@@ -51,7 +51,7 @@
                 value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
         <!--If "no" selected, the BLASTN search
         will be performed locally, "yes" will
-        send the query to the NCBI BLAST server.-->
+        send the query to the NCBI BLAST server (yes/no).-->
         <Remote delegate="no"/>
         <!--A number of threads  that current blast will use-->
         <NumThreads value="12"/>
@@ -60,8 +60,10 @@
         how many of those are taken for a single round
         of BLAST search.-->
         <MaxFilesInBatch value="100"/>
-        <!--Indicates whether TUIT should keep the intermediate temporary blast outputs-->
+        <!--Indicates whether TUIT should keep the intermediate temporary blast outputs (no/yes)-->
         <KeepBLASTOuts keep="no"/>
+        <!--Indicates whether TUIT native format should be used, or a fixrank RDP (rdp) -->
+        <OutputFormat format="tuit"/>
     </BLASTNParameters>
     <!--Each set represents a specific set of cutoffs
     that will be applied to a certain taxonomic rank.-->

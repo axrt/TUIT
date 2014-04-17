@@ -66,6 +66,9 @@ public class TUITPropertiesLoader {
         final KeepBLASTOuts defaultKeepBLASTOuts = new KeepBLASTOuts();
         defaultKeepBLASTOuts.setKeep(String.valueOf(false));
         TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setKeepBLASTOuts(defaultKeepBLASTOuts);
+        final OutputFormat defaultOutputFormat = new OutputFormat();
+        defaultOutputFormat.setFormat("tuit");
+        TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.setOutputFormat(defaultOutputFormat);
     }
 
     /**
@@ -357,14 +360,22 @@ public class TUITPropertiesLoader {
             tuitProperties.getBLASTNParameters().setNumThreads(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getNumThreads());
             Log.getInstance().log(Level.WARNING,"No \"maximum files in a batch property, using default\": " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getNumThreads().getValue() + ".");
         }
-        if (blastnParameters.getKeepBLASTOuts() == null || blastnParameters.getKeepBLASTOuts()== null) {
+        if (blastnParameters.getKeepBLASTOuts() == null ||blastnParameters.getKeepBLASTOuts().getKeep()== null) {
             //noinspection ConstantConditions
-            tuitProperties.getBLASTNParameters().setKeepBLASTOuts(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts());
             Log.getInstance().log(Level.WARNING,"No keep BLAST output property, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts() + ".");
             tuitProperties.getBLASTNParameters().setKeepBLASTOuts(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts());
         } else {
             if (!blastnParameters.getKeepBLASTOuts().getKeep().equals("yes") && !blastnParameters.getKeepBLASTOuts().getKeep().equals("no")) {
                 throw new TUITPropertyBadFormatException("Erroneous keep BLAST outputs value, please provide \"yes\" or \"no\"");
+            }
+        }
+        if (blastnParameters.getOutputFormat() == null || blastnParameters.getOutputFormat().getFormat()== null) {
+            //noinspection ConstantConditions
+            Log.getInstance().log(Level.WARNING,"No format specified, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts() + ".");
+            tuitProperties.getBLASTNParameters().setOutputFormat(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getOutputFormat());
+        } else {
+            if (!blastnParameters.getOutputFormat().getFormat().equals("tuit") && !blastnParameters.getOutputFormat().getFormat().equals("rdp")) {
+                throw new TUITPropertyBadFormatException("Erroneous output format value, please provide \"tuit\" or \"rdp\"");
             }
         }
 

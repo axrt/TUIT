@@ -306,7 +306,14 @@ public class tuit {
             } else {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>();
             }
-            try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK,cutoffMap);) {
+            final TUITFileOperatorHelper.OutputFormat format;
+            if(tuitProperties.getBLASTNParameters().getOutputFormat().getFormat().equals("rdp")){
+                format= TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK;
+            }else{
+                format= TUITFileOperatorHelper.OutputFormat.TUIT;
+            }
+
+            try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(format,cutoffMap);) {
                 nucleotideFastaTUITFileOperator.setInputFile(inputFile);
                 nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
                 final String cleanupString = tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();

@@ -21,9 +21,9 @@
         <!ATTLIST BLASTNPath path CDATA #REQUIRED>
         <!ELEMENT TMPDir ANY>
         <!ATTLIST TMPDir path CDATA #REQUIRED>
-        <!ELEMENT BLASTNParameters (Database*, Expect, EntrezQuery, Remote,NumThreads, MaxFilesInBatch,KeepBLASTOuts)>
+        <!ELEMENT BLASTNParameters (Database*, Expect, EntrezQuery, Remote,NumThreads, MaxFilesInBatch,KeepBLASTOuts,OutputFormat)>
         <!ELEMENT Database ANY>
-        <!ATTLIST Database use (nt|est) #REQUIRED>
+        <!ATTLIST Database use (nt|est|16SMicrobial) #REQUIRED>
         <!ELEMENT Expect ANY>
         <!ATTLIST Expect value CDATA #REQUIRED>
         <!ELEMENT EntrezQuery ANY>
@@ -36,6 +36,8 @@
         <!ATTLIST MaxFilesInBatch value CDATA #REQUIRED>
         <!ELEMENT KeepBLASTOuts ANY>
         <!ATTLIST KeepBLASTOuts keep (yes|no) #REQUIRED>
+        <!ELEMENT OutputFormat ANY>
+        <!ATTLIST OutputFormat format (tuit|rdp) #REQUIRED>
         <!ELEMENT SpecificationParameters (CutoffSet)>
         <!ELEMENT CutoffSet (pIdentCutoff,QueryCoverageCutoff,Alpha)>
         <!ATTLIST CutoffSet rank (root_of_life | no_rank | superkingdom | kingdom | subkingdom | superphylum | phylum | subphylum | superclass | c_lass | subclass |infraclass | superorder | order | suborder | infraorder | parvorder | superfamily | family | subfamily | tribe | subtribe | genus | subgenus | species_group | species_subgroup | species | subspecies | varietas | forma ) #REQUIRED>
