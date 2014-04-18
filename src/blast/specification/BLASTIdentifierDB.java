@@ -39,7 +39,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
      * @param cutoffSetMap           {@link java.util.Map} of {@link blast.specification.cutoff.TUITCutoffSet}s
      * @param batchSize              {@code int} value that determines how many files get blasted/classified in a single blast (Note that this value depends on the system.
      *                               Too many files per batch may increase times that BLAST dumps the results, however, too little will increase the overhead on
-     *                               BLASTN locking on its database)
+     *                               BLASTN locking on its database. We recommend 100-500)
      * @param cleanup                {@code boolean} that determines whether the BLAST files should be deleted after the classification has finished. {@code true} by default, but
      *                               may be overridden to keep the result for manual analysis.
      */

@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
  * software for accurate taxonomic classification of nucleotide sequences.
@@ -49,25 +48,17 @@ public class NodesDBDeployer {
      * @throws IOException in case smth goes wrong during file read and parsing
      */
     @Deprecated
-    public static Set<String> calculateASetOfRanksFromFile(File nodesDmpFile) throws IOException {
+    public static Set<String> calculateASetOfRanksFromFile(final File nodesDmpFile) throws IOException {
         //Prepare a new set to store the ranks
         Set<String> ranks = new HashSet<String>();
         //Open the file
-        BufferedReader bufferedReader = null;
-        try {
-            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));) {
             //Read line by line, splitting the line by the separator
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 //Put every rank value into the set
                 ranks.add(line.split("\t|\t")[4]);
             }
-        } finally {
-            //Close everything and return the set
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-
         }
         return ranks;
     }
@@ -81,7 +72,7 @@ public class NodesDBDeployer {
      * @return a new {@link  Map} where each ranks has been assigned a unique ID
      */
     @Deprecated
-    public static Map<String, Integer> assignIDsToRanks(Set<String> ranks) {
+    public static Map<String, Integer> assignIDsToRanks(final Set<String> ranks) {
         //Create a new HashMap<String, Integer>()
         Map<String, Integer> ranks_ids = new HashMap<String, Integer>();
         //Populate it from the set of ranks and assign an incremented id on the fly
@@ -100,24 +91,18 @@ public class NodesDBDeployer {
      * @param connection {@link Connection} to the database
      * @throws SQLException in case an error occurs during database communication
      */
-    public static void deployRanksValidationTable(Connection connection) throws SQLException {
+    public static void deployRanksValidationTable(final Connection connection) throws SQLException {
         //Switch to a correct table
-        Statement statement = null;
-        try {
-            statement = connection.createStatement();
+        try (Statement statement = connection.createStatement();) {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
         }
 
-        PreparedStatement preparedStatement = null;
-        try {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "insert into " + LookupNames.dbs.NCBI.ranks.name
+                        + " (" + LookupNames.dbs.NCBI.ranks.columns.rank.name() + ")" + " values(?) "
+        );) {
             //Prepare a statement
-            preparedStatement = connection.prepareStatement(
-                    "insert into " + LookupNames.dbs.NCBI.ranks.name
-                            + " (" + LookupNames.dbs.NCBI.ranks.columns.rank.name() + ")" + " values(?) ");
+
             for (Ranks r : Ranks.values()) {
                 //Populate the batch
                 preparedStatement.setString(1, r.getName());
@@ -125,11 +110,6 @@ public class NodesDBDeployer {
             }
             //Execute the batch
             preparedStatement.executeBatch();
-        } finally {
-            //Close and cleanup
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
         }
     }
 
@@ -140,25 +120,18 @@ public class NodesDBDeployer {
      * @return a {@link Map} lookup from the database id_ranks, rank validation table columns
      * @throws SQLException in case an error occurs during database communication
      */
-    public static Map<String, Integer> collectRanksValidationLookup(Connection connection) throws SQLException {
+    public static Map<String, Integer> collectRanksValidationLookup(final Connection connection) throws SQLException {
         //Switch to a correct table
-        Statement statement = null;
         Map<String, Integer> ranks_ids = new HashMap<String, Integer>();
-        try {
-            statement = connection.createStatement();
+        try (Statement statement = connection.createStatement();) {
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             //Create a statement and execute
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-            ResultSet resultSet = statement.executeQuery(
+            final ResultSet resultSet = statement.executeQuery(
                     "select * from " + LookupNames.dbs.NCBI.ranks.name
             );
-
             while (resultSet.next()) {
                 ranks_ids.put(resultSet.getString(2), resultSet.getInt(1));
-            }
-        } finally {
-            if (statement != null) {
-                statement.close();
             }
         }
         return ranks_ids;
@@ -174,41 +147,27 @@ public class NodesDBDeployer {
      * @throws IOException  in case something goes wrong during file read
      */
     @Deprecated
-    public static void deployNodesDatabase(Connection connection, File nodesDmpFile) throws SQLException, IOException {
-
+    public static void deployNodesDatabase(final Connection connection, final File nodesDmpFile) throws SQLException, IOException {
         //Switch to a correct table
-        Statement statement = null;
-        try {
-            statement = connection.createStatement();
+        try (Statement statement = connection.createStatement();) {
+
             statement.execute("use " + LookupNames.dbs.NCBI.name);
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
         }
-
-        PreparedStatement preparedStatement = null;
-
         //Prepare a validation lookup
         Map<String, Integer> ranks_ids = NodesDBDeployer.collectRanksValidationLookup(connection);
-
         //Read the input file line by line
-        BufferedReader bufferedReader = null;
-
-        try {
-            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+        try (PreparedStatement preparedStatement = connection.prepareStatement("insert into " + LookupNames.dbs.NCBI.nodes.name
+                + " ("
+                + LookupNames.dbs.NCBI.nodes.columns.taxid
+                + LookupNames.dbs.NCBI.nodes.columns.parent_taxid
+                + LookupNames.dbs.NCBI.nodes.columns.id_ranks
+                + ")" + " values(?,?,?) ");
+             BufferedReader bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+        ) {
             String line;
             int counter = 0;
             while ((line = bufferedReader.readLine()) != null) {
-
                 String[] split = line.split("\t\\|\t");
-
-                preparedStatement = connection.prepareStatement("insert into " + LookupNames.dbs.NCBI.nodes.name
-                        + " ("
-                        + LookupNames.dbs.NCBI.nodes.columns.taxid
-                        + LookupNames.dbs.NCBI.nodes.columns.parent_taxid
-                        + LookupNames.dbs.NCBI.nodes.columns.id_ranks
-                        + ")" + " values(?,?,?) ");
                 preparedStatement.setInt(1, Integer.parseInt(split[0]));
                 preparedStatement.setInt(2, Integer.parseInt(split[1]));
                 preparedStatement.setInt(3, ranks_ids.get(split[2]));
@@ -222,21 +181,9 @@ public class NodesDBDeployer {
                     preparedStatement.executeBatch();
                     counter = 0;
                 }
-
             }
             //Flush the batch
-            if (preparedStatement != null) {
-                preparedStatement.executeBatch();
-            }
-
-        } finally {
-            //Close and cleanup
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
+            preparedStatement.executeBatch();
         }
     }
 
@@ -248,17 +195,15 @@ public class NodesDBDeployer {
      * @param nodesDmpFile {@link File} nodes.dmp
      * @return a new {@link File} that points to the newly filtered file
      */
-    public static File filterNodesDmpFile(Connection connection, File nodesDmpFile) throws IOException, SQLException {
+    public static File filterNodesDmpFile(final Connection connection, final File nodesDmpFile) throws IOException, SQLException {
         //Read the input file line by line
-        BufferedReader bufferedReader = null;
-        FileWriter fileWriter = null;
-        File filteredNodesDmpFile = null;
-        try {
+        final File filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
+        try (
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+                FileWriter fileWriter = new FileWriter(filteredNodesDmpFile);
+        ) {
             //Prepare a validation lookup
-            Map<String, Integer> ranks_ids = NodesDBDeployer.collectRanksValidationLookup(connection);
-            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
-            filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
-            fileWriter = new FileWriter(filteredNodesDmpFile);
+            final Map<String, Integer> ranks_ids = NodesDBDeployer.collectRanksValidationLookup(connection);
             String line;
             String empty = "";
             while ((line = bufferedReader.readLine()) != null) {
@@ -276,37 +221,35 @@ public class NodesDBDeployer {
                     }
                 }
             }
-
-        } finally {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-            if (fileWriter != null) {
-                fileWriter.close();
-            }
         }
         return filteredNodesDmpFile;
     }
 
-    public static File filterNodesDmpFileRam(File nodesDmpFile) throws IOException, SQLException {
+    /**
+     * Accepts a pointer to the "nodes.dmp" file from the NCBI, which contains the taxonomic nodes info.
+     * See <a href="ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/">taxdump</a>.
+     * @param nodesDmpFile {@link java.io.File} that points to the input file "nodes.dmp"
+     * @return a {@link java.io.File} pointer to the newly created .mod file
+     * @throws IOException a file read/write error occurs
+     * @throws SQLException in case a RDBMS communication error occurs
+     */
+    public static File filterNodesDmpFileRam(final File nodesDmpFile) throws IOException, SQLException {
         //Read the input file line by line
-        BufferedReader bufferedReader = null;
-        FileWriter fileWriter = null;
-        File filteredNodesDmpFile = null;
-        try {
+        final File filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
+        try (
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
+                FileWriter fileWriter = new FileWriter(filteredNodesDmpFile);
+        ){
             //Prepare a validation lookup
-            bufferedReader = new BufferedReader(new FileReader(nodesDmpFile));
-            filteredNodesDmpFile = new File(nodesDmpFile.getAbsoluteFile().toString() + ".mod");
-            fileWriter = new FileWriter(filteredNodesDmpFile);
             String line;
             String empty = "";
             int count = 0;
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] splitter = line.split("\t\\|\t");
+                final String[] splitter = line.split("\t\\|\t");
                 if (splitter.length != 13) {
-                    Log.getInstance().log(Level.WARNING, "Row number "+count+" in "+nodesDmpFile.getName()+" is inconsistent:");
-                    Log.getInstance().log(Level.WARNING, nodesDmpFile.getName()+count+": "+line);
+                    Log.getInstance().log(Level.WARNING, "Row number " + count + " in " + nodesDmpFile.getName() + " is inconsistent:");
+                    Log.getInstance().log(Level.WARNING, nodesDmpFile.getName() + count + ": " + line);
                     Log.getInstance().log(Level.WARNING, "Skipping inconsistent line.");
                     continue;
                 }
@@ -321,17 +264,9 @@ public class NodesDBDeployer {
                     fileWriter.flush();
                 }
             }
-        } finally {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-            if (fileWriter != null) {
-                fileWriter.close();
-            }
         }
         return filteredNodesDmpFile;
     }
-    //TODO document
 
     /**
      * Injects the nodes.dmp.mod prefiltered file into the Nodes table of the NCBI schema.
@@ -340,12 +275,8 @@ public class NodesDBDeployer {
      * @param nodesFilteredFile {@link File} nodes.dmp
      * @throws SQLException in case something goes wrong upon database communication
      */
-    public static void injectProcessedNodesDmpFile(Connection connection, File nodesFilteredFile) throws SQLException {
-
-        Statement statement = null;
-
-        try {
-            statement = connection.createStatement();
+    public static void injectProcessedNodesDmpFile(final Connection connection, final File nodesFilteredFile) throws SQLException {
+        try (Statement statement = connection.createStatement();){
             //Switch to a correct schema
             statement.execute("use " + LookupNames.dbs.NCBI.name);
             statement.execute("SET foreign_key_checks = 0;");
@@ -359,12 +290,9 @@ public class NodesDBDeployer {
                             + LookupNames.dbs.NCBI.nodes.columns.taxid + ", "
                             + LookupNames.dbs.NCBI.nodes.columns.parent_taxid + ", "
                             + LookupNames.dbs.NCBI.nodes.columns.id_ranks
-                            + ")");
+                            + ")"
+            );
             statement.execute("SET foreign_key_checks = 1;");
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
         }
     }
 }

@@ -37,23 +37,27 @@ import java.util.logging.Level;
  */
 
 /**
- * An abstracition of a {@link blast.specification.BLASTIdentifier}, that uses a RAM-based taxonomic database {@link db.ram.RamDb}, which is much more efficient, but
+ * An abstraction of a {@link blast.specification.BLASTIdentifier}, that uses a RAM-based taxonomic database {@link db.ram.RamDb}, which is much more efficient, but
  * takes significantly more RAM space.
  */
 
 public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
 
     /**
-     * Protecte
-     * @param query
-     * @param tempDir
-     * @param executive
-     * @param parameterList
-     * @param identifierFileOperator
-     * @param cutoffSetMap
-     * @param batchSize
-     * @param cleanup
-     * @param ramDb
+     * Protected constructor to get an instance from parameters
+     *
+     * @param query                  a list of {@link format.fasta.nucleotide.NucleotideFasta}s that were used as query
+     * @param tempDir                {@link java.io.File} that points to the temporary directory, used to store blast I/O and GI-restrictions files
+     * @param executive              {@link java.io.File} that points to the BLASTN executable on the system
+     * @param parameterList          {@link String}[] of BLASTN parameters
+     * @param identifierFileOperator {@link io.file.TUITFileOperator} that reads queries, BLAST outputs, and saves results in s specified format
+     * @param cutoffSetMap           {@link java.util.Map} of {@link blast.specification.cutoff.TUITCutoffSet}s
+     * @param batchSize              {@code int} value that determines how many files get blasted/classified in a single blast (Note that this value depends on the system.
+     *                               Too many files per batch may increase times that BLAST dumps the results, however, too little will increase the overhead on
+     *                               BLASTN locking on its database. We recommend 100-500)
+     * @param cleanup                {@code boolean} that determines whether the BLAST files should be deleted after the classification has finished. {@code true} by default, but
+     *                               may be overridden to keep the result for manual analysis.
+     * @param ramDb                  {@link java.io.File} that points to the Serialized {@link db.ram.RamDb} object
      */
     protected TUITBLASTIdentifierRAM(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
                                      TUITFileOperator identifierFileOperator, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize, boolean cleanup, RamDb ramDb) {
@@ -81,21 +85,21 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
     public void run() {
         @SuppressWarnings("unchecked")
         TUITFileOperator<NucleotideFasta> tuitFileOperator = (TUITFileOperator<NucleotideFasta>) this.fileOperator;
-        Log.getInstance().log(Level.INFO, "Using "+this.batchSize+" sequences per batch.");
+        Log.getInstance().log(Level.INFO, "Using " + this.batchSize + " sequences per batch.");
         try {
             if (this.blastOutput == null) {
                 //See if the remote option is on. If so - do the BLASTN with the NCBI server, otherwise - BLASTN locally
                 boolean remote = false;
                 for (String s : this.parameterList) {
                     if (s.equals("-remote")) {
-                        remote = true;        //TODO: correct
+                        remote = true;
                         break;
                     }
                 }
                 if (remote) {
                     Log.getInstance().log(Level.INFO, "Starting job, using NCBI server BLAST");
                 } else {
-                    Log.getInstance().log(Level.INFO, "Starting job, using local machine BLAST on "+this.parameterList[this.parameterList.length-1]+" threads.");
+                    Log.getInstance().log(Level.INFO, "Starting job, using local machine BLAST on " + this.parameterList[this.parameterList.length - 1] + " threads.");
                 }
                 do {
                     if (remote) {
@@ -151,7 +155,10 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
         }
     }
 
-    protected void cleanup(){
+    /**
+     * Is used to cleanup the temporary files, created by TUIT upoun processing the query and receiving results from BLASTN.
+     */
+    protected void cleanup() {
         if (this.cleanup) {
             Log.getInstance().log(Level.INFO, "Cleaning up temporary files...");
             if (this.inputFile.exists()) {
@@ -163,9 +170,27 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
         }
     }
 
+    /**
+     * A static factory to get a new instance of {@link blast.specification.TUITBLASTIdentifierRAM}, that relies on the {@link io.file.TUITFileOperator} to provide batches of query sequences
+     *
+     * @param tempDir                {@link java.io.File} that points to the temporary directory, used to store blast I/O and GI-restrictions files
+     * @param executive              {@link java.io.File} that points to the BLASTN executable on the system
+     * @param parameterList          {@link String}[] of BLASTN parameters
+     * @param identifierFileOperator {@link io.file.TUITFileOperator} that reads queries, BLAST outputs, and saves results in s specified format
+     * @param cutoffSetMap           {@link java.util.Map} of {@link blast.specification.cutoff.TUITCutoffSet}s
+     * @param batchSize              {@code int} value that determines how many files get blasted/classified in a single blast (Note that this value depends on the system.
+     *                               Too many files per batch may increase times that BLAST dumps the results, however, too little will increase the overhead on
+     *                               BLASTN locking on its database. We recommend 100-500)
+     * @param cleanup                {@code boolean} that determines whether the BLAST files should be deleted after the classification has finished. {@code true} by default, but
+     *                               may be overridden to keep the result for manual analysis.
+     * @param ramDb                  {@link java.io.File} that points to the Serialized {@link db.ram.RamDb} object
+     * @return a new instance of {@link blast.specification.TUITBLASTIdentifierRAM} that is ready to perform BLAST
+     * and classify the first batch of sequences of size, specified by the {@code batchSize} parameter
+     * @throws Exception
+     */
     public static TUITBLASTIdentifierRAM newInstanceFromFileOperator(File tempDir, File executive, String[] parameterList,
                                                                      TUITFileOperator identifierFileOperator, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize, boolean cleanup, RamDb ramDb) throws Exception {
-        List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
+        final List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
             return new TUITBLASTIdentifierRAM(batch, tempDir, executive, parameterList, identifierFileOperator, cutoffSetMap, batchSize, cleanup, ramDb);
         } else {
@@ -173,9 +198,25 @@ public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
         }
     }
 
+    /**
+     * A static factory to get a new instance of {@link blast.specification.TUITBLASTIdentifierRAM}, that is ready to use a pre-BLASTed xml-formatted output for the given query.
+     * Is used if the "-b" option was specified upon TUIT run.
+     *
+     * @param identifierFileOperator {@link io.file.TUITFileOperator} that reads queries, BLAST outputs, and saves results in s specified format
+     * @param cutoffSetMap           {@link java.util.Map} of {@link blast.specification.cutoff.TUITCutoffSet}s
+     * @param batchSize              {@code int} value that determines how many files get blasted/classified in a single blast (Note that this value depends on the system.
+     *                               Too many files per batch may increase times that BLAST dumps the results, however, too little will increase the overhead on
+     *                               BLASTN locking on its database. We recommend 100-500)
+     * @param cleanup                {@code boolean} that determines whether the BLAST files should be deleted after the classification has finished. {@code true} by default, but
+     *                               may be overridden to keep the result for manual analysis.
+     * @param ramDb                  {@link java.io.File} that points to the Serialized {@link db.ram.RamDb} object
+     * @return a new instance of {@link blast.specification.TUITBLASTIdentifierRAM} that is ready to perform BLAST
+     * and classify the first batch of sequences of size, specified by the {@code batchSize} parameter
+     * @throws Exception
+     */
     public static TUITBLASTIdentifierRAM newInstanceFromBLASTOutput(TUITFileOperator<NucleotideFasta> identifierFileOperator, Map<Ranks, TUITCutoffSet> cutoffSetMap,
-                                                                     File blastOutput, final int batchSize, final boolean cleanup, final RamDb ramDb) throws Exception {
-        List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
+                                                                    File blastOutput, final int batchSize, final boolean cleanup, final RamDb ramDb) throws Exception {
+        final List<NucleotideFasta> batch = identifierFileOperator.nextBatch(batchSize);
         if (batch != null) {
             final TUITBLASTIdentifierRAM tuitblastIdentifierRAM = new TUITBLASTIdentifierRAM(batch, new File(""), null, null, identifierFileOperator, cutoffSetMap, batchSize, cleanup, ramDb);
             tuitblastIdentifierRAM.setBlastOutput(NCBI_BLAST_OutputHelper
