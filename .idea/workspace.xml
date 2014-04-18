@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Code commented, finals corrected somewhere&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Alpha.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/KeepBLASTOuts.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/NumThreads.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/OutputFormat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/testing/test/properties.xml" afterPath="$PROJECT_DIR$/src/io/properties/load/properties.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNParameters.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNParameters.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNPath.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/BLASTNPath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/CutoffSet.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/CutoffSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/DBConnection.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/DBConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Database.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/EntrezQuery.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/EntrezQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Expect.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Expect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/MaxFilesInBatch.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/MaxFilesInBatch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/ObjectFactory.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/ObjectFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/PIdentCutoff.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/PIdentCutoff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/QueryCoverageCutoff.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/QueryCoverageCutoff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/Remote.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/Remote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/SpecificationParameters.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/TMPDir.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/TUITProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" afterPath="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd" afterPath="$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -97,95 +76,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
+      <file leaf-file-name="TUITBLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="772" max-vertical-offset="1547">
-              <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2992">
+              <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RamDb.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/db/ram/RamDb.java">
+      <file leaf-file-name="BLASTIdentifierDB.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="92.92593" vertical-offset="3172" max-vertical-offset="4386">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BLASTIdentifierRAM.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="524" max-vertical-offset="3026">
-              <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NormalizedHit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665" vertical-offset="2064" max-vertical-offset="3315">
-              <caret line="148" column="57" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NormalizedIteration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1738" max-vertical-offset="8058">
-              <caret line="120" column="81" selection-start-line="120" selection-start-column="81" selection-end-line="120" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITPropertiesLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5090" max-vertical-offset="6970">
-              <caret line="376" column="127" selection-start-line="376" selection-start-column="127" selection-end-line="376" selection-end-column="127" />
+            <state vertical-scroll-proportion="8.071545" vertical-offset="0" max-vertical-offset="5100">
+              <caret line="306" column="5" selection-start-line="306" selection-start-column="5" selection-end-line="306" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="properties.dtd" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/properties/jaxb/properties.dtd">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.653847" vertical-offset="50" max-vertical-offset="935">
-              <caret line="33" column="54" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tuit.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69160104" vertical-offset="4182" max-vertical-offset="6647">
-              <caret line="309" column="81" selection-start-line="309" selection-start-column="81" selection-end-line="309" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TUITFileOperatorHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/TUITFileOperatorHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2361" max-vertical-offset="11067">
-              <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#796#829#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -235,14 +142,10 @@
         <option value="$PROJECT_DIR$/src/helper/NCBITablesDeployer.java" />
         <option value="$PROJECT_DIR$/src/helper/nodes/NodesDBDeployer.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/cutoff/TUITCutoffSet.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
         <option value="$PROJECT_DIR$/src/io/file/TUITFileOperator.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
         <option value="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" />
         <option value="$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
-        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
         <option value="$PROJECT_DIR$/src/io/file/DequeTest.java" />
         <option value="$PROJECT_DIR$/src/db/ram/row/NamesRow.java" />
         <option value="$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java" />
@@ -254,6 +157,10 @@
         <option value="$PROJECT_DIR$/src/io/properties/load/TUITPropertiesLoader.java" />
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/tuit.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java" />
+        <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
       </list>
     </option>
   </component>
@@ -1559,7 +1466,11 @@
       <created>1397751620043</created>
       <updated>1397751620043</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="A way to select desired format (tuit/rdp) added to the properties.xml, dtd and implemented in the code.">
+      <created>1397776178417</created>
+      <updated>1397776178417</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1587,9 +1498,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32492113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15667719" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15667719" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -1627,7 +1538,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Windows compatability enforced 3&#10;" />
     <MESSAGE value="update checked onece again" />
     <MESSAGE value="Prints out license" />
     <MESSAGE value="Chi square test implemented instead of the E-value difference cutoff" />
@@ -1652,7 +1562,8 @@
     <MESSAGE value="RDP format tested+&#10;Comments" />
     <MESSAGE value="Java7 features enforced, comments added" />
     <MESSAGE value="Code commented, finals corrected somewhere" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code commented, finals corrected somewhere" />
+    <MESSAGE value="A way to select desired format (tuit/rdp) added to the properties.xml, dtd and implemented in the code." />
+    <option name="LAST_COMMIT_MESSAGE" value="A way to select desired format (tuit/rdp) added to the properties.xml, dtd and implemented in the code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1864,13 +1775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25361368" vertical-offset="929" max-vertical-offset="3825">
-          <caret line="86" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/db/ram/row/GiTaxIdRow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
@@ -1896,30 +1800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.027595269" vertical-offset="2095" max-vertical-offset="2856">
           <caret line="133" column="56" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2856">
-          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5746">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4318" max-vertical-offset="4641">
-          <caret line="254" column="30" selection-start-line="254" selection-start-column="30" selection-end-line="254" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2009,9 +1889,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69160104" vertical-offset="4182" max-vertical-offset="6647">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4692" max-vertical-offset="6647">
           <caret line="309" column="81" selection-start-line="309" selection-start-column="81" selection-end-line="309" selection-end-column="81" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="929" max-vertical-offset="3825">
+          <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25415283" vertical-offset="306" max-vertical-offset="4318">
+          <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/TUITBLASTIdentifierRAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2992">
+          <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="8.071545" vertical-offset="0" max-vertical-offset="5100">
+          <caret line="306" column="5" selection-start-line="306" selection-start-column="5" selection-end-line="306" selection-end-column="5" />
+          <folding>
+            <element signature="e#796#829#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

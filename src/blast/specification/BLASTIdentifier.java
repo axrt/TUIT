@@ -42,7 +42,12 @@ import java.util.logging.Level;
 
 /**
  * Combines functionality of a local (remote with "-remote" option) BLASTN and an ability to assign a taxonomy to the
- * given queries automatically.
+ * given queries automatically. The class contains a ste of default parameters for classification, which are used if not overridden
+ * by the user-defined properties. The main functionality is pushing every {@link blast.ncbi.output.Iteration} to be boxed in a {@link blast.normal.iteration.NormalizedIteration}
+ * and further calling every {@link blast.normal.iteration.NormalizedIteration} to classify its {@link blast.ncbi.output.Iteration} by going through the {@link blast.normal.hit.NormalizedHit}s.
+ * Hereby, {@link blast.specification.BLASTIdentifier} delegates the task of taxonomic classification to the {@link blast.normal.iteration.NormalizedIteration}s, but stores common cutoffs,
+ * parameters and common functionality that the {@link blast.normal.iteration.NormalizedIteration}s use during the classification process. This class is the main driver of the classification
+ * procee.
  */
 public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX_BLASTN<T> implements TaxonomicDatabaseOperator {
 
@@ -135,7 +140,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      * @param blastOutput {@link BlastOutput} that will be used for taxonomic identification
      */
     @SuppressWarnings("WeakerAccess")
-    public void setBlastOutput(BlastOutput blastOutput) {
+    public void setBlastOutput(final BlastOutput blastOutput) {
         this.blastOutput = blastOutput;
     }
 

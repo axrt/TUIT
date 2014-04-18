@@ -20,14 +20,41 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
+/**
+ * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
+ * software for accurate taxonomic classification of nucleotide sequences.
+ * Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
- * Created by alext on 2/13/14.
+ * An abstracition of a {@link blast.specification.BLASTIdentifier}, that uses a RAM-based taxonomic database {@link db.ram.RamDb}, which is much more efficient, but
+ * takes significantly more RAM space.
  */
-//TODO: Document
+
 public class TUITBLASTIdentifierRAM extends BLASTIdentifierRAM {
 
-
+    /**
+     * Protecte
+     * @param query
+     * @param tempDir
+     * @param executive
+     * @param parameterList
+     * @param identifierFileOperator
+     * @param cutoffSetMap
+     * @param batchSize
+     * @param cleanup
+     * @param ramDb
+     */
     protected TUITBLASTIdentifierRAM(List<NucleotideFasta> query, File tempDir, File executive, String[] parameterList,
                                      TUITFileOperator identifierFileOperator, Map<Ranks, TUITCutoffSet> cutoffSetMap, int batchSize, boolean cleanup, RamDb ramDb) {
         super(query, tempDir, executive, parameterList, identifierFileOperator, cutoffSetMap, batchSize, cleanup, ramDb);
