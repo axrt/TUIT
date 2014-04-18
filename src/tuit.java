@@ -145,7 +145,7 @@ public class tuit {
             //Setup logger
             Log.getInstance().setLogName("tuit.log");
             //Read command line
-            CommandLine commandLine = parser.parse(options, args, true);
+            final CommandLine commandLine = parser.parse(options, args, true);
             if (!commandLine.hasOption(tuit.P)) {
                 throw new ParseException("No properties file option found, exiting.");
             } else {
@@ -176,7 +176,7 @@ public class tuit {
                 if (commandLine.hasOption(tuit.USE_DB)) {
                     NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
                 } else {
-                    //TODO: implemet an update for the ram version and substitute below
+                    //No need to specify a different way to update the database other than just depoly in case of the RAM database
                     NCBITablesDeployer.fastDeployNCBIRamDatabaseFromNCBI(tmpDir, ramDbFile);
                 }
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
@@ -350,7 +350,7 @@ public class tuit {
                         }
                     }
 
-                } else {    //TODO: change the executive to executable everywhere
+                } else {
                     if (blastOutputFile == null) {
                         blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromFileOperator(
                                 tmpDir, blastnExecutable, parameters,

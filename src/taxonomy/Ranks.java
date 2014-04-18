@@ -80,8 +80,13 @@ public enum Ranks {
     public String getName() {
         return name;
     }
-    //TODO: document
 
+    /**
+     * A helper method to convert a {@link String} representations of
+     * the taxonomic ranks a {@link taxonomy.Ranks} enum form.
+     * @param strValue {@link String} that gets to be converted.
+     * @return {@link taxonomy.Ranks} of the {@link String} representation
+     */
     public static Ranks convertValue(final String strValue){
         switch (strValue){
             case "class":return c_lass;

@@ -34,10 +34,19 @@ import java.util.Set;
  * A {@link TUITFileOperator} for the {@link NucleotideFasta}s.
  */
 public abstract class NucleotideFastaTUITFileOperator extends TUITFileOperator<NucleotideFasta> {
-
+    /**
+     * Used in case the BLAST output iteration had no hits, or the output could not be classified to any possible depth.
+     */
     @SuppressWarnings("WeakerAccess")
     public static final String NOT_IDENTIFIED = "<-not identified->";
 
+    /**
+     * Checks it the input file formatting is fine. Checks for uniqueness of the names in the ACs.
+     *
+     * @return {@code true} if is, {@code false} otherwise
+     * @throws FastaInputFileException in case there is an error in any Fasta-formatted record within the query file
+     * @throws IOException             in case a file read/write
+     */
     @Override
     protected boolean inputFileFormattingIsFine() throws FastaInputFileException, IOException {
 
@@ -57,19 +66,35 @@ public abstract class NucleotideFastaTUITFileOperator extends TUITFileOperator<N
         return true;
     }
 
-    @Override    //TODO comment
-    protected NucleotideFasta newFastaFromRecord(String record) throws Exception {
+    /**
+     * A helper method that creates a {@link format.fasta.nucleotide.NucleotideFasta} record from a given {@link java.lang.String} representation of that record.
+     *
+     * @param record {@link String} representation of a fasta-formatted record
+     * @return a newly created {@link format.fasta.nucleotide.NucleotideFasta}
+     * @throws Exception in case the {@link java.lang.String} record was not properly formatted or contained illegal characters for a nucleotide sequence.
+     */
+    @Override
+    protected NucleotideFasta newFastaFromRecord(final String record) throws Exception {
         return NucleotideFasta.newInstanceFromFormattedText(record);
     }
 
     /**
      * A static factory to create a new instance of a {@link NucleotideFastaTUITFileOperator}
+     *
      * @return new {@link NucleotideFastaTUITFileOperator}
      */
     public static NucleotideFastaTUITFileOperator newInstance() {
-        return new NucleotideFastaTUITFileOperator(){
-            @Override      //TODO comment
-            public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws IOException {
+        return new NucleotideFastaTUITFileOperator() {
+            /**
+             *
+             * @param query {@link format.fasta.nucleotide.NucleotideFasta} query sequence
+             * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} that contains an {@link blast.ncbi.output.Iteration}
+             *                                                                              from the BLAST output for the given query
+             * @return {@code true} if successfully saved, {@code false} otherwise
+             * @throws IOException in case smth went wrong during file read/write
+             */
+            @Override
+            public boolean saveResults(final NucleotideFasta query, final NormalizedIteration<Iteration> normalizedIteration) throws IOException {
                 this.bufferedWriter.write(
                         TUITFileOperatorHelper.OutputFormat.defaultTUITFormatter.format(query.getAC().split("\t")[0], normalizedIteration));
                 this.bufferedWriter.newLine();
@@ -79,13 +104,21 @@ public abstract class NucleotideFastaTUITFileOperator extends TUITFileOperator<N
         };
     }
 
-    //TODO document
-    public static NucleotideFastaTUITFileOperator newInstance(final TUITFileOperatorHelper.OutputFormat format, final Map<Ranks, TUITCutoffSet> cutoffMap){
-        switch (format){
-            case TUIT:{
+    /**
+     * A static factory that creates an instance of {@link io.file.NucleotideFastaTUITFileOperator} with a given option for the output format.
+     *
+     * @param format    {@link io.file.TUITFileOperatorHelper.OutputFormat} that will be used to format the output (currently TUIT or RDP fixrank)
+     * @param cutoffMap {@link java.util.Map} of {@link blast.specification.cutoff.TUITCutoffSet} that is needed to correctly format the output.
+     *                  For example, for the RDP fixrank version there is not way to determine the confidence level, and it's
+     *                  approximation id given as 1-alpha value.
+     * @return a new instance of {@link io.file.NucleotideFastaTUITFileOperator}, that is ready to format the output in a desired way.
+     */
+    public static NucleotideFastaTUITFileOperator newInstance(final TUITFileOperatorHelper.OutputFormat format, final Map<Ranks, TUITCutoffSet> cutoffMap) {
+        switch (format) {
+            case TUIT: {
                 return newInstance();
             }
-            case RDP_FIXRANK:{
+            case RDP_FIXRANK: {
                 return new NucleotideFastaTUITFileOperator() {
                     @Override
                     public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {

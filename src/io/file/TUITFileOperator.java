@@ -178,6 +178,13 @@ public abstract class TUITFileOperator<T extends NucleotideFasta> extends NCBI_E
         return super.readOutputXML(outputFile);
     }
 
+    /**
+     * Saves results for the taxonomic classification of the given query.
+     * @param query
+     * @param normalizedIteration  {@link blast.normal.iteration.NormalizedIteration} to classify
+     * @return should be {@code true} if successfully saved, {@code false} otherwise.
+     * @throws Exception
+     */
     @SuppressWarnings("SameReturnValue")
     public abstract boolean saveResults(T query, NormalizedIteration<Iteration> normalizedIteration) throws Exception;
 

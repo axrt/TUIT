@@ -114,8 +114,14 @@ public class NCBITablesDeployer {
 
     }
 
-    //TODO: document
-    public static void fastDeployNCBIRamDatabaseFromNCBI(final File tmpDir, final File ramDbObject)throws Exception{
+    /**
+     * Fully deploys a RAM-bases taxonomic database to a {@link db.ram.RamDb} object from the NCBI taxonomy files
+     * @param tmpDir requires a {@link java.io.File} that points to a temporary directory that is needed to download the files form the
+     *               <a href"ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/">NCBI ftp</a>
+     * @param ramDbObject {@link java.io.File} that points to a file that the {@link db.ram.RamDb} object can be serialized to
+     * @throws Exception in case a connection of a serialization error occurs
+     */
+    public static void fastDeployNCBIRamDatabaseFromNCBI(final File tmpDir, final File ramDbObject) throws Exception {
         //Downloading files
         Log.getInstance().log(Level.INFO,"Downloading files..");
         Log.getInstance().log(Level.INFO,"Downloading " + SystemUtil.TAXDUMP_ARCH);
