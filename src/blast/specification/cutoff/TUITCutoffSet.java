@@ -91,7 +91,7 @@ public class TUITCutoffSet {
 
     /**
      * As long as BLAST outputs treats every gap as an independent event, this method allows to correct for this by calculating gapopen.
-     * A standard BLAST XMP output reports only gaps, but not gapopens. Note: gaps>=gapopens
+     * A standard BLAST XMP output reports only gaps, but not gapopens. Note: gaps&lt;=gapopens
      *
      * @param seq {@link String} Nucleotide sequence with gaps, marked as '-'
      * @return {@code int} number of gapopens
@@ -165,6 +165,7 @@ public class TUITCutoffSet {
      *         <td></td>
      *         <td></td>
      *         </tr>
+     *         <caption>TUIT cont. table</caption>
      *         </table>
      *         , returns true if the test has shown the statistical significant prevalence of one alignment over another
      *         , {@code false} otherwise or if either of the pointers

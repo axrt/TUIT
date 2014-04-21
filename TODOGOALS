@@ -1,0 +1,3 @@
+1. TODO Implement a Fisher-exact test and allow for user selection "chi-square or Fisher-exact test"
+3. TODO Correct warnings from JavaDoc
+2. TODO Implement a way to create a taxonomic tree out of a TUIT output and be able to represent it as a newick tree

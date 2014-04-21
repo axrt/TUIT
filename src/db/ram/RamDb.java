@@ -163,10 +163,10 @@ public class RamDb implements Serializable {
      * A static method that allows the class to create and return an instance of self using the corresponding files
      * from the <a href="ftp://ftp-trace.ncbi.nlm.nih.gov/">NCBI FTP server</a>;
      * The files used are
-     * <li>
+     *
      * <a href="ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid_nucl.dmp.gz">GI-TaxID dump</a>;
      * <a href="ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz">Combined taxonomy dump</a>, which contains a number of files as nodes.dmp and names.dmp, that contain taxId-parentTaxid and taxId-scientific name pairs accordingly.
-     * </li>
+     *
      * After those files are downloaded (see {@link helper.NCBITablesDeployer}, the method can use modified (with a ".mod" extension) files.
      *
      * @param gi_taxid_dmp {@link java.io.File} that point to a modified gi_taxid.dmp.mod

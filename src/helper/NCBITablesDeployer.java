@@ -57,8 +57,8 @@ public class NCBITablesDeployer {
      * @param gi_taxidDmpFile {@link File} gi_taxid.dmp
      * @param namesDmpFile    {@link File} names.dmp
      * @param nodesDmpFile    {@link File} nodes.dmp
-     * @throws IOException  in case something goes wrong during file read
      * @throws SQLException in case something goes wrong upon database communication
+     * @throws IOException  in case something goes wrong during file read
      */
     public static void fastDeployNCBIDatabasesFromFiles(final Connection connection, final File gi_taxidDmpFile, final File namesDmpFile, final File nodesDmpFile) throws IOException, SQLException {
 
@@ -86,8 +86,8 @@ public class NCBITablesDeployer {
      * Fully deploys the NCBI taxonomic database directly from the NCBI FTP server
      * @param connection  {@link Connection} to the database
      * @param tmpDir a {@link File} directory that the temporary update files will be downloaded to
-     * @throws IOException upon file read/write errors
      * @throws SQLException in case a database communication error occurs
+     * @throws IOException upon file read/write errors
      */
     public static void fastDeployNCBIDatabasesFromNCBI(final Connection connection, final File tmpDir)throws IOException, SQLException{
         //Downloading files
@@ -117,7 +117,7 @@ public class NCBITablesDeployer {
     /**
      * Fully deploys a RAM-bases taxonomic database to a {@link db.ram.RamDb} object from the NCBI taxonomy files
      * @param tmpDir requires a {@link java.io.File} that points to a temporary directory that is needed to download the files form the
-     *               <a href"ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/">NCBI ftp</a>
+     *               <a href="ftp://ftp-trace.ncbi.nlm.nih.gov/pub/taxonomy/">NCBI ftp</a>
      * @param ramDbObject {@link java.io.File} that points to a file that the {@link db.ram.RamDb} object can be serialized to
      * @throws Exception in case a connection of a serialization error occurs
      */
@@ -150,8 +150,8 @@ public class NCBITablesDeployer {
      * Fully updates the NCBI taxonomic database directly from the NCBI FTP server
      * @param connection  {@link Connection} to the database
      * @param tmpDir a {@link File} directory that the temporary update files will be downloaded to
-     * @throws IOException upon file read/write errors
      * @throws SQLException in case a database communication error occurs
+     * @throws IOException upon file read/write errors
      */
     public static void updateDatabasesFromNCBI(final Connection connection, final File tmpDir) throws IOException, SQLException {
         //Downloading files

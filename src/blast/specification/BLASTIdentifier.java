@@ -165,7 +165,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
      *                      allow to create an input file as well as catch the blast
      *                      output
      * @param parameterList {@link String}[] A list of parameters. Should maintain a
-     *                      certain order. {"<-command>", "[value]"}, just the way if in
+     *                      certain order. {"&lt;-command&gt;", "[value]"}, just the way if in
      *                      the blast+ executable input
      * @param cutoffSetMap  a {@link java.util.Map}, provided by the user and that may differ from the
      */

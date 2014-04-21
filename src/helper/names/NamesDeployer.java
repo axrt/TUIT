@@ -115,7 +115,7 @@ public class NamesDeployer {
      *
      * @param namesDmpFile {@link File} names.dmp
      * @return a new {@link File} that points to the newly filtered file
-     * @throws IOException
+     * @throws IOException in case of an IO error event
      */
     public static File filterNamesDmpFile(File namesDmpFile) throws IOException {
         //Read the input file line by line

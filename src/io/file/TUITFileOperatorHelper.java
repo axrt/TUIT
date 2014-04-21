@@ -143,7 +143,7 @@ public class TUITFileOperatorHelper {
         }
 
         /**
-         * A default format for TUIT. Formats the output as "taxon {rank} ->" chain.
+         * A default format for TUIT. Formats the output as "taxon {rank} -&gt;" chain.
          */
         public static final OutputFormatter<Iteration> defaultTUITFormatter = new OutputFormatter<Iteration>() {
             /**
@@ -295,7 +295,7 @@ public class TUITFileOperatorHelper {
                  * Recursively adds {@link taxonomy.node.TaxonomicNode}s from the lineage to a {@link java.lang.String} representation, substitutes the
                  * missing rank with underscore-connected {@link taxonomy.node.TaxonomicNode} rank and name, and substitutes unclassified with "unclassified".
                  * Confidence scores, common for the RDP output are substituted by a logical "confidence" approximation: 1-alpha.
-                 * Exmple: say, we have an alpha of 0.05 for a given taxonomic rank. Then we are confident that the classification is a true 95%. Thereby, we put
+                 * Example: say, we have an alpha of 0.05 for a given taxonomic rank. Then we are confident that the classification is a true 95%. Thereby, we put
                  * 0.95 confidence on the RDP fixrank output.
                  * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that is presumably the deepest node, that TUIT was able to calssify
                  * @return {@link java.lang.String} representation of a given {@link taxonomy.node.TaxonomicNode} lineage
@@ -402,7 +402,7 @@ public class TUITFileOperatorHelper {
 
     /**
      * @param file {@link java.io.File} a file that contains the a list of fasta records (may be represented by a single record
-     * @return {@link java.util.List < format.EncodedFasta >} of fasta records
+     * @return {@link java.util.List} of fasta records
      * @throws IOException                                                 in case opening and reading the file fails
      * @throws format.fasta.nucleotide.NucleotideFasta_BadFormat_Exception in case of a single line format or none at all
      */

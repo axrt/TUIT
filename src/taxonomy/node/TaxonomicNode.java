@@ -179,7 +179,7 @@ public class TaxonomicNode {
     /**
      * Recursively appends all the parent scientific names and ranks until the root is reached
      *
-     * @return A full taxonomic lineage from the root for this node separated by " -> "
+     * @return A full taxonomic lineage from the root for this node separated by " -&lt; "
      */
     @Deprecated
     public String getFormattedLineage() {

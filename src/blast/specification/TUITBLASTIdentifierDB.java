@@ -54,7 +54,7 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
      *                               allow to create an input file as well as catch the blast
      *                               output
      * @param parameterList          {@link String}[] A list of parameters. Should maintain a
-     *                               certain order. {"<-command>", "[value]"}, just the way if in
+     *                               certain order. {"&lt;-command&gt;", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
      * @param connection             a connection to the SQL Database that contains a NCBI schema with all the necessary
@@ -187,7 +187,7 @@ public class TUITBLASTIdentifierDB extends BLASTIdentifierDB {
      *                               allow to create an input file as well as catch the blast
      *                               output
      * @param parameterList          {@link String}[] A list of parameters. Should maintain a
-     *                               certain order. {"<-command>", "[value]"}, just the way if in
+     *                               certain order. {"&lt;-command&gt;", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
      * @param connection             a connection to the SQL Database that contains a NCBI schema with all the necessary

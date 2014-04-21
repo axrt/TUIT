@@ -23,13 +23,14 @@ import format.BadFormatException;
  */
 public class TUITPropertyBadFormatException extends BadFormatException {
     /**
-     * Call tot the super constructor
+     * Call to the super constructor
      */
     public TUITPropertyBadFormatException() {
         super();
     }
     /**
-     * Call tot the super constructor with message
+     * Call to the super constructor with message
+     * @param message {@link String} to describe the exception
      */
     public TUITPropertyBadFormatException(String message) {
         super(message);

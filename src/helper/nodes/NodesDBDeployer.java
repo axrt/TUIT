@@ -194,6 +194,8 @@ public class NodesDBDeployer {
      * @param connection   {@link Connection} to the database
      * @param nodesDmpFile {@link File} nodes.dmp
      * @return a new {@link File} that points to the newly filtered file
+     * @throws java.io.IOException in case a file read/write fails
+     * @throws java.sql.SQLException in case of a db communication error occurs
      */
     public static File filterNodesDmpFile(final Connection connection, final File nodesDmpFile) throws IOException, SQLException {
         //Read the input file line by line

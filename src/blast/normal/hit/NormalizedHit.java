@@ -98,7 +98,7 @@ public class NormalizedHit<H extends Hit> {
     /**
      * Assigned rank getter
      *
-     * @return <{@link Ranks} assigned rank getter (rank is assigned in accordance to the GI)
+     * @return {@link Ranks} assigned rank getter (rank is assigned in accordance to the GI)
      */
     public Ranks getAssignedRank() {
         return this.focusNode.getRank();

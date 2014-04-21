@@ -35,7 +35,7 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
      *                               allow to create an input file as well as catch the blast
      *                               output
      * @param parameterList          {@link String}[] A list of parameters. Should maintain a
-     *                               certain order. {"<-command>", "[value]"}, just the way if in
+     *                               certain order. {"&lt;-command&gt;", "[value]"}, just the way if in
      *                               the blast+ executable input
      * @param identifierFileOperator {@link TUITFileOperator} that performs batch-read from the fasta file and saves results
      *
@@ -129,7 +129,6 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
      * @param taxid       of the {@link TaxonomicNode} of the pivotal taxid
      * @return {@code true} if the parent taxid is indeed parent (direct parent or grand parent within the lineage) of
      * the given taxid, {@code false} otherwise.
-     * @throws java.sql.SQLException in case a database communication error occurs
      */
     @Override
     public boolean isParentOf(int parentTaxid, int taxid) {
