@@ -159,6 +159,7 @@ public class TUITFileOperatorHelper {
                 if (normalizedIteration.getPivotalHit() == null) {
                     stringBuilder.append(TUIT_QUERY_DELIM);
                     stringBuilder.append(TUIT_NOT_IDENTIFIED);
+                    return stringBuilder.toString();
                 }
                 final TaxonomicNode taxonomicNode = normalizedIteration.getPivotalHit().getFocusNode();
                 stringBuilder.append(formatFullLineage(taxonomicNode));
