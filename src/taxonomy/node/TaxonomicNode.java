@@ -203,6 +203,30 @@ public class TaxonomicNode {
         return this.scientificName + " {" + this.rank.getName() + "}";
     }
 
+    //TODO document
+    public boolean join(final TaxonomicNode otherNode){
+        if(this.rank.equals(otherNode.rank)&&this.scientificName.equals(otherNode.scientificName)){
+            final List<TaxonomicNode> combinedChildren=new ArrayList<>();
+            final List<TaxonomicNode> toRemove=new ArrayList<>();
+            combinedChildren.addAll(this.children);
+            combinedChildren.addAll(otherNode.children);
+            for(TaxonomicNode tn1:combinedChildren){
+                for(TaxonomicNode tn2:combinedChildren){
+                    if(!tn1.equals(tn2)&!toRemove.contains(tn1)&&tn1.join(tn2)){
+                        toRemove.add(tn2);
+                        break;
+                    }
+                }
+            }
+            combinedChildren.removeAll(toRemove);
+            this.children.clear();
+            this.children.addAll(combinedChildren);
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * A static factory to create a new instance of a {@link TaxonomicNode} from a given set of parameters
      *
