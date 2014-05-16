@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/reduce/SequenceReductor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/test/TaxonomicNodeTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" afterPath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javabio.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javabio.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tuit.iml" afterPath="$PROJECT_DIR$/tuit.iml" />
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Task reduction implemented and started to implement hmptree conversion">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -81,61 +74,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TreeFormatter.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TreeFormatter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="2397">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.9015151" vertical-offset="663" max-vertical-offset="3094">
+              <caret line="88" column="31" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3770#3771#0" expanded="true" />
-                <element signature="e#3806#3807#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NucleotideFastaSequenceReductorTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="697">
-              <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeFormatterTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8486708" vertical-offset="112" max-vertical-offset="731">
-              <caret line="31" column="128" selection-start-line="31" selection-start-column="128" selection-end-line="31" selection-end-column="128" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NucleotideFastaTUITFileOperator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/file/NucleotideFastaTUITFileOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1048" max-vertical-offset="1972">
-              <caret line="40" column="45" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NucleotideFastaSequenceReductor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
-              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#6068#6069#0" expanded="true" />
+                <element signature="e#6104#6105#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -213,8 +160,8 @@
         <option value="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" />
-        <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
+        <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
       </list>
     </option>
   </component>
@@ -1330,7 +1277,11 @@
       <created>1400098553643</created>
       <updated>1400098553643</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Task reduction implemented and started to implement hmptree conversion">
+      <created>1400195023126</created>
+      <updated>1400195023126</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1360,13 +1311,13 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15562566" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49106205" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44374344" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44794953" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1398,7 +1349,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Minor fix in BLASTIdentifier" />
     <MESSAGE value="Fixed a bug that prevented the output file from deletion" />
     <MESSAGE value="DB rebased from BLASTIdentifier to BLASTIdentifierDB&#10;" />
     <MESSAGE value="First megafast implementation release" />
@@ -1423,7 +1373,8 @@
     <MESSAGE value=" A Crucial bug fixed, that had been producing a NullPointerException in case a sample could not be calssified at superkingdom level" />
     <MESSAGE value="TaxonomicConverter untested" />
     <MESSAGE value="TaxonomicConverter done, fully working with greengenes database" />
-    <option name="LAST_COMMIT_MESSAGE" value="TaxonomicConverter done, fully working with greengenes database" />
+    <MESSAGE value="Task reduction implemented and started to implement hmptree conversion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task reduction implemented and started to implement hmptree conversion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1446,11 +1397,17 @@
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java</url>
+          <line>118</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1788,32 +1745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13450292" vertical-offset="305" max-vertical-offset="1972">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2709552" vertical-offset="2561" max-vertical-offset="3893">
-          <caret line="206" column="63" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="697">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
@@ -1832,24 +1763,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="2397">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1563" max-vertical-offset="3961">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#3308#3309#0" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3845#3846#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/taxonomy/Ranks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="1972">
+          <caret line="89" column="36" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="697">
+          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3770#3771#0" expanded="true" />
-            <element signature="e#3806#3807#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8486708" vertical-offset="112" max-vertical-offset="731">
-          <caret line="31" column="128" selection-start-line="31" selection-start-column="128" selection-end-line="31" selection-end-column="128" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="32" column="85" selection-start-line="32" selection-start-column="85" selection-end-line="32" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9015151" vertical-offset="663" max-vertical-offset="3094">
+          <caret line="88" column="31" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6068#6069#0" expanded="true" />
+            <element signature="e#6104#6105#0" expanded="true" />
           </folding>
         </state>
       </provider>

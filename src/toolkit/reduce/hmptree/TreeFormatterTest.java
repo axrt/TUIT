@@ -25,11 +25,12 @@ public class TreeFormatterTest {
     }
     @Test
     public void testToString(){
-         final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}";
+        final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
         final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
-            final TaxonomicNode taxonomicNode=treeFormatter.root.getChildren().get(0).getChildren().get(0).getChildren().get(0);
+            System.out.println(treeFormatter.fromat.toHMPTree(treeFormatter.root,true));
         } catch (IOException e) {
             e.printStackTrace();
         }
