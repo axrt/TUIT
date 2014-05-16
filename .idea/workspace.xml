@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="Task reduction implemented and started to implement hmptree conversion">
+    <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -77,12 +77,30 @@
       <file leaf-file-name="TreeFormatter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9015151" vertical-offset="663" max-vertical-offset="3094">
-              <caret line="88" column="31" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.2413793" vertical-offset="2753" max-vertical-offset="4505">
+              <caret line="171" column="35" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6068#6069#0" expanded="true" />
-                <element signature="e#6104#6105#0" expanded="true" />
+                <element signature="e#2303#2304#0" expanded="true" />
+                <element signature="e#2346#2347#0" expanded="true" />
+                <element signature="e#2399#2400#0" expanded="true" />
+                <element signature="e#2443#2444#0" expanded="true" />
+                <element signature="e#2482#2483#0" expanded="true" />
+                <element signature="e#2525#2526#0" expanded="true" />
+                <element signature="e#9543#9544#0" expanded="true" />
+                <element signature="e#9579#9580#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeFormatterTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1105">
+              <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1281,7 +1299,11 @@
       <created>1400195023126</created>
       <updated>1400195023126</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="toHMPTree works for a single tuit-formatted file">
+      <created>1400262256269</created>
+      <updated>1400262256270</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1317,7 +1339,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44794953" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30073607" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1349,7 +1371,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Fixed a bug that prevented the output file from deletion" />
     <MESSAGE value="DB rebased from BLASTIdentifier to BLASTIdentifierDB&#10;" />
     <MESSAGE value="First megafast implementation release" />
     <MESSAGE value="Working prototype" />
@@ -1374,7 +1395,8 @@
     <MESSAGE value="TaxonomicConverter untested" />
     <MESSAGE value="TaxonomicConverter done, fully working with greengenes database" />
     <MESSAGE value="Task reduction implemented and started to implement hmptree conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task reduction implemented and started to implement hmptree conversion" />
+    <MESSAGE value="toHMPTree works for a single tuit-formatted file" />
+    <option name="LAST_COMMIT_MESSAGE" value="toHMPTree works for a single tuit-formatted file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1393,21 +1415,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java</url>
-          <line>20</line>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java</url>
-          <line>118</line>
+          <line>193</line>
           <properties />
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="19" />
+      <option name="time" value="20" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1795,8 +1817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <caret line="32" column="85" selection-start-line="32" selection-start-column="85" selection-end-line="32" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1105">
+          <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1805,12 +1827,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9015151" vertical-offset="663" max-vertical-offset="3094">
-          <caret line="88" column="31" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.2413793" vertical-offset="2753" max-vertical-offset="4505">
+          <caret line="171" column="35" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6068#6069#0" expanded="true" />
-            <element signature="e#6104#6105#0" expanded="true" />
+            <element signature="e#2303#2304#0" expanded="true" />
+            <element signature="e#2346#2347#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2482#2483#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#9543#9544#0" expanded="true" />
+            <element signature="e#9579#9580#0" expanded="true" />
           </folding>
         </state>
       </provider>

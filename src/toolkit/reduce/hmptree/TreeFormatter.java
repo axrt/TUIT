@@ -48,6 +48,47 @@ public class TreeFormatter {
         public abstract CountingTaxonomicNode toNode(final String line);
 
         public abstract String toHMPTree(final CountingTaxonomicNode taxonomicNode, final boolean normalize);
+
+        public abstract String mergeDatasets(final List<HMPTreesOutput> hmptreeDatasets);
+
+        public static class HMPTreesOutput {
+            protected final List<String> taxa;
+            protected final Map<String, Double> reads;
+            protected final String name;
+
+            protected HMPTreesOutput(List<String> taxa, Map<String, Double> reads, String name) {
+                this.taxa = taxa;
+                this.reads = reads;
+                this.name = name;
+            }
+
+            public List<String> getTaxa() {
+                return taxa;
+            }
+
+            public Map<String, Double> getReads() {
+                return reads;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public static HMPTreesOutput newInstance(final String hmpOutput, final String name) {
+                final String[] lines = hmpOutput.split("\n");
+                final List<String> taxa = new ArrayList<>();
+                final Map<String, Double> counts = new HashMap<>();
+                for (String line : lines) {
+                    final String[] subsplit = line.split("\t");
+                    if (subsplit.length != 2 || !Character.isLetter(subsplit[0].charAt(0)) || !Character.isDigit(subsplit[1].charAt(0))) {
+                        throw new IllegalArgumentException("HMPTrees output is not properly formatted!");
+                    }
+                    taxa.add(subsplit[0]);
+                    counts.put(subsplit[0], Double.valueOf(subsplit[1]));
+                }
+                return new HMPTreesOutput(taxa, counts, name);
+            }
+        }
     }
 
     public static class TuitLineTreeFormatterFormat extends TreeFormatterFormat {
@@ -87,17 +128,17 @@ public class TreeFormatter {
 
         @Override
         public String toHMPTree(final CountingTaxonomicNode taxonomicNode, final boolean normalize) {
-            if(!normalize){
-                return this.toHMPTreeHelper(taxonomicNode,"").trim();
+            if (!normalize) {
+                return this.toHMPTreeHelper(taxonomicNode, "").trim();
             }
-            final String[]lines=toHMPTreeHelper(taxonomicNode,"").trim().split("\n");
-            final StringBuilder stringBuilder=new StringBuilder();
-            final int normalizationConstant=Integer.parseInt(lines[0].split("\t")[1]);
-            for(String s:lines){
-                final String[]line=s.split("\t");
+            final String[] lines = toHMPTreeHelper(taxonomicNode, "").trim().split("\n");
+            final StringBuilder stringBuilder = new StringBuilder();
+            final int normalizationConstant = Integer.parseInt(lines[0].split("\t")[1]);
+            for (String s : lines) {
+                final String[] line = s.split("\t");
                 stringBuilder.append(line[0]);
                 stringBuilder.append('\t');
-                stringBuilder.append((double)Integer.parseInt(line[1])/normalizationConstant*100);
+                stringBuilder.append((double) Integer.parseInt(line[1]) / normalizationConstant * 100);
                 stringBuilder.append('\n');
             }
             return stringBuilder.toString().trim();
@@ -109,20 +150,62 @@ public class TreeFormatter {
             if (allowed) {
                 prefix = prefix.concat(taxonomicNode.getScientificName()).concat("{").concat(taxonomicNode.getRank().getName()).concat("}.");
             }
-            if(allowed&&taxonomicNode.getChildren().isEmpty()){
+            if (allowed && taxonomicNode.getChildren().isEmpty()) {
                 stringBuilder.append('\n');
-                stringBuilder.append(prefix.substring(0,prefix.length()-1));
+                stringBuilder.append(prefix.substring(0, prefix.length() - 1));
                 stringBuilder.append('\t');
                 stringBuilder.append(taxonomicNode.getCount());
             }
             for (TaxonomicNode child : taxonomicNode.getChildren()) {
                 if (allowed) {
                     stringBuilder.append('\n');
-                    stringBuilder.append(prefix.substring(0,prefix.length()-1));
+                    stringBuilder.append(prefix.substring(0, prefix.length() - 1));
                     stringBuilder.append('\t');
                     stringBuilder.append(taxonomicNode.getCount());
                 }
                 stringBuilder.append(toHMPTreeHelper((CountingTaxonomicNode) child, prefix));
+            }
+            return stringBuilder.toString();
+        }
+
+        @Override
+        public String mergeDatasets(final List<HMPTreesOutput> hmptreeDatasets) {
+            final Set<String> masterTaxaList = new TreeSet<>();
+            for (HMPTreesOutput h : hmptreeDatasets) {
+                masterTaxaList.addAll(h.getTaxa());
+            }
+            final String[][] table = new String[masterTaxaList.size() + 1][hmptreeDatasets.size() + 1];
+            table[0][0] = "taxonomy";
+            for (int i = 1; i < hmptreeDatasets.size() + 1; i++) {
+                table[0][i] = hmptreeDatasets.get(i - 1).getName();
+            }
+            int t = 0;
+            for (String s : masterTaxaList) {
+                table[++t][0] = s;
+            }
+            for (int i = 0; i < hmptreeDatasets.size(); i++) {
+                table[0][i + 1] = hmptreeDatasets.get(i).getName();
+                int j = 1;
+                for (String s : masterTaxaList) {
+                    final Double count = hmptreeDatasets.get(i).getReads().get(s);
+                    if (count == null) {
+                        table[++j][i+1] = String.valueOf(0);
+                    } else {
+                        table[j++][i+1] = String.valueOf(count);
+                    }
+                }
+            }
+            final StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < table.length; i++) {
+                for (int j = 0; j < table[0].length; j++) {
+                    stringBuilder.append(table[i][j]);
+                    if (j != table[0].length - 1) {
+                        stringBuilder.append("\t");
+                    }
+                }
+                if(i!=table.length-1){
+                    stringBuilder.append('\n');
+                }
             }
             return stringBuilder.toString();
         }
