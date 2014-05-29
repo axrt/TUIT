@@ -8,7 +8,6 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-cli:commons-cli:1.2" level="project" />
-    <orderEntry type="library" name="javabio" level="project" />
     <orderEntry type="library" name="org.apache.commons:commons-compress:1.5" level="project" />
     <orderEntry type="library" name="javatar:javatar:2.5" level="project" />
     <orderEntry type="library" name="commons-io:commons-io:2.4" level="project" />
@@ -35,6 +34,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javabio_jar" level="project" />
   </component>
 </module>
 
