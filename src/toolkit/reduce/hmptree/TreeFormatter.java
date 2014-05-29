@@ -109,13 +109,18 @@ public class TreeFormatter {
                 return null;
             }
             final String[] taxSplit = split[1].split("} -> ");
+            final List<TaxonomicNode>taxonomicNodes=this.taxonomicNodes(taxSplit,Integer.parseInt(acSplit[1]));
+            return (CountingTaxonomicNode) taxonomicNodes.get(0);
+        }
+
+        private List<TaxonomicNode>taxonomicNodes(final String[]taxa, final int count){
             final List<TaxonomicNode> taxonomicNodes = new ArrayList<>();
-            for (String s : taxSplit) {
+            for (String s : taxa) {
                 final String[] subSplit = s.split(" \\{");
                 if (subSplit.length != 2) {
                     formatComplain(s);
                 }
-                taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.convertValue(subSplit[1]), subSplit[0], Integer.parseInt(acSplit[1])));
+                taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.convertValue(subSplit[1]), subSplit[0], count));
             }
 
             for (int i = 0; i < taxonomicNodes.size() - 1; i++) {
@@ -123,7 +128,7 @@ public class TreeFormatter {
                 taxonomicNodes.get(i + 1).setParent(taxonomicNodes.get(0));
             }
             taxonomicNodes.get(0).setParent(taxonomicNodes.get(0));
-            return (CountingTaxonomicNode) taxonomicNodes.get(0);
+            return taxonomicNodes;
         }
 
         @Override

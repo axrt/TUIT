@@ -9,12 +9,12 @@
         <element id="library" level="project" name="commons-cli:commons-cli:1.2" />
         <element id="library" level="project" name="commons-io:commons-io:2.4" />
         <element id="library" level="project" name="commons-net:commons-net:3.3" />
-        <element id="library" level="project" name="javabio" />
         <element id="library" level="project" name="javatar:javatar:2.5" />
         <element id="library" level="project" name="mysql:mysql-connector-java:5.1.25" />
         <element id="library" level="project" name="org.apache.commons:commons-compress:1.5" />
         <element id="library" level="project" name="org.apache.commons:commons-math3:3.1.1" />
         <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit-4.10.jar" />
+        <element id="library" level="project" name="javabio_jar" />
       </element>
     </root>
   </artifact>

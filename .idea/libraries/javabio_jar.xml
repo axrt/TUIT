@@ -1,12 +1,13 @@
 <component name="libraryTable">
-  <library name="javabio">
+  <library name="javabio_jar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar/javabio.jar!/" />
+      <root url="file://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_src_jar" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_jar" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../JAVA_BIO/out/artifacts/javabio_src_jar" recursive="false" type="SOURCES" />
   </library>
 </component>

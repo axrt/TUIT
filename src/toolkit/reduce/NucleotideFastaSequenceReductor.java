@@ -71,23 +71,7 @@ public class NucleotideFastaSequenceReductor {
     }
     public static NucleotideFastaSequenceReductor fromInputstream(final InputStream inputStream) throws IOException,
             NucleotideFasta_AC_BadFormatException, NucleotideFasta_BadFormat_Exception, NucleotideFasta_Sequence_BadFormatException {
-        final List<NucleotideFasta> nucleotideFastas = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            StringBuilder stringBuilder = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                if (line.startsWith(Fasta.fastaStart)) {
-                    if (stringBuilder != null) {
-                        nucleotideFastas.add(NucleotideFasta.newInstanceFromFormattedText(stringBuilder.toString()));
-                    }
-                    stringBuilder = new StringBuilder(line);
-                    stringBuilder.append('\n');
-                } else{
-                    stringBuilder.append(line);
-                    stringBuilder.append('\n');
-                }
-            }
-        }
+        final List<NucleotideFasta> nucleotideFastas = NucleotideFasta.loadFromText(inputStream);
         final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=new NucleotideFastaSequenceReductor();
         for(NucleotideFasta nucleotideFasta:nucleotideFastas){
             nucleotideFastaSequenceReductor.add(nucleotideFasta);
