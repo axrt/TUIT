@@ -28,12 +28,25 @@ public class TreeFormatter {
             this.loadFromInputStream(inputStream);
         }
     }
+    public void loadFromPath(final Path path, int cutoff) throws IOException {
+        try (InputStream inputStream = new FileInputStream(path.toFile())) {
+            this.loadFromInputStream(inputStream,cutoff);
+        }
+    }
 
     public void loadFromInputStream(final InputStream inputStream) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 this.root.join(this.format.toNode(line));
+            }
+        }
+    }
+    public void loadFromInputStream(final InputStream inputStream, int cutoff) throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                this.root.join(this.format.toNodeWithCutoff(line,cutoff));
             }
         }
     }
@@ -46,6 +59,8 @@ public class TreeFormatter {
         );
 
         public abstract CountingTaxonomicNode toNode(final String line);
+
+        public abstract CountingTaxonomicNode toNodeWithCutoff(final String line, int cutoff);
 
         public String toHMPTree(final CountingTaxonomicNode taxonomicNode, final boolean normalize) {
             if (!normalize) {
@@ -210,7 +225,7 @@ public class TreeFormatter {
         public static final List<Ranks> rankSequence = Arrays.asList(Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus);
 
         @Override
-        public CountingTaxonomicNode toNode(String line) {
+        public CountingTaxonomicNode toNodeWithCutoff(String line,int cutoff){
             line=line.replaceAll("\"","");
             final String[] split = line.split("\t");
             if (split.length < 2) {
@@ -224,11 +239,16 @@ public class TreeFormatter {
             for (int i = 2; i < split.length; i++) {
                 counts[i-2] = Integer.parseInt(split[i]);
             }
-            final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, counts);
+            final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, counts, cutoff);
             return (CountingTaxonomicNode) taxonomicNodes.get(0);
         }
 
-        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final int[] counts) {
+        @Override
+        public CountingTaxonomicNode toNode(String line) {
+            return this.toNodeWithCutoff(line,0);
+        }
+
+        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final int[] counts, int cutoff) {
             final List<TaxonomicNode> taxonomicNodes = new ArrayList<>();
             taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.no_rank, "root", 0)); //add a pseudoroot
             taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.no_rank, "cellular organisms", 0));
@@ -238,7 +258,11 @@ public class TreeFormatter {
                 if (subSplit.length != 2) {
                     formatComplain(s);
                 }
-                taxonomicNodes.add(new CountingTaxonomicNode(0, rankSequence.get(i++), subSplit[0], Arrays.copyOf(counts,counts.length)));
+                if(Integer.parseInt(subSplit[1])>=cutoff) {
+                    taxonomicNodes.add(new CountingTaxonomicNode(0, rankSequence.get(i++), subSplit[0], Arrays.copyOf(counts, counts.length)));
+                }else{
+                    break;
+                }
             }
 
             for (i = 0; i < taxonomicNodes.size() - 1; i++) {
@@ -308,6 +332,12 @@ public class TreeFormatter {
     }
 
     public static class TuitLineTreeFormatterFormat extends TreeFormatterFormat {
+
+        @Override
+        public CountingTaxonomicNode toNodeWithCutoff(String line, int cutoff) {
+            return this.toNode(line);
+        }
+
         @Override
         public CountingTaxonomicNode toNode(final String line) {
             final String[] split = line.substring(0, line.length() - 1).split(":\t");
