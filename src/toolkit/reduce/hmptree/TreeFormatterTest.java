@@ -1,7 +1,6 @@
 package toolkit.reduce.hmptree;
 
 import org.junit.Test;
-import taxonomy.node.TaxonomicNode;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -25,19 +24,21 @@ public class TreeFormatterTest {
             e.printStackTrace();
         }
     }
-    //@Test
+    @Test
     public void testToString(){
         final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Testoproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
         final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
-            System.out.println(treeFormatter.fromat.toHMPTree(treeFormatter.root,true));
+            System.out.println(treeFormatter.format.toHMPTree(treeFormatter.root, true));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    @Test
+    //@Test
     public void testMergeDatasets(){
         final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
@@ -46,14 +47,38 @@ public class TreeFormatterTest {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=
                     TreeFormatter.TreeFormatterFormat.HMPTreesOutput.newInstance(
-                    treeFormatter.fromat.toHMPTree(treeFormatter.root, true),"test"
-            );
+                            treeFormatter.format.toHMPTree(treeFormatter.root, true), "test"
+                    );
             final List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> testList=new ArrayList<>();
             testList.add(output);
-            System.out.println(treeFormatter.fromat.mergeDatasets(testList));
+            System.out.println(treeFormatter.format.mergeDatasets(testList));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Test
+    public void testMothur(){
+        final String line="M01529_30_000000000-A64PD_1_1101_14316_1559\tBacteria(100);\"Actinobacteria\"(100);Actinobacteria(100);Actinomycetales(100);Micrococcaceae(100);Nesterenkonia(100);\t580157\t7067\t14115\n" +
+                "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);Bacillales(100);Bacillaceae_1(100);Aeribacillus(100);\t344287\t3441\t4960";
+        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.MothurLineTreeFormatterFormat());
+        try {
+            treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
+            System.out.println(treeFormatter.format.toHMPTree(treeFormatter.root, true));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    //@Test
+    public void combineTaxonomyAndReadTableTest(){
+       final Path taxonomy=Paths.get("/home/alext/Documents/Ocular Project/sequencing/DES/miseq/my_processing/test.pds.wang.taxonomy");
+        final Path seqMap=taxonomy.resolveSibling("stability.trim.contigs.good.unique.good.filter.uchime.pick.count_table");
+        final Path outfile=taxonomy.resolveSibling("out.table.txt");
+        try {
+            TreeFormatter.MothurLineTreeFormatterFormat.combineTaxonomyAndReadTable(taxonomy,seqMap,outfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
