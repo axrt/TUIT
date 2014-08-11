@@ -16,7 +16,7 @@ public class TreeFormatterTest {
     //@Test
     public void test(){
         final Path fastaFile= Paths.get("/home/alext/Documents/tuit/final testing/reductor.test.tuit");
-        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.TuitLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromPath(fastaFile);
             System.out.println();
@@ -30,7 +30,7 @@ public class TreeFormatterTest {
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Testoproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
-        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.TuitLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             System.out.println(treeFormatter.format.toHMPTree(treeFormatter.root, true));
@@ -42,7 +42,7 @@ public class TreeFormatterTest {
     public void testMergeDatasets(){
         final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
-        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.TuitLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=
@@ -63,7 +63,7 @@ public class TreeFormatterTest {
         final String line="M01529_30_000000000-A64PD_1_1101_14316_1559\tBacteria(100);\"Actinobacteria\"(100);Actinobacteria(100);Actinomycetales(100);Micrococcaceae(100);Nesterenkonia(100);\t580157\t7067\t14115\n" +
                 "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);Bacillales(100);Bacillaceae_1(100);Aeribacillus(100);\t344287\t3441\t4960\n" +
                 "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);Bacillales(100);Bacillaceae_1(100);TestoBacillus(100);\t344287\t3441\t4960";
-        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.MothurLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.MothurLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             System.out.println(treeFormatter.format.toHMPTree(treeFormatter.root, true));
@@ -77,8 +77,10 @@ public class TreeFormatterTest {
         System.out.println("CUTOFF>>>\n");
         final String line="M01529_30_000000000-A64PD_1_1101_14316_1559\tBacteria(100);\"Actinobacteria\"(100);Actinobacteria(100);Actinomycetales(100);Micrococcaceae(100);Nesterenkonia(100);\t580157\t7067\t14115\n" +
                 "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);Bacillales(70);Bacillaceae_1(90);Aeribacillus(50);\t344287\t3441\t4960\n" +
+                "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);unclassified;\t344287\t3441\t4960\n" +
+                "M01529_30_000000000-A64PD_1_1101_17032_1812\tunknown;unclassified;unclassified;unclassified;\t344287\t3441\t4960\n" +
                 "M01529_30_000000000-A64PD_1_1101_17032_1812\tBacteria(100);Firmicutes(100);Bacilli(100);Bacillales(100);Bacillaceae_1(100);TestoBacillus(100);\t344287\t3441\t4960";
-        final TreeFormatter treeFormatter=new TreeFormatter(1,new TreeFormatter.MothurLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.MothurLineTreeFormatterFormat());
         final int cutoff = 80;
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()),cutoff);

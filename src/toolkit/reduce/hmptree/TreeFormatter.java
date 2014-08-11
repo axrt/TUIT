@@ -13,14 +13,16 @@ import java.util.*;
 public class TreeFormatter {
 
     protected final CountingTaxonomicNode root;
-    protected double cutoff;
     protected TreeFormatterFormat format;
 
-    protected TreeFormatter(double cutoff, TreeFormatterFormat format) {
-        this.cutoff = cutoff;
+    protected TreeFormatter(TreeFormatterFormat format) {
         this.root = new CountingTaxonomicNode(0, Ranks.no_rank, "root", 0);
         this.root.setParent(this.root);
         this.format = format;
+    }
+
+    public String toHMPTree(boolean normalize) {
+        return this.format.toHMPTree(this.root, normalize);
     }
 
     public void loadFromPath(final Path path) throws IOException {
@@ -28,9 +30,10 @@ public class TreeFormatter {
             this.loadFromInputStream(inputStream);
         }
     }
+
     public void loadFromPath(final Path path, int cutoff) throws IOException {
         try (InputStream inputStream = new FileInputStream(path.toFile())) {
-            this.loadFromInputStream(inputStream,cutoff);
+            this.loadFromInputStream(inputStream, cutoff);
         }
     }
 
@@ -42,13 +45,26 @@ public class TreeFormatter {
             }
         }
     }
+
     public void loadFromInputStream(final InputStream inputStream, int cutoff) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                this.root.join(this.format.toNodeWithCutoff(line,cutoff));
+                this.root.join(this.format.toNodeWithCutoff(line, cutoff));
             }
         }
+    }
+
+    public void loadFromBufferedReader(final BufferedReader bufferedReader, int cutoff) throws IOException {
+
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            this.root.join(this.format.toNodeWithCutoff(line, cutoff));
+        }
+    }
+
+    public static TreeFormatter newInstance(TreeFormatterFormat format) {
+        return new TreeFormatter(format);
     }
 
     public abstract static class TreeFormatterFormat {
@@ -66,22 +82,22 @@ public class TreeFormatter {
             if (!normalize) {
                 return this.toHMPTreeHelper(taxonomicNode, "").trim();
             }
-            final String hmpTreelines=toHMPTreeHelper(taxonomicNode, "").trim();
+            final String hmpTreelines = toHMPTreeHelper(taxonomicNode, "").trim();
             final String[] lines = hmpTreelines.split("\n");
             final StringBuilder stringBuilder = new StringBuilder();
-            final String normalizingLine=lines[0];
-            final String[]normalizationBlocks= normalizingLine.split("\t");
-            final int[] normalizationConstants = new int[normalizationBlocks.length-1];
-            for(int i=0;i<normalizationConstants.length;i++){
-                normalizationConstants[i]=Integer.parseInt(normalizationBlocks[i+1]);
+            final String normalizingLine = lines[0];
+            final String[] normalizationBlocks = normalizingLine.split("\t");
+            final int[] normalizationConstants = new int[normalizationBlocks.length - 1];
+            for (int i = 0; i < normalizationConstants.length; i++) {
+                normalizationConstants[i] = Integer.parseInt(normalizationBlocks[i + 1]);
             }
             for (String s : lines) {
                 final String[] line = s.split("\t");
                 stringBuilder.append(line[0]);
                 stringBuilder.append('\t');
-                for(int i=1;i<line.length;i++) {
-                    stringBuilder.append((double) Integer.parseInt(line[i]) / normalizationConstants[i-1] * 100);
-                    if(i<line.length-1) {
+                for (int i = 1; i < line.length; i++) {
+                    stringBuilder.append((double) Integer.parseInt(line[i]) / normalizationConstants[i - 1] * 100);
+                    if (i < line.length - 1) {
                         stringBuilder.append('\t');
                     }
                 }
@@ -96,7 +112,7 @@ public class TreeFormatter {
             if (allowed) {
                 prefix = prefix.concat(taxonomicNode.getScientificName()).concat("{").concat(taxonomicNode.getRank().getName()).concat("}.");
             }
-            if(!allowed&&taxonomicNode.getChildren().isEmpty()){
+            if (!allowed && taxonomicNode.getChildren().isEmpty()) {
                 return "";
             }
             if (allowed && taxonomicNode.getChildren().isEmpty()) {
@@ -111,7 +127,7 @@ public class TreeFormatter {
                 }
             }
             if (allowed) {
-                if(taxonomicNode.getChildren().isEmpty()){
+                if (taxonomicNode.getChildren().isEmpty()) {
                     return stringBuilder.toString();
                 }
                 stringBuilder.append('\n');
@@ -209,11 +225,11 @@ public class TreeFormatter {
                         throw new IllegalArgumentException("HMPTrees output is not properly formatted!");
                     }
                     taxa.add(subsplit[0]);
-                    final List<Double> tableCounts=new ArrayList<>();
-                    for(int i=1;i<subsplit.length;i++){
+                    final List<Double> tableCounts = new ArrayList<>();
+                    for (int i = 1; i < subsplit.length; i++) {
                         tableCounts.add(Double.valueOf(subsplit[i]));
                     }
-                    counts.put(subsplit[0],tableCounts);
+                    counts.put(subsplit[0], tableCounts);
                 }
                 return new HMPTreesOutput(taxa, counts, name);
             }
@@ -225,19 +241,16 @@ public class TreeFormatter {
         public static final List<Ranks> rankSequence = Arrays.asList(Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus);
 
         @Override
-        public CountingTaxonomicNode toNodeWithCutoff(String line,int cutoff){
-            line=line.replaceAll("\"","");
+        public CountingTaxonomicNode toNodeWithCutoff(String line, int cutoff) {
+            line = line.replaceAll("\"", "");
             final String[] split = line.split("\t");
             if (split.length < 2) {
                 this.formatComplain(line);
             }
             final String[] taxSplit = split[1].split("\\)\\;");
-            if (taxSplit.length < 2) {
-                this.formatComplain(line);
-            }
             final int[] counts = new int[split.length - 2];
             for (int i = 2; i < split.length; i++) {
-                counts[i-2] = Integer.parseInt(split[i]);
+                counts[i - 2] = Integer.parseInt(split[i]);
             }
             final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, counts, cutoff);
             return (CountingTaxonomicNode) taxonomicNodes.get(0);
@@ -245,7 +258,7 @@ public class TreeFormatter {
 
         @Override
         public CountingTaxonomicNode toNode(String line) {
-            return this.toNodeWithCutoff(line,0);
+            return this.toNodeWithCutoff(line, 0);
         }
 
         private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final int[] counts, int cutoff) {
@@ -254,13 +267,14 @@ public class TreeFormatter {
             taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.no_rank, "cellular organisms", 0));
             int i = 0;
             for (String s : taxa) {
-                final String[] subSplit = s.split("\\(");
-                if (subSplit.length != 2) {
-                    formatComplain(s);
+                if (s.startsWith("unknown")) {
+                    break;
                 }
-                if(Integer.parseInt(subSplit[1])>=cutoff) {
+                final String[] subSplit = s.split("\\(");
+
+                if (!s.contains("unclassified") && Integer.parseInt(subSplit[1]) >= cutoff) {
                     taxonomicNodes.add(new CountingTaxonomicNode(0, rankSequence.get(i++), subSplit[0], Arrays.copyOf(counts, counts.length)));
-                }else{
+                } else {
                     break;
                 }
             }
