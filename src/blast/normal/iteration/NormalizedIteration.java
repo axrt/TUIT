@@ -117,7 +117,7 @@ public class NormalizedIteration<I extends Iteration> {
                 if (normalizedHit != null) {
                     this.normalizedHits.add(normalizedHit);
                 }else{
-                    Log.getInstance().log(Level.SEVERE,"A GI: "+hit.getHitId()+" was no found in the current version of the taxonomic database. " +
+                    Log.getInstance().log(Level.SEVERE,"A GI: "+hit.getHitId()+" was not found in the current version of the taxonomic database. " +
                             "As this may affect results, please update both BLAST and taxonomic database as soon as possible.");
                 }
             }

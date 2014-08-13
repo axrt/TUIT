@@ -221,6 +221,9 @@ public class TaxonomicNode {
             combinedChildren.removeAll(toRemove);
             this.children.clear();
             this.children.addAll(combinedChildren);
+            for(TaxonomicNode taxonomicNode:combinedChildren){
+                taxonomicNode.setParent(this);
+            }
             return true;
         }
         return false;

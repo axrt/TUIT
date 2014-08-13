@@ -93,6 +93,7 @@ public class NormalizedHit<H extends Hit> {
             this.hitEvalue = eval;
         }
         this.GI = Integer.parseInt(BlastOutputUtil.extractGIFromHitID(hit.getHitId()));
+        //System.out.println(this.GI);
     }
 
     /**

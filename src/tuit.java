@@ -176,7 +176,7 @@ public class tuit {
                 if (commandLine.hasOption(tuit.USE_DB)) {
                     NCBITablesDeployer.updateDatabasesFromNCBI(connection, tmpDir);
                 } else {
-                    //No need to specify a different way to update the database other than just depoly in case of the RAM database
+                    //No need to specify a different way to update the database other than just deploy in case of the RAM database
                     NCBITablesDeployer.fastDeployNCBIRamDatabaseFromNCBI(tmpDir, ramDbFile);
                 }
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
@@ -282,7 +282,13 @@ public class tuit {
                                 tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT", "OR")).getAbsolutePath(),
                                 "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
-                    } else {
+                    }else if(tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().equals("")){
+                        parameters = new String[]{
+                                "-db", stringBuilder.toString(),
+                                "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
+                                "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
+                        };
+                    }else {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
