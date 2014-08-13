@@ -292,8 +292,8 @@ public class tuit {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
-                                "-gilist", TUITFileOperatorHelper.restrictToEntrez(
-                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),
+                                /*"-gilist", TUITFileOperatorHelper.restrictToEntrez(
+                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),*/ //TODO remove comment!!!!!
                                 "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     }

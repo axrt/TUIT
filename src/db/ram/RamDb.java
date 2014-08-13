@@ -3,6 +3,7 @@ package db.ram;
 import db.ram.row.NamesRow;
 import db.ram.row.NodesRow;
 import db.ram.row.RamRow;
+import helper.NCBITablesDeployer;
 import logger.Log;
 import taxonomy.Ranks;
 

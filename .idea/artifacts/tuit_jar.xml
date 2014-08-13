@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact build-on-make="true" name="tuit:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/tuit</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/tuitgg</output-path>
     <root id="root">
       <element id="archive" name="tuit.jar">
         <element id="module-output" name="tuit" />

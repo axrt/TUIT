@@ -3,7 +3,9 @@ package taxonomy.node;
 import taxonomy.Ranks;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 /**
  * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
  * software for accurate taxonomic classification of nucleotide sequences.
@@ -45,6 +47,11 @@ public class TaxonomicNode {
     @SuppressWarnings("WeakerAccess")
     protected final List<TaxonomicNode> children;
     /**
+     * A set to prevent ambiguous children of the same reference
+     */
+    @SuppressWarnings("WeakerAccess")
+    protected final Set<TaxonomicNode> childSet;
+    /**
      * Shows if the node is root
      */
     @SuppressWarnings("WeakerAccess")
@@ -68,6 +75,7 @@ public class TaxonomicNode {
         this.rank = rank;
         this.scientificName = scientificName;
         this.children = new ArrayList<TaxonomicNode>();
+        this.childSet=new HashSet<>();
         this.isRoot = false;
     }
 
@@ -119,7 +127,12 @@ public class TaxonomicNode {
      * @return {@code true} if success, otherwise - {@code false}
      */
     public boolean addChild(TaxonomicNode child) {
-        return this.children.add(child);
+        if(this.childSet.add(child)){
+            return this.children.add(child);
+        }else{
+            return false;
+        }
+
     }
 
     /**
