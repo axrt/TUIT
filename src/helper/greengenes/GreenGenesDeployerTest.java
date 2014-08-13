@@ -13,11 +13,11 @@ import java.nio.file.Paths;
  */
 public class GreenGenesDeployerTest {
 
-    @Test
+    //@Test
     public void test(){
        Log.getInstance().setLogName("tuit.log");
        final Path taxonomy= Paths.get("/home/alext/Documents/tuit/greengenes/gg_13_5_taxonomy.txt");
-       final Path outputDir=Paths.get("/home/alext/Downloads/tmp");
+       final Path outputDir=Paths.get("/home/alext/Documents/tuit/greengenes/");
         try {
             final NCBITablesDeployer.TaxonomyFiles taxonomyFiles=GreenGenesDeployer.convertToTaxonomyFiles(taxonomy, outputDir);
             NCBITablesDeployer.fastDeployRamDatabaseFromFiles(taxonomyFiles,outputDir.resolve("ramdb.obj").toFile());

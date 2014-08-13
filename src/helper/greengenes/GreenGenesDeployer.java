@@ -36,7 +36,7 @@ public class GreenGenesDeployer {
                 try {
                     if (line.startsWith(Fasta.fastaStart)) {
 
-                        bufferedWriter.write(Fasta.fastaStart.concat("ggid|").concat(line.substring(1)));
+                        bufferedWriter.write(Fasta.fastaStart.concat("ggid|"+line.substring(1)+"|ref|"+line.substring(1)+"| Green Genes sequence"));
 
                     } else {
                         bufferedWriter.write(line);
