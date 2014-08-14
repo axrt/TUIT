@@ -149,29 +149,41 @@ public class TreeFormatter {
 
         public String mergeDatasets(final List<HMPTreesOutput> hmptreeDatasets) {
             final Set<String> masterTaxaList = new TreeSet<>();
+            //Combine taxonomy
             for (HMPTreesOutput h : hmptreeDatasets) {
                 masterTaxaList.addAll(h.getTaxa());
             }
-            final String[][] table = new String[masterTaxaList.size() + 1][hmptreeDatasets.size() + 1];
+            //Find out the number of columns in the resulting table
+            final int colDim=hmptreeDatasets.stream().mapToInt(hpmt->{return hpmt.getLength();}).sum();
+            //Arrange names in column headers
+            final String[][] table = new String[masterTaxaList.size() + 1][colDim + 1];
             table[0][0] = "taxonomy";
             for (int i = 1; i < hmptreeDatasets.size() + 1; i++) {
                 table[0][i] = hmptreeDatasets.get(i - 1).getName();
             }
+            //Insert the sorted master list of taxonomic paths
             int t = 0;
             for (String s : masterTaxaList) {
                 table[++t][0] = s;
             }
+            //Lookup the master table paths and search through all of the samples
+            int positioner=1;
             for (int i = 0; i < hmptreeDatasets.size(); i++) {
-                table[0][i + 1] = hmptreeDatasets.get(i).getName();
-                int j = 1;
+                int j = 0;
                 for (String s : masterTaxaList) {
                     final List<Double> count = hmptreeDatasets.get(i).getReads().get(s);
+
                     if (count == null) {
-                        table[++j][i + 1] = String.valueOf(0);
+                        for(int k=0;k<hmptreeDatasets.get(i).getLength();k++) {
+                            table[++j][positioner+k] = String.valueOf(0);
+                        }
                     } else {
-                        table[j++][i + 1] = String.valueOf(count);
+                        for(int k=0;k<hmptreeDatasets.get(i).getLength();k++) {
+                            table[++j][positioner+k] = String.valueOf(count.get(k));
+                        }
                     }
                 }
+                positioner+=hmptreeDatasets.get(i).getLength();
             }
             final StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < table.length; i++) {
@@ -196,11 +208,13 @@ public class TreeFormatter {
             protected final List<String> taxa;
             protected final Map<String, List<Double>> reads;
             protected final String name;
+            protected final int length;
 
-            protected HMPTreesOutput(List<String> taxa, Map<String, List<Double>> reads, String name) {
+            protected HMPTreesOutput(List<String> taxa, Map<String, List<Double>> reads, String name,int length) {
                 this.taxa = taxa;
                 this.reads = reads;
                 this.name = name;
+                this.length=length;
             }
 
             public List<String> getTaxa() {
@@ -213,6 +227,10 @@ public class TreeFormatter {
 
             public String getName() {
                 return name;
+            }
+
+            public int getLength() {
+                return length;
             }
 
             public static HMPTreesOutput newInstance(final String hmpOutput, final String name) {
@@ -231,7 +249,8 @@ public class TreeFormatter {
                     }
                     counts.put(subsplit[0], tableCounts);
                 }
-                return new HMPTreesOutput(taxa, counts, name);
+                final int length=lines[0].split("\t").length-1;
+                return new HMPTreesOutput(taxa, counts, name,length);
             }
         }
     }
