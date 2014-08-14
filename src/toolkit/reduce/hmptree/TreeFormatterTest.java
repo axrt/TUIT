@@ -48,7 +48,7 @@ public class TreeFormatterTest {
                 "82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Testoproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
                 "82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
 
-        final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
+        final TreeFormatter treeFormatter= TreeFormatter.newInstance(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=

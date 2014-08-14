@@ -6,7 +6,9 @@ import db.mysql.MySQL_Connector;
 import db.ram.RamDb;
 import exception.TUITPropertyBadFormatException;
 import format.fasta.nucleotide.NucleotideFasta;
+import helper.CombinatorFileOperator;
 import helper.NCBITablesDeployer;
+import helper.reduce.ReductorFileOperator;
 import io.file.NucleotideFastaTUITFileOperator;
 import io.file.TUITFileOperator;
 import io.file.TUITFileOperatorHelper;
@@ -18,14 +20,20 @@ import logger.Log;
 import org.apache.commons.cli.*;
 import org.xml.sax.SAXException;
 import taxonomy.Ranks;
+import toolkit.reduce.NucleotideFastaSequenceReductor;
+import toolkit.reduce.hmptree.TreeFormatter;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -81,11 +89,23 @@ public class tuit {
      */
     private final static String V = "v";
     /**
-     * The -deploy flag for the verbose output file
+     * The -reduce flag
+     */
+    private final static String COMBINE = "combine";
+    /**
+     * The -normalize flag in combination with COMBINE
+     */
+    private final static String NORMALIZE = "n";
+    /**
+     * The -combine flag
+     */
+    private final static String REDUCE = "reduce";
+    /**
+     * The -deploy flag
      */
     private final static String DEPLOY = "deploy";
     /**
-     * The -update flag for the verbose output file
+     * The -update flag
      */
     private final static String UPDATE = "update";
     /**
@@ -128,6 +148,7 @@ public class tuit {
 
         CommandLineParser parser = new GnuParser();
         Options options = new Options();
+
         options.addOption(tuit.IN, "input<file>", true, "Input file (currently fasta-formatted only)");
         options.addOption(tuit.OUT, "output<file>", true, "Output file (in " + tuit.TUIT_EXT + " format)");
         options.addOption(tuit.P, "prop<file>", true, "Properties file (XML formatted)");
@@ -136,21 +157,82 @@ public class tuit {
         options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
         options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
         options.addOption(tuit.USE_DB, "usedb", false, "Use RDBMS instead of RAM-based taxonomy");
+
+        Option option = new Option(tuit.REDUCE, "reduce", true, "Pack identical (100% similar sequences) records in the given sample file");
+        option.setArgs(Option.UNLIMITED_VALUES);
+        options.addOption(option);
+        option=new Option(tuit.COMBINE, "combine", true, "Combine a set of given reduction files into an HMP Tree-compatible taxonomy");
+        option.setArgs(Option.UNLIMITED_VALUES);
+        options.addOption(option);
+        options.addOption(tuit.NORMALIZE, "normalize", false, "If used in combination with -combine ensures that the values are normalized by the root value");
+
         HelpFormatter formatter = new HelpFormatter();
 
         try {
+
             //Get TUIT directory
             final File tuitDir = new File(new File(tuit.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent());
             final File ramDbFile = new File(tuitDir, tuit.RAM_DB);
+
             //Setup logger
             Log.getInstance().setLogName("tuit.log");
+
             //Read command line
             final CommandLine commandLine = parser.parse(options, args, true);
+
+            //Check if the REDUCE option is on
+            if(commandLine.hasOption(tuit.REDUCE)){
+
+                final String[]fileList=commandLine.getOptionValues(tuit.REDUCE);
+                for(String s:fileList){
+                    final Path path=Paths.get(s);
+                    Log.getInstance().log(Level.INFO, "Processing "+path.toString()+"...");
+                    final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(path);
+                    ReductorFileOperator.save(nucleotideFastaSequenceReductor,path.resolveSibling(path.getFileName().toString()+".rdc"));
+                }
+
+                Log.getInstance().log(Level.FINE, "Task done, exiting...");
+                return;
+            }
+
+            //Check if COMBINE is on
+            if(commandLine.hasOption(tuit.COMBINE)){
+                final boolean normalize=commandLine.hasOption(tuit.NORMALIZE);
+                final String[]fileList=commandLine.getOptionValues(tuit.COMBINE);
+                //TODO: implement a test for format here
+
+                final List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> hmpTreesOutputs=new ArrayList<>();
+                final TreeFormatter treeFormatter=TreeFormatter.newInstance(new TreeFormatter.TuitLineTreeFormatterFormat());
+                for(String s:fileList) {
+                    final Path path = Paths.get(s);
+                    Log.getInstance().log(Level.INFO, "Merging "+path.toString()+"...");
+                    treeFormatter.loadFromPath(path);
+                    final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=
+                            TreeFormatter.TreeFormatterFormat.HMPTreesOutput.newInstance(
+                                    treeFormatter.toHMPTree(normalize), s.substring(0,s.indexOf("."))
+                            );
+                    hmpTreesOutputs.add(output);
+                    treeFormatter.erase();
+                }
+                final Path destination;
+                if(commandLine.hasOption(OUT)){
+                    destination=Paths.get(commandLine.getOptionValue(tuit.OUT));
+                } else {
+                    destination=Paths.get("merge.tcf");
+                }
+                CombinatorFileOperator.save(hmpTreesOutputs,treeFormatter,destination);
+                Log.getInstance().log(Level.FINE, "Task done, exiting...");
+                return;
+            }
+
+
+
             if (!commandLine.hasOption(tuit.P)) {
                 throw new ParseException("No properties file option found, exiting.");
             } else {
                 properties = new File(commandLine.getOptionValue(tuit.P));
             }
+
             //Load properties
             tuitPropertiesLoader = TUITPropertiesLoader.newInstanceFromFile(properties);
             tuitProperties = tuitPropertiesLoader.getTuitProperties();

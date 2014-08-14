@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/lib/commons-cli-1.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/commons-cli-1.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

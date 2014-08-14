@@ -12,7 +12,7 @@ import java.util.*;
 
 //TODO Document
 
-public class NucleotideFastaSequenceReductor {
+public class NucleotideFastaSequenceReductor implements SequenceReductor<NucleotideFasta>{
 
     public static final String COUNT_MARKER="@";
 

@@ -26,6 +26,10 @@ public class TreeFormatter {
         this.root.setParent(this.root);
     }
 
+    public String mergeDataSets(List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> mergeList){
+        return this.format.mergeDatasets(mergeList);
+    }
+
     public String toHMPTree(boolean normalize) {
         return this.format.toHMPTree(this.root, normalize);
     }
@@ -163,7 +167,7 @@ public class TreeFormatter {
             //Arrange names in column headers
             final String[][] table = new String[masterTaxaList.size() + 1][colDim + 1];
             table[0][0] = "taxonomy";
-            for (int i = 1; i < hmptreeDatasets.size() + 1; i++) {
+            for (int i = 1; i < hmptreeDatasets.size()+1; i++) {
                 table[0][i] = hmptreeDatasets.get(i - 1).getName();
             }
             //Insert the sorted master list of taxonomic paths
@@ -243,6 +247,9 @@ public class TreeFormatter {
                 final List<String> taxa = new ArrayList<>();
                 final Map<String, List<Double>> counts = new HashMap<>();
                 for (String line : lines) {
+                    if(line.length()<1){
+                        continue;
+                    }
                     final String[] subsplit = line.split("\t");
                     if (subsplit.length < 2 || !Character.isLetter(subsplit[0].charAt(0)) || !Character.isDigit(subsplit[1].charAt(0))) {
                         throw new IllegalArgumentException("HMPTrees output is not properly formatted!");
