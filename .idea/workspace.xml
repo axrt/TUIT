@@ -77,8 +77,8 @@
       <file leaf-file-name="TreeFormatterTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8081264" vertical-offset="372" max-vertical-offset="2074">
-              <caret line="64" column="58" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.53724605" vertical-offset="493" max-vertical-offset="2108">
+              <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,12 +89,10 @@
       <file leaf-file-name="TreeFormatter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2695" max-vertical-offset="7769">
-              <caret line="169" column="30" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7820">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9695#9696#0" expanded="true" />
-                <element signature="e#9740#9741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -242,8 +240,8 @@
         <option value="$PROJECT_DIR$/src/io/properties/load/greengenes.xml" />
         <option value="$PROJECT_DIR$/src/toolkit/greengenes/GreenGenesDeployerTest.java" />
         <option value="$PROJECT_DIR$/src/toolkit/greengenes/GreenGenesDeployer.java" />
-        <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
+        <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java" />
       </list>
     </option>
   </component>
@@ -1687,7 +1685,11 @@
       <created>1408038551495</created>
       <updated>1408038551495</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="Merge datasets corrected">
+      <created>1408045086846</created>
+      <updated>1408045086846</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1755,7 +1757,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Windows path bug corrected" />
     <MESSAGE value="Windows path bug corrected&#10;" />
     <MESSAGE value="Crucial bug about the missing cutoffs fixed" />
     <MESSAGE value="New JAVA_BIO support" />
@@ -1780,7 +1781,8 @@
     <MESSAGE value="Cutoff tested for mothur" />
     <MESSAGE value="latest" />
     <MESSAGE value="Green Genes tested and fromat corrected for reduction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Green Genes tested and fromat corrected for reduction" />
+    <MESSAGE value="Merge datasets corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge datasets corrected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1823,7 +1825,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java</url>
-          <line>181</line>
+          <line>186</line>
           <properties />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
@@ -2218,20 +2220,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2695" max-vertical-offset="7769">
-          <caret line="169" column="30" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7820">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9695#9696#0" expanded="true" />
-            <element signature="e#9740#9741#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8081264" vertical-offset="372" max-vertical-offset="2074">
-          <caret line="64" column="58" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.53724605" vertical-offset="493" max-vertical-offset="2108">
+          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

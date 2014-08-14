@@ -40,24 +40,26 @@ public class TreeFormatterTest {
     }
     @Test
     public void testMergeDatasets(){
-        final String line="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
-                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
-        String line2="82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
-                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
-                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Testoproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
-                "82@2117:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
+        final String line="82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@2:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
+
+        final String line2="82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Testobacteria {phylum} -> Bullshit {subgenus} -> Testoproteobacteria {class} -> Pseudomonadales {order} -> Pseudomonadaceae {family} -> Pseudomonas {genus} -> Pseudomonas aeruginosa group {species group} -> Pseudomonas aeruginosa {species}\n" +
+                "82@1:\troot {no rank} -> cellular organisms {no rank} -> Bacteria {superkingdom} -> Proteobacteria {phylum} -> Bullshit {subgenus} -> Gammaproteobacteria {class} -> Pseudomonadales {order} -> PesudoBullsit {family} -> TotalBullCrap {genus}";
 
         final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line.getBytes()));
             final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=
                     TreeFormatter.TreeFormatterFormat.HMPTreesOutput.newInstance(
-                            treeFormatter.format.toHMPTree(treeFormatter.root, true), "test1"
+                            treeFormatter.format.toHMPTree(treeFormatter.root, false), "test1"
                     );
+            treeFormatter.erase();
             treeFormatter.loadFromInputStream(new ByteArrayInputStream(line2.getBytes()));
             final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output2=
                     TreeFormatter.TreeFormatterFormat.HMPTreesOutput.newInstance(
-                            treeFormatter.format.toHMPTree(treeFormatter.root, true), "test2"
+                            treeFormatter.format.toHMPTree(treeFormatter.root, false), "test2"
                     );
             final List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> testList=new ArrayList<>();
             testList.add(output);

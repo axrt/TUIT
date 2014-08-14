@@ -12,13 +12,18 @@ import java.util.*;
 //TODO document
 public class TreeFormatter {
 
-    protected final CountingTaxonomicNode root;
+    protected CountingTaxonomicNode root;
     protected TreeFormatterFormat format;
 
     protected TreeFormatter(TreeFormatterFormat format) {
         this.root = new CountingTaxonomicNode(0, Ranks.no_rank, "root", 0);
         this.root.setParent(this.root);
         this.format = format;
+    }
+
+    public void erase(){
+        this.root=new CountingTaxonomicNode(0, Ranks.no_rank, "root", 0);
+        this.root.setParent(this.root);
     }
 
     public String toHMPTree(boolean normalize) {
