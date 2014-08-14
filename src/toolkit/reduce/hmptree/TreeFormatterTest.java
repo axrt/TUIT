@@ -15,7 +15,7 @@ import java.util.List;
 public class TreeFormatterTest {
     //@Test
     public void test(){
-        final Path fastaFile= Paths.get("/home/alext/Documents/tuit/final testing/reductor.test.tuit");
+        final Path fastaFile= Paths.get("/home/alext/Documents/tuit/final testing/distro 1.0.5/reductor.tuit");
         final TreeFormatter treeFormatter=new TreeFormatter(new TreeFormatter.TuitLineTreeFormatterFormat());
         try {
             treeFormatter.loadFromPath(fastaFile);
@@ -57,7 +57,7 @@ public class TreeFormatterTest {
             e.printStackTrace();
         }
     }
-    @Test
+    //@Test
     public void testMothur(){
         System.out.println("NO CUTOFF>>>\n");
         final String line="M01529_30_000000000-A64PD_1_1101_14316_1559\tBacteria(100);\"Actinobacteria\"(100);Actinobacteria(100);Actinomycetales(100);Micrococcaceae(100);Nesterenkonia(100);\t580157\t7067\t14115\n" +
@@ -72,7 +72,7 @@ public class TreeFormatterTest {
         }
         System.out.println();
     }
-    @Test
+    //@Test
     public void testMothurCutoff(){
         System.out.println("CUTOFF>>>\n");
         final String line="M01529_30_000000000-A64PD_1_1101_14316_1559\tBacteria(100);\"Actinobacteria\"(100);Actinobacteria(100);Actinomycetales(100);Micrococcaceae(100);Nesterenkonia(100);\t580157\t7067\t14115\n" +

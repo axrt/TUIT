@@ -17,7 +17,7 @@ public class NucleotideFastaSequenceReductorTest {
 
     @Test
     public void test(){
-        final Path fastaFile= Paths.get("/home/alext/Documents/tuit/final testing/test.fasta");
+        final Path fastaFile= Paths.get("/home/alext/Documents/tuit/final testing/distro 1.0.5/test.fasta");
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
             FileUtils.writeStringToFile(fastaFile.getParent().resolve("reductor.fasta").toFile(),nucleotideFastaSequenceReductor.toString());

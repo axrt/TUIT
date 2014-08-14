@@ -69,6 +69,14 @@ public class GreenGenesDeployer {
                 BufferedWriter nodesWriter = new BufferedWriter(new FileWriter(nodesFilePath.toFile()));
                 BufferedWriter namesWriter = new BufferedWriter(new FileWriter(namesFilePath.toFile()));
         ) {
+            nodesWriter.write("1\t1\t1");
+            nodesWriter.newLine();
+            nodesWriter.write("2\t1\t1");
+            nodesWriter.newLine();
+            namesWriter.write("1\troot");
+            namesWriter.newLine();
+            namesWriter.write("2\tcellular organisms");
+            namesWriter.newLine();
             tc.stream().flatMap(map -> map.entrySet().stream()).forEach(entry -> {
                 try {
                     nodesWriter.write(formatNode(entry.getValue()));
@@ -132,14 +140,18 @@ public class GreenGenesDeployer {
         }
 
         private int taxId;
-        private final TaxonomicNode root;
+        private TaxonomicNode root;
         private final Map<Integer, TaxonomicNode> giTaxonomyMap;
 
         private TaxonomicConverter() {
             this.taxId = 1;
             this.giTaxonomyMap = new HashMap<>();
-            this.root = TaxonomicNode.newDefaultInstance(taxId++, Ranks.root_of_life, Ranks.root_of_life.getName());
+            this.root = TaxonomicNode.newDefaultInstance(taxId++, Ranks.no_rank, Ranks.root_of_life.getName());
             this.root.setParent(this.root);
+            final TaxonomicNode celOrg=TaxonomicNode.newDefaultInstance(taxId++,Ranks.no_rank,"cellular organisms");
+            this.root.addChild(celOrg);
+            celOrg.setParent(this.root);
+            this.root=celOrg;
             IntStream.range(0, 7).forEach((i) -> this.add(i, new HashMap<>()));
         }
 

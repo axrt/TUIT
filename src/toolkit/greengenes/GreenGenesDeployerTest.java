@@ -2,6 +2,7 @@ package toolkit.greengenes;
 
 import helper.NCBITablesDeployer;
 import logger.Log;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,7 +13,7 @@ import java.nio.file.Paths;
  */
 public class GreenGenesDeployerTest {
 
-    //@Test
+    @Test
     public void test(){
        Log.getInstance().setLogName("tuit.log");
        final Path taxonomy= Paths.get("/home/alext/Documents/tuit/greengenes/gg_13_5_taxonomy.txt");
