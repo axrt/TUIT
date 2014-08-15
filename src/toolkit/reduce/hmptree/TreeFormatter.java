@@ -1,6 +1,7 @@
 package toolkit.reduce.hmptree;
 
 import io.file.NucleotideFastaTUITFileOperator;
+import io.file.TUITFileOperatorHelper;
 import taxonomy.Ranks;
 import taxonomy.node.TaxonomicNode;
 import toolkit.reduce.NucleotideFastaSequenceReductor;
@@ -50,6 +51,9 @@ public class TreeFormatter {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                if(line.contains(TUITFileOperatorHelper.OutputFormat.TUIT_NOT_IDENTIFIED)){
+                    continue;
+                }
                 this.root.join(this.format.toNode(line));
             }
         }
@@ -59,6 +63,9 @@ public class TreeFormatter {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                if(line.contains(TUITFileOperatorHelper.OutputFormat.TUIT_NOT_IDENTIFIED)){
+                    continue;
+                }
                 this.root.join(this.format.toNodeWithCutoff(line, cutoff));
             }
         }
