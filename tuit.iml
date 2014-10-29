@@ -34,7 +34,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="javabio_jar" level="project" />
+    <orderEntry type="module" module-name="JAVA_BIO" />
   </component>
 </module>
 

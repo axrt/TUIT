@@ -3,7 +3,6 @@ package db.ram;
 import db.ram.row.NamesRow;
 import db.ram.row.NodesRow;
 import db.ram.row.RamRow;
-import helper.NCBITablesDeployer;
 import logger.Log;
 import taxonomy.Ranks;
 
@@ -198,14 +197,23 @@ public class RamDb implements Serializable {
             Log.getInstance().log(Level.INFO, "Deploying GIs...");
             //Performance, described in giByTaxIdMap comment
             int max = 0;
+            int i=0;
             try (BufferedReader giCount = new BufferedReader(new FileReader(gi_taxid_dmp));) {
+                System.out.println(gi_taxid_dmp);
                 while ((line = giCount.readLine()) != null) {
                     final String[] split = line.split("\t");
-                    final int gi = Integer.parseInt(split[0].trim());
+                    int gi=0;
+                    try {
+                        gi = Integer.parseInt(split[0].trim());
+                    }catch (NumberFormatException e){
+                        System.out.println(split[0]);
+                        System.out.println(i);
+                    }
                     //Check for consistent increasing sorting of the NCBI database
                     //Seems like it, but not tested and not guaranteed by the NCBI
                     if (max < gi) {
                         max = gi;
+                        i++;
                     } else {
                         throw new Exception("Inconsistency in gi_taxid.dmp!");
                     }

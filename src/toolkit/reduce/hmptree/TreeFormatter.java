@@ -400,7 +400,8 @@ public class TreeFormatter {
             if (acSplit.length != 2) {
                 this.formatComplain(split[0]);
             }
-            if (!split[1].contains("->")) {
+            if (!split[1].contains("->")&&!line.endsWith("}")) {
+                System.out.println(split[1]);
                 this.formatComplain(line);
             }
             if (split[1].equals(NucleotideFastaTUITFileOperator.NOT_IDENTIFIED)) {

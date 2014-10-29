@@ -154,7 +154,7 @@ public class NCBITablesDeployer {
         final File nodes_dmp = NodesDBDeployer.filterNodesDmpFileRam(new File(taxdump_dir, SystemUtil.NODES_FILE));
         Log.getInstance().log(Level.INFO, "Assembling RAM database object..");
         fastDeployRamDatabaseFromFiles(
-                new TaxonomyFiles.TaxonomyFilesBuilder().giTaxidDmp(gi_taxid_dmp.toPath()).namesDmp(names_dmp.toPath()).nodesDmp(nodes_dmp.toPath()).build()
+                new TaxonomyFiles.TaxonomyFilesBuilder().giTaxidDmp(gi_taxid_deploy_dir.toPath().resolve(SystemUtil.GI_TAXID_NUCL)).namesDmp(names_dmp.toPath()).nodesDmp(nodes_dmp.toPath()).build()
                 , ramDbObject);
     }
 
