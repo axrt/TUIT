@@ -150,7 +150,7 @@ public class RamDb implements Serializable {
      */
     public static RamDb loadSelfFromFile(final File objDb) throws IOException, ClassNotFoundException {
         try (
-                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(objDb));
+                ObjectInputStream objectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(objDb)));
         ) {
             final RamDb ramDb = (RamDb) objectInputStream.readObject();
             return ramDb;
@@ -263,7 +263,7 @@ public class RamDb implements Serializable {
      */
     public static File serialize(RamDb ramDb, File out) throws IOException {
         try (
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(out));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(out)));
         ) {
             objectOutputStream.writeObject(ramDb);
             return out;
