@@ -34,7 +34,7 @@ import java.util.logging.Level;
  * Usage of this object dramatically increases the speed of classification comparing to RDBMS (even well optimized), moreover, the deployment
  * process is way faster.
  */
-public class RamDb implements Serializable {
+public class RamDb implements Serializable {//TODO pull this out into an interface
     /**
      * Serial version. TUIT will complain if this version goes obsolete and requests to redeploy the database.
      */

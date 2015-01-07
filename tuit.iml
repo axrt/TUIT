@@ -35,5 +35,8 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="JAVA_BIO" />
+    <orderEntry type="module" module-name="gBLASTer" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.28" level="project" />
+    <orderEntry type="library" name="org.apache.commons:commons-dbcp2:2.0.1" level="project" />
   </component>
 </module>

@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/JAVA_BIO.iml" filepath="$PROJECT_DIR$/../JAVA_BIO/JAVA_BIO/JAVA_BIO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../gBLASTer/gBLASTer.iml" filepath="$PROJECT_DIR$/../gBLASTer/gBLASTer.iml" />
       <module fileurl="file://$PROJECT_DIR$/tuit.iml" filepath="$PROJECT_DIR$/tuit.iml" />
     </modules>
   </component>
 </project>
-
