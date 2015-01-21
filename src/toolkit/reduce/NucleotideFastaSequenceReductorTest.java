@@ -34,7 +34,7 @@ public class NucleotideFastaSequenceReductorTest {
         }
     }
 
-    @Test
+    //@Test
     public void testSort(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
@@ -55,7 +55,7 @@ public class NucleotideFastaSequenceReductorTest {
         }
     }
 
-    @Test
+    //@Test
     public void testNewMatrix(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
@@ -77,7 +77,7 @@ public class NucleotideFastaSequenceReductorTest {
             e.printStackTrace();
         }
     }
-    @Test
+    //@Test
     public void testZeroMatrix(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
@@ -100,7 +100,7 @@ public class NucleotideFastaSequenceReductorTest {
             e.printStackTrace();
         }
     }
-    @Test
+    //@Test
     public void testFillinMatrix(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
@@ -129,12 +129,12 @@ public class NucleotideFastaSequenceReductorTest {
             e.printStackTrace();
         }
     }
-    @Test
+    //@Test
     public void simple(){
         System.out.println("ATGCATGCATGCATGCATGC".contains("ATGCATGCATGC"));
     }
 
-    @Test
+    //@Test
     public void normalizeMatrix(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);
@@ -161,7 +161,7 @@ public class NucleotideFastaSequenceReductorTest {
         }
     }
 
-    @Test
+    //@Test
     public void adjustMatrixToReadCount(){
         try {
             final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(fastaFile);

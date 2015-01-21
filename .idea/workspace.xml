@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/res/reduction.fasta" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" afterPath="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -80,20 +78,24 @@
       <file leaf-file-name="NucleotideFastaSequenceReductor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21221864" vertical-offset="864" max-vertical-offset="4302">
-              <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.43057996" vertical-offset="2941" max-vertical-offset="5238">
+              <caret line="177" column="20" selection-start-line="177" selection-start-column="20" selection-end-line="177" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#805#806#0" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
-                <element signature="e#1844#1845#0" expanded="true" />
-                <element signature="e#1924#1925#0" expanded="true" />
-                <element signature="e#7852#7853#0" expanded="true" />
-                <element signature="e#7914#7915#0" expanded="true" />
-                <element signature="e#7983#7984#0" expanded="true" />
-                <element signature="e#8037#8038#0" expanded="true" />
-                <element signature="e#8074#8075#0" expanded="true" />
-                <element signature="e#8122#8123#0" expanded="true" />
+                <element signature="e#900#901#0" expanded="true" />
+                <element signature="e#957#958#0" expanded="true" />
+                <element signature="e#1939#1940#0" expanded="true" />
+                <element signature="e#2019#2020#0" expanded="true" />
+                <element signature="e#9888#9889#0" expanded="true" />
+                <element signature="e#9929#9930#0" expanded="true" />
+                <element signature="e#9963#9964#0" expanded="true" />
+                <element signature="e#10006#10007#0" expanded="true" />
+                <element signature="e#10078#10079#0" expanded="true" />
+                <element signature="e#10140#10141#0" expanded="true" />
+                <element signature="e#10209#10210#0" expanded="true" />
+                <element signature="e#10263#10264#0" expanded="true" />
+                <element signature="e#10300#10301#0" expanded="true" />
+                <element signature="e#10348#10349#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,11 +104,11 @@
       <file leaf-file-name="NucleotideFastaSequenceReductorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2095" max-vertical-offset="3384">
-              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2491" max-vertical-offset="3384">
+              <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
               <folding>
-                <element signature="e#5510#5511#0" expanded="true" />
-                <element signature="e#5593#5594#0" expanded="true" />
+                <element signature="e#5520#5521#0" expanded="true" />
+                <element signature="e#5603#5604#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,8 +117,8 @@
       <file leaf-file-name="reduction.fasta" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing/res/reduction.fasta">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-              <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="666">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -183,8 +185,8 @@
         <option value="$PROJECT_DIR$/src/fastblast/Main.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/hmptree/TreeFormatter.java" />
         <option value="$PROJECT_DIR$/src/tuit.java" />
-        <option value="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" />
         <option value="$PROJECT_DIR$/testing/res/reduction.fasta" />
+        <option value="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java" />
         <option value="$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java" />
       </list>
     </option>
@@ -1876,7 +1878,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420654851971</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="A memory-consuming option of collapse introduced">
+      <created>1421873258673</created>
+      <option name="number" value="00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1421873258673</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1921,7 +1929,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6703297" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37916666" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37916666" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1945,7 +1953,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="A bug fixed for an &quot;unknown GI&quot;, which happened due to an outdated database." />
     <MESSAGE value="Some comments added and classificaiton steps logging slightly improved" />
     <MESSAGE value="RDP format tested+&#10;Comments" />
     <MESSAGE value="Java7 features enforced, comments added" />
@@ -1970,7 +1977,8 @@
     <MESSAGE value="not identified bug corrected" />
     <MESSAGE value="A performace improvement as suggested by&#10;polymerase@users.sf.net, the IO streams wrapped in Buffered input/output streams" />
     <MESSAGE value="FastBlast implemented and tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="FastBlast implemented and tested" />
+    <MESSAGE value="A memory-consuming option of collapse introduced" />
+    <option name="LAST_COMMIT_MESSAGE" value="A memory-consuming option of collapse introduced" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2023,17 +2031,11 @@
           <properties />
           <option name="timeStamp" value="96" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java</url>
-          <line>102</line>
-          <properties />
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="101" />
+      <option name="time" value="105" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2412,41 +2414,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
+    <entry file="file://$PROJECT_DIR$/testing/res/reduction.fasta">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2095" max-vertical-offset="3384">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding>
-            <element signature="e#5510#5511#0" expanded="true" />
-            <element signature="e#5593#5594#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="666">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/res/reduction.fasta">
+    <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="3384">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding>
+            <element signature="e#5520#5521#0" expanded="true" />
+            <element signature="e#5603#5604#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/toolkit/reduce/NucleotideFastaSequenceReductor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21221864" vertical-offset="864" max-vertical-offset="4302">
-          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.43057996" vertical-offset="2941" max-vertical-offset="5238">
+          <caret line="177" column="20" selection-start-line="177" selection-start-column="20" selection-end-line="177" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#7852#7853#0" expanded="true" />
-            <element signature="e#7914#7915#0" expanded="true" />
-            <element signature="e#7983#7984#0" expanded="true" />
-            <element signature="e#8037#8038#0" expanded="true" />
-            <element signature="e#8074#8075#0" expanded="true" />
-            <element signature="e#8122#8123#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#1939#1940#0" expanded="true" />
+            <element signature="e#2019#2020#0" expanded="true" />
+            <element signature="e#9888#9889#0" expanded="true" />
+            <element signature="e#9929#9930#0" expanded="true" />
+            <element signature="e#9963#9964#0" expanded="true" />
+            <element signature="e#10006#10007#0" expanded="true" />
+            <element signature="e#10078#10079#0" expanded="true" />
+            <element signature="e#10140#10141#0" expanded="true" />
+            <element signature="e#10209#10210#0" expanded="true" />
+            <element signature="e#10263#10264#0" expanded="true" />
+            <element signature="e#10300#10301#0" expanded="true" />
+            <element signature="e#10348#10349#0" expanded="true" />
           </folding>
         </state>
       </provider>

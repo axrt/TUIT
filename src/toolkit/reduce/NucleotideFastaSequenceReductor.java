@@ -10,13 +10,14 @@ import java.io.*;
 import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 //TODO Document
 
 public class NucleotideFastaSequenceReductor implements SequenceReductor<NucleotideFasta> {
-
+    public static final DecimalFormat DF=new DecimalFormat("0.0000");
     public static final String COUNT_MARKER = "@";
 
     protected final Map<String, Representative> representativesMap;
@@ -126,22 +127,64 @@ public class NucleotideFastaSequenceReductor implements SequenceReductor<Nucleot
             this.representativesMap.get(sortedRepresentatives.get(i)).count = weights[i];
         }
     }
+    public double weight(int position,List<String> sortedRepresentatives){
+        final List<Representative> containers=new ArrayList<>();
+        final Map<Representative,Integer> map=new HashMap<>();
+        final Pattern pattern=Pattern.compile(sortedRepresentatives.get(position));
+        final Representative currentPosition=this.representativesMap.get(sortedRepresentatives.get(position));
+            sortedRepresentatives.subList(position+1,sortedRepresentatives.size()).
+                    parallelStream().
+                    filter(line->{
+                        return line.length()!=sortedRepresentatives.get(position).length();
+                    }).
+                    forEach(line -> {
+                        final Matcher matcher = pattern.matcher(line);
+                        int count = 0;
+                        Representative rep=null;
+                        while (matcher.find()) {
+                            count++;
+                            rep= this.representativesMap.get(line);
+                            synchronized (containers) {
+                                containers.add(rep);
+                            }
+                        }
+                        if(count>0){
+                            synchronized (map) {
+                                map.put(rep, count);
+                            }
+                        }
+                    });
+        if(containers.size()==0){
+            currentPosition.setPrime();
+            return 1;
+        }
+
+        final double weight=(double)currentPosition.groupSize()/containers.size();
+        for(Representative r:containers){
+            final Integer denominator=map.get(r);
+            r.count+=weight/denominator/r.groupSize();
+        }
+
+        return weight;
+    }
 
     protected void collapse() {
         //Sort sequences acceding length
         final List<String> sortedRepresentatives = this.sortRepresentatives();
         //go in a loop from shorter to longer
-        this.weightMatrix =
+        final List<Double>weigths=new ArrayList<>();
+        for (int i = 0; i < sortedRepresentatives.size(); i++) {
+            weigths.add(this.weight(i, sortedRepresentatives));
+            if(i%100==0) {
+                System.out.print("Complete: " + DF.format((double) i / sortedRepresentatives.size() * 100) + "%");
+                System.out.print('\r');
+            }
+        }
+        for (int i = 0; i < sortedRepresentatives.size(); i++) {
+            final Representative r = this.representativesMap.get(sortedRepresentatives.get(i));
+            r.count += r.groupSize();
+        }
 
-                this.normalizeMatrix(
-
-                                this.fillInMatrix(
-                                diagonalMatrix(
-                                        newMatrix(sortedRepresentatives.size())
-                                ), sortedRepresentatives)
-                        , sortedRepresentatives
-                );
-        this.assignWeights(this.weightMatrix, sortedRepresentatives);
     }
 
     protected boolean isNew(final NucleotideFasta nucleotideFasta) {
@@ -162,7 +205,7 @@ public class NucleotideFastaSequenceReductor implements SequenceReductor<Nucleot
         final StringBuilder stringBuilder = new StringBuilder();
         final List<Representative> representatives = this.representatives();
         for (Representative r : representatives) {
-            if (r.count >= 1) {
+            if(r.isPrime) {
                 stringBuilder.append(r.toString());
                 stringBuilder.append('\n');
             }
@@ -189,7 +232,9 @@ public class NucleotideFastaSequenceReductor implements SequenceReductor<Nucleot
     }
 
     public static class Representative extends NucleotideFasta {
+
         protected static int AC = 0;
+        protected boolean isPrime=false;
         protected final Set<NucleotideFasta> group;
         protected double count = 0;
 
@@ -197,6 +242,13 @@ public class NucleotideFastaSequenceReductor implements SequenceReductor<Nucleot
             super(String.valueOf(AC++), nucleotideFasta.getSequence());
             this.group = new HashSet<>();
             this.add(nucleotideFasta);
+        }
+
+        protected void setPrime(){
+            this.isPrime=true;
+        }
+        public boolean isPrime(){
+            return this.isPrime;
         }
 
         protected boolean add(final NucleotideFasta nucleotideFasta) {
@@ -217,7 +269,7 @@ public class NucleotideFastaSequenceReductor implements SequenceReductor<Nucleot
             sb.append(Fasta.fastaStart);
             sb.append(this.AC);
             sb.append(COUNT_MARKER);
-            sb.append(new DecimalFormat("0.000").format(this.count*this.groupSize()));
+            sb.append(DF.format(this.count));
             sb.append('\n');
             int line = 0;
             for (int i = 0; i < this.sequence.length(); i++) {
