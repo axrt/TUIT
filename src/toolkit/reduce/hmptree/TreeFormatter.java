@@ -41,7 +41,7 @@ public class TreeFormatter {
         }
     }
 
-    public void loadFromPath(final Path path, int cutoff) throws IOException {
+    public void loadFromPath(final Path path, double cutoff) throws IOException {
         try (InputStream inputStream = new FileInputStream(path.toFile())) {
             this.loadFromInputStream(inputStream, cutoff);
         }
@@ -59,7 +59,7 @@ public class TreeFormatter {
         }
     }
 
-    public void loadFromInputStream(final InputStream inputStream, int cutoff) throws IOException {
+    public void loadFromInputStream(final InputStream inputStream, double cutoff) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -71,7 +71,7 @@ public class TreeFormatter {
         }
     }
 
-    public void loadFromBufferedReader(final BufferedReader bufferedReader, int cutoff) throws IOException {
+    public void loadFromBufferedReader(final BufferedReader bufferedReader, double cutoff) throws IOException {
 
         String line;
         while ((line = bufferedReader.readLine()) != null) {
@@ -92,7 +92,7 @@ public class TreeFormatter {
 
         public abstract CountingTaxonomicNode toNode(final String line);
 
-        public abstract CountingTaxonomicNode toNodeWithCutoff(final String line, int cutoff);
+        public abstract CountingTaxonomicNode toNodeWithCutoff(final String line, double cutoff);
 
         public String toHMPTree(final CountingTaxonomicNode taxonomicNode, final boolean normalize) {
             if (!normalize) {
@@ -103,16 +103,16 @@ public class TreeFormatter {
             final StringBuilder stringBuilder = new StringBuilder();
             final String normalizingLine = lines[0];
             final String[] normalizationBlocks = normalizingLine.split("\t");
-            final int[] normalizationConstants = new int[normalizationBlocks.length - 1];
+            final double[] normalizationConstants = new double[normalizationBlocks.length - 1];
             for (int i = 0; i < normalizationConstants.length; i++) {
-                normalizationConstants[i] = Integer.parseInt(normalizationBlocks[i + 1]);
+                normalizationConstants[i] = Double.parseDouble(normalizationBlocks[i + 1]);
             }
             for (String s : lines) {
                 final String[] line = s.split("\t");
                 stringBuilder.append(line[0]);
                 stringBuilder.append('\t');
                 for (int i = 1; i < line.length; i++) {
-                    stringBuilder.append((double) Integer.parseInt(line[i]) / normalizationConstants[i - 1] * 100);
+                    stringBuilder.append(Double.parseDouble(line[i]) / normalizationConstants[i - 1] * 100);
                     if (i < line.length - 1) {
                         stringBuilder.append('\t');
                     }
@@ -279,16 +279,16 @@ public class TreeFormatter {
         public static final List<Ranks> rankSequence = Arrays.asList(Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus);
 
         @Override
-        public CountingTaxonomicNode toNodeWithCutoff(String line, int cutoff) {
+        public CountingTaxonomicNode toNodeWithCutoff(String line, double cutoff) {
             line = line.replaceAll("\"", "");
             final String[] split = line.split("\t");
             if (split.length < 2) {
                 this.formatComplain(line);
             }
             final String[] taxSplit = split[1].split("\\)\\;");
-            final int[] counts = new int[split.length - 2];
+            final double[] counts = new double[split.length - 2];
             for (int i = 2; i < split.length; i++) {
-                counts[i - 2] = Integer.parseInt(split[i]);
+                counts[i - 2] = Double.parseDouble(split[i]);
             }
             final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, counts, cutoff);
             return (CountingTaxonomicNode) taxonomicNodes.get(0);
@@ -299,7 +299,7 @@ public class TreeFormatter {
             return this.toNodeWithCutoff(line, 0);
         }
 
-        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final int[] counts, int cutoff) {
+        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final double[] counts, double cutoff) {
             final List<TaxonomicNode> taxonomicNodes = new ArrayList<>();
             taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.no_rank, "root", 0)); //add a pseudoroot
             taxonomicNodes.add(new CountingTaxonomicNode(0, Ranks.no_rank, "cellular organisms", 0));
@@ -310,7 +310,7 @@ public class TreeFormatter {
                 }
                 final String[] subSplit = s.split("\\(");
 
-                if (!s.contains("unclassified") && Integer.parseInt(subSplit[1]) >= cutoff) {
+                if (!s.contains("unclassified") && Double.parseDouble(subSplit[1]) >= cutoff) {
                     taxonomicNodes.add(new CountingTaxonomicNode(0, rankSequence.get(i++), subSplit[0], Arrays.copyOf(counts, counts.length)));
                 } else {
                     break;
@@ -386,7 +386,7 @@ public class TreeFormatter {
     public static class TuitLineTreeFormatterFormat extends TreeFormatterFormat {
 
         @Override
-        public CountingTaxonomicNode toNodeWithCutoff(String line, int cutoff) {
+        public CountingTaxonomicNode toNodeWithCutoff(String line, double cutoff) {
             return this.toNode(line);
         }
 
@@ -408,11 +408,11 @@ public class TreeFormatter {
                 return null;
             }
             final String[] taxSplit = split[1].split("} -> ");
-            final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, Integer.parseInt(acSplit[1]));
+            final List<TaxonomicNode> taxonomicNodes = this.taxonomicNodes(taxSplit, Double.parseDouble(acSplit[1]));
             return (CountingTaxonomicNode) taxonomicNodes.get(0);
         }
 
-        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final int count) {
+        private List<TaxonomicNode> taxonomicNodes(final String[] taxa, final double count) {
             final List<TaxonomicNode> taxonomicNodes = new ArrayList<>();
             for (String s : taxa) {
                 final String[] subSplit = s.split(" \\{");
@@ -435,20 +435,20 @@ public class TreeFormatter {
 
     public static class CountingTaxonomicNode extends TaxonomicNode {
 
-        private int[] count;
+        private double[] count;
 
-        public CountingTaxonomicNode(int taxid, Ranks rank, String scientificName, int count) {
+        public CountingTaxonomicNode(int taxid, Ranks rank, String scientificName, double count) {
             super(taxid, rank, scientificName);
-            this.count = new int[1];
+            this.count = new double[1];
             this.count[0] = count;
         }
 
-        public CountingTaxonomicNode(int taxid, Ranks rank, String scientificName, int[] counts) {
+        public CountingTaxonomicNode(int taxid, Ranks rank, String scientificName, double[] counts) {
             super(taxid, rank, scientificName);
             this.count = counts;
         }
 
-        public int[] getCount() {
+        public double[] getCount() {
             return count;
         }
 
