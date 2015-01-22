@@ -3,6 +3,8 @@ package logger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.*;
 /**
@@ -27,7 +29,12 @@ import java.util.logging.*;
 public enum Log {
     //A singleton instance
     Instance;
-
+    public  static final SimpleDateFormat DATE = new SimpleDateFormat("HH:mm:ss.SS");
+    public static final DecimalFormat DF1=new DecimalFormat("0.0");
+    public static final DecimalFormat DF2=new DecimalFormat("0.00");
+    public static final DecimalFormat DF3=new DecimalFormat("0.000");
+    public static final DecimalFormat DF4=new DecimalFormat("0.0000");
+    public static final DecimalFormat DF5=new DecimalFormat("0.00000");
     /**
      * Singleton instance accessor
      * @return {@link Log} singleton instance

@@ -260,7 +260,7 @@ public abstract class BLASTIdentifier<T extends NucleotideFasta> extends NCBI_EX
             for (NormalizedIteration<Iteration> normalizedIteration : this.normalizedIterations) {
                 Log.getInstance().log(Level.FINE,"<------------------"+normalizedIteration.getIterationQueryName()+"----------------->");
                 Log.getInstance().log(Level.FINE,"Classification process for iteration: "+count+", query: "+normalizedIteration.getIterationQueryName()+".");
-                normalizedIteration.specify();
+                normalizedIteration.save(normalizedIteration.specify());
                 Log.getInstance().log(Level.FINE,"Finished classifying iteration: "+count+", query: "+normalizedIteration.getIterationQueryName()+".");
                 count++;
             }

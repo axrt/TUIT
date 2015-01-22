@@ -2,9 +2,8 @@ package fastblast;
 
 import base.buffer.IterationBlockingBuffer;
 
-
-import blast.output.Hit;
-import blast.output.Iteration;
+import blast.ncbi.output.Hit;
+import blast.ncbi.output.Iteration;
 import db.ram.RamDb;
 import util.BlastOutputUtil;
 
@@ -46,7 +45,7 @@ public class TaxonomyInspector implements Callable<TaxonomyInspector.TaxonomyIns
             System.out.printf("%s%.3f%s", "Done: ",(double) this.counter / count * 100, "%");
             //System.out.println("size "+this.iterations.size());
             boolean found=false;
-            final blast.output.Iteration iteration = iterations.take();
+            final Iteration iteration = iterations.take();
             //System.out.println("control point 1");
             if (iteration == IterationBlockingBuffer.DONE) {
                 //System.out.println("control point 2");

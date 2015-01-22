@@ -410,16 +410,9 @@ public class NormalizedIteration<I extends Iteration> {
         }
     }
 
-    /**
-     * Performs the taxonomic specification. Tries to find a pivotal hit at the lowest rank possible,
-     * looks if the hits with higher ranks and better E-values allow the pivotal hit, if the hits with
-     * the same rank, but worse E-values are less likely to affect the pivotal hit selection.
-     *
-     * @throws SQLException       in case an error occurs during the database communication
-     * @throws BadFormatException in case formatting the {@link Hit} GI fails
-     */
-    public void specify() throws Exception {
-        if (!this.iteration.getIterationHits().getHit().isEmpty()) {
+    //Todo comment
+    public NormalizedIteration<I> specify() throws Exception {
+
             this.normaliseHits();
             Log.getInstance().log(Level.FINE,"Current number of normalized hits is: " + this.normalizedHits.size());
             Log.getInstance().log(Level.FINE,"Attempting to find the lowest rank...");
@@ -432,35 +425,33 @@ public class NormalizedIteration<I extends Iteration> {
                 //deeper specification, and has no competitors among those that have worse E-values
                 if (this.normalizedHitsWithBetterEvalueAllowPivotal() && this.normalisedHitsWithWorseEvalueAllowPivotal()) {
                     //success
-                    Log.getInstance().log(Level.FINE,"Successfully classified down to \""+this.currentRank+"\" rank.");
+                    Log.getInstance().log(Level.FINE, "Successfully classified down to \"" + this.currentRank + "\" rank.");
                     this.blastIdentifier.attachFullDirectLineage(this.pivotalHit.getFocusNode());
                     break;
                 } else {
-                    Log.getInstance().log(Level.FINE,"Lifting up current rank of specification for those hits that have \"" + this.currentRank+"\"");
+                    Log.getInstance().log(Level.FINE, "Lifting up current rank of specification for those hits that have \"" + this.currentRank + "\"");
                     this.liftCurrentRankOfSpecificationForHits();
                     if (this.couldLiftCurrentRank()) {
-                        Log.getInstance().log(Level.FINE,"Trying a higher rank of rank \"" + this.currentRank + "\"");
+                        Log.getInstance().log(Level.FINE, "Trying a higher rank of rank \"" + this.currentRank + "\"");
                     } else {
                         break;
                     }
                 }
             }
-            //Save results whatever they are
-            try {
-                this.blastIdentifier.acceptResults(this.query, this);
-            } catch (Exception e) {
-                Log.getInstance().log(Level.SEVERE,"Unable to save results! The error was: ");
-                e.printStackTrace();
-            }
-        } else {
-            try {
+        return this;
+    }
+
+    public void save(NormalizedIteration<I> normalizedIteration){
+        //Save results whatever they are
+        try {
             this.blastIdentifier.acceptResults(this.query, this);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (!this.iteration.getIterationHits().getHit().isEmpty()) {
+                Log.getInstance().log(Level.SEVERE,"No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
             }
-            Log.getInstance().log(Level.SEVERE,"No hits returned from BLASTN. Suggestion: please check the entrez_query field within the io.properties configuration file.");
+        } catch (Exception e) {
+            Log.getInstance().log(Level.SEVERE,"Unable to save results! The error was: ");
+            e.printStackTrace();
         }
-        //fail
     }
 
     /**

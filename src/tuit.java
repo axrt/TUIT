@@ -1,3 +1,5 @@
+import blast.continous.ContinousBLASTIdentifierRAM;
+import blast.continous.ContinousTUITFileOperator;
 import blast.specification.BLASTIdentifier;
 import blast.specification.TUITBLASTIdentifierDB;
 import blast.specification.TUITBLASTIdentifierRAM;
@@ -31,10 +33,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -89,6 +88,10 @@ public class tuit {
      */
     private final static String V = "v";
     /**
+     * The -disc flag for discontinous blast
+     */
+    private final static String DISC = "disc";
+    /**
      * The -reduce flag
      */
     private final static String COMBINE = "combine";
@@ -123,6 +126,7 @@ public class tuit {
 
     @SuppressWarnings("ConstantConditions")
     public static void main(String[] args) {
+        final long start=System.currentTimeMillis();
         System.out.println(licence);
         //Declare variables
         File inputFile;
@@ -225,6 +229,12 @@ public class tuit {
                 return;
             }
 
+            if(commandLine.hasOption(USE_DB)||commandLine.hasOption(B)){
+                if(!commandLine.hasOption(DISC)){
+                    Log.getInstance().log(Level.SEVERE, "Current version does not support continous blast for SQL database or BLAST output!");
+                    System.exit(1);
+                }
+            }
 
 
             if (!commandLine.hasOption(tuit.P)) {
@@ -374,8 +384,8 @@ public class tuit {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
-                                /*"-gilist", TUITFileOperatorHelper.restrictToEntrez(
-                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),*/ //TODO remove comment!!!!!
+                                "-gilist", TUITFileOperatorHelper.restrictToEntrez(
+                                tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue()).getAbsolutePath(),
                                 "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
                     }
@@ -400,70 +410,98 @@ public class tuit {
             }else{
                 format= TUITFileOperatorHelper.OutputFormat.TUIT;
             }
-
-            try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(format,cutoffMap);) {
-                nucleotideFastaTUITFileOperator.setInputFile(inputFile);
-                nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
-                final String cleanupString = tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
-                final boolean cleanup;
-                if (cleanupString.equals("no")) {
-                    Log.getInstance().log(Level.INFO, "Temporary BLAST files will be deleted.");
-                    cleanup = true;
-                } else {
-                    Log.getInstance().log(Level.INFO, "Temporary BLAST files will be kept.");
-                    cleanup = false;
-                }
-                //Create blast identifier
-                ExecutorService executorService = Executors.newSingleThreadExecutor();
-                if (commandLine.hasOption(tuit.USE_DB)) {
-
-                    if (blastOutputFile == null) {
-                        blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromFileOperator(
-                                tmpDir, blastnExecutable, parameters,
-                                nucleotideFastaTUITFileOperator, connection,
-                                cutoffMap,
-                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
-                                , cleanup);
-
-                    } else {
-                        try {
-                            blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
-                                    cutoffMap, blastOutputFile,
-                                    Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup);
-
-                        } catch (JAXBException e) {
-                            Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                } else {
-                    if (blastOutputFile == null) {
-                        blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromFileOperator(
-                                tmpDir, blastnExecutable, parameters,
-                                nucleotideFastaTUITFileOperator,
-                                cutoffMap,
-                                Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
-                                , cleanup, ramDb);
-
-                    } else {
-                        try {
-                            blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator,
-                                    cutoffMap, blastOutputFile,
-                                    Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup, ramDb);
-
-                        } catch (JAXBException e) {
-                            Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                Future<?> runnableFuture = executorService.submit(blastIdentifier);
-                runnableFuture.get();
-                executorService.shutdown();
+            //Create blast identifier
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            //Choose between continous and discontinous blast options
+            final boolean cleanup;
+            final String cleanupString = tuitProperties.getBLASTNParameters().getKeepBLASTOuts().getKeep();
+            if (cleanupString.equals("no")) {
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be deleted.");
+                cleanup = true;
+            } else {
+                Log.getInstance().log(Level.INFO, "Temporary BLAST files will be kept.");
+                cleanup = false;
             }
+
+            if(commandLine.hasOption(DISC)){
+
+
+
+                try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(format,cutoffMap)) {
+                    nucleotideFastaTUITFileOperator.setInputFile(inputFile);
+                    nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
+
+                    if (commandLine.hasOption(tuit.USE_DB)) {
+
+                        if (blastOutputFile == null) {
+                            blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromFileOperator(
+                                    tmpDir, blastnExecutable, parameters,
+                                    nucleotideFastaTUITFileOperator, connection,
+                                    cutoffMap,
+                                    Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
+                                    , cleanup);
+
+                        } else {
+                            try {
+                                blastIdentifier = TUITBLASTIdentifierDB.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator, connection,
+                                        cutoffMap, blastOutputFile,
+                                        Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup);
+
+                            } catch (JAXBException e) {
+                                Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    } else {
+                        if (blastOutputFile == null) {
+                            blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromFileOperator(
+                                    tmpDir, blastnExecutable, parameters,
+                                    nucleotideFastaTUITFileOperator,
+                                    cutoffMap,
+                                    Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue())
+                                    , cleanup, ramDb);
+
+                        } else {
+                            try {
+                                blastIdentifier = TUITBLASTIdentifierRAM.newInstanceFromBLASTOutput(nucleotideFastaTUITFileOperator,
+                                        cutoffMap, blastOutputFile,
+                                        Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue()), cleanup, ramDb);
+
+                            } catch (JAXBException e) {
+                                Log.getInstance().log(Level.SEVERE, "Error reading " + blastOutputFile.getName() + ", please check input. The file must be XML formatted.");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    Future<?> runnableFuture = executorService.submit(blastIdentifier);
+                    runnableFuture.get();
+                    executorService.shutdown();
+                }
+
+            }else{
+
+
+
+                try(ContinousTUITFileOperator continousTUITFileOperator=ContinousTUITFileOperator.get(blastnExecutable.toPath(),inputFile.toPath(),outputFile.toPath(),format)){
+                    Log.getInstance().log(Level.FINE,"Continous BLASTN mode.");
+                    final int batchSize=Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue());
+
+                    final ContinousBLASTIdentifierRAM continousBLASTIdentifierRAM=ContinousBLASTIdentifierRAM
+                            .newInstance(continousTUITFileOperator, tmpDir, parameters, cutoffMap, cleanup, batchSize, ramDb);
+                    Future<?> runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
+                    runnableFuture.get();
+                    executorService.shutdown();
+                }
+
+            }
+
+            Log.getInstance().log(Level.INFO, "All done.");
+            final long stop=System.currentTimeMillis();
+            Log.getInstance().log(Level.INFO, "Time elapsed: "+Log.DF4.format((double)(stop-start)/1000/60)+" min");
+
         } catch (ParseException pe) {
             Log.getInstance().log(Level.SEVERE, (pe.getMessage()));
             formatter.printHelp("tuit", options);

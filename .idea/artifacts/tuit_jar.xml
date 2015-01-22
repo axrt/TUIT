@@ -18,6 +18,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/javatar-2.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.25.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-net-3.3.jar" path-in-jar="/" />
+      <element id="module-output" name="gBLASTer" />
     </root>
   </artifact>
 </component>

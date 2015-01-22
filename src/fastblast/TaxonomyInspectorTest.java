@@ -1,7 +1,7 @@
 package fastblast;
 
 import base.buffer.IterationBlockingBuffer;
-import blast.output.Iteration;
+import blast.ncbi.output.Iteration;
 import db.ram.RamDb;
 import org.junit.Test;
 

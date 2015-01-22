@@ -1,6 +1,6 @@
 package fastblast;
 
-import blast.output.Iteration;
+import blast.ncbi.output.Iteration;
 import format.fasta.Fasta;
 
 import java.io.*;

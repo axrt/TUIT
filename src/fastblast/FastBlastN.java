@@ -1,6 +1,8 @@
 package fastblast;
 
+import base.buffer.IterationBlockingBuffer;
 import blast.blast.BlastHelper;
+import blast.ncbi.output.BlastOutput;
 import gblaster.blast.GBlast;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -15,7 +17,14 @@ public class FastBlastN  extends GBlast{
         super(builder);
     }
 
-    protected static class FastBlastNBuilder extends GBlastNBuilder{
+    @Override
+    public Optional<BlastOutput> call() throws Exception {
+        final Optional<BlastOutput> output=super.call();
+        this.notifyListeners(new BlastEvent<>(IterationBlockingBuffer.DONE));
+        return output;
+    }
+
+    public static class FastBlastNBuilder extends GBlastNBuilder{
 
 
         public FastBlastNBuilder(Path pathToBlast, Path queryFile, String database) {
@@ -132,6 +141,24 @@ public class FastBlastN  extends GBlast{
         @Override
         public FastBlastNBuilder num_threads(Optional<Integer> value) {
              super.num_threads(value);
+            return this;
+        }
+
+        @Override
+        public FastBlastNBuilder remote (Optional<Boolean> value) {
+           super.remote(value);
+            return this;
+        }
+
+        @Override
+        public FastBlastNBuilder gilist(Optional<Path> value) {
+           super.gilist(value);
+            return this;
+        }
+
+        @Override
+        public FastBlastNBuilder negative_gilist(Optional<Path> value) {
+            super.negative_gilist(value);
             return this;
         }
     }
