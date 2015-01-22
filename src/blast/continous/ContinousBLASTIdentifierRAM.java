@@ -11,11 +11,15 @@ import format.fasta.nucleotide.NucleotideFasta;
 import logger.Log;
 import taxonomy.Ranks;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -107,36 +111,54 @@ public class ContinousBLASTIdentifierRAM extends BLASTIdentifierRAM {
 
     @Override
     public void run() {
-
-        this.executorService.submit(this.blastn);
-        int blastsDone = 0;
-
         try {
-            long blastsToDo = this.fileOperator.checkNumberOfRecords();
-            Log.getInstance().log(Level.INFO, "BLASTs to go: " + blastsToDo);
-            System.out.print("Done: 0");
-            while (true) {
-                final Iteration iteration;
-
-                iteration = this.buffer.take();
-                if (iteration == IterationBlockingBuffer.DONE) {
-                    break;
-                } else if (iteration.getIterationHits().getHit() != null) {
-                    blastsDone++;
-                    final NucleotideFasta nextQuery = this.fileOperator.nextQuery();
-                    final NormalizedIteration<Iteration> normalizedIteration =
-                            NormalizedIteration.<Iteration>newDefaultInstanceFromIteration(nextQuery, iteration, this);
-                    this.fileOperator.saveTaxonomyLine(this.cutoffSetMap, nextQuery, normalizedIteration.specify());
-                    System.out.print('\r');
-                    System.out.print("Done: " + Log.DF4.format((double) blastsDone / blastsToDo * 100) + '%');
-
+            if (this.fileOperator instanceof ContinousTUITDataProviderBlastOutput) {
+                try (InputStream inputStream = new BufferedInputStream(new FileInputStream(((ContinousTUITDataProviderBlastOutput) this.fileOperator).toBlastOutput().toFile()))) {
+                    this.executorService.submit(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                blastn.process(inputStream);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    this.process();
                 }
+            } else {
+                this.executorService.submit(this.blastn);
+                this.process();
             }
+
             System.out.println();
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.executorService.shutdown();
+    }
+
+    public void process() throws Exception{
+        long blastsToDo = this.fileOperator.checkNumberOfRecords();
+        Log.getInstance().log(Level.INFO, "BLASTs to go: " + blastsToDo);
+        int blastsDone = 0;
+        System.out.print("Done: 0");
+        while (true) {
+            final Iteration iteration;
+
+            iteration = this.buffer.take();
+            if (iteration == IterationBlockingBuffer.DONE) {
+                break;
+            } else if (iteration.getIterationHits().getHit() != null) {
+                blastsDone++;
+                final NucleotideFasta nextQuery = this.fileOperator.nextQuery();
+                final NormalizedIteration<Iteration> normalizedIteration =
+                        NormalizedIteration.<Iteration>newDefaultInstanceFromIteration(nextQuery, iteration, this);
+                this.fileOperator.saveTaxonomyLine(this.cutoffSetMap, nextQuery, normalizedIteration.specify());
+                System.out.print('\r');
+                System.out.print("Done: " + Log.DF4.format((double) blastsDone / blastsToDo * 100) + '%');
+            }
+        }
     }
 
     public static ContinousBLASTIdentifierRAM newInstance(ContinousTUITFileOperator fileOperator, File tempDir,

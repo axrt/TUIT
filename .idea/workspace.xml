@@ -2,55 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITDataHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/BLASTOutputFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/BlastOutput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/BlastOutputIterations.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/BlastOutputMbstat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/BlastOutputParam.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/Hit.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/HitHsps.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/Hsp.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/Iteration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/IterationHits.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/IterationStat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/NCBI_BlastOutput.dtd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/NCBI_BlastOutput.mod.dtd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/NCBI_Entity.mod.dtd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/Parameters.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/output/Statistics.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/AbstractBlast.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/AbstractBlast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/analisys/bbh/BidirectionalBlastHit.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/analisys/bbh/BidirectionalBlastHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/db/BlastDAO.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/db/BlastDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/BlastHelper.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/BlastHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/test/blast/blast/BlastHelperTest.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/test/blast/blast/BlastHelperTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/analisys/bbh/BlastHit.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/analisys/bbh/BlastHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/protein/BlastP.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/blast/blast/protein/BlastP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fastblast/FastBlastN.java" afterPath="$PROJECT_DIR$/src/fastblast/FastBlastN.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fastblast/FileDataHandler.java" afterPath="$PROJECT_DIR$/src/fastblast/FileDataHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProviderBlastOutput.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperatorBlastOutput.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/test/gblaster/blast/GBlastNTest.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/test/gblaster/blast/GBlastNTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/db/mysql/GMySQLConnector.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/db/mysql/GMySQLConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/db/mysql/GMySQLConnectorTest.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/db/mysql/GMySQLConnectorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/test/script/GPUBenchmark.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/test/script/GPUBenchmark.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GPUGBlast.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GPUGBlast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/base/buffer/IterationBlockingBuffer.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/base/buffer/IterationBlockingBuffer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logger/Log.java" afterPath="$PROJECT_DIR$/src/logger/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" afterPath="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/test/script/ParseBHs.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/test/script/ParseBHs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/test/script/ReparseBBHs.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/test/script/ReparseBBHs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fastblast/TaxonomyInspector.java" afterPath="$PROJECT_DIR$/src/fastblast/TaxonomyInspector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fastblast/TaxonomyInspectorTest.java" afterPath="$PROJECT_DIR$/src/fastblast/TaxonomyInspectorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/gBLASTer.iml" afterPath="$PROJECT_DIR$/../gBLASTer/gBLASTer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../gBLASTer/src/gblaster/main.java" afterPath="$PROJECT_DIR$/../gBLASTer/src/gblaster/main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tuit.iml" afterPath="$PROJECT_DIR$/tuit.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/tuit_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/tuit_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -122,14 +79,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tuit.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tuit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37391305" vertical-offset="1960" max-vertical-offset="9882">
-              <caret line="128" column="52" selection-start-line="128" selection-start-column="52" selection-end-line="128" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="8388" max-vertical-offset="10098">
+              <caret line="502" column="93" selection-start-line="502" selection-start-column="93" selection-end-line="502" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4485#4524#0" expanded="true" />
+                <element signature="e#4584#4623#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContinousTUITDataProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
+              <caret line="9" column="42" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,8 +107,20 @@
       <file leaf-file-name="ContinousTUITFileOperator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1011" max-vertical-offset="1998">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="1998">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContinousTUITFileOperatorBlastOutput.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperatorBlastOutput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,14 +151,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContinousBLASTIdentifierRAM.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContinousBLASTIdentifierRAM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1816" max-vertical-offset="2736">
-              <caret line="130" column="101" selection-start-line="130" selection-start-column="101" selection-end-line="130" selection-end-column="101" />
+            <state vertical-scroll-proportion="0.29565218" vertical-offset="1870" max-vertical-offset="3132">
+              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4734#4745#0" expanded="true" />
+                <element signature="e#5833#5844#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -186,8 +167,8 @@
       <file leaf-file-name="ContinousBlastN.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1422">
-              <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1548">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,6 +184,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GBlast.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1962">
+              <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -268,14 +259,16 @@
         <option value="$PROJECT_DIR$/src/fastblast/FastBlastN.java" />
         <option value="$PROJECT_DIR$/src/blast/normal/iteration/NormalizedIteration.java" />
         <option value="$PROJECT_DIR$/src/blast/specification/BLASTIdentifier.java" />
-        <option value="$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java" />
-        <option value="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java" />
         <option value="$PROJECT_DIR$/../gBLASTer/src/base/buffer/IterationBlockingBuffer.java" />
         <option value="$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProvider.java" />
         <option value="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java" />
         <option value="$PROJECT_DIR$/src/logger/Log.java" />
-        <option value="$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java" />
+        <option value="$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProviderBlastOutput.java" />
+        <option value="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperatorBlastOutput.java" />
+        <option value="$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java" />
         <option value="$PROJECT_DIR$/src/tuit.java" />
+        <option value="$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java" />
+        <option value="$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java" />
       </list>
     </option>
   </component>
@@ -2330,7 +2323,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421884169249</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="Continous blast version implemented">
+      <created>1421964201985</created>
+      <option name="number" value="00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1421964201985</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2399,7 +2398,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="RDP format tested+&#10;Comments" />
     <MESSAGE value="Java7 features enforced, comments added" />
     <MESSAGE value="Code commented, finals corrected somewhere" />
     <MESSAGE value="A way to select desired format (tuit/rdp) added to the properties.xml, dtd and implemented in the code." />
@@ -2424,7 +2422,8 @@
     <MESSAGE value="FastBlast implemented and tested" />
     <MESSAGE value="A memory-consuming option of collapse introduced" />
     <MESSAGE value="A non-memory-consuming parallel option of collapse introduced and tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="A non-memory-consuming parallel option of collapse introduced and tested" />
+    <MESSAGE value="Continous blast version implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Continous blast version implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2461,7 +2460,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tuit.java</url>
-          <line>190</line>
+          <line>192</line>
           <properties />
           <option name="timeStamp" value="92" />
         </line-breakpoint>
@@ -2490,22 +2489,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/blast/normal/hit/NormalizedHit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="3528">
-          <caret line="94" column="84" selection-start-line="94" selection-start-column="84" selection-end-line="94" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ArrayBlockingQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="5953" max-vertical-offset="24624">
-          <caret line="397" column="13" selection-start-line="397" selection-start-column="13" selection-end-line="397" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../gBLASTer/src/base/buffer/SimpleBlockingBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
@@ -2748,7 +2731,7 @@
         <state vertical-scroll-proportion="0.23151125" vertical-offset="630" max-vertical-offset="2124">
           <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2758,7 +2741,7 @@
         <state vertical-scroll-proportion="0.13504823" vertical-offset="396" max-vertical-offset="1422">
           <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2827,40 +2810,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1165" max-vertical-offset="2160">
-          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../gBLASTer/src/base/buffer/IterationBlockingBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1134">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1422">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23151125" vertical-offset="0" max-vertical-offset="933">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2906,10 +2859,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProviderBlastOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17363344" vertical-offset="0" max-vertical-offset="933">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gBLASTer/src/gblaster/blast/GBlast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1962">
+          <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8388" max-vertical-offset="10098">
+          <caret line="502" column="93" selection-start-line="502" selection-start-column="93" selection-end-line="502" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4584#4623#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousBlastN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1548">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1998">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1998">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITDataProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperatorBlastOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2918,22 +2928,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blast/continous/ContinousBLASTIdentifierRAM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1816" max-vertical-offset="2736">
-          <caret line="130" column="101" selection-start-line="130" selection-start-column="101" selection-end-line="130" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.29565218" vertical-offset="1870" max-vertical-offset="3132">
+          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4734#4745#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37391305" vertical-offset="1960" max-vertical-offset="9882">
-          <caret line="128" column="52" selection-start-line="128" selection-start-column="52" selection-end-line="128" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4485#4524#0" expanded="true" />
+            <element signature="e#5833#5844#0" expanded="true" />
           </folding>
         </state>
       </provider>

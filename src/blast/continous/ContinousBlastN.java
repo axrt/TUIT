@@ -5,6 +5,7 @@ import blast.ncbi.output.BlastOutput;
 import gblaster.blast.GBlast;
 import logger.Log;
 
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -25,6 +26,12 @@ public class ContinousBlastN extends GBlast {
         final Optional<BlastOutput> output=super.call();
         this.notifyListeners(new BlastEvent<>(IterationBlockingBuffer.DONE));
         return output;
+    }
+
+    @Override
+    public void process(InputStream inputStream) throws Exception {
+        super.process(inputStream);
+        this.notifyListeners(new BlastEvent<>(IterationBlockingBuffer.DONE));
     }
 
     public static class ContinousBlastnBuilder extends GBlastNBuilder{

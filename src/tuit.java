@@ -1,5 +1,7 @@
 import blast.continous.ContinousBLASTIdentifierRAM;
 import blast.continous.ContinousTUITFileOperator;
+import blast.continous.ContinousTUITFileOperatorBlastOutput;
+import blast.ncbi.output.BlastOutput;
 import blast.specification.BLASTIdentifier;
 import blast.specification.TUITBLASTIdentifierDB;
 import blast.specification.TUITBLASTIdentifierRAM;
@@ -229,7 +231,7 @@ public class tuit {
                 return;
             }
 
-            if(commandLine.hasOption(USE_DB)||commandLine.hasOption(B)){
+            if(commandLine.hasOption(USE_DB)){
                 if(!commandLine.hasOption(DISC)){
                     Log.getInstance().log(Level.SEVERE, "Current version does not support continous blast for SQL database or BLAST output!");
                     System.exit(1);
@@ -483,24 +485,34 @@ public class tuit {
 
             }else{
 
+                final int batchSize = Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue());
+                Future<?> runnableFuture=null;
+                if(blastOutputFile==null) {
+                    try (ContinousTUITFileOperator continousTUITFileOperator = ContinousTUITFileOperator.get(blastnExecutable.toPath(), inputFile.toPath(), outputFile.toPath(), format)) {
+                        Log.getInstance().log(Level.INFO, "Continous BLASTN mode.");
 
+                        final ContinousBLASTIdentifierRAM continousBLASTIdentifierRAM = ContinousBLASTIdentifierRAM
+                                .newInstance(continousTUITFileOperator, tmpDir, parameters, cutoffMap, cleanup, batchSize, ramDb);
+                         runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
+                        runnableFuture.get();
+                    }
+                }else{
+                    try (ContinousTUITFileOperator continousTUITFileOperator = ContinousTUITFileOperatorBlastOutput.get(blastnExecutable.toPath(), inputFile.toPath(), outputFile.toPath(), format, blastOutputFile.toPath())) {
+                        Log.getInstance().log(Level.INFO, "Reading from file BLASTN mode.");
 
-                try(ContinousTUITFileOperator continousTUITFileOperator=ContinousTUITFileOperator.get(blastnExecutable.toPath(),inputFile.toPath(),outputFile.toPath(),format)){
-                    Log.getInstance().log(Level.FINE,"Continous BLASTN mode.");
-                    final int batchSize=Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue());
-
-                    final ContinousBLASTIdentifierRAM continousBLASTIdentifierRAM=ContinousBLASTIdentifierRAM
-                            .newInstance(continousTUITFileOperator, tmpDir, parameters, cutoffMap, cleanup, batchSize, ramDb);
-                    Future<?> runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
-                    runnableFuture.get();
-                    executorService.shutdown();
+                        final ContinousBLASTIdentifierRAM continousBLASTIdentifierRAM = ContinousBLASTIdentifierRAM
+                                .newInstance(continousTUITFileOperator, tmpDir, new String[]{}, cutoffMap, cleanup, batchSize, ramDb);
+                        runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
+                        runnableFuture.get();
+                    }
                 }
 
+                executorService.shutdown();
             }
 
             Log.getInstance().log(Level.INFO, "All done.");
             final long stop=System.currentTimeMillis();
-            Log.getInstance().log(Level.INFO, "Time elapsed: "+Log.DF4.format((double)(stop-start)/1000/60)+" min");
+            Log.getInstance().log(Level.INFO, "Time elapsed: "+Log.DF4.format((double)(stop-start)/1000/60)+" min.");
 
         } catch (ParseException pe) {
             Log.getInstance().log(Level.SEVERE, (pe.getMessage()));
