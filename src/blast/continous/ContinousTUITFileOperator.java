@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by alext on 1/22/15.
  */
-public class ContinousTUITFileOperator implements ContinousTUITDataHandler,ContinousTUITDataProvider,AutoCloseable{
+public class ContinousTUITFileOperator implements ContinousTUITDataHandler, ContinousTUITDataProvider, AutoCloseable {
 
     protected final Path executable;
     protected final Path query;
@@ -26,14 +26,16 @@ public class ContinousTUITFileOperator implements ContinousTUITDataHandler,Conti
     protected String line;
     protected final BufferedReader queryReader;
     protected final TUITFileOperatorHelper.OutputFormat format;
+    protected final BufferedWriter bufferedWriter;
 
-    protected ContinousTUITFileOperator(Path executable, Path query, Path output, TUITFileOperatorHelper.OutputFormat format) throws IOException{
-        this.executable=executable;
+    protected ContinousTUITFileOperator(Path executable, Path query, Path output, TUITFileOperatorHelper.OutputFormat format) throws IOException {
+        this.executable = executable;
         this.query = query;
         this.output = output;
-        this.toBlastOut=this.output.resolveSibling(this.output.toFile().getName()+".blastn");
-        this.queryReader=new BufferedReader(new FileReader(this.query.toFile()));
-        this.format=format;
+        this.toBlastOut = this.output.resolveSibling(this.output.toFile().getName() + ".blastn");
+        this.queryReader = new BufferedReader(new FileReader(this.query.toFile()));
+        this.format = format;
+        this.bufferedWriter = new BufferedWriter(new FileWriter(output.toFile(), true));
     }
 
     public Path getExecutable() {
@@ -51,6 +53,7 @@ public class ContinousTUITFileOperator implements ContinousTUITDataHandler,Conti
     @Override
     public void close() throws Exception {
         this.queryReader.close();
+        this.bufferedWriter.close();
     }
 
     @Override
@@ -83,29 +86,27 @@ public class ContinousTUITFileOperator implements ContinousTUITDataHandler,Conti
     @Override
     public boolean saveTaxonomyLine(Map<Ranks, TUITCutoffSet> cutoffSetMap,
                                     NucleotideFasta query, NormalizedIteration<blast.ncbi.output.Iteration> normalizedIteration) throws Exception {
-        try(BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(this.output.toFile(),true))){
-           if(this.format== TUITFileOperatorHelper.OutputFormat.TUIT){
-               bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultTUITFormatter.format(query.getAC().split("\t")[0], normalizedIteration));
-               bufferedWriter.newLine();
-           }
-            if(this.format== TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK){
-                bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultFixRankRDPFormatter(cutoffSetMap).format(query.getAC().split("\t")[0], normalizedIteration));
-                bufferedWriter.newLine();
-            }
+        if (this.format == TUITFileOperatorHelper.OutputFormat.TUIT) {
+            this.bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultTUITFormatter.format(query.getAC().split("\t")[0], normalizedIteration));
+            bufferedWriter.newLine();
+        }
+        if (this.format == TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK) {
+            bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultFixRankRDPFormatter(cutoffSetMap).format(query.getAC().split("\t")[0], normalizedIteration));
+            bufferedWriter.newLine();
         }
         return true;
     }
 
     @Override
     public boolean saveIteration(Iteration iteration) throws Exception {
-        try(BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(this.toBlastOut.toFile(),true))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(this.toBlastOut.toFile(), true))) {
             bufferedWriter.write(BlastHelper.marshallIterationToString(iteration));
             bufferedWriter.newLine();
         }
         return true;
     }
 
-    public static ContinousTUITFileOperator get(Path executable, Path query, Path output,TUITFileOperatorHelper.OutputFormat format) throws IOException{
-        return new ContinousTUITFileOperator(executable, query, output,format);
+    public static ContinousTUITFileOperator get(Path executable, Path query, Path output, TUITFileOperatorHelper.OutputFormat format) throws IOException {
+        return new ContinousTUITFileOperator(executable, query, output, format);
     }
 }

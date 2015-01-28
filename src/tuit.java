@@ -1,7 +1,6 @@
 import blast.continous.ContinousBLASTIdentifierRAM;
 import blast.continous.ContinousTUITFileOperator;
 import blast.continous.ContinousTUITFileOperatorBlastOutput;
-import blast.ncbi.output.BlastOutput;
 import blast.specification.BLASTIdentifier;
 import blast.specification.TUITBLASTIdentifierDB;
 import blast.specification.TUITBLASTIdentifierRAM;
@@ -26,6 +25,8 @@ import org.xml.sax.SAXException;
 import taxonomy.Ranks;
 import toolkit.reduce.NucleotideFastaSequenceReductor;
 import toolkit.reduce.hmptree.TreeFormatter;
+import toolkit.weld.SelectFasta;
+import toolkit.weld.WeldTaxonomy;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -86,6 +87,10 @@ public class tuit {
      */
     private final static String B = "b";
     /**
+     * The -t flag for the taxonomy file
+     */
+    private final static String T = "t";
+    /**
      * The -v flag for the verbose output file
      */
     private final static String V = "v";
@@ -106,6 +111,10 @@ public class tuit {
      */
     private final static String REDUCE = "reduce";
     /**
+     * The -combine flag
+     */
+    private final static String SELECT = "select";
+    /**
      * The -deploy flag
      */
     private final static String DEPLOY = "deploy";
@@ -113,6 +122,10 @@ public class tuit {
      * The -update flag
      */
     private final static String UPDATE = "update";
+    /**
+     * The -weld flag
+     */
+    private final static String WELD = "weld";
     /**
      * tuit output file extension
      */
@@ -128,7 +141,7 @@ public class tuit {
 
     @SuppressWarnings("ConstantConditions")
     public static void main(String[] args) {
-        final long start=System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         System.out.println(licence);
         //Declare variables
         File inputFile;
@@ -160,14 +173,17 @@ public class tuit {
         options.addOption(tuit.P, "prop<file>", true, "Properties file (XML formatted)");
         options.addOption(tuit.V, "verbose", false, "Enable verbose output");
         options.addOption(tuit.B, "blast_output<file>", true, "Perform on a pre-BLASTed output");
+        options.addOption(tuit.T, "taxonomy_output<file>", true, "Taxonomy output in TUIT format.");
         options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
+        options.addOption(tuit.WELD, "weld", true, "Weld the taxonomy to the original query file.");
+        options.addOption(tuit.SELECT, "select", true, "Select records that contain the given taxonomy.");
         options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
         options.addOption(tuit.USE_DB, "usedb", false, "Use RDBMS instead of RAM-based taxonomy");
         options.addOption(tuit.DISC, "disc", false, "BLASTN is known to consume enormous ammounts om RAM when run on a very large dataset (10+K sequences), disc flag allows TUIT to split the input file by the number of sequences, indicated in number of files per batch (see properties).");
         Option option = new Option(tuit.REDUCE, "reduce", true, "Pack identical (100% similar sequences) records in the given sample file");
         option.setArgs(Option.UNLIMITED_VALUES);
         options.addOption(option);
-        option=new Option(tuit.COMBINE, "combine", true, "Combine a set of given reduction files into an HMP Tree-compatible taxonomy");
+        option = new Option(tuit.COMBINE, "combine", true, "Combine a set of given reduction files into an HMP Tree-compatible taxonomy");
         option.setArgs(Option.UNLIMITED_VALUES);
         options.addOption(option);
         options.addOption(tuit.NORMALIZE, "normalize", false, "If used in combination with -combine ensures that the values are normalized by the root value");
@@ -186,15 +202,62 @@ public class tuit {
             //Read command line
             final CommandLine commandLine = parser.parse(options, args, true);
 
-            //Check if the REDUCE option is on
-            if(commandLine.hasOption(tuit.REDUCE)){
+            //Check if weld is on
+            if (commandLine.hasOption(WELD)) {
+                if (!commandLine.hasOption(T)) {
+                    Log.getInstance().log(Level.SEVERE, "Both query and a corresponding taxonomy files must be given with -weld and -t flags!");
+                    System.exit(1);
+                }
+                final Path seqFile = Paths.get(commandLine.getOptionValue(WELD));
+                final Path taxFile = Paths.get(commandLine.getOptionValue(T));
+                final Path output;
+                if (!commandLine.hasOption(OUT)) {
+                    output = seqFile.resolveSibling(seqFile.toFile().getName().concat(".weld"));
+                } else {
+                    output = Paths.get(commandLine.getOptionValue(OUT));
+                }
+                Log.getInstance().log(Level.INFO, "Welding taxonomy...");
+                WeldTaxonomy.weldToFile(seqFile, taxFile, output);
 
-                final String[]fileList=commandLine.getOptionValues(tuit.REDUCE);
-                for(String s:fileList){
-                    final Path path=Paths.get(s);
-                    Log.getInstance().log(Level.INFO, "Processing "+path.toString()+"...");
-                    final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor=NucleotideFastaSequenceReductor.fromPath(path);
-                    ReductorFileOperator.save(nucleotideFastaSequenceReductor,path.resolveSibling(path.getFileName().toString()+".rdc"));
+                return;
+            }
+
+            //Check if select is on
+            if(commandLine.hasOption(SELECT)){
+                final String toSelect=commandLine.getOptionValue(SELECT);
+                if(toSelect==""){
+                    Log.getInstance().log(Level.SEVERE, "Some taxonomy must be given for selection!");
+                    System.exit(1);
+                }
+                if(!commandLine.hasOption(IN)){
+                    Log.getInstance().log(Level.SEVERE, "Input file with welded taxonomy must be given!");
+                    System.exit(1);
+                }
+                if(!SelectFasta.selectIsFine(commandLine.getOptionValue(SELECT))){
+                    Log.getInstance().log(Level.SEVERE, "Please reformat select pattern!");//todo correct when the actuall method is corrected
+                    System.exit(1);
+                }
+                Log.getInstance().log(Level.INFO, "Selecting \""+commandLine.getOptionValue(SELECT)+"\" from taxonomy...");
+                final Path seqFile=Paths.get(commandLine.getOptionValue(IN));
+                final Path outFile;
+                if(!commandLine.hasOption(OUT)){
+                    outFile=seqFile.resolveSibling(seqFile.toFile().getName().concat(".").concat(commandLine.getOptionValue(SELECT).substring(0,5).toLowerCase().replaceAll(" ","")));
+                }else{
+                    outFile=Paths.get(commandLine.getOptionValue(OUT));
+                }
+                SelectFasta.select(seqFile,outFile,commandLine.getOptionValue(SELECT));
+                return;
+            }
+
+            //Check if the REDUCE option is on
+            if (commandLine.hasOption(tuit.REDUCE)) {
+
+                final String[] fileList = commandLine.getOptionValues(tuit.REDUCE);
+                for (String s : fileList) {
+                    final Path path = Paths.get(s);
+                    Log.getInstance().log(Level.INFO, "Processing " + path.toString() + "...");
+                    final NucleotideFastaSequenceReductor nucleotideFastaSequenceReductor = NucleotideFastaSequenceReductor.fromPath(path);
+                    ReductorFileOperator.save(nucleotideFastaSequenceReductor, path.resolveSibling(path.getFileName().toString() + ".rdc"));
                 }
 
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
@@ -202,37 +265,37 @@ public class tuit {
             }
 
             //Check if COMBINE is on
-            if(commandLine.hasOption(tuit.COMBINE)){
-                final boolean normalize=commandLine.hasOption(tuit.NORMALIZE);
-                final String[]fileList=commandLine.getOptionValues(tuit.COMBINE);
+            if (commandLine.hasOption(tuit.COMBINE)) {
+                final boolean normalize = commandLine.hasOption(tuit.NORMALIZE);
+                final String[] fileList = commandLine.getOptionValues(tuit.COMBINE);
                 //TODO: implement a test for format here
 
-                final List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> hmpTreesOutputs=new ArrayList<>();
-                final TreeFormatter treeFormatter=TreeFormatter.newInstance(new TreeFormatter.TuitLineTreeFormatterFormat());
-                for(String s:fileList) {
+                final List<TreeFormatter.TreeFormatterFormat.HMPTreesOutput> hmpTreesOutputs = new ArrayList<>();
+                final TreeFormatter treeFormatter = TreeFormatter.newInstance(new TreeFormatter.TuitLineTreeFormatterFormat());
+                for (String s : fileList) {
                     final Path path = Paths.get(s);
-                    Log.getInstance().log(Level.INFO, "Merging "+path.toString()+"...");
+                    Log.getInstance().log(Level.INFO, "Merging " + path.toString() + "...");
                     treeFormatter.loadFromPath(path);
-                    final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output=
+                    final TreeFormatter.TreeFormatterFormat.HMPTreesOutput output =
                             TreeFormatter.TreeFormatterFormat.HMPTreesOutput.newInstance(
-                                    treeFormatter.toHMPTree(normalize), s.substring(0,s.indexOf("."))
+                                    treeFormatter.toHMPTree(normalize), s.substring(0, s.indexOf("."))
                             );
                     hmpTreesOutputs.add(output);
                     treeFormatter.erase();
                 }
                 final Path destination;
-                if(commandLine.hasOption(OUT)){
-                    destination=Paths.get(commandLine.getOptionValue(tuit.OUT));
+                if (commandLine.hasOption(OUT)) {
+                    destination = Paths.get(commandLine.getOptionValue(tuit.OUT));
                 } else {
-                    destination=Paths.get("merge.tcf");
+                    destination = Paths.get("merge.tcf");
                 }
-                CombinatorFileOperator.save(hmpTreesOutputs,treeFormatter,destination);
+                CombinatorFileOperator.save(hmpTreesOutputs, treeFormatter, destination);
                 Log.getInstance().log(Level.FINE, "Task done, exiting...");
                 return;
             }
 
-            if(commandLine.hasOption(USE_DB)){
-                if(!commandLine.hasOption(DISC)){
+            if (commandLine.hasOption(USE_DB)) {
+                if (!commandLine.hasOption(DISC)) {
                     Log.getInstance().log(Level.SEVERE, "Current version does not support continous blast for SQL database or BLAST output!");
                     System.exit(1);
                 }
@@ -376,13 +439,13 @@ public class tuit {
                                 tmpDir, tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().replace("NOT", "OR")).getAbsolutePath(),
                                 "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
-                    }else if(tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().equals("")){
+                    } else if (tuitProperties.getBLASTNParameters().getEntrezQuery().getValue().toUpperCase().equals("")) {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
                                 "-num_threads", tuitProperties.getBLASTNParameters().getNumThreads().getValue()
                         };
-                    }else {
+                    } else {
                         parameters = new String[]{
                                 "-db", stringBuilder.toString(),
                                 "-evalue", tuitProperties.getBLASTNParameters().getExpect().getValue(),
@@ -407,10 +470,10 @@ public class tuit {
                 cutoffMap = new HashMap<Ranks, TUITCutoffSet>();
             }
             final TUITFileOperatorHelper.OutputFormat format;
-            if(tuitProperties.getBLASTNParameters().getOutputFormat().getFormat().equals("rdp")){
-                format= TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK;
-            }else{
-                format= TUITFileOperatorHelper.OutputFormat.TUIT;
+            if (tuitProperties.getBLASTNParameters().getOutputFormat().getFormat().equals("rdp")) {
+                format = TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK;
+            } else {
+                format = TUITFileOperatorHelper.OutputFormat.TUIT;
             }
             //Create blast identifier
             ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -425,11 +488,10 @@ public class tuit {
                 cleanup = false;
             }
 
-            if(commandLine.hasOption(DISC)){
+            if (commandLine.hasOption(DISC)) {
 
 
-
-                try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(format,cutoffMap)) {
+                try (TUITFileOperator<NucleotideFasta> nucleotideFastaTUITFileOperator = NucleotideFastaTUITFileOperator.newInstance(format, cutoffMap)) {
                     nucleotideFastaTUITFileOperator.setInputFile(inputFile);
                     nucleotideFastaTUITFileOperator.setOutputFile(outputFile);
 
@@ -483,20 +545,20 @@ public class tuit {
                     executorService.shutdown();
                 }
 
-            }else{
+            } else {
 
                 final int batchSize = Integer.parseInt(tuitProperties.getBLASTNParameters().getMaxFilesInBatch().getValue());
-                Future<?> runnableFuture=null;
-                if(blastOutputFile==null) {
+                Future<?> runnableFuture = null;
+                if (blastOutputFile == null) {
                     try (ContinousTUITFileOperator continousTUITFileOperator = ContinousTUITFileOperator.get(blastnExecutable.toPath(), inputFile.toPath(), outputFile.toPath(), format)) {
                         Log.getInstance().log(Level.INFO, "Continous BLASTN mode.");
 
                         final ContinousBLASTIdentifierRAM continousBLASTIdentifierRAM = ContinousBLASTIdentifierRAM
                                 .newInstance(continousTUITFileOperator, tmpDir, parameters, cutoffMap, cleanup, batchSize, ramDb);
-                         runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
+                        runnableFuture = executorService.submit(continousBLASTIdentifierRAM);
                         runnableFuture.get();
                     }
-                }else{
+                } else {
                     try (ContinousTUITFileOperator continousTUITFileOperator = ContinousTUITFileOperatorBlastOutput.get(blastnExecutable.toPath(), inputFile.toPath(), outputFile.toPath(), format, blastOutputFile.toPath())) {
                         Log.getInstance().log(Level.INFO, "Reading from file BLASTN mode.");
 
@@ -511,8 +573,8 @@ public class tuit {
             }
 
             Log.getInstance().log(Level.INFO, "All done.");
-            final long stop=System.currentTimeMillis();
-            Log.getInstance().log(Level.INFO, "Time elapsed: "+Log.DF4.format((double)(stop-start)/1000/60)+" min.");
+            final long stop = System.currentTimeMillis();
+            Log.getInstance().log(Level.INFO, "Time elapsed: " + Log.DF4.format((double) (stop - start) / 1000 / 60) + " min.");
 
         } catch (ParseException pe) {
             Log.getInstance().log(Level.SEVERE, (pe.getMessage()));

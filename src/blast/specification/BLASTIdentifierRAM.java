@@ -101,7 +101,7 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
             return null;
         }
         final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(parentNodesRow.getK(),parentNodesRow.getRank(),scientificName);
-        taxonomicNode.addChild(normalizedHit.getFocusNode());
+        taxonomicNode.justAddChild(normalizedHit.getFocusNode());
         normalizedHit.setTaxonomy(taxonomicNode);
         normalizedHit.setFocusNode(taxonomicNode);
 
@@ -158,7 +158,7 @@ public abstract class BLASTIdentifierRAM extends BLASTIdentifier<NucleotideFasta
             return null;
         }
         TaxonomicNode parentTaxonomicNode = TaxonomicNode.newDefaultInstance(parentNodesRow.getK(),parentNodesRow.getRank(), scientificName);
-        parentTaxonomicNode.addChild(taxonomicNode);
+        parentTaxonomicNode.justAddChild(taxonomicNode);
         taxonomicNode.setParent(parentTaxonomicNode);
         if (parentNodesRow.getK()!=parentNodesRow.getV()) {
             parentTaxonomicNode = this.attachFullDirectLineage(parentTaxonomicNode);

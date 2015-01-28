@@ -135,6 +135,10 @@ public class TaxonomicNode {
 
     }
 
+    public boolean justAddChild(TaxonomicNode child){
+        return this.children.add(child);
+    }
+
     /**
      * A getter for the {@link List} of {@link TaxonomicNode} children
      *

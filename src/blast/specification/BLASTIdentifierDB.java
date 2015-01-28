@@ -127,7 +127,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
                 final TaxonomicNode taxonomicNode = TaxonomicNode.newDefaultInstance(resultSet.getInt(2),
                         Ranks.values()[resultSet.getInt(5) - 1],
                         resultSet.getString(3));
-                taxonomicNode.addChild(normalizedHit.getFocusNode());
+                taxonomicNode.justAddChild(normalizedHit.getFocusNode());
                 normalizedHit.setTaxonomy(taxonomicNode);
                 normalizedHit.setFocusNode(taxonomicNode);
             } else {
@@ -217,7 +217,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
                 scientificName = resultSet.getString(3);
                 rank = Ranks.values()[resultSet.getInt(5) - 1];
                 parentTaxonomicNode = TaxonomicNode.newDefaultInstance(taxid, rank, scientificName);
-                parentTaxonomicNode.addChild(taxonomicNode);
+                parentTaxonomicNode.justAddChild(taxonomicNode);
                 taxonomicNode.setParent(parentTaxonomicNode);
                 if (parent_taxid != taxid) {
                     preparedStatement.close();
@@ -265,7 +265,7 @@ public abstract class BLASTIdentifierDB extends BLASTIdentifier<NucleotideFasta>
                         resultSet.getString(3));
                 taxonomicNode.setParent(parentNode);
                 //Recursively return to this procedure in order to get everything down to the leaves
-                parentNode.addChild(this.attachChildrenForTaxonomicNode(taxonomicNode));
+                parentNode.justAddChild(this.attachChildrenForTaxonomicNode(taxonomicNode));
             }
         }
         return parentNode;
