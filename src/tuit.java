@@ -163,7 +163,7 @@ public class tuit {
         options.addOption(tuit.DEPLOY, "deploy", false, "Deploy the taxonomic databases");
         options.addOption(tuit.UPDATE, "update", false, "Update the taxonomic databases");
         options.addOption(tuit.USE_DB, "usedb", false, "Use RDBMS instead of RAM-based taxonomy");
-
+        options.addOption(tuit.DISC, "disc", false, "BLASTN is known to consume enormous ammounts om RAM when run on a very large dataset (10+K sequences), disc flag allows TUIT to split the input file by the number of sequences, indicated in number of files per batch (see properties).");
         Option option = new Option(tuit.REDUCE, "reduce", true, "Pack identical (100% similar sequences) records in the given sample file");
         option.setArgs(Option.UNLIMITED_VALUES);
         options.addOption(option);

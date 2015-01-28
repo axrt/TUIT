@@ -22,7 +22,6 @@ public class ContinousBlastN extends GBlast {
 
     @Override
     public Optional<BlastOutput> call() throws Exception {
-        Log.getInstance().log(Level.FINE,"Continous BLASTN started.");
         final Optional<BlastOutput> output=super.call();
         this.notifyListeners(new BlastEvent<>(IterationBlockingBuffer.DONE));
         return output;
