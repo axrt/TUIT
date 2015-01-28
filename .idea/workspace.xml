@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a8d8838-9a7d-495d-8bbd-257e97c294d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/weld/SelectFasta.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/toolkit/weld/WeldTaxonomy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" afterPath="$PROJECT_DIR$/src/blast/specification/BLASTIdentifierRAM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java" afterPath="$PROJECT_DIR$/src/blast/continous/ContinousTUITFileOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" afterPath="$PROJECT_DIR$/src/taxonomy/node/TaxonomicNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tuit.java" afterPath="$PROJECT_DIR$/src/tuit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TUIT.iws" />
@@ -2537,7 +2530,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422467870767</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Weld and select implemented">
+      <created>1422478163330</created>
+      <option name="number" value="00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1422478163330</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2606,7 +2605,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Code commented, finals corrected somewhere" />
     <MESSAGE value="A way to select desired format (tuit/rdp) added to the properties.xml, dtd and implemented in the code." />
     <MESSAGE value="Comments added and Java7 style for t-w-r enforced" />
     <MESSAGE value="All TODOs for commenting and Java 7 enforcement accomplished" />
@@ -2631,7 +2629,8 @@
     <MESSAGE value="A non-memory-consuming parallel option of collapse introduced and tested" />
     <MESSAGE value="Continous blast version implemented" />
     <MESSAGE value="Reading from file implemented for blast output" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reading from file implemented for blast output" />
+    <MESSAGE value="Weld and select implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weld and select implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
