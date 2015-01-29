@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!DOCTYPE TUITProperties PUBLIC "-//TUIT//TUITProperties/EN" "properties.dtd">
+<!--/**
+ * Taxonomic Unit Identification Tool (TUIT) is a free open source platform independent
+ * software for accurate taxonomic classification of nucleotide sequences.
+ * Copyright (C) 2013  Alexander Tuzhikov, Alexander Panchin and Valery Shestopalov.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<!--General properties section-->
+<TUITProperties>
+    <!--The MySQL database connection parameters:
+    login, password and url for the "tuit@localhost" user.
+    Normally should not be changed-->
+    <DBConnection url="localhost" login="tuit" password="tuit"/>
+    <!--A full system path to blastn executable.
+    Change this to a correct path on your system.-->
+    <BLASTNPath path="/bin/blastn"/>
+    <!--A full system path to a writable temporary directory.
+    TUIT module relies on this directory to download database dumps
+    from the NCBI as well as for temporary BLAST output storage.
+    Change this to a correct path on your system.-->
+    <TMPDir path="/tmp"/>
+    <!--BLASTN parameters section.-->
+    <BLASTNParameters>
+        <!--Choose a database to search against.
+        In case you are using a local blast option,
+        refer to http://www.ncbi.nlm.nih.gov/books/NBK1762/
+        in order to provide correct database alias (nt/est/16SMicrobial.. etc)-->
+        <Database use="gg"/>
+        <!--An E-value threshold for the output.-->
+        <Expect value="1.0"/>
+        <!--A specific entrez query that allows to get rid
+        of the "junk" hits that provide little or no taxonomic
+        information. Note that with the local BLAST option
+        the task of database restriction with an entrez query
+        may be tricky if the selected entrez query provides an excessive gi list.
+        Refer to the official documentation http://www.ncbi.nlm.nih.gov/books/NBK1762/
+        Upon first run tuit will fetch the GI list for the given
+        entrez query and refer to it as to restrictions list-->
+        <EntrezQuery
+                value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
+        <!--If "no" selected, the BLASTN search
+        will be performed locally, "yes" will
+        send the query to the NCBI BLAST server (yes/no).-->
+        <Remote delegate="no"/>
+        <!--A number of threads  that current blast will use-->
+        <NumThreads value="6"/>
+        <!--As long as the query file may contain multiple
+        fasta formatted records, this field allows to specify
+        how many of those are taken for a single round
+        of BLAST search.-->
+        <MaxFilesInBatch value="1000"/>
+        <!--Indicates whether TUIT should keep the intermediate temporary blast outputs (no/yes)-->
+        <KeepBLASTOuts keep="no"/>
+        <!--Indicates whether TUIT native format should be used, or a fixrank RDP (rdp) -->
+        <OutputFormat format="tuit"/>
+    </BLASTNParameters>
+    <!--Each set represents a specific set of cutoffs
+    that will be applied to a certain taxonomic rank.-->
+    <!--Higher Level-->
+    <SpecificationParameters>
+        <!--Names the rank-->
+        <CutoffSet rank="superkingdom">
+            <!--Sets pIdent cutoff at the given rank-->
+            <pIdentCutoff value="70"/>
+            <!--Sets Query coverage cutoff at the given rank-->
+            <QueryCoverageCutoff value="80"/>
+            <!--Sets E-value ratio cutoff at the given rank-->
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="kingdom">
+            <pIdentCutoff value="72"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="superphylum">
+            <pIdentCutoff value="74"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="phylum">
+            <pIdentCutoff value="74.4"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subphylum">
+            <pIdentCutoff value="75"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="superclass">
+            <pIdentCutoff value="76"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="infraclass">
+            <pIdentCutoff value="77"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="c_lass">
+            <pIdentCutoff value="78.3"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subclass">
+            <pIdentCutoff value="79.1"/>
+            <QueryCoverageCutoff value="80"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <!--Order Level-->
+    <SpecificationParameters>
+        <CutoffSet rank="infraorder">
+            <pIdentCutoff value="82"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="parvorder">
+            <pIdentCutoff value="85"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="superorder">
+            <pIdentCutoff value="88.25"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="order">
+            <pIdentCutoff value="81.9"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="suborder">
+            <pIdentCutoff value="86.7"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <!--Family Level-->
+    <SpecificationParameters>
+        <CutoffSet rank="superfamily">
+            <pIdentCutoff value="88"/>
+            <QueryCoverageCutoff value="90"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="family">
+            <pIdentCutoff value="86.2"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subfamily">
+            <pIdentCutoff value="86.25"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="tribe">
+            <pIdentCutoff value="92.3"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subtribe">
+            <pIdentCutoff value="93"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <!--Genus Level-->
+    <SpecificationParameters>
+        <CutoffSet rank="genus">
+            <pIdentCutoff value="93.9"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subgenus">
+            <pIdentCutoff value="94.5"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <!--Species Level-->
+    <SpecificationParameters>
+        <CutoffSet rank="species_group">
+            <pIdentCutoff value="96.9"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="species_subgroup">
+            <pIdentCutoff value="97"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="species">
+            <pIdentCutoff value="98.7"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="subspecies">
+            <pIdentCutoff value="99"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="varietas">
+            <pIdentCutoff value="99"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <SpecificationParameters>
+        <CutoffSet rank="forma">
+            <pIdentCutoff value="99"/>
+            <QueryCoverageCutoff value="95"/>
+            <Alpha value="0.05"/>
+        </CutoffSet>
+    </SpecificationParameters>
+    <!--END-->
+</TUITProperties>

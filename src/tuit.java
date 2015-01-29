@@ -196,11 +196,11 @@ public class tuit {
             final File tuitDir = new File(new File(tuit.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent());
             final File ramDbFile = new File(tuitDir, tuit.RAM_DB);
 
-            //Setup logger
-            Log.getInstance().setLogName("tuit.log");
-
             //Read command line
             final CommandLine commandLine = parser.parse(options, args, true);
+
+            //Setup logger
+            Log.getInstance().setLogName("tuit."+UUID.randomUUID()+".log");
 
             //Check if weld is on
             if (commandLine.hasOption(WELD)) {
@@ -568,7 +568,7 @@ public class tuit {
                         runnableFuture.get();
                     }
                 }
-
+                //TODO fix the bug about the badly named blast database alias
                 executorService.shutdown();
             }
 

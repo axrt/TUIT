@@ -15,9 +15,10 @@ import java.util.stream.IntStream;
 //TODO document
 public class GreenGenesDeployer {
 
-    public static String FTPMIRROR = "ftp://greengenes.microbio.me";
-    public static String GRENEGENES_RELEASE = "greengenes_release";
-    public static String TAXDUMP = "";
+    public static final String FTPMIRROR = "ftp://greengenes.microbio.me";
+    public static final String GRENEGENES_RELEASE = "greengenes_release";
+    public static final String TAXDUMP = "";
+    public static final String[]TAX_ROW_MARKER={"k__","p__","c__","o__","f__","g__","s__"};
 
     /**
      * Private constructor, prevents instantiation
@@ -26,7 +27,7 @@ public class GreenGenesDeployer {
         throw new AssertionError("Non-instantiable!");
     }
 
-    public static File reformatSequenceDatabase(final Path pathToSequenceDatabase, final Path toReformattedSequenceDatabase) throws IOException {
+    public static File reformatSequenceDatabase(final Path pathToSequenceDatabase, final Path toReformattedSequenceDatabase, String prefix, String postfix) throws IOException {
         final File reformattedSequenceDatabaseFile = toReformattedSequenceDatabase.toFile();
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(pathToSequenceDatabase.toFile()));
@@ -36,7 +37,7 @@ public class GreenGenesDeployer {
                 try {
                     if (line.startsWith(Fasta.fastaStart)) {
 
-                        bufferedWriter.write(Fasta.fastaStart.concat("ggid|"+line.substring(1)+"|ref|"+line.substring(1)+"| Green Genes sequence"));
+                        bufferedWriter.write(Fasta.fastaStart.concat(prefix+'|'+line.substring(1).split("\t")[0]+"|ref|"+line.substring(1)+"|"+postfix));
 
                     } else {
                         bufferedWriter.write(line);
@@ -218,9 +219,25 @@ public class GreenGenesDeployer {
             this.attachToRoot();
         }
 
-        private void addGGLine(String line) {
+        private String checkFormatConsistency(String line){
+            final StringBuilder stringBuilder=new StringBuilder();
             final String[] GGIsplit = line.split("\t");
-            final String[] taxaSplit = GGIsplit[1].split("; ");
+            final String[] taxaSplit = GGIsplit[1].split(";");
+            final int len=taxaSplit.length;
+            stringBuilder.append(GGIsplit[0]);
+            stringBuilder.append('\t');
+            stringBuilder.append(GGIsplit[1]);
+            for(int i=len;i<TAX_ROW_MARKER.length;i++){
+                stringBuilder.append(TAX_ROW_MARKER[i]);
+                stringBuilder.append(";");
+            }
+            return stringBuilder.toString();
+        }
+
+        private void addGGLine(String line) {
+            line=this.checkFormatConsistency(line);
+            final String[] GGIsplit = line.split("\t");
+            final String[] taxaSplit = GGIsplit[1].split(";");
             //TODO think of additional checks
             if (GGIsplit.length != 2 || taxaSplit.length != 7) {
                 this.dieOnMissformat(line);

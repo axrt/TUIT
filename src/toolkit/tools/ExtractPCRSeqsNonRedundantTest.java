@@ -15,9 +15,9 @@ public class ExtractPCRSeqsNonRedundantTest {
 
     @Test
     public void testReduce(){
-        final Path toFile= Paths.get("/home/alext/Documents/tuit/greengenes/gg.pcr.align");
+        final Path toFile= Paths.get("/home/alext/Documents/Research/Ocular/HCE/ltp/LTPs119_SSU.compressed.fasta.recode.pcr.align");
         final Path toOutFile=toFile.resolveSibling("gg.v1_v3.fasta");
-        final Path toOutDB=Paths.get("/home/alext/Developer/TUIT/out/artifacts/tuit/ramdb.obj");
+        final Path toOutDB=Paths.get("/home/alext/Documents/Research/Ocular/HCE/ltp/ramdb.obj");
         try {
             ExtractPCRSeqsNonRedundant.reduce(toFile,toOutFile,toOutDB);
         } catch (IOException e) {

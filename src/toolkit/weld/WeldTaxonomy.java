@@ -1,10 +1,12 @@
 package toolkit.weld;
 
 import format.fasta.Fasta;
+import logger.Log;
 import toolkit.tools.CountFasta;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.util.logging.Level;
 
 /**
  * Created by alext on 1/28/15.
@@ -27,7 +29,7 @@ public class WeldTaxonomy {
                             bufferedWriter.write("::");
                             String taxLine;
                             while((taxLine=taxReader.readLine())!=null)
-                                if(taxLine.contains("->")){
+                                if(taxLine.contains("->")||taxLine.contains("{")){
 
                                     bufferedWriter.write(taxLine.substring(taxLine.indexOf("\t")+1));
                                     break;
@@ -38,7 +40,7 @@ public class WeldTaxonomy {
                 }
 
             } else {
-                throw new IllegalArgumentException("Files differ in numbers of records and corresponding taxonomies!");
+                throw new IllegalArgumentException("Files differ in numbers of records and corresponding taxonomies! ");
             }
         }
         return output;
@@ -47,9 +49,10 @@ public class WeldTaxonomy {
     public static boolean numOfSeqsMatchNumOfTax(Path toSeqFile, Path toTaxFile) throws IOException {
         final int countTax;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(toTaxFile.toFile()))) {
-            countTax = bufferedReader.lines().filter(line -> line.contains("->")).mapToInt(line -> {
+            countTax = bufferedReader.lines().filter(line -> line.contains("->")||line.contains("{")).mapToInt(line -> {
                 return 1;
             }).sum();
+            Log.getInstance().log(Level.INFO, "Number of taxonomy lines: "+countTax);
         }
         final int countSeq = CountFasta.count(toSeqFile);
         return countSeq == countTax;
