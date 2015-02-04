@@ -118,6 +118,19 @@ public abstract class NucleotideFastaTUITFileOperator extends TUITFileOperator<N
             case TUIT: {
                 return newInstance();
             }
+            case MOTHUR:{
+                return new NucleotideFastaTUITFileOperator() {
+                    @Override
+                    public boolean saveResults(NucleotideFasta query, NormalizedIteration<Iteration> normalizedIteration) throws Exception {
+                        this.bufferedWriter.write(
+                                TUITFileOperatorHelper.OutputFormat.defaultMothurFormatter(cutoffMap).format(query.getAC().split("\t")[0], normalizedIteration)
+                        );
+                        this.bufferedWriter.newLine();
+                        this.bufferedWriter.flush();
+                        return true;
+                    }
+                };
+            }
             case RDP_FIXRANK: {
                 return new NucleotideFastaTUITFileOperator() {
                     @Override

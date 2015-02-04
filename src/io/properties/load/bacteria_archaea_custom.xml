@@ -36,7 +36,7 @@
         In case you are using a local blast option,
         refer to http://www.ncbi.nlm.nih.gov/books/NBK1762/
         in order to provide correct database alias (nt/est/16SMicrobial.. etc)-->
-        <Database use="ltp.v1_v3.fasta"/>
+        <Database use="ltp"/>
         <!--An E-value threshold for the output.-->
         <Expect value="1.0"/>
         <!--A specific entrez query that allows to get rid
@@ -63,7 +63,7 @@
         <!--Indicates whether TUIT should keep the intermediate temporary blast outputs (no/yes)-->
         <KeepBLASTOuts keep="no"/>
         <!--Indicates whether TUIT native format should be used, or a fixrank RDP (rdp) -->
-        <OutputFormat format="tuit"/>
+        <OutputFormat format="mothur"/>
     </BLASTNParameters>
     <!--Each set represents a specific set of cutoffs
     that will be applied to a certain taxonomic rank.-->

@@ -65,7 +65,7 @@ public class TUITFileOperatorHelper {
      * A utility entity, that collects output format options and allows to create new formats
      */
     public enum OutputFormat {
-        TUIT, RDP_FIXRANK, RDP_SPECIES;
+        TUIT, RDP_FIXRANK, RDP_SPECIES, MOTHUR;
         /**
          * A default nodes delimiter for TUIT
          */
@@ -358,6 +358,128 @@ public class TUITFileOperatorHelper {
                 }
             };
         }
+
+        public static OutputFormatter<Iteration> defaultMothurFormatter(final Map<Ranks, TUITCutoffSet> cutoffMap) {
+            return new OutputFormatter<Iteration>() {
+                /**
+                 * A list of taxonomic ranks that are commonly used by the RDP fixrank formatting
+                 */
+                private final Ranks[] mothurFixRankRanks = {Ranks.superkingdom, Ranks.phylum, Ranks.c_lass, Ranks.order, Ranks.family, Ranks.genus, Ranks.species};
+                /**
+                 * A queue that allows for tracking of which of the mandatory fixrank ranks had already appeared, and which not. Helps greatly in cases, when a hit had less
+                 * ranks in its lineage that assumed by the fixrank format
+                 */
+                private Deque<Ranks> orderOfRankAppearence = new ArrayDeque<>(Arrays.asList(mothurFixRankRanks));
+                /**
+                 * A set of fixranks for faster search "if-rank-present/allowed-by-the-fixrank-format"
+                 */
+                private final Set<Ranks> mothurFixRankRanksSet = new HashSet<>(orderOfRankAppearence);
+
+                /**
+                 * A helper method, that searches for the rank of the given {@link taxonomy.node.TaxonomicNode} within the {@code rdpFixRankRanks}. The one found retains a corresponding
+                 * position within the fixrank ouput.
+                 * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that will be used a the lower-ranked node, within a taxonomy that must be searched
+                 * @return -1 in case the rank was not found, {@code int} position in the {@code rdpFixRankRanks} when found.
+                 */
+                private final int findRank(final TaxonomicNode taxonomicNode) {
+                    int count = 0;
+                    for (Ranks r : mothurFixRankRanks) {
+                        if (r.equals(taxonomicNode.getRank())) {
+                            return count;
+                        }
+                        count++;
+                    }
+                    if (taxonomicNode.getParent() != null) {
+                        return findRank(taxonomicNode.getParent());
+                    }
+                    return -1;
+                }
+
+                /**
+                 * Formats a given {@link blast.normal.iteration.NormalizedIteration} with a given {@link java.lang.String} AC as row identifier.
+                 * @param ac {@link String} that identifies the row (AC of the query, presumably)
+                 * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} that contains the result
+                 * @return {@link String} representation of the full lineage in RDP fixrank format
+                 */
+                @Override
+                public String format(String ac, NormalizedIteration<Iteration> normalizedIteration) {
+                    final StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(formatQuery(ac, normalizedIteration));
+                    if (normalizedIteration.getPivotalHit() == null) {
+                        for (int i = 0; i < mothurFixRankRanks.length; i++) {
+                            stringBuilder.append(RDP_NOT_IDENTIFIED);
+                            stringBuilder.append(';');
+                        }
+                        return stringBuilder.toString().trim();
+                    }
+
+                    final TaxonomicNode taxonomicNode = normalizedIteration.getPivotalHit().getFocusNode();
+
+                    stringBuilder.append(formatFullLineage(taxonomicNode));
+
+                    //Determine which ranks have been left out
+
+                    final int ranksLeftOut = findRank(taxonomicNode) + 1;
+
+                    for (int i = ranksLeftOut; i < mothurFixRankRanks.length; i++) {
+                        stringBuilder.append(RDP_NOT_IDENTIFIED);
+                        stringBuilder.append(';');
+                    }
+                    orderOfRankAppearence = new ArrayDeque<>(Arrays.asList(mothurFixRankRanks));
+                    return stringBuilder.toString().trim();
+                }
+
+                /**
+                 * Formats query sequence by adding a given {@link java.lang.String} ac to the RDP query delimiter ("\t\t")
+                 * @param ac {@link String} that identifies the row (AC of the query, presumably)
+                 * @param normalizedIteration {@link blast.normal.iteration.NormalizedIteration} that contains the result (not used by this implementation)
+                 * @return {@link java.lang.String} representation of the AC and RDP-specific delimiter
+                 */
+                @Override
+                public String formatQuery(String ac, NormalizedIteration<Iteration> normalizedIteration) {
+                    return ac.concat("\t");
+                }
+
+                /**
+                 * Recursively adds {@link taxonomy.node.TaxonomicNode}s from the lineage to a {@link java.lang.String} representation, substitutes the
+                 * missing rank with underscore-connected {@link taxonomy.node.TaxonomicNode} rank and name, and substitutes unclassified with "unclassified".
+                 * Confidence scores, common for the RDP output are substituted by a logical "confidence" approximation: 1-alpha.
+                 * Example: say, we have an alpha of 0.05 for a given taxonomic rank. Then we are confident that the classification is a true 95%. Thereby, we put
+                 * 0.95 confidence on the RDP fixrank output.
+                 * @param taxonomicNode {@link taxonomy.node.TaxonomicNode} that is presumably the deepest node, that TUIT was able to calssify
+                 * @return {@link java.lang.String} representation of a given {@link taxonomy.node.TaxonomicNode} lineage
+                 */
+                @Override
+                public String formatFullLineage(TaxonomicNode taxonomicNode) {
+                    final StringBuilder stringBuilder = new StringBuilder();
+                    if (taxonomicNode.getParent() != null) {
+                        stringBuilder.append(formatFullLineage(taxonomicNode.getParent()));
+                    }
+                    if (mothurFixRankRanksSet.contains(taxonomicNode.getRank())) {
+                        if (taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
+                            stringBuilder.append(taxonomicNode.getScientificName());
+                            stringBuilder.append('(');
+                            stringBuilder.append((int)(100-cutoffMap.get(taxonomicNode.getRank()).getAlpha()*100));
+                            stringBuilder.append(");");
+                        } else {
+                            while (orderOfRankAppearence.size() > 1 & !taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
+                                stringBuilder.append(taxonomicNode.getScientificName().concat("_").concat(orderOfRankAppearence.getFirst().toString()));
+                                stringBuilder.append('(');
+                                stringBuilder.append((int)(100-cutoffMap.get(orderOfRankAppearence.getFirst()).getAlpha()*100));
+                                stringBuilder.append(");");
+                                orderOfRankAppearence.pollFirst();
+                            }
+                            stringBuilder.append(taxonomicNode.getScientificName());
+                            stringBuilder.append('(');
+                            stringBuilder.append((int)(100-cutoffMap.get(taxonomicNode.getRank()).getAlpha()*100));
+                            stringBuilder.append(");");
+                        }
+                        orderOfRankAppearence.pollFirst();
+                    }
+                    return stringBuilder.toString();
+                }
+            };
+        }
     }
 
     /**
@@ -629,7 +751,7 @@ public class TUITFileOperatorHelper {
     @SuppressWarnings("WeakerAccess")
     public static List<Integer> leavesByTaxid(Connection connection, int taxid, List<Integer> leaves) throws SQLException {
         List<Integer> taxids;
-        try (Statement statement = connection.createStatement();){
+        try (Statement statement = connection.createStatement();) {
             statement.execute("USE " + LookupNames.dbs.NCBI.name);
             final ResultSet resultSet = statement.executeQuery(
                     "SELECT "

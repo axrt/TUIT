@@ -13,6 +13,9 @@ import java.util.Map;
  */
 public class LivingTreeToGGFormatConverter {
 
+    public static final String[] BADNODES = {"Actinobacteridae;", "Nitriliruptoridae;", "Rubrobacteridae;", "Chloroflexineae;", "Roseiflexineae;",
+            "Sphaerobacteridae;", "Cystobacterineae;", "Nannocystineae;", "Sorangiineae;"};
+
     public static Map<String, String> convert(Path toLTDTaxFile, Path toOutputFile) throws IOException {
 
         final Map<String, String> map;
@@ -23,6 +26,10 @@ public class LivingTreeToGGFormatConverter {
             int fakeID = 100000;
             while ((line = bufferedReader.readLine()) != null) {
 
+                //Getting rid of the suborders, that spoil the whole thing
+                for(String s:BADNODES){
+                    line=line.replaceAll(s,"");
+                }
 
                 final String[] superSplit = line.split("\t");
                 final String[] subSplit = superSplit[9].concat(";").concat(superSplit[4]).concat(";").split(";");
@@ -56,17 +63,17 @@ public class LivingTreeToGGFormatConverter {
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(toOutputFile.toFile()))) {
 
             String line;
-            while((line=bufferedReader.readLine())!=null){
+            while ((line = bufferedReader.readLine()) != null) {
 
-                if(line.startsWith(Fasta.fastaStart)){
+                if (line.startsWith(Fasta.fastaStart)) {
                     bufferedWriter.write(">");
-                    final String encodedeAC=encodes.get(line.substring(1).split("\t")[0]);
-                    if(encodedeAC==null){
+                    final String encodedeAC = encodes.get(line.substring(1).split("\t")[0]);
+                    if (encodedeAC == null) {
                         throw new IllegalArgumentException(line);
-                    }else{
+                    } else {
                         bufferedWriter.write(encodedeAC);
                     }
-                }else{
+                } else {
                     bufferedWriter.write(line);
                 }
                 bufferedWriter.newLine();

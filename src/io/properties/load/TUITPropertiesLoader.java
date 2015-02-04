@@ -374,8 +374,8 @@ public class TUITPropertiesLoader {
             Log.getInstance().log(Level.WARNING,"No format specified, using default: " + TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getKeepBLASTOuts() + ".");
             tuitProperties.getBLASTNParameters().setOutputFormat(TUITPropertiesLoader.DEFAULT_BLASTN_PARAMETERS.getOutputFormat());
         } else {
-            if (!blastnParameters.getOutputFormat().getFormat().equals("tuit") && !blastnParameters.getOutputFormat().getFormat().equals("rdp")) {
-                throw new TUITPropertyBadFormatException("Erroneous output format value, please provide \"tuit\" or \"rdp\"");
+            if (!blastnParameters.getOutputFormat().getFormat().equals("tuit") && !blastnParameters.getOutputFormat().getFormat().equals("rdp")&& !blastnParameters.getOutputFormat().getFormat().equals("mothur")) {
+                throw new TUITPropertyBadFormatException("Erroneous output format value, please provide \"tuit\", \"rdp\" or \"mothur\".");
             }
         }
 

@@ -472,7 +472,11 @@ public class tuit {
             final TUITFileOperatorHelper.OutputFormat format;
             if (tuitProperties.getBLASTNParameters().getOutputFormat().getFormat().equals("rdp")) {
                 format = TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK;
-            } else {
+            }
+            else if(tuitProperties.getBLASTNParameters().getOutputFormat().getFormat().equals("mothur")){
+                format = TUITFileOperatorHelper.OutputFormat.MOTHUR;
+            }
+            else {
                 format = TUITFileOperatorHelper.OutputFormat.TUIT;
             }
             //Create blast identifier

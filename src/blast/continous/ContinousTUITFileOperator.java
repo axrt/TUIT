@@ -84,15 +84,20 @@ public class ContinousTUITFileOperator implements ContinousTUITDataHandler, Cont
     }
 
     @Override
-    public boolean saveTaxonomyLine(Map<Ranks, TUITCutoffSet> cutoffSetMap,
+    public boolean saveTaxonomyLine(Map<Ranks, TUITCutoffSet> cutoffSetMap, //TODO increase performance
                                     NucleotideFasta query, NormalizedIteration<blast.ncbi.output.Iteration> normalizedIteration) throws Exception {
         if (this.format == TUITFileOperatorHelper.OutputFormat.TUIT) {
             this.bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultTUITFormatter.format(query.getAC().split("\t")[0], normalizedIteration));
-            bufferedWriter.newLine();
+            this.bufferedWriter.newLine();
         }
         if (this.format == TUITFileOperatorHelper.OutputFormat.RDP_FIXRANK) {
-            bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultFixRankRDPFormatter(cutoffSetMap).format(query.getAC().split("\t")[0], normalizedIteration));
-            bufferedWriter.newLine();
+            this.bufferedWriter.write(TUITFileOperatorHelper.OutputFormat.defaultFixRankRDPFormatter(cutoffSetMap).format(query.getAC().split("\t")[0], normalizedIteration));
+            this.bufferedWriter.newLine();
+        }
+        if (this.format == TUITFileOperatorHelper.OutputFormat.MOTHUR) {
+            final String outline=TUITFileOperatorHelper.OutputFormat.defaultMothurFormatter(cutoffSetMap).format(query.getAC().split("\t")[0], normalizedIteration);
+            this.bufferedWriter.write(outline);
+            this.bufferedWriter.newLine();
         }
         return true;
     }

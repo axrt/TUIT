@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by alext on 1/29/15.
@@ -42,7 +43,7 @@ public class LivingTreeToGGFormatConverterTest {
 
     }
 
-    @Test
+   // @Test
     public void redundantTest(){
 
         final Path toFastaFile = Paths.get("/home/alext/Documents/Research/Ocular/HCE/ltp/LTPs119_SSU.compressed.fasta");
@@ -63,5 +64,29 @@ public class LivingTreeToGGFormatConverterTest {
         }
 
     }
+    //@Test
+    public void taxonomyCheck(){
 
+
+        final Path toTaxFile=Paths.get("/home/alext/Documents/Research/Ocular/HCE/ltp/LTPs119_SSU.csv");
+        try(BufferedReader bufferedReader=new BufferedReader(new FileReader(toTaxFile.toFile()))){
+
+            final Set<String> set=bufferedReader.lines().map(line->{
+                return line.split("\t")[9];
+            }).collect(Collectors.toSet());
+
+            set.stream().filter(line->{
+                if(line.split(";").length>6){
+                    return true;
+                }else return false;
+            }).forEach(System.out::println);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
