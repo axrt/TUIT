@@ -115,6 +115,9 @@ public class GreenGenesDeployer {
     }
 
     private static String formatNode(final TaxonomicNode taxonomicNode) {
+        if(taxonomicNode.getParent()==null){
+            System.out.println();
+        }
         return String.valueOf(taxonomicNode.getTaxid())
                 .concat("\t")
                 .concat(String.valueOf(taxonomicNode.getParent().getTaxid()))

@@ -3,6 +3,7 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 /**
  * Created by alext on 2/2/15.
@@ -17,13 +18,7 @@ public class UnsignFasta {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.startsWith(">")) {
-                    if (line.contains("\t")) {//inefficient
-                        line = line.split("\t")[0].substring(1);
-                    } else if (line.split(" ").length>1){
-                        line = line.split(" ")[1];
-                    }else{
-                        line=line.substring(1);
-                    }
+                    line = UUID.randomUUID().toString();
                     bufferedWriter.write(">");
                 }
                 bufferedWriter.write(line);

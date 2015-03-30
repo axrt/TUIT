@@ -16,7 +16,7 @@ public class WeldTaxonomy {
     public static Path weldToFile(Path toSeqFile, Path toTaxFile, Path output) throws IOException, IllegalArgumentException {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(output.toFile()))) {
-            if (numOfSeqsMatchNumOfTax(toSeqFile, toTaxFile)) {
+            //if (numOfSeqsMatchNumOfTax(toSeqFile, toTaxFile)) {
 
                 try (BufferedReader taxReader = new BufferedReader(new FileReader(toTaxFile.toFile()));
                      BufferedReader seqReader = new BufferedReader(new FileReader(toSeqFile.toFile()))) {
@@ -39,9 +39,9 @@ public class WeldTaxonomy {
                     }
                 }
 
-            } else {
-                throw new IllegalArgumentException("Files differ in numbers of records and corresponding taxonomies! ");
-            }
+            //} else {
+              //  throw new IllegalArgumentException("Files differ in numbers of records and corresponding taxonomies! ");
+            //}
         }
         return output;
     }

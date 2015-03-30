@@ -36,7 +36,7 @@
         In case you are using a local blast option,
         refer to http://www.ncbi.nlm.nih.gov/books/NBK1762/
         in order to provide correct database alias (nt/est/16SMicrobial.. etc)-->
-        <Database use="ltp"/>
+        <Database use="nt"/>
         <!--An E-value threshold for the output.-->
         <Expect value="1.0"/>
         <!--A specific entrez query that allows to get rid
@@ -48,7 +48,7 @@
         Upon first run tuit will fetch the GI list for the given
         entrez query and refer to it as to restrictions list-->
         <EntrezQuery
-                value=""/>
+                value="bacteria not hybrid not other not uncultured not enrichment not unclassified not uncultivated not unspecified not environmental not metagenomes"/>
         <!--If "no" selected, the BLASTN search
         will be performed locally, "yes" will
         send the query to the NCBI BLAST server (yes/no).-->
@@ -63,7 +63,7 @@
         <!--Indicates whether TUIT should keep the intermediate temporary blast outputs (no/yes)-->
         <KeepBLASTOuts keep="no"/>
         <!--Indicates whether TUIT native format should be used, or a fixrank RDP (rdp) -->
-        <OutputFormat format="mothur"/>
+        <OutputFormat format="tuit"/>
     </BLASTNParameters>
     <!--Each set represents a specific set of cutoffs
     that will be applied to a certain taxonomic rank.-->

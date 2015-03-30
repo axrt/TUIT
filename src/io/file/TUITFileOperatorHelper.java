@@ -457,22 +457,25 @@ public class TUITFileOperatorHelper {
                     }
                     if (mothurFixRankRanksSet.contains(taxonomicNode.getRank())) {
                         if (taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
-                            stringBuilder.append(taxonomicNode.getScientificName());
+                            stringBuilder.append(taxonomicNode.getScientificName().replaceAll(" ","_"));
                             stringBuilder.append('(');
-                            stringBuilder.append((int)(100-cutoffMap.get(taxonomicNode.getRank()).getAlpha()*100));
+                            stringBuilder.append((int) (100 - cutoffMap.get(taxonomicNode.getRank()).getAlpha() * 100));
                             stringBuilder.append(");");
+                            //stringBuilder.append(';');
                         } else {
                             while (orderOfRankAppearence.size() > 1 & !taxonomicNode.getRank().equals(orderOfRankAppearence.getFirst())) {
                                 stringBuilder.append(taxonomicNode.getScientificName().concat("_").concat(orderOfRankAppearence.getFirst().toString()));
                                 stringBuilder.append('(');
-                                stringBuilder.append((int)(100-cutoffMap.get(orderOfRankAppearence.getFirst()).getAlpha()*100));
+                                stringBuilder.append((int) (100 - cutoffMap.get(orderOfRankAppearence.getFirst()).getAlpha() * 100));
                                 stringBuilder.append(");");
+                                //stringBuilder.append(';');
                                 orderOfRankAppearence.pollFirst();
                             }
                             stringBuilder.append(taxonomicNode.getScientificName());
                             stringBuilder.append('(');
-                            stringBuilder.append((int)(100-cutoffMap.get(taxonomicNode.getRank()).getAlpha()*100));
+                            stringBuilder.append((int) (100 - cutoffMap.get(taxonomicNode.getRank()).getAlpha() * 100));
                             stringBuilder.append(");");
+                            //stringBuilder.append(';');
                         }
                         orderOfRankAppearence.pollFirst();
                     }
